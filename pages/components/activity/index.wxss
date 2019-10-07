@@ -1,4 +1,4 @@
-/* pages/activity/activity.wxss */
+@import "../../../app.wxss";
 
 .activity-item {
   display: flex;

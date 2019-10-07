@@ -1,4 +1,4 @@
-/* pages/my/my.wxss */
+@import "../../../app.wxss";
 
 .user-info {
   position: relative;

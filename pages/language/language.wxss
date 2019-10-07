@@ -1,3 +1,37 @@
 .page-language {
-  
+  height: 100%;
+  background: #eaedf2;
+}
+
+.select-language {
+  text-align: center;
+  color: #90a4ae;
+}
+
+.list .type {
+  display: inline-block;
+  border-left: 3px solid #ffd100;
+  padding-left: 10px;
+  font-size: 16px;
+  margin: 20px 0;
+}
+
+.list {
+  margin: 15px 0;
+}
+
+.list .item text {
+  display: inline-block;
+  border: 2px solid rgba(234, 237, 242, 1);
+  background: white;
+  color: #282d4b;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 12px;
+}
+
+.list .item text.check {
+  background: #ffd100;
+  border: 2px solid #ffd100;
 }

@@ -1,0 +1,3 @@
+<!--pages/components/header/index.wxml-->
+<view class="header" style='height: {{height*2 + 20}}px;'>
+</view>

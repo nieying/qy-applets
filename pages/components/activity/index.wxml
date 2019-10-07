@@ -1,5 +1,5 @@
 <view class="page-activity">
-  <view class="header">
+  <view class="header" style='height: {{height*2 + 20}}px;'>
     <text class="title">活动列表</text>
   </view>
   <view class="content">

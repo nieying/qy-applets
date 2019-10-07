@@ -1,7 +1,7 @@
 {
   "usingComponents": {
-    "homePage": "/pages/home/home",
-    "activityPage": "/pages/activity/activity",
-    "myPage": "/pages/my/my"
+    "homePage": "/pages/components/home/index",
+    "activityPage": "/pages/components/activity/index",
+    "myPage": "/pages/components/my/index"
   }
 }

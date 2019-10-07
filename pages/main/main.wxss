@@ -5,15 +5,17 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #999;
+  background-color: #282d4b;
   z-index: 500;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  height: 80px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   display: flex;
+  align-items: center;
 }
 
 .tab-bar .tab-item {
-  flex:1;
+  flex: 1;
   float: left;
   text-align: center;
   padding-top: 5px;
@@ -33,7 +35,7 @@
 }
 
 .tab-bar .active .icons {
-  color: #000;
+  color: white;
 }
 
 .tab-bar .active .icon-text {
