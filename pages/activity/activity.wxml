@@ -1,0 +1,19 @@
+<view class="page-activity">
+  <view class="header">
+    <text class="title">活动列表</text>
+  </view>
+  <view class="content">
+    <block wx:for="{{list}}" wx:for-item="item" wx:key="index">
+      <!-- bindtap="{{item.tapFunction}}" -->
+      <view class="activity-item">
+        <view class="left">
+          <view class="title">活动标题活动标题活动标题活动标题活动标题活动标题活动标题活动标题活动标题</view>
+          <view class="time">2019-12-01 官方活动</view>
+        </view>
+        <view class="right">
+          <image src=""></image>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

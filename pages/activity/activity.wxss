@@ -1,0 +1,41 @@
+/* pages/activity/activity.wxss */
+
+.activity-item {
+  display: flex;
+  padding: 15px 0;
+}
+
+.activity-item:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+.activity-item .left {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.activity-item .left .title {
+  font-size: 14px;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.activity-item .left .time {
+  margin-top: 5px;
+  font-size: 10px;
+  color: #666;
+}
+
+.activity-item .right {
+}
+
+.activity-item .right image {
+  width: 60px;
+  height: 60px;
+  background: #999;
+  border-radius: 10px;
+}

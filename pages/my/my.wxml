@@ -1,0 +1,46 @@
+<view class="page-activity">
+  <view class="header">
+    <text class="title">个人主页</text>
+  </view>
+  <view class="content">
+    <view class="user-info">
+      <view class="money">
+        <image src=""></image>
+        <view>228</view>
+      </view>
+      <image class="user-pic" src=""></image>
+      <view class="user-name">用户2345678</view>
+      <view class="user-sign">个性签名文字长度限制，不要换行 </view>
+    </view>
+    <view class="user-opts">
+      <view class="vip">会员中心</view>
+      <view class="union">所属协会</view>
+    </view>
+    <view class="achieve">
+      <view class="title">我的成就</view>
+
+      <view class="achieve-item">
+        <view class="left">
+          <view class="one">千言冠军</view>
+          <view class="two">完成基础试题项目</view>
+          <text class="three">60/100</text>
+        </view>
+        <view class="right">
+          <image src=""></image>
+          <progress percent="60" active backgroundColor="#999" color="yellow" stroke-width="3" border-radius="10" />
+        </view>
+      </view>
+      <view class="achieve-item">
+        <view class="left">
+          <view class="one">学习证明</view>
+          <view class="two">完成基础试题项目</view>
+          <text class="three">0/1000</text>
+        </view>
+        <view class="right">
+          <image src=""></image>
+          <progress percent="0" active backgroundColor="#999" color="yellow" stroke-width="3" border-radius="10" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
