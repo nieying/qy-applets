@@ -1,0 +1,73 @@
+.mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background-color: #fff;
+  border-radius: 40rpx;
+}
+
+.modal-btn-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-top: 2rpx solid rgba(7, 17, 27, 0.1);
+}
+
+.cancel-btn, .confirm-btn {
+  flex: 1;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #ffd100;
+  background: #282d4b;
+  border-radius: 0 0 40rpx 40rpx;
+}
+
+.main-content {
+  flex: 1;
+  width: 90%;
+  height: 100%;
+  overflow-y: hidden;
+  padding: 48rpx;
+}
+
+.title {
+  font-size: 38rpx;
+  font-weight: 600;
+  color: rgba(40, 45, 75, 1);
+  text-align: center;
+}
+
+.weui-input {
+  margin-top: 40rpx;
+  width: 496rpx;
+  height: 52rpx;
+  border-radius: 20rpx;
+  padding: 35rpx 40rpx;
+  border: 4rpx solid rgba(234, 237, 242, 1);
+}
+
+textarea {
+  
+}
+
+.tips {
+  color: #f44336;
+  font-size: 24rpx;
+  margin-top: 24rpx;
+}

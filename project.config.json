@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -60,6 +60,47 @@
 					"name": "lanuage",
 					"pathName": "pages/language/language",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "startUp",
+					"pathName": "pages/startUp/startUp",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "activityDetail",
+					"pathName": "pages/activityDetail/activityDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "subject",
+					"pathName": "pages/subject/subject",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "vip",
+					"pathName": "pages/vip/vip",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "addUnion",
+					"pathName": "pages/addUnion/addUnion",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "searchUnion",
+					"pathName": "pages/searchUnion/searchUnion",
 					"scene": null
 				}
 			]

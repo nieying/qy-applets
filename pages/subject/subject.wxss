@@ -1,0 +1,136 @@
+.page-subject {
+  height: 100%;
+  background: #eaedf2;
+}
+
+.progress {
+  width: 200rpx;
+  margin: 0 40rpx 0 16rpx;
+}
+
+.subject-type .name {
+  color: #90a4ae;
+  font-size: 32rpx;
+  text-align: center;
+}
+
+.subject-type .topic {
+  margin-top: 48rpx;
+  font-size: 44rpx;
+}
+
+.answer-list {
+  margin-bottom: 40rpx;
+  height: 392rpx;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  border: 4rpx solid rgba(234, 237, 242, 1);
+}
+
+.answer-list .item {
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+  padding: 10rpx;
+  background: rgba(234, 237, 242, 1);
+  border-radius: 40rpx;
+}
+
+.answer-list .checked {
+  background: #ffd100;
+}
+
+.answer-list .correct {
+  background: #b9f6ca;
+}
+
+.answer-list .item:not(:last-child) {
+  margin-bottom: 24rpx;
+}
+
+.answer-list .item text {
+  color: #282d4b;
+  font-size: 32rpx;
+  margin-left: 20rpx;
+}
+
+.answer-tips {
+  margin-top: 40rpx;
+  height: 184rpx;
+  background: rgba(185, 246, 202, 1);
+  border-radius: 92rpx;
+  font-size: 44rpx;
+  padding: 0 40rpx;
+  display: flex;
+  align-items: center;
+}
+
+.subject-pic image {
+  margin: 32rpx 0 116rpx 0;
+  height: 280rpx;
+  background: rgba(176, 190, 197, 1);
+  border-radius: 20rpx;
+  width: 100%;
+}
+
+.subject-tone  .topic {
+  margin-top: 0;
+}
+
+.tone-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tone-list .item {
+  position: relative;
+  flex: 1;
+  width: 45%;
+  height: 400rpx;
+  border-radius: 20rpx;
+  border: 4rpx solid rgba(234, 237, 242, 1);
+  margin-top: 32rpx;
+}
+
+.tone-list .item:nth-child(even) {
+  margin-left: 32rpx;
+}
+
+.tone-list .item image {
+}
+
+.tone-list .item icon {
+  position: absolute;
+  top: 24rpx;
+  right: 24rpx;
+}
+
+.answer-tips text {
+  margin-left: 32rpx;
+  color: #00c853;
+}
+
+.bottom {
+  color: white;
+}
+
+.disable {
+  background: #b0bec5;
+}
+
+.bottom-loading {
+  height: 442rpx;
+  flex-direction: column;
+}
+
+.bottom-loading .loading {
+  font-size: 32rpx;
+  color: white;
+  margin: 24rpx 0 32rpx 0;
+}
+
+.bottom-loading .tips {
+  color: #90a4ae;
+  font-size: 24rpx;
+  line-height: 48rpx;
+}

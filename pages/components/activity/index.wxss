@@ -2,40 +2,47 @@
 
 .activity-item {
   display: flex;
-  padding: 15px 0;
+  padding: 32rpx 0;
 }
 
-.activity-item:not(:last-child) {
-  border-bottom: 1px solid #eee;
+/* :not(:last-child) */
+.activity-item {
+  border-bottom: 2rpx solid #eee;
 }
 
 .activity-item .left {
   flex: 1;
-  margin-right: 20px;
+  margin-right: 68rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.activity-item .left .title {
-  font-size: 14px;
-  font-weight: bold;
+.activity-item .left .name {
+  font-size: 34rpx;
+  font-weight:600;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  line-height:48rpx;
 }
 
 .activity-item .left .time {
-  margin-top: 5px;
-  font-size: 10px;
-  color: #666;
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  font-weight:400;
+  color: #90A4AE;
+  line-height:44rpx;
 }
 
 .activity-item .right {
 }
 
 .activity-item .right image {
-  width: 60px;
-  height: 60px;
+  width: 160rpx;
+  height: 160rpx;
   background: #999;
-  border-radius: 10px;
+  border-radius: 20rpx;
 }

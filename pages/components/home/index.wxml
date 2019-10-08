@@ -1,16 +1,16 @@
 <view class="page-home">
   <!-- <header>123123</header> -->
   <view class="header" style='height: {{height*2 + 20}}px;'>
-    <view class="popver-select">四川 ></view>
+    <view class="popver-select" bindtap='showDialect'>四川 ></view>
     <view class="progress">
       <progress percent="60" active backgroundColor="#B0BEC5" color="#FBC02E" stroke-width="4" border-radius="15" />
       <view class="txt"> 98 /
         <text>100</text> </view>
     </view>
-    <view class="money">98</view>
+    <view class="money" bindtap='showBuyModal'>98</view>
   </view>
   <view class="content">
-    <view class="popver-list">
+    <view class="popver-list" wx:if="{{showDialect}}">
       <view class="left">
         <text class="check">东北</text>
         <text class="select">东北</text>
@@ -24,4 +24,5 @@
       <view class="right" bindtap="goLanguage">+</view>
     </view>
   </view>
+  <buy show="{{showBuyModal}}" headerHeight="{{height*2 + 20}}px"></buy>
 </view>

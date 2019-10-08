@@ -1,0 +1,46 @@
+<view class="page-vip">
+  <view class="header" style='height: {{height*2 + 20}}px;'>
+    <icon type="clear" size="30" color="black" bindtap="goBack" />
+  </view>
+  <view class="content">
+    <view class='title'>会员中心</view>
+    <view class='list'>
+      <view class='item active'>
+        <view class='left'>
+          <view class='one'>爱心者</view>
+          <view class='two'>会员特权会员特权会员特权 会员特权会员特权
+          </view>
+          <text class='three'>拥有钞票<text>100</text></text>
+        </view>
+        <view class='right'>
+          <image src=''></image>
+        </view>
+      </view>
+      <view class='item'>
+        <view class='left'>
+          <view class='one'>爱心者</view>
+          <view class='two'>会员特权会员特权会员特权 会员特权会员特权
+          </view>
+          <text class='three'>拥有钞票 <text>100</text></text>
+        </view>
+        <view class='right'>
+          <image src=''></image>
+        </view>
+      </view>
+      <view class='item'>
+        <view class='left'>
+          <view class='one'>爱心者</view>
+          <view class='two'>会员特权会员特权会员特权 会员特权会员特权
+          </view>
+          <text class='three'>拥有钞票<text>100</text></text>
+        </view>
+        <view class='right'>
+          <image src=''></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="bottom">
+    <text>开通会员</text>
+  </view>
+</view>

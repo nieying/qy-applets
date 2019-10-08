@@ -13,10 +13,12 @@ Component({
    * 组件的初始数据
    */
   data: {
-    height: 0
+    height: 0,
+    showBuyModal: false,
+    showDialect: false,
   },
 
-  attached: function () {
+  attached: function() {
     this.setData({
       height: app.globalData.height
     })
@@ -30,6 +32,18 @@ Component({
       wx.navigateTo({
         url: '/pages/language/language'
       })
-    }
+    },
+
+    showBuyModal: function() {
+      this.setData({
+        showBuyModal: !this.data.showBuyModal
+      })
+    },
+
+    showDialect: function() {
+      this.setData({
+        showDialect: !this.data.showDialect
+      })
+    },
   }
 })

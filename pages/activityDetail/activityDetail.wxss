@@ -1,0 +1,17 @@
+.page-activity-detail {
+  height: 100%;
+  background: #eaedf2;
+}
+
+.bottom {
+  background: #eaedf2;
+  justify-content: flex-end;
+}
+
+.bottom .btn {
+  margin-left: 24rpx;
+}
+
+.bottom .btn:last-child {
+  margin-right: 40rpx;
+}

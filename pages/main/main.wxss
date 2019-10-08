@@ -7,9 +7,8 @@
   width: 100%;
   background-color: #282d4b;
   z-index: 500;
-  height: 80px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  height: 176rpx;
+  border-radius: 40rpx 40rpx 0rpx 0rpx;
   display: flex;
   align-items: center;
 }
@@ -18,17 +17,17 @@
   flex: 1;
   float: left;
   text-align: center;
-  padding-top: 5px;
+  padding-top: 10rpx;
 }
 
 .tab-bar .tab-item .icons {
-  font-size: 27px;
+  font-size: 54rpx;
   color: #808080;
   font-weight: 800;
 }
 
 .tab-bar .tab-item .icon-text {
-  font-size: 10px;
+  font-size: 20rpx;
   display: block;
   line-height: 2.1;
   color: #808080;
@@ -65,7 +64,7 @@
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 16px;
+  font-size: 32rpx;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

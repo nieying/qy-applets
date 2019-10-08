@@ -1,3 +1,5 @@
+const util = require('../../utils/util.js')
+
 const app = getApp()
 Page({
 
@@ -5,7 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    height: 0
+    height: 0,
+    dataObj: {
+      type: ''
+    }
   },
 
   /**
@@ -17,6 +22,23 @@ Page({
     })
   },
 
+
+  // 复制
+  textPaste() {
+    wx.showToast({
+      title: '复制成功',
+    })
+    wx.setClipboardData({
+      data: 'test20076',
+      success: function(res) {
+        wx.getClipboardData({
+          success: function(res) {
+          }
+        })
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -24,7 +46,7 @@ Page({
 
   },
 
-  goBack:function() {
+  goBack: function() {
     wx.navigateBack()
   },
 

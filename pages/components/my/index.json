@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "modal": "/pages/components/modal/index"
+  }
 }

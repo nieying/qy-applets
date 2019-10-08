@@ -1,25 +1,18 @@
 @import "../../../app.wxss";
 
-.page-home {
-}
-
-.header {
-  align-items: center;
-}
-
 .header .popver-select {
   background: #282d4b;
   color: white;
-  padding: 7px 12px;
-  border-radius: 20px;
+  padding: 14rpx 24rpx;
+  border-radius: 40rpx;
 }
 
 .popver-list {
   position: relative;
-  margin-top: -20px;
+  margin-top: -40rpx;
   background: #ffd100;
-  border-radius: 20px;
-  padding: 14px 20px;
+  border-radius: 40rpx;
+  padding: 28rpx 40rpx;
   overflow: hidden;
 }
 
@@ -32,9 +25,9 @@
   display: inline-block;
   background: #282d4b;
   color: white;
-  border-radius: 20px;
-  padding: 5px 10px;
-  margin: 5px;
+  border-radius: 40rpx;
+  padding: 10rpx 20rpx;
+  margin: 10rpx;
 }
 
 .popver-list text.check {
@@ -48,22 +41,22 @@
   float: right;
   background: #282d4b;
   color: white;
-  font-size: 20px;
+  font-size: 40rpx;
   font-weight: bold;
   border-radius: 50%;
-  /* padding: 8px; */
-  width: 32px;
-  height: 32px;
+  /* padding: 8rpx; */
+  width: 64rpx;
+  height: 64rpx;
   text-align: center;
 }
 
 .header view.progress {
-  margin: 0 20px;
-  font-size: 12px;
+  margin: 0 40rpx;
+  font-size: 24rpx;
 }
 
 .header view.progress .txt {
-  margin-top: 3px;
+  margin-top: 6rpx;
 }
 
 .header view.progress text {

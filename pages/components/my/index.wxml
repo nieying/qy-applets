@@ -9,12 +9,12 @@
         <view>228</view>
       </view>
       <image class="user-pic" src=""></image>
-      <view class="user-name">用户2345678</view>
-      <view class="user-sign">个性签名文字长度限制，不要换行 </view>
+      <view class="user-name" bindtap='showModal' data-type="1">用户2345678</view>
+      <view class="user-sign" bindtap='showModal' data-type="2">个性签名文字长度限制，不要换行 </view>
     </view>
     <view class="user-opts">
-      <view class="vip">会员中心</view>
-      <view class="union">所属协会</view>
+      <view class="vip" bindtap='goVip'>会员中心</view>
+      <view class="union" bindtap='showModal' data-type="3">所属协会</view>
     </view>
     <view class="achieve">
       <view class="title">我的成就</view>
@@ -27,7 +27,7 @@
         </view>
         <view class="right">
           <image src=""></image>
-          <progress percent="60" active backgroundColor="#999" color="yellow" stroke-width="3" border-radius="10" />
+          <progress percent="60" active backgroundColor="#EAEDF2" color="#FFD100" stroke-width="4" border-radius="10" />
         </view>
       </view>
       <view class="achieve-item">
@@ -38,9 +38,10 @@
         </view>
         <view class="right">
           <image src=""></image>
-          <progress percent="0" active backgroundColor="#999" color="yellow" stroke-width="3" border-radius="10" />
+          <progress percent="0" activebackgroundColor="#EAEDF2" color="#FFD100" stroke-width="4" border-radius="10" />
         </view>
       </view>
     </view>
   </view>
+  <modal show="{{show}}" modalData="{{modalData}}"></modal>
 </view>

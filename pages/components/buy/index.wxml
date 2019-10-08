@@ -1,0 +1,26 @@
+<view class='mask' wx:if='{{show}}' bindtap='clickMask' style="top:{{headerHeight}}">
+  <view class='modal-content'>
+    <view class='card'>
+      <view class='item'>
+        <image src=''></image>
+        <text class='name'>生命值</text>
+        <text class='desc'>生命值介绍生命值介绍生命值介绍生命</text>
+        <view class='money'>
+          <text>x7</text> </view>
+        <view class='btn btn-primary'>购买</view>
+      </view>
+      <view class='item'>
+        <image src=''></image>
+        <text class='name'>生命卡</text>
+        <text class='desc'>购买后实时到账 当日生命值不会消减</text>
+        <view class='money'>
+          <text>x7</text> </view>
+        <view class='btn btn-primary'>购买</view>
+      </view>
+    </view>
+    <view class='my'>您还有钞票
+      <text>7</text>
+    </view>
+
+  </view>
+</view>

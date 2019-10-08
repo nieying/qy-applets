@@ -1,0 +1,18 @@
+<view class="page-add-union">
+  <view class="header" style='height: {{height*2 + 20}}px;'>
+    <icon type="clear" size="30" color="black" bindtap="goBack" />
+  </view>
+  <view class="content">
+    <view class='title'> 创建协会反馈 </view>
+    <view class='warp'>
+      <!-- <icon type="clear" size="30" color="#F44336" /> -->
+      <icon type="success" size="30" color="#00C853" />
+      <!-- <text class='result'>审核失败</text> -->
+      <text class='result'>申请成功</text>
+      <text class='tips'>请耐心等待审核</text>
+      <!-- <text class='tips'>请与客服联系询问原因</text> -->
+      <text class='kefu'>客服微信 test20076</text>
+      <text class='copy'>点击可复制</text>
+    </view>
+  </view>
+</view>

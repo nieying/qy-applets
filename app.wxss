@@ -3,6 +3,8 @@
 pages {
   position: relative;
   z-index: 9999998;
+  color: #282d4b;
+  font-family:PingFangSC-Semibold,PingFangSC;
 }
 
 .container {
@@ -11,28 +13,36 @@ pages {
   flex-direction: column;
   box-sizing: border-box;
   background: #eaedf2;
-  margin-bottom: 55px;
-  font-size: 13px;
+  margin-bottom: 110rpx;
+  font-size: 26rpx;
   font-family: SFUIDisplay-Heavy, SFUIDisplay;
 }
 
 .header {
   display: flex;
   align-items: center;
-  padding: 10px 0 0 15px;
+  padding: 20rpx 0 0 30rpx;
+  /* background: #eaedf2; */
 }
 
 .header .title {
-  border-left: 3px solid #ffd100;
-  padding-left: 10px;
-  font-size: 16px;
+  border-left: 6rpx solid #ffd100;
+  padding-left: 20rpx;
+  font-size: 32rpx;
+}
+
+.title {
+  border-left: 6rpx solid #ffd100;
+  padding-left: 20rpx;
+  font-weight:600;
+  font-size: 38rpx;
+  margin-bottom: 32rpx;
 }
 
 .content {
   background: white;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  padding: 20px 15px;
+  border-radius: 40rpx 40rpx 0 0;
+  padding: 40rpx 30rpx;
 }
 
 .bottom {
@@ -40,11 +50,10 @@ pages {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 80px;
+  height: 160rpx;
   background-color: #282d4b;
   z-index: 500;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-radius: 40rpx 40rpx 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,4 +61,71 @@ pages {
 
 .bottom text {
   color: white;
+}
+
+.btn {
+  font-size: 32rpx;
+  padding: 8rpx 24rpx;
+  border-radius: 8rpx;
+}
+
+.btn-primary {
+  color: #282d4b;
+  background: #ffd100;
+}
+
+.btn-primary:hover {
+  background: #fbc02e;
+}
+
+.btn-default {
+  color: white;
+  background: #282d4b;
+}
+
+.btn-default:hover {
+  background: #1a1d30;
+}
+
+
+.warp {
+  height: 508rpx;
+  background: rgba(245, 247, 249, 1);
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.warp .result {
+  font-size: 38rpx;
+  font-weight: 600;
+  color: rgba(40, 45, 75, 1);
+  margin: 16rpx 0 8rpx 0;
+}
+
+.warp .tips {
+  font-size: 32rpx;
+  font-weight: 400;
+  color: rgba(144, 164, 174, 1);
+  line-height: 48rpx;
+}
+
+.warp .kefu {
+  height: 64rpx;
+  background: rgba(40, 45, 75, 1);
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  padding: 0 24rpx;
+  display: flex;
+  align-items: center;
+  margin: 64rpx 0 32rpx 0;
+}
+
+.warp .copy {
+  color: #90a4ae;
+  font-size: 24rpx;
 }

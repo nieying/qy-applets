@@ -4,7 +4,14 @@
     "pages/main/main",
     "pages/logs/logs",
     "pages/startUp/startUp",
-    "pages/language/language"
+    "pages/language/language",
+    "pages/activityDetail/activityDetail",
+    "pages/subject/subject",
+    "pages/vip/vip",
+    "pages/components/modal/index",
+    "pages/components/buy/index",
+    "pages/addUnion/addUnion",
+    "pages/searchUnion/searchUnion"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -12,5 +19,6 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

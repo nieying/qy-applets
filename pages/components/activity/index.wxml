@@ -7,7 +7,7 @@
       <!-- bindtap="{{item.tapFunction}}" -->
       <view class="activity-item">
         <view class="left">
-          <view class="title">活动标题活动标题活动标题活动标题活动标题活动标题活动标题活动标题活动标题</view>
+          <view class="name">活动标题活动标题活动标题活动标题活动标题活动标题活动标题活动标题活动标题</view>
           <view class="time">2019-12-01 官方活动</view>
         </view>
         <view class="right">

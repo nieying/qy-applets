@@ -17,3 +17,21 @@ const formatNumber = n => {
 module.exports = {
   formatTime: formatTime
 }
+
+
+const copyText = (data) =>{
+  wx.showToast({
+    title: '复制成功',
+  })
+  wx.setClipboardData({
+    data: data,
+    success: function(res) {
+      wx.getClipboardData({
+        success: function(res) {
+          console.log(res.data)
+          return res.data
+        }
+      })
+    }
+  })
+}
