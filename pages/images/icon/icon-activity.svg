@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>编组 7</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="A2" transform="translate(-343.000000, -1488.000000)">
+            <g id="编组-7" transform="translate(343.000000, 1488.000000)">
+                <rect id="矩形备份" fill="#FFFFFF" opacity="0" x="0" y="0" width="64" height="64"></rect>
+                <path d="M5,24 L59,24 L59,52 C59,54.209139 57.209139,56 55,56 L9,56 C6.790861,56 5,54.209139 5,52 L5,24 Z" id="矩形" fill="#FFFFFF"></path>
+                <rect id="矩形" fill="#36474F" x="35" y="32" width="16" height="16"></rect>
+                <path d="M9,8 L55,8 C57.209139,8 59,9.790861 59,12 L59,24 L5,24 L5,12 C5,9.790861 6.790861,8 9,8 Z" id="矩形备份-3" fill="#90A4AE"></path>
+            </g>
+        </g>
+    </g>
+</svg>

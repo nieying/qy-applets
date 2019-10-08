@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="96px" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>编组 9备份 7</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-1070.000000, -703.000000)">
+            <g id="编组-9备份-7" transform="translate(1070.000000, 703.000000)">
+                <rect id="矩形" fill="#FFFFFF" opacity="0" x="0" y="0" width="96" height="96"></rect>
+                <g id="编组-21" transform="translate(5.000000, 8.698485)">
+                    <g id="编组-20">
+                        <polygon id="矩形" fill="#78909C" points="14 0.30151519 72 0.30151519 72 23.3015152 14 23.3015152"></polygon>
+                        <path d="M83.3137085,11.6152237 C86.4379028,14.739418 86.4379028,19.8047379 83.3137085,22.9289322 L46.5441559,59.6984848 L29.5735931,42.7279221 L72,0.30151519 L83.3137085,11.6152237 Z" id="矩形备份-26" fill="#90A4AE"></path>
+                        <path d="M2.6862915,11.6152237 L14,0.30151519 L56.4264069,42.7279221 L39.4558441,59.6984848 L2.6862915,22.9289322 C-0.437902833,19.8047379 -0.437902833,14.739418 2.6862915,11.6152237 Z" id="矩形" fill="#CFD8DC"></path>
+                    </g>
+                    <circle id="椭圆形" fill="#78909C" cx="43" cy="54.3015152" r="25"></circle>
+                    <circle id="椭圆形" fill="#CFD8DC" cx="43" cy="54.3015152" r="18"></circle>
+                    <polygon id="矩形" fill="#78909C" points="36 47.3015152 43 43.3015152 47 43.3015152 47 64.3015152 41 64.3015152 41 50.8015152 36 53.3015152"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

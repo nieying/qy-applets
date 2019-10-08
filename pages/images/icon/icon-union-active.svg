@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>编组 3备份 2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="D1a" transform="translate(-431.000000, -608.000000)">
+            <g id="编组-19" transform="translate(391.000000, 592.000000)">
+                <g id="编组-3备份-2" transform="translate(40.000000, 16.000000)">
+                    <rect id="矩形" x="0" y="0" width="64" height="64"></rect>
+                    <path d="M20,27 L44,27 L44,57.5001281 C44,58.0524129 43.5522847,58.5001281 43,58.5001281 C42.8680005,58.5001281 42.7373071,58.4739948 42.6154574,58.4232354 L31.9973339,54 L21.3846882,58.4229184 C20.8749037,58.6353758 20.2894109,58.3943445 20.0769534,57.88456 C20.0261544,57.7626693 20,57.6319244 20,57.4998718 L20,27 Z" id="矩形" fill="#16357B" transform="translate(32.000000, 43.000000) rotate(-360.000000) translate(-32.000000, -43.000000) "></path>
+                    <g id="编组-18" transform="translate(9.000000, 4.000000)">
+                        <circle id="椭圆形" fill="#3380FF" cx="23" cy="23" r="23"></circle>
+                        <polygon id="V" fill="#FFFFFF" fill-rule="nonzero" transform="translate(23.000000, 24.000000) scale(1, -1) translate(-23.000000, -24.000000) " points="34 34 27.3377704 34 23.0183028 22.8202247 18.625624 34 12 34 20.6023295 14 25.3610649 14"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

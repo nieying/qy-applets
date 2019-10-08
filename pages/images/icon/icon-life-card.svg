@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="96px" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>编组 3备份</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="18.2 0 31.0693434 5.33065658 36.4 18.2 31.0693434 31.0693434 18.2 36.4 5.33065658 31.0693434 0 18.2 5.33065658 5.33065658"></polygon>
+        <polygon id="path-3" points="18.2 7.8 25.5539105 10.8460895 28.6 18.2 25.5539105 25.5539105 18.2 28.6 10.8460895 25.5539105 7.8 18.2 10.8460895 10.8460895"></polygon>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="D2" transform="translate(-503.000000, -284.000000)">
+            <g id="编组-3备份" transform="translate(503.000000, 284.000000)">
+                <rect id="矩形" x="0" y="0" width="96" height="96"></rect>
+                <g id="编组-17" transform="translate(8.000000, 17.000000)">
+                    <rect id="矩形" fill="#449C80" x="0" y="0.2" width="78" height="60" rx="4.5"></rect>
+                    <rect id="矩形" fill="#2C6484" x="9.8" y="37.7" width="24" height="13.5"></rect>
+                    <g id="编组-6备份-2" transform="translate(45.400000, 36.600000)">
+                        <rect id="矩形" fill="#FFFFFF" opacity="0" x="0" y="0" width="41.6" height="41.6"></rect>
+                        <g id="编组-10" transform="translate(2.600000, 2.600000)">
+                            <g id="编组-36备份">
+                                <mask id="mask-2" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <use id="多边形" fill="#D8D8D8" xlink:href="#path-1"></use>
+                                <path d="M36.4,1.82964754e-13 L36.4,36.4 L18.2,18.2 L36.4,1.82964754e-13 Z M-8.8817842e-14,36.4 L-8.8817842e-14,18.2 L18.2,18.2 L-8.8817842e-14,36.4 Z" id="形状" fill="#449C80" mask="url(#mask-2)"></path>
+                                <polygon id="路径" fill="#60D818" mask="url(#mask-2)" points="-8.8817842e-14 3.64153152e-13 18.2 3.64153152e-13 18.2 18.2 -8.8817842e-14 18.2"></polygon>
+                                <polygon id="矩形" fill="#2C6484" mask="url(#mask-2)" points="18.2 0 36.4 0 18.2 18.2"></polygon>
+                                <path d="M18.2,36.4 L-8.8817842e-14,36.4 L18.2,18.2 L36.4,36.4 L18.2,36.4 Z" id="形状结合" fill="#2C6484" mask="url(#mask-2)"></path>
+                                <mask id="mask-4" fill="white">
+                                    <use xlink:href="#path-3"></use>
+                                </mask>
+                                <use id="多边形" fill="#C0F424" xlink:href="#path-3"></use>
+                            </g>
+                        </g>
+                    </g>
+                    <rect id="矩形" fill="#60D818" x="0" y="10.7" width="78" height="18"></rect>
+                    <polygon id="路径" fill="#FFFFFF" points="65.5 15.5 76 17 76 20 65.5 21.5 64 32 61 32 59.5 21.5 49 20 49 17 59.5 15.5 61 5 64 5"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="96px" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>编组 9备份 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0 72 0 72 22.5306122 36 46 0 22.5306122"></polygon>
+        <path d="M29,58 C45.0162577,58 58,45.0162577 58,29 C58,12.9837423 45.0162577,0 29,0 C12.9837423,0 0,12.9837423 0,29 C0,45.0162577 12.9837423,58 29,58 Z" id="path-3"></path>
+        <path d="M25,50 C11.1928813,50 0,38.8071187 0,25 C0,11.1928813 11.1928813,0 25,0 C38.8071187,0 50,11.1928813 50,25 C50,38.8071187 38.8071187,50 25,50 Z" id="path-5"></path>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-1309.000000, -415.000000)">
+            <g id="编组-7备份" transform="translate(1253.000000, 359.000000)">
+                <g id="编组-9备份-3" transform="translate(56.000000, 56.000000)">
+                    <rect id="矩形" fill="#FFFFFF" opacity="0" x="0" y="0" width="96" height="96"></rect>
+                    <g id="编组-3" transform="translate(12.000000, 9.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="矩形" fill="#FFFFFF" xlink:href="#path-1"></use>
+                        <rect id="矩形" fill="#3380FF" mask="url(#mask-2)" x="24" y="0" width="24" height="40"></rect>
+                        <rect id="矩形备份-8" fill="#3380FF" mask="url(#mask-2)" x="60" y="0" width="12" height="40"></rect>
+                        <rect id="矩形备份-10" fill="#3380FF" mask="url(#mask-2)" x="0" y="0" width="12" height="40"></rect>
+                    </g>
+                    <g id="编组-11" transform="translate(19.000000, 33.000000)">
+                        <g id="编组-10">
+                            <mask id="mask-4" fill="white">
+                                <use xlink:href="#path-3"></use>
+                            </mask>
+                            <use id="路径" fill="#F9A825" fill-rule="nonzero" xlink:href="#path-3"></use>
+                        </g>
+                        <g id="编组-6" transform="translate(4.000000, 4.000000)">
+                            <mask id="mask-6" fill="white">
+                                <use xlink:href="#path-5"></use>
+                            </mask>
+                            <use id="路径" fill="#FFD500" fill-rule="nonzero" xlink:href="#path-5"></use>
+                            <path d="M54.9868603,-0.578838325 L68.8432667,7.42116168 L35.8432667,64.5788383 L21.9868603,56.5788383 L54.9868603,-0.578838325 Z M42.5,0.238148973 L46.830127,2.73814897 L13.330127,60.761851 L9,58.261851 L42.5,0.238148973 Z" id="形状" fill="#FBC02E" mask="url(#mask-6)"></path>
+                        </g>
+                        <path d="M16.38,40.62 L25.31,15.54 C25.386,15.312 25.538,15.16 25.804,15.16 L31.998,15.16 C32.264,15.16 32.416,15.312 32.492,15.54 L41.232,40.62 C41.308,40.848 41.194,41 40.966,41 L34.696,41 C34.43,41 34.278,40.848 34.202,40.62 L32.986,36.63 L24.588,36.63 L23.372,40.62 C23.296,40.848 23.144,41 22.878,41 L16.646,41 C16.418,41 16.304,40.848 16.38,40.62 Z M26.298,31.082 L31.314,31.082 L28.92,23.026 L28.806,23.026 L26.298,31.082 Z" id="A" fill="#455A64" fill-rule="nonzero"></path>
+                    </g>
+                    <rect id="矩形" fill="#FBC02E" x="8" y="5" width="80" height="4"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="12px" viewBox="0 0 16 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>编组</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="A2" transform="translate(-120.000000, -130.000000)">
+            <g id="编组" transform="translate(120.000000, 130.000000)">
+                <rect id="矩形" fill="#FFFFFF" opacity="0" x="0" y="0" width="16" height="12"></rect>
+                <path d="M15.8186343,2.50557669 L9.49085007,11.2334366 C8.88255692,12.0724502 7.72197496,12.2501093 6.89861771,11.6302493 C6.75014887,11.5184753 6.61889791,11.3847286 6.5092097,11.2334366 L0.181425485,2.50557669 C-0.122721088,2.08606986 -0.0355491363,1.49474446 0.37612949,1.18481444 C0.535576144,1.0647759 0.728593961,1 0.926835577,1 L15.0732242,1 C15.5850683,1 16,1.42282172 16,1.94439875 C16,2.14640999 15.9364329,2.34309811 15.8186343,2.50557669 Z" id="矩形" fill="#FFD100" transform="translate(8.000000, 6.500000) scale(1, -1) rotate(-180.000000) translate(-8.000000, -6.500000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>编组 12</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M13.6411948,0 L48.3588052,0 C49.7066558,-1.57986377e-15 50.9638738,0.678807628 51.7032505,1.80576077 L60.4025978,15.0652498 C61.3547398,16.5164986 61.262285,18.4161944 60.1737171,19.7681255 L34.1155646,52.1306697 C32.730083,53.8513486 30.2120424,54.1230796 28.4913635,52.7375979 C28.267871,52.5576428 28.0643904,52.3541623 27.8844354,52.1306697 L1.82628287,19.7681255 C0.73771498,18.4161944 0.645260152,16.5164986 1.59740224,15.0652498 L10.2967495,1.80576077 C11.0361262,0.678807628 12.2933442,-1.96493071e-16 13.6411948,0 Z" id="path-1"></path>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="A2" transform="translate(-104.000000, -1488.000000)">
+            <g id="编组-12" transform="translate(104.000000, 1488.000000)">
+                <rect id="矩形" x="0" y="0" width="64" height="64"></rect>
+                <g id="编组-4备份-3">
+                    <rect id="矩形" fill="#FFFFFF" opacity="0" x="0" y="0" width="64" height="64"></rect>
+                    <g id="编组-2" transform="translate(1.000000, 5.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="矩形" fill="#D8D8D8" xlink:href="#path-1"></use>
+                        <rect id="矩形" fill="#FBC02E" mask="url(#mask-2)" x="31" y="0" width="31" height="17"></rect>
+                        <rect id="矩形备份-4" fill="#FFD500" mask="url(#mask-2)" x="0" y="0" width="31" height="17"></rect>
+                        <rect id="矩形" fill="#F57F17" mask="url(#mask-2)" x="31" y="17" width="31" height="40"></rect>
+                        <rect id="矩形备份-5" fill="#FBC02E" mask="url(#mask-2)" x="0" y="17" width="31" height="40"></rect>
+                        <polygon id="矩形" fill="#FBC02E" mask="url(#mask-2)" points="20 17 42 17 31 61"></polygon>
+                        <polygon id="矩形" fill="#FFD500" mask="url(#mask-2)" points="12 0 50 0 42 17 20 17"></polygon>
+                    </g>
+                    <polygon id="路径" fill="#FFFFFF" points="45 19 52 20 52 22 45 23 44 30 42 30 41 23 34 22 34 20 41 19 42 12 44 12"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
