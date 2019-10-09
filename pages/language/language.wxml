@@ -1,5 +1,5 @@
 <view class="page-language">
-  <view class="header" style='height: {{height*2 + 20}}px;'>
+  <view class="header" style='padding-top: {{height + 10}}px'>
     <icon type="clear" size="30" color="black" bindtap="goBack"/>
   </view>
   <view class="content">

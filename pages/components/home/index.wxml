@@ -1,6 +1,6 @@
 <view class="page-home">
   <!-- <header>123123</header> -->
-  <view class="header" style='height: {{height*2 + 20}}px;'>
+  <view class="header" style='padding-top: {{height + 10}}px'>
     <view class="popver-select" bindtap='showDialect'>四川 ></view>
     <view class="progress">
       <progress percent="60" active backgroundColor="#B0BEC5" color="#FBC02E" stroke-width="4" border-radius="15" />
@@ -24,6 +24,23 @@
       </view>
       <view class="right" bindtap="goLanguage">+</view>
     </view>
+
+    <view class="home-warp">
+      <view class="box">
+        <view class="star">
+          <image src="/pages/images/main/icon-star.svg"></image>
+        </view>
+        <image class="badge-img" src="/pages/images/main/icon-b.svg"></image>
+      </view>
+      <view class="badge-txt">基础 01</view>
+    </view>
+
+    <scroll-view class="badge-list" scroll-x="true" style="width: 92%">
+      <view wx:for="{{badgeList}}" wx:for-item="item" wx:key="index" class="item {{item.active ? 'active' : '' }}">
+        <view class="index">0{{index + 1}}</view>
+        <image src="{{item.active ? item.src + '-active.svg' : item.src+'.svg'}}"></image>
+      </view>
+    </scroll-view>
   </view>
   <buy show="{{showBuyModal}}" headerHeight="{{height*2 + 20}}px"></buy>
 </view>

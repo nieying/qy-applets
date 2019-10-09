@@ -16,6 +16,27 @@ Component({
     height: 0,
     showBuyModal: false,
     showDialect: false,
+    badgeList: [{
+        active: true,
+        src: '/pages/images/main/icon-b'
+      },
+      {
+        active: false,
+        src: '/pages/images/main/icon-a'
+      },
+      {
+        active: false,
+        src: '/pages/images/main/icon-c'
+      },
+      {
+        active: false,
+        src: '/pages/images/main/icon-d'
+      },
+      {
+        active: false,
+        src: '/pages/images/main/icon-e'
+      },
+    ]
   },
 
   attached: function() {

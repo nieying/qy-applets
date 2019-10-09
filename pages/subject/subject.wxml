@@ -1,5 +1,5 @@
 <view class="page-subject">
-  <view class="header" style='height: {{height*2 + 20}}px;'>
+  <view class="header" style='padding-top: {{height + 10}}px'>
     <icon type="clear" size="30" color="black" bindtap="goBack" />
     <view class='progress' wx:if="{{!isLoading}}">
       <progress percent="60" backgroundColor="#B0BEC5" color="#FFD500" stroke-width="8" border-radius="8" />
