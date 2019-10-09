@@ -26,6 +26,11 @@
   font-weight: 800;
 }
 
+.tab-bar .tab-item image {
+  width: 64rpx;
+  height: 64rpx;
+}
+
 .tab-bar .tab-item .icon-text {
   font-size: 20rpx;
   display: block;

@@ -56,9 +56,8 @@
 }
 
 .list .item .right image {
-  width: 100rpx;
-  height: 100rpx;
-  background: #999;
+  width: 120rpx;
+  height: 120rpx;
 }
 
 .active {

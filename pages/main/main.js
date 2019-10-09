@@ -9,19 +9,19 @@ Page({
     nowPage: "homePage",
     nowIndex: 0,
     tabBar: [{
-        iconClass: "iconfont icon-shouye",
+        src: "/pages/images/main/icon-home",
         text: "主页",
         tapFunction: "toHomePage",
         active: "active"
       },
       {
-        iconClass: "iconfont icon-wode",
+        src: "/pages/images/main/icon-activity",
         text: "活动",
         tapFunction: "toActivityPage",
         active: ""
       },
       {
-        iconClass: "iconfont icon-wode",
+        src: "/pages/images/main/icon-my",
         text: "我的",
         tapFunction: "toMyPage",
         active: ""
@@ -56,8 +56,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
-  },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示

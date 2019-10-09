@@ -1,15 +1,16 @@
 <view class="page-subject">
   <view class="header" style='height: {{height*2 + 20}}px;'>
     <icon type="clear" size="30" color="black" bindtap="goBack" />
-    <view class='progress'>
+    <view class='progress' wx:if="{{!isLoading}}">
       <progress percent="60" backgroundColor="#B0BEC5" color="#FFD500" stroke-width="8" border-radius="8" />
     </view>
-    <view class="money">98</view>
+    <view class="money" wx:if="{{!isLoading}}"><image src='/pages/images/icon/icon-life.svg'></image> 98</view>
   </view>
   <view class="content">
     <!-- loding页面 -->
     <view class='page-loading' wx:if="{{isLoading}}">
-      123
+      <image class='logo' src="/pages/images/logo.png"></image>
+      <image class='man' src="/pages/images/man_woman.svg"></image>
     </view>
 
     <view class='subject-type' wx:if="{{!isLoading}}">

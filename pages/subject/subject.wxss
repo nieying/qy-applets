@@ -3,6 +3,28 @@
   background: #eaedf2;
 }
 
+.page-loading {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-loading .logo {
+  width: 200rpx;
+  height: 200rpx;
+  position: absolute;
+  top: 442rpx;
+}
+
+.page-loading .man {
+  position: absolute;
+  bottom: 442rpx;
+  width: 50%;
+  height: 260rpx;
+}
+
 .progress {
   width: 200rpx;
   margin: 0 40rpx 0 16rpx;
