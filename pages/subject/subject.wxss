@@ -31,9 +31,21 @@
 }
 
 .subject-type .name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subject-type .name text {
   color: #90a4ae;
   font-size: 32rpx;
+  flex: 1;
   text-align: center;
+}
+
+.subject-type .name image {
+  width: 64rpx;
+  height: 64rpx;
 }
 
 .subject-type .topic {
@@ -42,6 +54,7 @@
 }
 
 .answer-list {
+  margin-top: 24rpx;
   margin-bottom: 40rpx;
   height: 392rpx;
   border-radius: 20rpx;
@@ -64,6 +77,10 @@
 
 .answer-list .correct {
   background: #b9f6ca;
+}
+
+.answer-list .wrong {
+  background: #ffcdd2;
 }
 
 .answer-list .item:not(:last-child) {

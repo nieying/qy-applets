@@ -82,3 +82,8 @@
   font-weight: 800;
   color: rgba(40, 45, 75, 1);
 }
+
+.money image {
+  width: 48rpx;
+  height: 48rpx;
+}

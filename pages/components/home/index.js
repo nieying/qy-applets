@@ -36,7 +36,14 @@ Component({
         active: false,
         src: '/pages/images/main/icon-e'
       },
+    ],
+    dialectList: [
+      { 'value': '四川' },
+      { 'value': '东北' },
+      { 'value': '粤语' },
+      { 'value': '江西' },
     ]
+
   },
 
   attached: function() {
@@ -66,5 +73,23 @@ Component({
         showDialect: !this.data.showDialect
       })
     },
+
+    //多选
+    userCheck: function (e) {
+      let index = e.currentTarget.dataset.id;//获取用户当前选中的索引值
+      let checkBox = this.data.dialectList;
+      if (checkBox[index].checked) {
+        this.data.dialectList[index].checked = false;
+      } else {
+        this.data.dialectList[index].checked = true;
+      }
+      this.setData({ dialectList: this.data.dialectList })
+
+      //返回用户选中的值
+      let value = checkBox.filter((item, index) => {
+        return item.checked == true;
+      })
+      console.log(value)
+    }
   }
 })

@@ -1,29 +1,16 @@
 <view class="page-language">
   <view class="header" style='padding-top: {{height + 10}}px'>
-    <icon type="clear" size="30" color="black" bindtap="goBack"/>
+    <icon type="clear" size="30" color="#282D4B" bindtap="goBack" />
   </view>
   <view class="content">
     <view class="select-language">选择要学习的语言</view>
 
-    <view class="list">
-      <text class="type">北方</text>
+    <view class="list" wx:for="{{dialectList}}" wx:for-item="item" wx:key="index" data-id="{{index}}" bindtap='userCheck'>
+      <text class="type">{{item.type}}</text>
       <view class="item">
-        <text class="check"> 东北</text>
-        <text>东北</text>
-        <text>东北</text>
-        <text>东北</text>
+        <text class="check" wx:for="{{item.list}}" wx:for-item="child" wx:key="index" data-id="{{index}}" class="{{child.checked?'check':''}}"> {{child.value}}</text>
       </view>
     </view>
-    <view class="list">
-      <text class="type">南方</text>
-      <view class="item">
-        <text>东北</text>
-        <text>东北</text>
-        <text>东北</text>
-        <text>东北</text>
-      </view>
-    </view>
-
     <view class="bottom">
       <text>确定</text>
     </view>

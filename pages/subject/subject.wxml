@@ -4,7 +4,8 @@
     <view class='progress' wx:if="{{!isLoading}}">
       <progress percent="60" backgroundColor="#B0BEC5" color="#FFD500" stroke-width="8" border-radius="8" />
     </view>
-    <view class="money" wx:if="{{!isLoading}}"><image src='/pages/images/icon/icon-life.svg'></image> 98</view>
+    <view class="money" wx:if="{{!isLoading}}">
+      <image src='/pages/images/buy/icon-life.svg'></image> 98</view>
   </view>
   <view class="content">
     <!-- loding页面 -->
@@ -14,38 +15,31 @@
     </view>
 
     <view class='subject-type' wx:if="{{!isLoading}}">
-      <!-- 题型一 -->
+      <!-- 文本 -->
       <view class='subject-txt' wx:if="{{type === 1}}">
-        <view class='name'>选择正确的翻译</view>
+        <view class='name'>
+          <text>选择正确的翻译</text>
+        </view>
         <view class='topic'>你豁别个哦</view>
       </view>
       <!-- 看图题 -->
       <view class='subject-pic' wx:if="{{type === 2}}">
-        <view class='name'>选择正确的翻译</view>
+        <view class='name'>
+          <text>选择正确的翻译</text>
+        </view>
         <image src=""></image>
       </view>
 
-      <view class='answer-list' wx:if="{{type !== 4}}">
-        <view class='item checked'>
-          <icon type="success" size="30" color="#282D4B" />
-          <text>1111</text>
+      <!-- 听力题 -->
+      <view class='subject-listen' wx:if="{{type === 3}}">
+        <view class='name'>
+          <text>根据听到的内容选择</text>
+          <image src='/pages/images/subject/icon-listen.svg'></image>
         </view>
-        <view class='item correct'>
-          <icon type="success" size="30" color="#00C853" />
-          <text>1111</text>
-        </view>
-        <view class='item'>
-          <icon type="success" size="30" color="#FFFFFF" />
-          <text>1111</text>
-        </view>
-        <view class='item'>
-          <icon type="success" size="30" color="#FFFFFF" />
-          <text>1111</text>
-        </view>
+        <view class='topic'>你豁别个哦</view>
       </view>
-      <!-- 题型二 -->
-      <view class='subject-listen'></view>
-      <!-- 题型三 -->
+
+      <!-- 选图题 -->
       <view class='subject-tone' wx:if="{{type === 4}}">
         <view class='topic'>哪一张图片用来表示“可以”？</view>
         <view class='tone-list'>
@@ -68,7 +62,19 @@
         </view>
       </view>
 
-      <view class='answer-tips'>
+      <view class='answer-list' wx:if="{{type !== 4}}">
+        <!-- correct -->
+        <view wx:for="{{answerList}}" wx:for-item="item" wx:key="index" data-id="{{index}}" class="item {{ item.checked? 'checked' :''}} {{isAnswered ? correct && item.checked && 'correct' : ''}}" bindtap='getradio'>
+          <!-- 
+         correct #00C853
+         wrong #F44336
+          -->
+          <icon type="success" size="30" color="{{item.checked?'#282D4B':'white'}}" />
+          <text>{{item.value}}</text>
+        </view>
+      </view>
+
+      <view class='answer-tips' wx:if="{{correct}}">
         <icon type="success" size="30" color="#00C853" />
         <text>恭喜您!   </text> 答对了
       </view>
@@ -81,5 +87,7 @@
       四川话又称巴蜀方言，属汉语西南官话。</view>
     <view class='tips'> 现今四川话形成于清朝康熙年间</view>
   </view>
-  <view class='bottom disable' wx:if="{{!isLoading}}">提交</view>
+  <view class="bottom {{isAnswered ? correct ? 'correct' : 'wrong' : selectAnswer.length === 0 ? 'disable':''}}" wx:if="{{!isLoading}}" bindtap='submit'>
+    {{isAnswered?'继续':'提交'}}
+  </view>
 </view>

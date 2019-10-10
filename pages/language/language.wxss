@@ -17,21 +17,24 @@
 }
 
 .list {
-  margin: 15px 0;
+  margin: 64rpx 0;
 }
 
 .list .item text {
   display: inline-block;
-  border: 2px solid rgba(234, 237, 242, 1);
+  border: 4rpx solid rgba(234, 237, 242, 1);
   background: white;
   color: #282d4b;
-  border-radius: 20px;
-  padding: 5px 10px;
-  margin: 5px;
-  font-size: 12px;
+  border-radius: 32rpx;
+  padding: 15rpx 24rpx;
+  margin: 12rpx;
+  font-size: 24rpx;
+  font-family: HYYakuHei-HEW, HYYakuHei;
+  font-weight: 600;
 }
+
 
 .list .item text.check {
   background: #ffd100;
-  border: 2px solid #ffd100;
+  border: 4rpx solid #ffd100;
 }

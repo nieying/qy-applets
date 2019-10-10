@@ -1,18 +1,28 @@
 @import "../../../app.wxss";
 
 .page-home {
-    background: #eaedf2;
+  background: #eaedf2;
 }
 
 .header .popver-select {
+  display: flex;
+  align-items: center;
   background: #282d4b;
   color: white;
   padding: 14rpx 24rpx;
   border-radius: 40rpx;
+  font-size: 24rpx;
+}
+
+.popver-select image {
+  margin-left: 8rpx;
+  width: 16rpx;
+  height: 11rpx;
 }
 
 .popver-list {
-  position: relative;
+  position: absolute;
+  width: 81%;
   margin-top: -40rpx;
   background: #ffd100;
   border-radius: 40rpx;
@@ -25,13 +35,26 @@
   float: left;
 }
 
-.popver-list text {
+.popver-list .item {
+  position: relative;
+  display: inline-block;
+}
+
+.popver-list .item text {
   display: inline-block;
   background: #282d4b;
   color: white;
   border-radius: 40rpx;
   padding: 10rpx 20rpx;
   margin: 10rpx;
+}
+
+.popver-list .item image {
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 2rpx;
 }
 
 .popver-list text.check {
@@ -179,6 +202,3 @@
 .badge-list .active .index {
   background: #ffd100;
 }
-
-
-

@@ -3,6 +3,10 @@
   background: #eaedf2;
 }
 
+.warp {
+  margin-top: 32rpx;
+}
+
 .list .item {
   display: flex;
   height: 112rpx;

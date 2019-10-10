@@ -2,3 +2,7 @@
   height: 100%;
   background: #eaedf2;
 }
+
+.warp {
+  margin-top: 32rpx;
+}

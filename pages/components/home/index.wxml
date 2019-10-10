@@ -1,7 +1,10 @@
 <view class="page-home">
   <!-- <header>123123</header> -->
   <view class="header" style='padding-top: {{height + 10}}px'>
-    <view class="popver-select" bindtap='showDialect'>四川 ></view>
+    <view class="popver-select" bindtap='showDialect'>
+      四川
+      <image src="/pages/images/icon-{{ showDialect ? 'down' : 'up' }}.svg"></image>
+    </view>
     <view class="progress">
       <progress percent="60" active backgroundColor="#B0BEC5" color="#FBC02E" stroke-width="4" border-radius="15" />
       <view class="txt"> 98 /
@@ -13,14 +16,10 @@
   <view class="content">
     <view class="popver-list" wx:if="{{showDialect}}">
       <view class="left">
-        <text class="check">东北</text>
-        <text class="select">东北</text>
-        <text>东北</text>
-        <text>东北</text>
-        <text>东北</text>
-        <text>东北</text>
-        <text>东北</text>
-        <text>东北</text>
+        <view class='item' wx:for="{{dialectList}}" wx:for-item="item" wx:key="index" data-id="{{index}}" bindtap='userCheck'>
+          <image src='/pages/images/icon-check-blue.svg' wx:if="{{item.checked}}"></image>
+          <text class="{{item.checked?'select':''}}">{{item.value}}</text>
+        </view>
       </view>
       <view class="right" bindtap="goLanguage">+</view>
     </view>
