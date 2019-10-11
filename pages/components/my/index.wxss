@@ -1,5 +1,9 @@
 @import "../../../app.wxss";
 
+.page-warp {
+  height: clac(100% - 160rpx);
+}
+
 .user-info {
   position: relative;
   display: flex;

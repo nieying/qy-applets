@@ -1,4 +1,4 @@
-<view class="page-activity">
+<view class="page-warp">
   <view class="header" style='padding-top: {{height + 10}}px'>
     <text class="title">个人主页</text>
   </view>
@@ -57,5 +57,6 @@
       </view>
     </view>
   </view>
+
   <modal show="{{show}}" modalData="{{modalData}}"></modal>
 </view>
