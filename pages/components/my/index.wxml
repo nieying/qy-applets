@@ -57,6 +57,5 @@
       </view>
     </view>
   </view>
-
   <modal show="{{show}}" modalData="{{modalData}}"></modal>
 </view>
