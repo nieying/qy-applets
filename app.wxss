@@ -9,7 +9,7 @@ page {
 }
 
 .container {
-  height: 100%;
+  height: clac(100% - 88rpx);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

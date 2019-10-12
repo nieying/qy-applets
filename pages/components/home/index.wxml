@@ -41,5 +41,5 @@
       </view>
     </scroll-view>
   </view>
-  <buy show="{{showBuyModal}}" headerHeight="{{height*2 + 20}}px"></buy>
+  <buy show="{{showBuyModal}}" headerHeight="{{height * 2 + 10}}px"></buy>
 </view>

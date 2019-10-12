@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/main/main",
     "pages/logs/logs",
-    "pages/startUp/startUp",
     "pages/language/language",
     "pages/activityDetail/activityDetail",
     "pages/subject/subject",

@@ -15,7 +15,10 @@ Page({
       url: '../logs/logs'
     })
   },
+  onReady: function() {
+  },
   onLoad: function () {
+    this.goToMainPage();
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -51,5 +54,13 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+
+  goToMainPage: function() {
+    const timer = setTimeout(()=> {
+      wx.redirectTo({
+        url: '/pages/main/main',
+      })
+    }, 3000)
   }
 })
