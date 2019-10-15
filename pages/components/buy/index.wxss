@@ -83,7 +83,13 @@
   color: rgba(40, 45, 75, 1);
 }
 
+.money {
+  display: flex;
+  align-items: center;
+}
+
 .money image {
-  width: 48rpx;
-  height: 48rpx;
+  margin-right: 12rpx;
+  width: 48rpx !important;
+  height: 48rpx !important;
 }

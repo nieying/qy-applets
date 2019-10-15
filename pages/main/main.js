@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nowPage: "activityPage",
-    nowIndex: 1,
+    nowPage: "homePage",
+    nowIndex: 0,
     tabBar: [{
         src: "/pages/images/main/icon-home",
         text: "主页",

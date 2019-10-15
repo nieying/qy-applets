@@ -1,4 +1,6 @@
-
+.page-index {
+  margin: 200rpx auto;
+}
 
 .page-start-up {
   background: #ffd100;

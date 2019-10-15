@@ -4,7 +4,7 @@ page {
   z-index: 9999998;
   color: #282d4b;
   font-family: PingFangSC-Semibold, PingFangSC;
-  /* overflow: hidden; */
+  overflow: hidden;
   /* height: clac(100% - 88rpx); */
 }
 

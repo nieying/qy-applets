@@ -1,4 +1,4 @@
-<!-- <view class="container">
+<!-- <view class="page-index">
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
@@ -9,8 +9,8 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
-</view> 
-"tabBar": {
+</view> -->
+<!--"tabBar": {
     "color": "#a9b7b7",
     "height": "88px",
     "borderRadius": "40rpx 40rpx 0 0",
@@ -42,8 +42,10 @@
       <text></text> 四川大学方言学会
       <text></text>
     </view>
+    <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权 </button>
   </view>
   <view class='bottom'>
+
     <view>仟丨言</view>
     <view class='copy-right' style='margin-top: 40rpx'>Copyright © 2013 - 2019 Talkiin. </view>
     <view class='copy-right' style='margin-top: 10rpx; padding-bottom:80rpx'>All Right Reserved.</view>
