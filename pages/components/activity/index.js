@@ -1,6 +1,9 @@
 import {
   getActivityList
 } from '../../api/api.js'
+import {
+  contentHeight
+} from '../../../utils/util.js'
 const app = getApp()
 
 Component({
@@ -16,13 +19,19 @@ Component({
    */
   data: {
     list: [1, 2, 3, 4, 5],
-    height: 0
+    height: 0,
+    warpHeight: 0,
   },
 
   // 组件生命周期函数，在组件实例进入页面节点树时执行。
   attached: function() {
+    const {
+      height,
+      deviceHeight
+    } = app.globalData
     this.setData({
-      height: app.globalData.height
+      height: height,
+      warpHeight: contentHeight(deviceHeight, height)
     })
   },
   // 在组件布局完成后执行，此时可以获取节点信息

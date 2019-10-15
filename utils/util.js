@@ -14,20 +14,15 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-module.exports = {
-  formatTime: formatTime
-}
-
-
-const copyText = (data) =>{
+const copyText = (data) => {
   wx.showToast({
     title: '复制成功',
   })
   wx.setClipboardData({
     data: data,
-    success: function(res) {
+    success: function (res) {
       wx.getClipboardData({
-        success: function(res) {
+        success: function (res) {
           console.log(res.data)
           return res.data
         }
@@ -35,3 +30,21 @@ const copyText = (data) =>{
     }
   })
 }
+
+const contentHeight = (deviceHight, topHeight) => {
+  let height = 0
+  topHeight = topHeight * 2;
+  if (deviceHight <= 1136) {
+    height = deviceHight - 118 - topHeight - 80 - 55
+  } else {
+    height = deviceHight - 176 - topHeight - 120 - 80
+  }
+  return height
+}
+
+module.exports = {
+  formatTime: formatTime,
+  contentHeight: contentHeight,
+}
+
+

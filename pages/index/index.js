@@ -21,7 +21,9 @@ Page({
       url: "../logs/logs"
     });
   },
-  onReady: function() {},
+  onReady: function() {
+    app.globalData.deviceHeight = wx.getSystemInfoSync().windowHeight * 2
+  },
   onLoad: function() {
     if (app.globalData.userInfo) {
       this.setData({
@@ -63,6 +65,7 @@ Page({
 
   // 授权登入
   postLogin: function() {
+    const that = this;
     wx.login({
       success: function(res) {
         console.log('login', res)
@@ -71,9 +74,10 @@ Page({
           userInfo: app.globalData.userInfo
         }).then(res => {
           app.globalData.token = res.data.token;
+          that.goToMainPage();
           console.log('login res', res)
           queryUserInfo().then(res => {
-            cosnole.log('queryUserInfo res', res)
+            console.log('queryUserInfo res', res)
           })
         });
       }
@@ -95,6 +99,6 @@ Page({
       wx.redirectTo({
         url: "/pages/main/main"
       });
-    }, 3000);
+    }, 1000);
   }
 });
