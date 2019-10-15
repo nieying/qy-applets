@@ -1,12 +1,18 @@
 const ENV = 0;
 const domainName = ["http://api.deyushiyuan.cn/litemall/wx"][ENV];
+const app = getApp();
 
 function http(params) {
+  console.log('app.globalData', app.globalData)
   let promise = new Promise(function(resolve, reject) {
     wx.request({
       url: domainName + params.url,
       data: params.data,
       method: params.method || "POST",
+      header: {
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+        'X-Token': app.globalData.token || ''
+      },
       success: function(res) {
         if (res.data.errno !== 0) {
           wx.showModal({

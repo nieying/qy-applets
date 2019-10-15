@@ -1,7 +1,10 @@
 //index.js
 //获取应用实例
 import request from "../../utils/request";
-// import { authorize } from "../api/api";
+import {
+  login,
+  queryUserInfo
+} from "../api/api";
 
 const app = getApp();
 
@@ -33,7 +36,7 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         });
-        this.login();
+        this.postLogin();
       };
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -55,17 +58,35 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     });
-    this.login();
+    this.postLogin();
   },
 
   // 授权登入
-  login: function() {
-    request.http({
-      url: "/auth/login_by_weixin",
-      data: app.globalData.userInfo
-    }).then(res => {
-      console.log('login res', res)
+  postLogin: function() {
+    wx.login({
+      success: function(res) {
+        console.log('login', res)
+        login({
+          code: res.code,
+          userInfo: app.globalData.userInfo
+        }).then(res => {
+          app.globalData.token = res.data.token;
+          console.log('login res', res)
+          queryUserInfo().then(res => {
+            cosnole.log('queryUserInfo res', res)
+          })
+        });
+      }
     })
+
+    // 获取用户信息
+
+    // request.http({
+    //   url: "/auth/login_by_weixin",
+    //   data: app.globalData.userInfo
+    // }).then(res => {
+    //   console.log('login res', res)
+    // })
   },
 
   // 跳转页面

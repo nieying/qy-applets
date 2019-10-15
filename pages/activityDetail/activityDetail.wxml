@@ -4,10 +4,11 @@
   </view>
   <view class="content">
 
-    <view>活动标题文章标题最多两行</view>
-    <view>官方活动 2019.09.01</view>
-    <image class='img' src=""></image>
-
+    <view>{{actObj.title}}</view>
+    <view>{{actObj.type ==="offical"?'官方活动':'协会活动'}} {{actObj.actDate}}</view>
+    <image class='img' src="{{actObj.imgUrl}}"></image>
+    <view>
+      {{actObj.content}}</view>
     <view class="bottom">
       <view class='btn btn-primary'>活动官网</view>
       <view class='btn btn-default'>报名入口</view>
