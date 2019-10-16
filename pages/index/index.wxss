@@ -1,7 +1,3 @@
-.page-index {
-  margin: 200rpx auto;
-}
-
 .page-start-up {
   background: #ffd100;
   position: fixed;
@@ -48,4 +44,3 @@
   color: #90a4ae;
   font-family: FFDINPro-MediumItalic, FFDINPro;
 }
-

@@ -1,104 +1,70 @@
-//index.js
-//获取应用实例
-import request from "../../utils/request";
 import {
-  login,
-  queryUserInfo
+  getStartUp,
 } from "../api/api";
-
 const app = getApp();
-
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    motto: "Hello World",
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse("button.open-type.getUserInfo")
+    startUpObj: {},
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: "../logs/logs"
-    });
-  },
-  onReady: function() {
-    app.globalData.deviceHeight = wx.getSystemInfoSync().windowHeight * 2
-  },
-  onLoad: function() {
-    if (app.globalData.userInfo) {
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    getStartUp().then(res => {
       this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      });
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        });
-        this.postLogin();
-      };
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo;
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          });
-        }
-      });
-    }
-  },
-  // 获取用户信息
-  getUserInfo: function(e) {
-    app.globalData.userInfo = e.detail.userInfo;
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    });
-    this.postLogin();
-  },
-
-  // 授权登入
-  postLogin: function() {
-    const that = this;
-    wx.login({
-      success: function(res) {
-        console.log('login', res)
-        login({
-          code: res.code,
-          userInfo: app.globalData.userInfo
-        }).then(res => {
-          app.globalData.token = res.data.token;
-          that.goToMainPage();
-          console.log('login res', res)
-          queryUserInfo().then(res => {
-            console.log('queryUserInfo res', res)
-          })
-        });
-      }
+        startUpObj: res.data
+      })
+      console.log('getStartUp res', res);
+      this.goToMainPage();
     })
+  },
 
-    // 获取用户信息
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    // this.goToMainPage();
+  },
 
-    // request.http({
-    //   url: "/auth/login_by_weixin",
-    //   data: app.globalData.userInfo
-    // }).then(res => {
-    //   console.log('login res', res)
-    // })
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
   },
 
   // 跳转页面
-  goToMainPage: function() {
+  goToMainPage: function () {
     const timer = setTimeout(() => {
       wx.redirectTo({
         url: "/pages/main/main"
       });
-    }, 1000);
+    }, 3000);
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   }
-});
+})

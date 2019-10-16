@@ -1,6 +1,10 @@
 .page-language {
   height: 100%;
   background: #eaedf2;
+  width: 100%;
+}
+scroll-view {
+  width: auto;
 }
 
 .select-language {
@@ -20,12 +24,12 @@
   margin: 64rpx 0;
 }
 
-.list .item text {
+.list .item view {
   display: inline-block;
   border: 4rpx solid rgba(234, 237, 242, 1);
   background: white;
   color: #282d4b;
-  border-radius: 32rpx;
+  border-radius: 50rpx;
   padding: 15rpx 24rpx;
   margin: 12rpx;
   font-size: 24rpx;
@@ -34,7 +38,7 @@
 }
 
 
-.list .item text.check {
+.list .item view.check {
   background: #ffd100;
   border: 4rpx solid #ffd100;
 }

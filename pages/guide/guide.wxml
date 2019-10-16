@@ -1,0 +1,3 @@
+<view class="page-index">
+  <button open-type="getUserInfo" bindgetuserinfo="getAuthorize">微信登录</button>
+</view>

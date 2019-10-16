@@ -1,9 +1,6 @@
 import {
   getActivityList
 } from '../../api/api.js'
-import {
-  contentHeight
-} from '../../../utils/util.js'
 const app = getApp()
 
 Component({
@@ -25,20 +22,14 @@ Component({
 
   // 组件生命周期函数，在组件实例进入页面节点树时执行。
   attached: function() {
-    const {
-      height,
-      deviceHeight
-    } = app.globalData
     this.setData({
-      height: height,
-      warpHeight: contentHeight(deviceHeight, height)
+      height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
+      warpHeight: parseInt(wx.getStorageSync('warpHeight')) 
     })
   },
   // 在组件布局完成后执行，此时可以获取节点信息
   ready: function() {
-    wx.showLoading({
-      title: '加载中...'
-    })
+    wx.showLoading()
     getActivityList().then(res => {
       this.setData({
         list: res.data.list

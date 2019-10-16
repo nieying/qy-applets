@@ -1,4 +1,6 @@
-// pages/components/home/index.js
+import {
+  getUnit
+} from '../../api/api.js'
 const app = getApp()
 
 Component({
@@ -16,40 +18,31 @@ Component({
     height: 0,
     showBuyModal: false,
     showDialect: false,
-    badgeList: [{
-        active: true,
-        src: '/pages/images/main/icon-b'
-      },
-      {
-        active: false,
-        src: '/pages/images/main/icon-a'
-      },
-      {
-        active: false,
-        src: '/pages/images/main/icon-c'
-      },
-      {
-        active: false,
-        src: '/pages/images/main/icon-d'
-      },
-      {
-        active: false,
-        src: '/pages/images/main/icon-e'
-      },
-    ],
-    dialectList: [
-      { 'value': '四川' },
-      { 'value': '东北' },
-      { 'value': '粤语' },
-      { 'value': '江西' },
-    ]
-
+    unitList: [],
+    userInfo: {},
+    currentUnit: {},
   },
+
+  // 在组件布局完成后执行，此时可以获取节点信息
+  ready: function() {
+    // wx.showLoading()
+    // this.getUserInfo();
+    // getUserDialectList().then(res => {
+    //   this.setData({
+    //     badgeList: res.data.list
+    //   })
+    //   wx.hideLoading()
+    // })
+    this.getUnitList()
+  },
+
 
   attached: function() {
     this.setData({
-      height: app.globalData.height
+      userInfo: wx.getStorageSync('userInfo'),
+      height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
     })
+    console.log('userInfo', this.data.userInfo)
   },
 
   /**
@@ -62,28 +55,59 @@ Component({
       })
     },
 
+    goSubject: function() {
+      wx.navigateTo({
+        url: `/pages/subject/subject?id=${this.data.currentUnit.id}`
+      })
+    },
+
     showBuyModal: function() {
       this.setData({
-        showBuyModal: !this.data.showBuyModal
+        showDialect: false,
+        showBuyModal: !this.data.showBuyModal,
       })
     },
 
     showDialect: function() {
       this.setData({
+        showBuyModal: false,
         showDialect: !this.data.showDialect
       })
     },
 
+    // 获取单元列表
+    getUnitList: function() {
+      getUnit({
+        languageId: 1
+      }).then(res => {
+        this.setData({
+          currentUnit: res.data[0],
+          unitList: res.data
+        })
+        console.log('getUnitList res', res)
+      })
+    },
+
+    // 点击单元
+    clickUnit: function(e) {
+      console.log('e.currentTarget.dataset', e.currentTarget.dataset['item']);
+      this.setData({
+        currentUnit: e.currentTarget.dataset['item'],
+      })
+    },
+
     //多选
-    userCheck: function (e) {
-      let index = e.currentTarget.dataset.id;//获取用户当前选中的索引值
+    userCheck: function(e) {
+      let index = e.currentTarget.dataset.id; //获取用户当前选中的索引值
       let checkBox = this.data.dialectList;
       if (checkBox[index].checked) {
         this.data.dialectList[index].checked = false;
       } else {
         this.data.dialectList[index].checked = true;
       }
-      this.setData({ dialectList: this.data.dialectList })
+      this.setData({
+        dialectList: this.data.dialectList
+      })
 
       //返回用户选中的值
       let value = checkBox.filter((item, index) => {

@@ -1,4 +1,6 @@
-// pages/components/my/index.js
+import {
+  contentHeight
+} from '../../../utils/util.js'
 const app = getApp()
 
 Component({
@@ -14,26 +16,30 @@ Component({
    */
   data: {
     height: 0,
+    warpHeight: 0,
     show: false,
     modalData: {},
+    userInfo: {},
   },
 
-  attached: function() {
+  attached: function () {
     this.setData({
-      height: app.globalData.height
+      userInfo: wx.getStorageSync('userInfo'),
+      height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
+      warpHeight: parseInt(wx.getStorageSync('warpHeight'))
     })
   },
   /**
    * 组件的方法列表
    */
   methods: {
-    goVip: function() {
+    goVip: function () {
       wx.navigateTo({
         url: '/pages/vip/vip',
       })
     },
 
-    showModal: function(e) {
+    showModal: function (e) {
       const type = parseInt(e.target.dataset.type)
       switch (type) {
         case 1:

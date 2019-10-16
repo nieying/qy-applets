@@ -6,7 +6,7 @@ Page({
    */
   data: {
     height: 0,
-    isLoading: false,
+    isLoading: true,
     type: 3,
     correct: false,
     answerList: [{
@@ -31,7 +31,7 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      height: app.globalData.height
+      height: wx.getStorageSync('statusBarHeight')
     })
   },
 
@@ -39,7 +39,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    const timer = setTimeout(() => {
+      this.setData({
+        isLoading: false
+      })
+    }, 3000)
   },
 
   goBack: function() {

@@ -31,20 +31,29 @@ const copyText = (data) => {
   })
 }
 
-const contentHeight = (deviceHight, topHeight) => {
-  let height = 0
-  topHeight = topHeight * 2;
-  if (deviceHight <= 1136) {
-    height = deviceHight - 118 - topHeight - 80 - 55
-  } else {
-    height = deviceHight - 176 - topHeight - 120 - 80
-  }
-  return height
+const storageHeight = () => {
+  wx.getSystemInfo({
+    success: (res) => {
+      console.log('wx.getSystemInfo::', res)
+      let statusBarHeight = res.statusBarHeight
+      let deviceHeight = res.windowHeight
+      wx.setStorageSync('statusBarHeight', statusBarHeight)
+      if (deviceHeight <= 568) {
+        let height = deviceHeight - statusBarHeight - 160
+        wx.setStorageSync('warpHeight', height)
+      } else {
+        let height = deviceHeight - statusBarHeight - 185
+        wx.setStorageSync('warpHeight', height)
+      }
+    }
+  })
 }
+
 
 module.exports = {
   formatTime: formatTime,
-  contentHeight: contentHeight,
+  copyText: copyText,
+  storageHeight: storageHeight
 }
 
 

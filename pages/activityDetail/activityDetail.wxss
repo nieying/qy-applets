@@ -2,6 +2,28 @@
   height: 100%;
   background: #eaedf2;
 }
+scroll-view {
+  width: auto;
+}
+.act-title {
+  font-size: 44rpx;
+  font-weight: 600;
+  color: rgba(40, 45, 75, 1);
+}
+
+.act-time {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(144, 164, 174, 1);
+  margin: 20rpx 0 56rpx;
+}
+
+.act-img {
+  height: 130rpx;
+  background: rgba(40, 45, 75, 1);
+  border-radius: 20rpx;
+  margin-bottom: 96rpx;
+}
 
 .bottom {
   background: #eaedf2;

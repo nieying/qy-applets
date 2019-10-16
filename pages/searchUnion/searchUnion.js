@@ -18,7 +18,7 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      height: app.globalData.height
+      height: app.globalData.statusBarHeight
     })
   },
 

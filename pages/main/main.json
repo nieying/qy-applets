@@ -3,5 +3,6 @@
     "homePage": "/pages/components/home/index",
     "activityPage": "/pages/components/activity/index",
     "myPage": "/pages/components/my/index"
-  }
+  },
+  "disableScroll": true
 }
