@@ -35,7 +35,7 @@ const contentHeight = (deviceHight, topHeight) => {
   let height = 0
   topHeight = topHeight * 2;
   if (deviceHight <= 1136) {
-    height = deviceHight - 118 - topHeight - 80 - 55
+    height = deviceHight - 118 - topHeight - 80
   } else {
     height = deviceHight - 176 - topHeight - 120 - 80
   }
