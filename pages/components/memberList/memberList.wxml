@@ -1,0 +1,18 @@
+<view class="list" wx:for="{{datas}}" wx:for-item="item" wx:key="index">
+  <view class="type1">
+    <text>{{item.type}}</text>
+  </view>
+  <view class="item" wx:for="{{item.childs}}" wx:for-item="item" wx:key="index">
+    <view class="left">
+      <image></image>
+      <view class="info">
+        <view class="name">用户名</view>
+        <view class="desc">申请加入时间/备注</view>
+      </view>
+    </view>
+    <view class="right">
+      <text wx:if="{{tab === 'union'}}">已加入</text>
+      <view class="btn" wx:if="{{tab === 'apply'}}">通过</view>
+    </view>
+  </view>
+</view>

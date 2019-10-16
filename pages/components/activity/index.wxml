@@ -1,19 +1,21 @@
 <view class="page-activity">
-  <view class="header" style='padding-top: {{height + 10}}px'>
-    <text class="title">活动列表-{{height}}-{{deviceHeight}}</text>
+  <view class="header" style='padding-top: {{height}}px'>
+    <text class="title">活动列表</text>
   </view>
   <!-- bindtap="{{item.tapFunction}}" -->
-  <scroll-view scroll-y="true" style="height: {{warpHeight}}rpx" class="content">
-    <block wx:for="{{list}}" wx:for-item="item" wx:key="index">
-      <view class="activity-item" bindtap='goToActivityDetail' data-id="{{item.id}}">
-        <view class="left">
-          <view class="name">{{item.title}}</view>
-          <view class="time">{{item.actDate}} {{item.type === 'official' ? '官方活动':'协会活动'}}</view>
+  <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
+    <view class='padding-box'>
+      <block wx:for="{{list}}" wx:for-item="item" wx:key="index">
+        <view class="activity-item" bindtap='goToActivityDetail' data-id="{{item.id}}">
+          <view class="left">
+            <view class="name">{{item.title}}</view>
+            <view class="time">{{item.actDate}} {{item.type === 'official' ? '官方活动':'协会活动'}}</view>
+          </view>
+          <view class="right">
+            <image src="{{item.imgUrl}}"></image>
+          </view>
         </view>
-        <view class="right">
-          <image src="{{item.imgUrl}}"></image>
-        </view>
-      </view>
-    </block>
+      </block>
+    </view>
   </scroll-view>
 </view>

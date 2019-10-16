@@ -3,23 +3,25 @@
     <icon type="clear" size="30" color="black" bindtap="goBack" />
   </view>
   <view class="content">
-    <view class='title'> 已为您找到以下协会 </view>
-    <view class='list' wx:if="{{false}}">
-      <view class='item'>
-        <view class='left'>
-          <image src=''></image>
-        </view>
-        <view class='right'>
-          <view class='name'>四川话协会</view>
-          <view class='desc'>协会简介活成立时间人数</view>
+    <view class="padding-box">
+      <view class='title'> 已为您找到以下协会 </view>
+      <view class='list' wx:if="{{true}}">
+        <view class='item'>
+          <view class='left'>
+            <image src=''></image>
+          </view>
+          <view class='right'>
+            <view class='name'>四川话协会</view>
+            <view class='desc'>协会简介活成立时间人数</view>
+          </view>
         </view>
       </view>
-    </view>
-    <view class='warp' wx:if="{{true}}">
-      <text class='result'>该校区暂无协会</text>
-      <text class='tips'>有意创建协会者请联系客服</text>
-      <text class='kefu' bindtap='textPaste'>客服微信 test20076</text>
-      <text class='copy'>点击可复制</text>
+      <view class='warp' wx:if="{{false}}">
+        <text class='result'>该校区暂无协会</text>
+        <text class='tips'>有意创建协会者请联系客服</text>
+        <text class='kefu' bindtap='textPaste'>客服微信 test20076</text>
+        <text class='copy' bindtap='textPaste'>点击可复制</text>
+      </view>
     </view>
   </view>
 </view>

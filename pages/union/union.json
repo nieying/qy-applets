@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "memberList": "/pages/components/memberList/memberList"
+  },
+  "disableScroll": true
+}

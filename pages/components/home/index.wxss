@@ -1,7 +1,10 @@
 @import "../../../app.wxss";
 
+
 .page-home {
   background: #eaedf2;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .header .popver-select {
@@ -14,6 +17,11 @@
   font-size: 24rpx;
 }
 
+
+.content{
+  position: relative;
+}
+
 .popver-select image {
   margin-left: 8rpx;
   width: 16rpx;
@@ -22,6 +30,7 @@
 
 .popver-list {
   position: absolute;
+  left: 30rpx;
   width: 81%;
   margin-top: -40rpx;
   background: #ffd100;
@@ -57,8 +66,7 @@
   top: 2rpx;
 }
 
-.popver-list text.check {
-}
+.popver-list text.check {}
 
 .popver-list text.select {
   background: #00c853;
@@ -133,7 +141,7 @@
   height: 64rpx;
 }
 
-.home-warp .badge-txt {
+.home-warp .unit-txt {
   margin-top: 50rpx;
   height: 64rpx;
   line-height: 64rpx;
@@ -145,19 +153,22 @@
   padding: 8rpx 40rpx;
 }
 
-.home-warp .box .badge-img {
+.home-warp .box .unit-img {
   width: 320rpx;
   height: 320rpx;
+  border-radius: 50%;
 }
 
-.badge-list {
+
+.unit-list {
   position: absolute;
-  bottom: 214rpx;
+  bottom: 40rpx;
   height: 200rpx;
   white-space: nowrap;
+  width: 100%;
 }
 
-.badge-list .item {
+.unit-list .item {
   position: relative;
   width: 96rpx;
   height: 96rpx;
@@ -168,11 +179,11 @@
   background: rgba(234, 237, 242, 1);
 }
 
-.badge-list .item:not(:first-child) {
+.unit-list .item:not(:first-child) {
   margin-left: 28rpx;
 }
 
-.badge-list .item .index {
+.unit-list .item .index {
   position: absolute;
   top: 0;
   left: 0;
@@ -189,16 +200,17 @@
   justify-content: center;
 }
 
-.badge-list .item image {
+.unit-list .item image {
   width: 96rpx;
   height: 96rpx;
+  border-radius: 50%;
 }
 
-.badge-list .active {
+.unit-list .active {
   background: rgba(40, 45, 75, 1);
   border: 5rpx solid rgba(255, 209, 0, 1);
 }
 
-.badge-list .active .index {
+.unit-list .active .index {
   background: #ffd100;
 }

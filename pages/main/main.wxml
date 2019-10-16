@@ -13,5 +13,5 @@
 <view class="container">
   <homePage wx:if="{{nowPage=='homePage'}}" height="{{height}}"></homePage>
   <activityPage wx:if="{{nowPage=='activityPage'}}" height="{{height}}"></activityPage>
-  <myPage wx:if="{{nowPage=='myPage'}}" height="{{height}}"></myPage>
+  <myPage wx:if="{{nowPage=='myPage'}}" height="{{height }}"></myPage>
 </view>

@@ -1,18 +1,21 @@
 <view class="page-language">
-  <view class="header" style='padding-top: {{height + 10}}px'>
+  <view class="header" style='padding-top: {{height}}px'>
     <icon type="clear" size="30" color="#282D4B" bindtap="goBack" />
   </view>
-  <view class="content">
-    <view class="select-language">选择要学习的语言</view>
-
-    <view class="list" wx:for="{{dialectList}}" wx:for-item="item" wx:key="index" data-id="{{index}}" bindtap='userCheck'>
-      <text class="type">{{item.type}}</text>
-      <view class="item">
-        <text class="check" wx:for="{{item.list}}" wx:for-item="child" wx:key="index" data-id="{{index}}" class="{{child.checked?'check':''}}"> {{child.value}}</text>
+  <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
+    <view class='padding-box'>
+      <view class="select-language">选择要学习的语言</view>
+      <view class="list" wx:for="{{dialectList}}" wx:for-item="item" wx:key="index" data-id="{{index}}" bindtap='userCheck'>
+        <text class="type">{{item.name}}</text>
+        <view class="item">
+          <view wx:for="{{item.childList}}" wx:for-item="child" wx:key="index" data-id="{{index}}" class="{{child.checked?'check':''}}">
+            {{child.languageName}}
+          </view>
+        </view>
       </view>
     </view>
-    <view class="bottom">
-      <text>确定</text>
-    </view>
+  </scroll-view>
+  <view class="bottom">
+    <text>确定</text>
   </view>
 </view>

@@ -1,16 +1,17 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/guide/guide",
     "pages/main/main",
-    "pages/logs/logs",
     "pages/language/language",
     "pages/activityDetail/activityDetail",
     "pages/subject/subject",
     "pages/vip/vip",
     "pages/components/modal/index",
     "pages/components/buy/index",
-    "pages/addUnion/addUnion",
-    "pages/searchUnion/searchUnion"
+    "pages/searchUnion/searchUnion",
+    "pages/applyFeedback/applyFeedback",
+    "pages/union/union"
   ],
   "window": {
     "backgroundTextStyle": "light",

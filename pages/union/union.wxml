@@ -1,0 +1,31 @@
+<view class="page-union">
+  <view class="header" style='padding-top: {{height}}px'>
+    <icon type="clear" size="30" color="black" bindtap="goBack" />
+  </view>
+  <scroll-view scroll-y="true" style="height: {{pageHeight}}px" class="content">
+    <view class="padding-box">
+      <view class='title'>欢迎您</view>
+      <view class="card">
+        <image src=""></image>
+        <view class="name">四川大学会长</view>
+        <view class="desc">协会简介或成立时间人数</view>
+      </view>
+    </view>
+    <view class="tabs">
+      <view class="tab-header">
+        <view class="tab-item {{item.active ? 'active':''}}" wx:for="{{tabs}}" wx:for-item="item" wx:key="index" bindtap="hanldeTab" data-tab="{{item.key}}">
+          <view class="name">{{item.name}}</view>
+          <view class="line" wx:if="{{item.active}}"></view>
+        </view>
+      </view>
+      <view class="tab-content">
+        <view class="union-people" wx:if="{{currentTab==='union'}}">
+          <memberList tab="{{currentTab}}" datas="{{peopleList}}" />
+        </view>
+        <view class="apply-list" wx:if="{{currentTab==='apply'}}">
+          <memberList tab="{{currentTab}}" datas="{{peopleList}}" />
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

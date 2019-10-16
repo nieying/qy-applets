@@ -8,8 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    height: 0,
+    warpHeight: 0,
     actObj: {},
-    height: 0
   },
 
   /**
@@ -18,7 +19,8 @@ Page({
   onLoad: function(options) {
     console.log(options)
     this.setData({
-      height: app.globalData.height
+      height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
+      warpHeight: parseInt(wx.getStorageSync('warpHeight'))
     })
     wx.showLoading()
     getActivityDetail({

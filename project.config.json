@@ -47,7 +47,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -93,15 +93,22 @@
 				},
 				{
 					"id": -1,
-					"name": "addUnion",
-					"pathName": "pages/addUnion/addUnion",
+					"name": "searchUnion",
+					"pathName": "pages/searchUnion/searchUnion",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "searchUnion",
-					"pathName": "pages/searchUnion/searchUnion",
+					"name": "union",
+					"pathName": "pages/union/union",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "applyFeedback",
+					"pathName": "pages/applyFeedback/applyFeedback",
 					"query": "",
 					"scene": null
 				}

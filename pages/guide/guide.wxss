@@ -1,0 +1,12 @@
+.page-index {
+  margin: 200rpx auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+}

@@ -1,45 +1,51 @@
 <view class="page-home">
   <!-- <header>123123</header> -->
-  <view class="header" style='padding-top: {{height + 10}}px'>
+  <view class="header" style="padding-top: {{height}}px">
     <view class="popver-select" bindtap='showDialect'>
       四川
       <image src="/pages/images/icon-{{ showDialect ? 'down' : 'up' }}.svg"></image>
     </view>
     <view class="progress">
       <progress percent="60" active backgroundColor="#B0BEC5" color="#FBC02E" stroke-width="4" border-radius="15" />
-      <view class="txt"> 98 /
-        <text>100</text> </view>
+      <view class="txt">
+        98 /
+        <text>100</text>
+      </view>
     </view>
     <view class="money" bindtap='showBuyModal'>
-      <image src="/pages/images/icon-money.svg"></image> 98</view>
+      <image src="/pages/images/icon-money.svg"></image>
+      {{userInfo.cost}}
+    </view>
   </view>
-  <view class="content">
+  <view class="content" style="height: {{warpHeight}}px">
     <view class="popver-list" wx:if="{{showDialect}}">
       <view class="left">
-        <view class='item' wx:for="{{dialectList}}" wx:for-item="item" wx:key="index" data-id="{{index}}" bindtap='userCheck'>
+        <view class='item' wx:for="{{userInfo.userLanguage}}" wx:for-item="item" wx:key="index" data-id="{{languageId}}" bindtap='userCheck'>
           <image src='/pages/images/icon-check-blue.svg' wx:if="{{item.checked}}"></image>
-          <text class="{{item.checked?'select':''}}">{{item.value}}</text>
+          <text class="{{item.checked?'select':''}}">{{item.languageName}}</text>
         </view>
       </view>
       <view class="right" bindtap="goLanguage">+</view>
     </view>
 
-    <view class="home-warp">
-      <view class="box">
-        <view class="star">
-          <image src="/pages/images/main/icon-star.svg"></image>
-        </view>
-        <image class="badge-img" src="/pages/images/main/icon-b.svg"></image>
-      </view>
-      <view class="badge-txt">基础 01</view>
-    </view>
+    <buy show="{{showBuyModal}}"></buy>
 
-    <scroll-view class="badge-list" scroll-x="true" style="width: 92%">
-      <view wx:for="{{badgeList}}" wx:for-item="item" wx:key="index" class="item {{item.active ? 'active' : '' }}">
-        <view class="index">0{{index + 1}}</view>
-        <image src="{{item.active ? item.src + '-active.svg' : item.src+'.svg'}}"></image>
+    <view class='padding-box'>
+      <view class="home-warp" bindtap='goSubject'>
+        <view class="box">
+          <view class="star">
+            <image src="/pages/images/main/icon-star.svg"></image>
+          </view>
+          <image class="unit-img" src="{{currentUnit.avatar}}"></image>
+        </view>
+        <view class="unit-txt">{{currentUnit.languageName}}</view>
       </view>
-    </scroll-view>
+      <scroll-view class="unit-list" scroll-x="true">
+        <view wx:for="{{unitList}}" wx:for-item="item" wx:key="index" class="item {{item.active ? 'active' : '' }}" data-item="{{item}}" bindtap='clickUnit'>
+          <view class="index">0{{index + 1}}</view>
+          <image src="{{item.avatar}}"></image>
+        </view>
+      </scroll-view>
+    </view>
   </view>
-  <buy show="{{showBuyModal}}" headerHeight="{{height * 2 + 10}}px"></buy>
 </view>

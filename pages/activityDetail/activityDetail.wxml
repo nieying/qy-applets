@@ -1,17 +1,17 @@
 <view class="page-activity-detail">
-  <view class="header" style='padding-top: {{height + 10}}px'>
+  <view class="header" style='padding-top: {{height}}px'>
     <icon type="clear" size="30" color="black" bindtap="goBack" />
   </view>
-  <view class="content">
-
-    <view>{{actObj.title}}</view>
-    <view>{{actObj.type ==="offical"?'官方活动':'协会活动'}} {{actObj.actDate}}</view>
-    <image class='img' src="{{actObj.imgUrl}}"></image>
-    <view>
-      {{actObj.content}}</view>
-    <view class="bottom">
-      <view class='btn btn-primary'>活动官网</view>
-      <view class='btn btn-default'>报名入口</view>
+  <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
+    <view class="padding-box">
+      <view class='act-title'>{{actObj.title}}</view>
+      <view class='act-time'>{{actObj.type ==="offical"?'官方活动':'协会活动'}} {{actObj.actDate}} </view>
+      <image class='act-img' src="{{actObj.imgUrl}}"></image>
+      <rich-text nodes="{{actObj.content}}"></rich-text>
     </view>
+  </scroll-view>
+  <view class="bottom">
+    <view class='btn btn-primary'>活动官网</view>
+    <view class='btn btn-default'>报名入口</view>
   </view>
 </view>

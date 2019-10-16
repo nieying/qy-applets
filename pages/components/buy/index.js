@@ -11,10 +11,6 @@ Component({
       type: Boolean,
       value: false
     },
-    headerHeight: {
-      type: String,
-      value: ''
-    },
   },
 
   /**

@@ -1,3 +1,7 @@
+import {
+  copyText
+} from '../../utils/util.js'
+
 const app = getApp()
 Page({
 
@@ -5,7 +9,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    height: 0
+    height: 0,
+    dataObj: {
+      type: ''
+    }
   },
 
   /**
@@ -13,8 +20,7 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      warpHeight: parseInt(wx.getStorageSync('warpHeight'))
+      height: wx.getStorageSync('statusBarHeight') + 10
     })
   },
 
@@ -23,6 +29,10 @@ Page({
    */
   onReady: function() {
 
+  },
+
+  textPaste: function() {
+    copyText('test20076')
   },
 
   goBack: function() {

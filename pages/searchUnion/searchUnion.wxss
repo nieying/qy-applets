@@ -3,7 +3,7 @@
   background: #eaedf2;
 }
 
-.warp {
+.warp, .list {
   margin-top: 32rpx;
 }
 
