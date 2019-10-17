@@ -15,14 +15,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log('startup onLoad', wx.getStorageSync('token'))
     if (wx.getStorageSync('token')) {
-      getStartUp().then(res => {
-        this.setData({
-          startUpObj: res.data
+      if (wx.getStorageSync('lastLanguage') && wx.getStorageSync('lastLanguage').hasOwnProperty('languageId')) {
+        getStartUp().then(res => {
+          this.setData({
+            startUpObj: res.data
+          })
+          console.log('getStartUp res', res);
+          this.goToMainPage();
         })
-        console.log('getStartUp res', res);
-        this.goToMainPage();
-      })
+      } else {
+        this.goToLanguagePage();
+      }
+    } else {
+      this.goToLanguagePage();
     }
   },
 
@@ -31,13 +38,6 @@ Page({
    */
   onReady: function() {
     // this.goToMainPage();
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
   },
 
   // 跳转页面
@@ -49,24 +49,12 @@ Page({
     }, 3000);
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
+  // 跳转页面
+  goToLanguagePage: function() {
+    const timer = setTimeout(() => {
+      wx.redirectTo({
+        url: "/pages/language/language"
+      });
+    }, 3000);
   }
 })

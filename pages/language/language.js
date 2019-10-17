@@ -1,5 +1,6 @@
 import {
   getDialectList,
+  getUserDialectList,
   createNewDialect
 } from '../api/api.js'
 const app = getApp()
@@ -28,10 +29,24 @@ Page({
 
   // 获取数据
   getData: function() {
-    const userDialect = wx.getStorageSync('userDialect')
     wx.showLoading();
     getDialectList().then(res => {
-      const list = res.data.map(({
+      getUserDialectList().then(dialect => {
+        this.dealDialectData(res.data, dialect.data)
+      })
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+
+  },
+  // 判断用户是否学习过方言
+  dealDialectData: function(dailectList, userDialect) {
+    if (userDialect && userDialect.length > 0) {
+      const list = dailectList.map(({
         childList,
         ...item
       }) => {
@@ -43,22 +58,24 @@ Page({
           }))
         }
       })
-      console.log('getDialectList res', list, userDialect, res)
       this.setData({
         dialectList: list,
         selectDialectIds: userDialect.map(d => d.languageId)
       })
-      wx.hideLoading();
-    })
+    } else {
+      dailectList.forEach(d => {
+        d.childList.forEach(c => {
+          return c.checked = false;
+        })
+      })
+      this.setData({
+        dialectList: dailectList
+      })
+    }
+    wx.hideLoading();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
+  // 返回
   goBack: function() {
     wx.navigateBack()
   },
@@ -93,10 +110,10 @@ Page({
   },
   // 确定
   confrim: function() {
-    createNewDialect({
-      languageIds: this.data.selectDialectIds
-    }).then(res => {
-      console.log('createNewDialect res', res)
+    createNewDialect(this.data.selectDialectIds).then(res => {
+      wx.navigateTo({
+        url: '/pages/main/main'
+      })
     })
   }
 })

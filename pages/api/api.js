@@ -25,8 +25,7 @@ export const uploadWeChatInfo = () => {
               data: {}
             }).then(res => {
               wx.setStorageSync('userInfo', res.data)
-              wx.setStorageSync('currentDialect', res.data.lastLanguage)
-              wx.setStorageSync('userDialect', res.data.userLanguage)
+              wx.setStorageSync('lastLanguage', res.data.lastLanguage)
               wx.redirectTo({
                 url: "/pages/index/index"
               });

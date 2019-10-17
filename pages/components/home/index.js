@@ -1,5 +1,6 @@
 import {
   getUnit,
+  getUserDialectList,
   changeDialect
 } from '../../api/api.js'
 const app = getApp()
@@ -27,74 +28,95 @@ Component({
     currentUnit: {},
   },
 
-  // 在组件布局完成后执行，此时可以获取节点信息
-  ready: function () {
+  ready: function() {
+    this.getData();
   },
 
 
-  attached: function () {
-    const userDialect = wx.getStorageSync('userDialect');
-    const currentDialect = wx.getStorageSync('currentDialect');
-    userDialect.forEach(d => {
-      if (currentDialect.languageId === d.languageId) {
-        d.checked = true
-      } else {
-        d.checked = false;
-      }
-    });
+  attached: function() {
     this.setData({
-      userDialect: userDialect,
-      currentDialect: currentDialect,
       userInfo: wx.getStorageSync('userInfo'),
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight')) + 10,
-    }, () => {
-      this.getUnitList(this.data.currentDialect.languageId)
     })
-    console.log('attached===>', this.data)
+  },
+
+
+
+  onShow: function() {
+    console.log('---onShow')
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    goLanguage: function () {
-      wx.navigateTo({
+    getData: function() {
+      // 获取用户已经学习的方言
+      wx.showLoading()
+      getUserDialectList().then(res => {
+        console.log('getUserDialectList', res)
+        let userDialect = res.data;
+        let currentDialect = [];
+        // if (wx.getStorageSync('lastLanguage') && wx.getStorageSync('lastLanguage').length>0) {
+        currentDialect = wx.getStorageSync('lastLanguage');
+        // } else {
+
+        // }
+        userDialect.length > 0 && userDialect.forEach(d => {
+          if (currentDialect.languageId === d.languageId) {
+            d.checked = true
+          } else {
+            d.checked = false;
+          }
+        });
+        this.setData({
+          userDialect: userDialect,
+          currentDialect: currentDialect,
+        }, () => {
+          this.getUnitList(this.data.currentDialect.languageId)
+        })
+      })
+    },
+    goLanguage: function() {
+      // navigateTo
+      wx.redirectTo({
         url: '/pages/language/language'
       })
     },
 
-    goSubject: function () {
+    goSubject: function() {
       wx.navigateTo({
         url: `/pages/subject/subject?id=${this.data.currentUnit.id}`
       })
     },
 
-
-
     // 获取单元列表
-    getUnitList: function (languageId) {
+    getUnitList: function(languageId) {
       getUnit({
         languageId: languageId
       }).then(res => {
         this.setData({
-          currentUnit: res.data[0],
+          currentUnit: res.data.length > 0 ? res.data[0] : {},
           unitList: res.data
         })
-        console.log('getUnitList res', res)
+        wx.hideLoading()
+        console.log('getUnitList res', res, this.data.currentUnit)
       })
     },
 
     // 点击单元
-    clickUnit: function (e) {
+    clickUnit: function(e) {
       this.setData({
         currentUnit: e.currentTarget.dataset['item'],
       })
     },
 
     // 选择方言
-    selectDialect: function (e) {
-      const { userDialect } = this.data
+    selectDialect: function(e) {
+      const {
+        userDialect
+      } = this.data
       let index = e.currentTarget.dataset.index; //获取用户当前选中的索引值
       let item = e.currentTarget.dataset.item; //获取用户当前选中的索引值
       let checkBox = userDialect;
@@ -111,7 +133,7 @@ Component({
         currentDialect: item,
         showDialect: false
       }, () => {
-        wx.setStorageSync("currentDialect", item)
+        wx.setStorageSync("lastDialect", item)
         this.getUnitList(item.languageId);
         this.postChangeDialect(item.languageId);
       })
@@ -122,21 +144,21 @@ Component({
       // console.log(value)
     },
     // 方言切换请求
-    postChangeDialect: function (languageId) {
+    postChangeDialect: function(languageId) {
       changeDialect({
         id: languageId
       }).then(res => {
         console.log('changeDialect res', res)
       })
     },
-    showBuyModal: function () {
+    showBuyModal: function() {
       this.setData({
         showDialect: false,
         showBuyModal: !this.data.showBuyModal,
       })
     },
 
-    showDialect: function () {
+    showDialect: function() {
       this.setData({
         showBuyModal: false,
         showDialect: !this.data.showDialect
