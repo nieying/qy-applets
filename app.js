@@ -1,13 +1,15 @@
 import {
   uploadWeChatInfo
 } from "./pages/api/api";
-import { storageHeight } from './utils/util'
+import {
+  storageHeight
+} from './utils/util'
 const app = getApp();
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     storageHeight();
     // 判断网络是否正常
-    wx.onNetworkStatusChange(function (res) {
+    wx.onNetworkStatusChange(function(res) {
       if (res.isConnected == false) { // res.isConnected false无网络  res.networkType wifi
         wx.showModal({
           title: '网络错误',
@@ -15,7 +17,7 @@ App({
           confirmText: '知道了',
           mask: true,
           showCancel: false,
-          success: function (res) {
+          success: function(res) {
             if (res.confirm) {
               wx.redirectTo({ //路由跳转
                 url: '/pages/startup/startup'
@@ -47,7 +49,9 @@ App({
           //   }
           // })
           uploadWeChatInfo()
+          console.log(1111)
         } else {
+          console.log(2222)
           wx.redirectTo({
             url: "/pages/guide/guide"
           });

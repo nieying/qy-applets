@@ -3,7 +3,7 @@ const domainName = ["https://api.deyushiyuan.cn/litemall/wx"][ENV];
 const app = getApp();
 
 function http(params) {
-  let promise = new Promise(function (resolve, reject) {
+  let promise = new Promise(function(resolve, reject) {
     wx.request({
       url: params.url.indexOf('http') > -1 ? params.url : domainName + params.url,
       data: params.data,
@@ -12,8 +12,17 @@ function http(params) {
         // 'Content-Type': 'application/x-www-form-urlencoded',
         'X-Token': wx.getStorageSync('token') || ''
       },
-      success: function (res) {
-        if (res.data.errno !== 0) {
+      success: function(res) {
+        if (res.data.errno === 402) {
+          wx.showToast({
+            icon:'',
+            title: res.data.errmsg,
+          })
+          wx.hideLoading();
+        } else if (res.data.errno === 0) {
+          console.log("返回结果：", res.data);
+          resolve(res.data);
+        } else {
           wx.showModal({
             title: "提示",
             content: `状态码：${res.data.errno},${res.data.errmsg}`,
@@ -29,12 +38,9 @@ function http(params) {
             }
           });
           wx.hideLoading();
-        } else {
-          console.log("返回结果：", res.data);
-          resolve(res.data);
         }
       },
-      fail: function (e) {
+      fail: function(e) {
         wx.showToast({
           title: e,
         })

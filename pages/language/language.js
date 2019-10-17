@@ -11,13 +11,14 @@ Page({
   data: {
     height: 0,
     warpHeight: 0,
-    dialectList: []
+    dialectList: [],
+    selectDialectIds: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.getData();
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
@@ -26,17 +27,26 @@ Page({
   },
 
   // 获取数据
-  getData: function () {
+  getData: function() {
+    const userDialect = wx.getStorageSync('userDialect')
     wx.showLoading();
     getDialectList().then(res => {
-      res.data.forEach(r => {
-        r.childList.filter(child => {
-          child.checked = false;
-        })
-      });
-      console.log('getDialectList res', res)
+      const list = res.data.map(({
+        childList,
+        ...item
+      }) => {
+        return {
+          ...item,
+          childList: childList.map(itemCl => ({
+            ...itemCl,
+            checked: userDialect.some(itemB => itemB.languageId === itemCl.id)
+          }))
+        }
+      })
+      console.log('getDialectList res', list, userDialect, res)
       this.setData({
-        dialectList: res.data
+        dialectList: list,
+        selectDialectIds: userDialect.map(d => d.languageId)
       })
       wx.hideLoading();
     })
@@ -45,17 +55,19 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
-  goBack: function () {
+  goBack: function() {
     wx.navigateBack()
   },
 
   //多选
-  userCheck: function (e) {
-    const { dialectList } = this.data;
+  userCheck: function(e) {
+    const {
+      dialectList
+    } = this.data;
     let typeIndex = e.currentTarget.dataset.id;
     let dialectIndex = e.target.dataset.id;
     let checkBox = dialectList;
@@ -64,12 +76,7 @@ Page({
     } else {
       dialectList[typeIndex].childList[dialectIndex].checked = true;
     }
-    
-    this.setData({
-      dialectList: this.data.dialectList
-    })
 
-    //返回用户选中的值
     let checkIds = []
     checkBox.filter((item, index) => {
       item.childList.filter((child, index) => {
@@ -78,49 +85,18 @@ Page({
         }
       })
     })
-    console.log('checkBox value', checkIds)
+
+    this.setData({
+      dialectList: this.data.dialectList,
+      selectDialectIds: checkIds
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 确定
+  confrim: function() {
+    createNewDialect({
+      languageIds: this.data.selectDialectIds
+    }).then(res => {
+      console.log('createNewDialect res', res)
+    })
   }
-
 })

@@ -2,7 +2,7 @@
   <!-- <header>123123</header> -->
   <view class="header" style="padding-top: {{height}}px">
     <view class="popver-select" bindtap='showDialect'>
-      四川
+      {{currentDialect.languageName}}
       <image src="/pages/images/icon-{{ showDialect ? 'down' : 'up' }}.svg"></image>
     </view>
     <view class="progress">
@@ -20,16 +20,14 @@
   <view class="content" style="height: {{warpHeight}}px">
     <view class="popver-list" wx:if="{{showDialect}}">
       <view class="left">
-        <view class='item' wx:for="{{userInfo.userLanguage}}" wx:for-item="item" wx:key="index" data-id="{{languageId}}" bindtap='userCheck'>
+        <view class='item' wx:for="{{userDialect}}" wx:for-item="item" wx:key="index" data-index="{{index}}" data-item="{{item}}" bindtap="selectDialect">
           <image src='/pages/images/icon-check-blue.svg' wx:if="{{item.checked}}"></image>
           <text class="{{item.checked?'select':''}}">{{item.languageName}}</text>
         </view>
       </view>
       <view class="right" bindtap="goLanguage">+</view>
     </view>
-
     <buy show="{{showBuyModal}}"></buy>
-
     <view class='padding-box'>
       <view class="home-warp" bindtap='goSubject'>
         <view class="box">
@@ -38,7 +36,7 @@
           </view>
           <image class="unit-img" src="{{currentUnit.avatar}}"></image>
         </view>
-        <view class="unit-txt">{{currentUnit.languageName}}</view>
+        <view class="unit-txt">{{currentUnit.name}}</view>
       </view>
       <scroll-view class="unit-list" scroll-x="true">
         <view wx:for="{{unitList}}" wx:for-item="item" wx:key="index" class="item {{item.active ? 'active' : '' }}" data-item="{{item}}" bindtap='clickUnit'>

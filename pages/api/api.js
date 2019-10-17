@@ -25,6 +25,8 @@ export const uploadWeChatInfo = () => {
               data: {}
             }).then(res => {
               wx.setStorageSync('userInfo', res.data)
+              wx.setStorageSync('currentDialect', res.data.lastLanguage)
+              wx.setStorageSync('userDialect', res.data.userLanguage)
               wx.redirectTo({
                 url: "/pages/index/index"
               });
@@ -118,10 +120,17 @@ export const getDialectList = (params) => {
     data: params
   })
 };
-// 用戶学习新的方言
+// 用户学习新的方言
 export const createNewDialect = (params) => {
   return request.http({
     url: "/language/user/add",
+    data: params
+  })
+};
+// 用户方言切换
+export const changeDialect = (params) => {
+  return request.http({
+    url: "/language/user/change",
     data: params
   })
 };

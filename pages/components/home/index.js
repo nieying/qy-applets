@@ -1,5 +1,6 @@
 import {
-  getUnit
+  getUnit,
+  changeDialect
 } from '../../api/api.js'
 const app = getApp()
 
@@ -19,68 +20,62 @@ Component({
     warpHeight: 0,
     showBuyModal: false,
     showDialect: false,
+    currentDialect: {},
+    userDialect: [],
     unitList: [],
     userInfo: {},
     currentUnit: {},
   },
 
   // 在组件布局完成后执行，此时可以获取节点信息
-  ready: function() {
-    // wx.showLoading()
-    // this.getUserInfo();
-    // getUserDialectList().then(res => {
-    //   this.setData({
-    //     badgeList: res.data.list
-    //   })
-    //   wx.hideLoading()
-    // })
-    this.getUnitList()
+  ready: function () {
   },
 
 
-  attached: function() {
+  attached: function () {
+    const userDialect = wx.getStorageSync('userDialect');
+    const currentDialect = wx.getStorageSync('currentDialect');
+    userDialect.forEach(d => {
+      if (currentDialect.languageId === d.languageId) {
+        d.checked = true
+      } else {
+        d.checked = false;
+      }
+    });
     this.setData({
+      userDialect: userDialect,
+      currentDialect: currentDialect,
       userInfo: wx.getStorageSync('userInfo'),
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight')) + 10,
+    }, () => {
+      this.getUnitList(this.data.currentDialect.languageId)
     })
-    console.log('userInfo', this.data.userInfo)
+    console.log('attached===>', this.data)
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    goLanguage: function() {
+    goLanguage: function () {
       wx.navigateTo({
         url: '/pages/language/language'
       })
     },
 
-    goSubject: function() {
+    goSubject: function () {
       wx.navigateTo({
         url: `/pages/subject/subject?id=${this.data.currentUnit.id}`
       })
     },
 
-    showBuyModal: function() {
-      this.setData({
-        showDialect: false,
-        showBuyModal: !this.data.showBuyModal,
-      })
-    },
 
-    showDialect: function() {
-      this.setData({
-        showBuyModal: false,
-        showDialect: !this.data.showDialect
-      })
-    },
 
     // 获取单元列表
-    getUnitList: function() {
+    getUnitList: function (languageId) {
       getUnit({
-        languageId: 1
+        languageId: languageId
       }).then(res => {
         this.setData({
           currentUnit: res.data[0],
@@ -91,31 +86,61 @@ Component({
     },
 
     // 点击单元
-    clickUnit: function(e) {
-      console.log('e.currentTarget.dataset', e.currentTarget.dataset['item']);
+    clickUnit: function (e) {
       this.setData({
         currentUnit: e.currentTarget.dataset['item'],
       })
     },
 
-    //多选
-    userCheck: function(e) {
-      let index = e.currentTarget.dataset.id; //获取用户当前选中的索引值
-      let checkBox = this.data.dialectList;
+    // 选择方言
+    selectDialect: function (e) {
+      const { userDialect } = this.data
+      let index = e.currentTarget.dataset.index; //获取用户当前选中的索引值
+      let item = e.currentTarget.dataset.item; //获取用户当前选中的索引值
+      let checkBox = userDialect;
+      checkBox.forEach(d => {
+        d.checked = false;
+      });
       if (checkBox[index].checked) {
-        this.data.dialectList[index].checked = false;
+        userDialect[index].checked = false;
       } else {
-        this.data.dialectList[index].checked = true;
+        userDialect[index].checked = true;
       }
       this.setData({
-        dialectList: this.data.dialectList
+        userDialect: userDialect,
+        currentDialect: item,
+        showDialect: false
+      }, () => {
+        wx.setStorageSync("currentDialect", item)
+        this.getUnitList(item.languageId);
+        this.postChangeDialect(item.languageId);
       })
-
       //返回用户选中的值
-      let value = checkBox.filter((item, index) => {
-        return item.checked == true;
+      // let value = checkBox.filter((item, index) => {
+      //   return item.checked == true;
+      // })
+      // console.log(value)
+    },
+    // 方言切换请求
+    postChangeDialect: function (languageId) {
+      changeDialect({
+        id: languageId
+      }).then(res => {
+        console.log('changeDialect res', res)
       })
-      console.log(value)
+    },
+    showBuyModal: function () {
+      this.setData({
+        showDialect: false,
+        showBuyModal: !this.data.showBuyModal,
+      })
+    },
+
+    showDialect: function () {
+      this.setData({
+        showBuyModal: false,
+        showDialect: !this.data.showDialect
+      })
     }
   }
 })
