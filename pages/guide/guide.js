@@ -31,6 +31,7 @@ Page({
       // 登录
       wx.login({
         success: res => {
+          console.log("wx.login", res)
           wx.setStorageSync('loginCode', res.code);
           uploadWeChatInfo()
         }

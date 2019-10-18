@@ -1,3 +1,9 @@
+import {
+  getSubject,
+  postSubject,
+  getUnitSubject
+} from '../api/api.js';
+let timer = ''
 const app = getApp()
 Page({
 
@@ -6,77 +12,120 @@ Page({
    */
   data: {
     height: 0,
-    isLoading: true,
+    isLoading: false,
+    //normal:文字题（伪音标题），auto:听力题，picture:选图题，map:看图题
     type: 3,
-    correct: false,
-    answerList: [{
-        value: '北京'
-      },
-      {
-        value: '广州'
-      },
-      {
-        value: '上海'
-      },
-      {
-        value: '沈阳'
-      }
-    ],
-    selectAnswer: [],
-    isAnswered: false
+    correct: 0,
+    isAnswered: 0,
+    selectId: '',
+    rightId: '',
+    subjectObj: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log('options', options)
     this.setData({
       height: wx.getStorageSync('statusBarHeight')
-    })
+    });
+    this.getData(options)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    const timer = setTimeout(() => {
-      this.setData({
-        isLoading: false
-      })
-    }, 3000)
+    if (this.data.isLoading) {
+      timer = setTimeout(() => {
+        this.setData({
+          isLoading: false
+        })
+      }, 3000)
+    }
   },
 
+  // 返回
   goBack: function() {
     wx.navigateBack()
   },
 
+  // 获取数据
+  getData: function(options) {
+    getSubject({
+      languageId: options.languageId
+    }).then(res => {
+      let rightId = ''
+      res.data.answers.forEach(a => {
+        if (a.right === 1) {
+          rightId = a.id
+        }
+        a.checked = false
+      })
+      this.setData({
+        subjectObj: res.data,
+        rightId: rightId
+      })
+      console.log('getSubject', res)
+    })
+  },
 
   //单选
   getradio: function(e) {
     let index = e.currentTarget.dataset.id;
-    let radio = this.data.answerList;
+    const {
+      subjectObj
+    } = this.data;
+    let radio = subjectObj.answers;
+    let selectId = '';
     for (let i = 0; i < radio.length; i++) {
-      this.data.answerList[i].checked = false;
+      subjectObj.answers[i].checked = false;
     }
     if (radio[index].checked) {
-      this.data.answerList[index].checked = false;
+      subjectObj.answers[index].checked = false;
     } else {
-      this.data.answerList[index].checked = true;
+      subjectObj.answers[index].checked = true;
+      selectId = subjectObj.answers[index].id
     }
-    let userRadio = radio.filter((item, index) => {
-      return item.checked == true;
-    })
     this.setData({
-      answerList: this.data.answerList,
-      selectAnswer: userRadio
+      subjectObj: subjectObj,
+      selectId: selectId,
     })
+    console.log('selectAnswer', this.data)
   },
 
   // 提交
   submit: function(e) {
-    this.setData({
-      correct: true,
-      isAnswered: true,
+    // 判断是否答对了
+    const {
+      rightId,
+      selectId
+    } = this.data;
+    if (selectId === rightId) {
+      this.setData({
+        correct: 1,
+        isAnswered: 1,
+      })
+      // this.getNextSubject(true)
+    } else {
+      this.setData({
+        correct: 2,
+        isAnswered: 2,
+      })
+      // this.getNextSubject(false)
+    }
+  },
+
+  getNextSubject: function(isRight) {
+    postSubject({
+      right: isRight,
+      subjectId: this.data.subjectObj.id
+    }).then(res => {
+      this.setData({
+        correct: 0,
+        isAnswered: 0,
+      })
     })
   },
 
@@ -91,7 +140,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-
+    clearTimeout(timer);
   },
 
   /**
@@ -100,26 +149,4 @@ Page({
   onUnload: function() {
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
-
 })

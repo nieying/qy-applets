@@ -75,13 +75,6 @@
   background: #ffd100;
 }
 
-.answer-list .correct {
-  background: #b9f6ca;
-}
-
-.answer-list .wrong {
-  background: #ffcdd2;
-}
 
 .answer-list .item:not(:last-child) {
   margin-bottom: 24rpx;
@@ -96,12 +89,32 @@
 .answer-tips {
   margin-top: 40rpx;
   height: 184rpx;
-  background: rgba(185, 246, 202, 1);
   border-radius: 92rpx;
   font-size: 44rpx;
   padding: 0 40rpx;
   display: flex;
   align-items: center;
+}
+
+.answer-tips text {
+  margin-left: 32rpx;
+}
+
+
+.tips-correct {
+  background: #b9f6ca;
+}
+
+.tips-correct text {
+ color: #00C853;
+}
+
+.tips-wrong {
+  background: #ffcdd2;
+}
+
+.tips-wrong text {
+  color: #F44336;
 }
 
 .subject-pic image {
@@ -144,10 +157,6 @@
   right: 24rpx;
 }
 
-.answer-tips text {
-  margin-left: 32rpx;
-  color: #00c853;
-}
 
 .bottom {
   color: white;

@@ -9,7 +9,7 @@ export const uploadWeChatInfo = () => {
   const that = this;
   if (wx.getStorageSync('loginCode')) {
     wx.getUserInfo({
-      success: function (res) {
+      success: function(res) {
         if (!wx.getStorageSync('token')) {
           request.http({
             url: "/auth/login_by_weixin",
@@ -30,7 +30,6 @@ export const uploadWeChatInfo = () => {
                 url: "/pages/index/index"
               });
             })
-
             console.log('login res', res)
           })
         }
@@ -161,6 +160,15 @@ export const postSubject = (params) => {
 export const getUnit = (params) => {
   return request.http({
     url: "/unit/list",
+    method: 'GET',
+    data: params
+  })
+};
+
+// 查询单元下的所有题目
+export const getUnitSubject = (params) => {
+  return request.http({
+    url: "/unit/subject",
     method: 'GET',
     data: params
   })

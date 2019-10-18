@@ -10,8 +10,8 @@
           <view>{{userInfo.cost}}</view>
         </view>
         <image class="user-pic" src="{{userInfo.avatar}}"></image>
-        <view class="user-name" bindtap='showModal' data-type="1">用户2345678</view>
-        <view class="user-sign" bindtap='showModal' data-type="2">个性签名文字长度限制，不要换行 </view>
+        <view class="user-name" bindtap='showModal' data-type="1">{{userInfo.nickName}}</view>
+        <view class="user-sign" bindtap='showModal' data-type="2">{{userInfo.signature || '这人很懒，什么都没说'}} </view>
       </view>
       <view class="user-opts">
         <view class="vip" bindtap='goVip'>
@@ -57,5 +57,5 @@
       </view>
     </view>
   </scroll-view>
-  <modal show="{{show}}" modalData="{{modalData}}"></modal>
+  <modal show="{{show}}" modalData="{{modalData}}" bind:confirm='onConfirm'></modal>
 </view>

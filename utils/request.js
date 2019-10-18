@@ -13,20 +13,21 @@ function http(params) {
         'X-Token': wx.getStorageSync('token') || ''
       },
       success: function(res) {
-        if (res.data.errno === 402) {
+        if (res.data.errno === 0) {
+          console.log("返回结果：", res.data);
+          resolve(res.data);
+        } else if (res.data.errno === 501) {
+          wx.clearStorage()
+          wx.reLaunch({
+            url: "/pages/guide/guide"
+          });
+          wx.hideLoading();
+        } else {
           wx.showToast({
             icon: '',
             title: res.data.errmsg,
           })
           wx.hideLoading();
-        } else if (res.data.errno === 0) {
-          console.log("返回结果：", res.data);
-          resolve(res.data);
-        } else {
-          wx.clearStorage()
-          wx.reLaunch({
-            url: "/pages/guide/guide"
-          });
           // wx.showModal({
           //   title: "提示",
           //   content: `状态码：${res.data.errno},${res.data.errmsg}`,
@@ -41,7 +42,6 @@ function http(params) {
           //     }
           //   }
           // });
-          wx.hideLoading();
         }
       },
       fail: function(e) {

@@ -1,5 +1,7 @@
+import {
+  updateUserInfo
+} from '../../api/api.js'
 Component({
-
   /**
    * 组件的属性列表
    */
@@ -11,11 +13,6 @@ Component({
     show: {
       type: Boolean,
       value: false
-    },
-    //modal的高度
-    height: {
-      type: String,
-      value: '488rpx'
     }
   },
 
@@ -23,32 +20,77 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    nickName: '',
+    signature: '',
+    searchKey: '',
+    isErr: false
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    clickMask() {
-      // this.setData({show: false})
+    clickMask(e) {
+      let id = e.currentTarget.dataset.id;
+      if (id == 1) {
+        this.setData({
+          show: false
+        })
+      }
     },
 
-    cancel() {
+    // 获取输入框的值
+    getInputValue(e) {
+      const {
+        modalData
+      } = this.properties;
+      if (modalData.type === 1) {
+        this.setData({
+          nickName: e.detail.value
+        })
+      } else {
+        this.setData({
+          searchKey: e.detail.value
+        })
+      }
+    },
+    getTextAreaValue(e) {
       this.setData({
-        show: false
+        signature: e.detail.value
       })
-      this.triggerEvent('cancel')
     },
 
     confirm() {
-      this.setData({
-        show: false
-      })
-      wx.navigateTo({
-        url: '/pages/searchUnion/searchUnion',
-      })
+      const {
+        modalData
+      } = this.properties;
+      switch (modalData.type) {
+        case 1:
+          this.editUserInfo({
+            nickName: this.data.nickName
+          })
+          break;
+        case 2:
+          this.editUserInfo({
+            signature: this.data.signature
+          })
+          break;
+        case 3:
+          wx.navigateTo({
+            url: '/pages/searchUnion/searchUnion',
+          })
+          break;
+      }
       this.triggerEvent('confirm')
+    },
+
+    // 编辑用户信息
+    editUserInfo(params) {
+      updateUserInfo(params).then(res => {
+        this.setData({
+          show: false
+        })
+      })
     }
   }
 })

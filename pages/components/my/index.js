@@ -1,6 +1,6 @@
 import {
-  contentHeight
-} from '../../../utils/util.js'
+  queryUserInfo
+} from '../../api/api.js'
 const app = getApp()
 
 Component({
@@ -22,24 +22,35 @@ Component({
     userInfo: {},
   },
 
-  attached: function () {
+  attached: function() {
+    this.getData();
     this.setData({
-      userInfo: wx.getStorageSync('userInfo'),
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight'))
     })
   },
+
   /**
    * 组件的方法列表
    */
   methods: {
-    goVip: function () {
+    goVip: function() {
       wx.navigateTo({
         url: '/pages/vip/vip',
       })
     },
-
-    showModal: function (e) {
+    // 获取用户相关信息
+    getData: function () {
+      wx.showLoading()
+      queryUserInfo().then(res=> {
+        console.log('queryUserInfo', res)
+        this.setData({userInfo: res.data})
+        wx.hideLoading()
+      })
+    },
+    // 显示弹框
+    showModal: function(e) {
+      const {userInfo} = this.data;
       const type = parseInt(e.target.dataset.type)
       switch (type) {
         case 1:
@@ -47,6 +58,7 @@ Component({
             show: true,
             modalData: {
               type: 1,
+              inputValue: userInfo.nickName,
               title: '用户名',
               placeholder: '请输入您要修改的用户名',
               tips: '格式/字数/重复等错误提示',
@@ -59,6 +71,7 @@ Component({
             show: true,
             modalData: {
               type: 2,
+              inputValue: userInfo.signature,
               title: '个性签名',
               placeholder: '请输入您要修改的用户名',
               // tips: '格式/字数/重复等错误提示',
@@ -79,6 +92,11 @@ Component({
           })
           break;
       }
+    },
+
+    // 弹框确定后触发
+    onConfirm: function() {
+      this.getData();
     }
   }
 })

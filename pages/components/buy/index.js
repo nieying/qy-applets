@@ -24,6 +24,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
+
+
     clickMask() {
       // this.setData({show: false})
     },
@@ -40,6 +42,27 @@ Component({
         show: false
       })
       this.triggerEvent('confirm')
+    },
+
+    // 充值
+    pay: function() {
+      console.log('pay.......')
+      wx.requestPayment({
+        'timeStamp': '',
+        'nonceStr': '',
+        'package': '',
+        'signType': 'MD5',
+        'paySign': '',
+        'success': function(res) {
+          console.log('success', res)
+        },
+        'fail': function(res) {
+          console.log('fail', res)
+        },
+        'complete': function(res) {
+          console.log('complete', res)
+        }
+      })
     }
   }
 })

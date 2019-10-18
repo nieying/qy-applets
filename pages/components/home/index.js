@@ -86,8 +86,12 @@ Component({
     },
 
     goSubject: function() {
+      const {
+        currentDialect,
+        currentUnit
+      } = this.data
       wx.navigateTo({
-        url: `/pages/subject/subject?id=${this.data.currentUnit.id}`
+        url: `/pages/subject/subject?id=${currentUnit.id}&languageId=${currentDialect.languageId}`
       })
     },
 
