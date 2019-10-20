@@ -10,9 +10,7 @@ Page({
    */
   data: {
     height: 0,
-    dataObj: {
-      type: ''
-    }
+    dataObj: {}
   },
 
   /**
@@ -20,8 +18,28 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      height: wx.getStorageSync('statusBarHeight') + 10
+      height: wx.getStorageSync('statusBarHeight') + 10,
     })
+    if (option.userType === 'rejected') {
+      this.setData({
+        dataObj: {
+          icon:'clear',
+          color:'#F44336',
+          title:'审核失败',
+          tips:'请与客服联系询问原因'
+        }
+      })
+    } else {
+      this.setData({
+        dataObj: {
+          icon: 'success',
+          color: '#F44336',
+          title: '审核中...',
+          tips: '请耐心等待审核'
+        }
+      })
+    }
+   
   },
 
   /**

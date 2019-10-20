@@ -1,5 +1,6 @@
 import {
-  queryUserInfo
+  queryUserInfo,
+  getState
 } from '../../api/api.js'
 const app = getApp()
 
@@ -24,6 +25,7 @@ Component({
 
   attached: function() {
     this.getData();
+    this.getStateData();
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight'))
@@ -40,17 +42,21 @@ Component({
       })
     },
     // 获取用户相关信息
-    getData: function () {
+    getData: function() {
       wx.showLoading()
-      queryUserInfo().then(res=> {
+      queryUserInfo().then(res => {
         console.log('queryUserInfo', res)
-        this.setData({userInfo: res.data})
+        this.setData({
+          userInfo: res.data
+        })
         wx.hideLoading()
       })
     },
     // 显示弹框
     showModal: function(e) {
-      const {userInfo} = this.data;
+      const {
+        userInfo
+      } = this.data;
       const type = parseInt(e.target.dataset.type)
       switch (type) {
         case 1:
@@ -80,6 +86,30 @@ Component({
           })
           break;
         case 3:
+          this.getUserUnion()
+          break;
+      }
+    },
+    getStateData: function() {
+      wx.showLoading()
+      getState().then(res => {
+        this.setData({
+          userType: res.data
+        })
+        wx.hideLoading()
+      })
+    },
+
+    getUserUnion: function() {
+      const {
+        userType
+      } = this.data;
+      if (userType === 'leader') { // 会长
+        wx.navigateTo({
+          url: `/pages/union/union?userType=${userType}`,
+        })
+      } else { // 成员
+        if (userType === 'none') { // 未加入协会
           this.setData({
             show: true,
             modalData: {
@@ -90,7 +120,19 @@ Component({
               confirmTxt: '搜索'
             }
           })
-          break;
+        } else if (userType === 'applied') { // 加入协会审核中
+          wx.navigateTo({
+            url: `/pages/applyFeedback/applyFeedback?userType=${userType}`,
+          })
+        } else if (userType === 'rejected') { // 审核失败
+          wx.navigateTo({
+            url: `/pages/applyFeedback/applyFeedback?userType=${userType}`,
+          })
+        } else { // 审核成功
+          wx.navigateTo({
+            url: `/pages/union/union?userType=${userType}`,
+          })
+        }
       }
     },
 

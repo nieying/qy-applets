@@ -6,9 +6,9 @@
     <view class="padding-box">
       <view class='title'>欢迎您</view>
       <view class="card">
-        <image src=""></image>
-        <view class="name">四川大学会长</view>
-        <view class="desc">协会简介或成立时间人数</view>
+        <image src="{{organDetail.avatar}}"></image>
+        <view class="name">{{organDetail.name}}</view>
+        <view class="desc">{{organDetail.remark}}</view>
       </view>
     </view>
     <view class="tabs">
@@ -20,10 +20,10 @@
       </view>
       <view class="tab-content">
         <view class="union-people" wx:if="{{currentTab==='union'}}">
-          <memberList tab="{{currentTab}}" datas="{{peopleList}}" />
+          <memberList tab="{{currentTab}}" datas="{{memberList}}" />
         </view>
         <view class="apply-list" wx:if="{{currentTab==='apply'}}">
-          <memberList tab="{{currentTab}}" datas="{{peopleList}}" />
+          <memberList tab="{{currentTab}}" datas="{{peddingMemberList}}" />
         </view>
       </view>
     </view>

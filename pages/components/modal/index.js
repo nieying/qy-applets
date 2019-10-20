@@ -1,5 +1,6 @@
 import {
-  updateUserInfo
+  updateUserInfo,
+  searchOrgan,
 } from '../../api/api.js'
 Component({
   /**
@@ -76,12 +77,22 @@ Component({
           })
           break;
         case 3:
-          wx.navigateTo({
-            url: '/pages/searchUnion/searchUnion',
-          })
+          this.searchOrganize()
           break;
       }
-      this.triggerEvent('confirm')
+    },
+
+    // 查询协会列表
+    searchOrganize() {
+      searchOrgan({
+        name: this.data.searchKey
+      }).then(res => {
+        wx.setStorageSync('seachOrganList', res.data ? res.data.list : [])
+        wx.navigateTo({
+          url: '/pages/searchUnion/searchUnion',
+        })
+      })
+
     },
 
     // 编辑用户信息
@@ -90,7 +101,8 @@ Component({
         this.setData({
           show: false
         })
-      })
+      });
+      this.triggerEvent('confirm')
     }
   }
 })

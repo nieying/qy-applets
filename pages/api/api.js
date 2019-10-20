@@ -3,7 +3,7 @@ import request from "../../utils/request";
 const AppId = "wx84aa4b7c0fc9c4ca"; // 微信appid
 const SessionKey = "5579ce3a448b0ea85bfd5c6ff0e73919"; // 微信秘钥（微信后台秘钥保存好、刷新会重新生成)
 const app = getApp();
-
+ 
 // 授权
 export const uploadWeChatInfo = () => {
   const that = this;
@@ -173,3 +173,60 @@ export const getUnitSubject = (params) => {
     data: params
   })
 };
+
+// 协会详情
+export const getOrganizeDetail = (params) => {
+  return request.http({
+    url: "/organize/info",
+    method: 'GET',
+    data: params
+  })
+};
+
+// 协会加入申请
+export const joinOrganize = (params) => {
+  return request.http({
+    url: "/organize/join",
+    data: params
+  })
+};
+
+// 申请成员审核通过
+export const approvalmember = (params) => {
+  return request.http({
+    url: "/organize/member/approval",
+    data: params
+  })
+};
+// 协会成员列表
+export const getOrganMemberList = (params) => {
+  return request.http({
+    url: "/organize/member/list",
+    method: 'GET',
+    data: params
+  })
+};
+// 获取状态
+export const getState = (params) => {
+  return request.http({
+    url: "/organize/state",
+    method: 'GET',
+    data: params
+  })
+};
+// 协会搜索
+export const searchOrgan = (params) => {
+  return request.http({
+    url: "/organize/search",
+    method: 'GET',
+    data: params
+  })
+};
+// 用户协会列表
+// export const getUserOrgan = (params) => {
+//   return request.http({
+//     url: "/organize/user",
+//     method: 'GET',
+//     data: params
+//   })
+// };

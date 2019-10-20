@@ -5,18 +5,18 @@
   <view class="content">
     <view class="padding-box">
       <view class='title'> 已为您找到以下协会 </view>
-      <view class='list' wx:if="{{true}}">
-        <view class='item'>
+      <view class='list' wx:if="{{organList.length>0}}">
+        <view class='item' wx:for="{{organList}}" wx:for-item="item" wx:key="index" bindtap="clickItem" data-id="{{item.id}}">
           <view class='left'>
-            <image src=''></image>
+            <image src="{{item.avatar}}"></image>
           </view>
           <view class='right'>
-            <view class='name'>四川话协会</view>
-            <view class='desc'>协会简介活成立时间人数</view>
+            <view class='name'>{{item.name}}</view>
+            <view class='desc'>{{item.remark}}</view>
           </view>
         </view>
       </view>
-      <view class='warp' wx:if="{{false}}">
+      <view class='warp' wx:else>
         <text class='result'>该校区暂无协会</text>
         <text class='tips'>有意创建协会者请联系客服</text>
         <text class='kefu' bindtap='textPaste'>客服微信 test20076</text>

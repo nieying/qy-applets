@@ -1,5 +1,6 @@
 const ENV = 0;
 const domainName = ["https://api.deyushiyuan.cn/litemall/wx"][ENV];
+// const domainName = ["http://192.168.123.218:8082//wx"][ENV];
 const app = getApp();
 
 function http(params) {
@@ -11,6 +12,7 @@ function http(params) {
       header: {
         // 'Content-Type': 'application/x-www-form-urlencoded',
         'X-Token': wx.getStorageSync('token') || ''
+        // 'X-Token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0aGlzIGlzIGxpdGVtYWxsIHRva2VuIiwiYXVkIjoiTUlOSUFQUCIsImlzcyI6IkxJVEVNQUxMIiwiZXhwIjoxNTcxNTY4MDc4LCJ1c2VySWQiOjMsImlhdCI6MTU3MTU2MDg3OH0.c8oc3xX1z8-hL7Sc7NEI3lkgqa_egLI3Gf3wJZb17vw'
       },
       success: function(res) {
         if (res.data.errno === 0) {

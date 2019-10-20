@@ -17,7 +17,7 @@
         <view class="vip" bindtap='goVip'>
           <image src='/pages/images/my/icon-vip-active.svg'></image> 会员中心</view>
         <view class="union" bindtap='showModal' data-type="3">
-          <image src='/pages/images/my/icon-union.svg'></image>所属协会</view>
+          <image src='/pages/images/my/icon-union-active.svg'></image>所属协会</view>
       </view>
       <view class="achieve">
         <view class="title">我的成就</view>

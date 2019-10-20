@@ -1,6 +1,8 @@
-// pages/union/union.js
+import {
+  getOrganizeDetail,
+  getOrganMemberList
+} from '../api/api.js'
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -9,6 +11,7 @@ Page({
     pageHeight: 0,
     currentTab: "union",
     nowIndex: 0,
+    organDetail: {},
     tabs: [{
         key: 'union',
         name: "协会成员",
@@ -26,7 +29,10 @@ Page({
     }, {
       type: 'b',
       childs: [1, 2, 3, 4, 5, 6, 7, 8]
-    }]
+    }],
+    memberList: [],
+    peddingMemberList: [],
+    userType: null
   },
 
   /**
@@ -35,15 +41,74 @@ Page({
   onLoad: function(options) {
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      pageHeight: parseInt(wx.getStorageSync('pageHeight'))
+      pageHeight: parseInt(wx.getStorageSync('pageHeight')),
+      userType: options.userType
     })
+    if (options.userType === "leader") {
+      this.setData({
+        tabs: [{
+            key: 'union',
+            name: "协会成员",
+            active: "active"
+          },
+          {
+            key: 'apply',
+            name: "申请列表",
+            active: ""
+          }
+        ]
+      })
+    } else {
+      this.setData({
+        tabs: [{
+          key: 'union',
+          name: "协会成员",
+          active: "active"
+        }]
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    this.getOrganDetail();
+    this.getMemberList()
+  },
+  goBack: function() {
+    wx.navigateBack()
+  },
+  // 获取协会详情
+  getOrganDetail: function() {
+    getOrganizeDetail().then(res => {
+      this.setData({
+        organDetail: res.data
+      })
+    })
+  },
+  // 获取协会成员类表
+  getMemberList: function() {
+    wx.showLoading()
+    const peddingMemberList = [];
+    const memberList = [];
+    getOrganMemberList({
+      page: 1,
+      limit: 1000
+    }).then(res => {
+      res.data.list.filter(r => {
+        if (r.state === 1) {
+          peddingMemberList.push(r)
+        } else {
+          memberList.push(r)
+        }
+      })
+      this.setData({
+        memberList: memberList,
+        peddingMemberList: peddingMemberList,
+      })
+      wx.hideLoading()
+    })
   },
 
   // 点击tab 切换
@@ -104,11 +169,4 @@ Page({
   onReachBottom: function() {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

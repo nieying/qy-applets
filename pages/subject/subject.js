@@ -56,17 +56,24 @@ Page({
     getSubject({
       languageId: options.languageId
     }).then(res => {
-      let rightId = ''
-      res.data.answers.forEach(a => {
-        if (a.right === 1) {
-          rightId = a.id
-        }
-        a.checked = false
-      })
-      this.setData({
-        subjectObj: res.data,
-        rightId: rightId
-      })
+      if (res.data.lenght > 0) {
+        let rightId = ''
+        res.data.answers.forEach(a => {
+          if (a.right === 1) {
+            rightId = a.id
+          }
+          a.checked = false
+        })
+        this.setData({
+          subjectObj: res.data,
+          rightId: rightId
+        })
+      } else {
+        wx.showToast({
+          title: res.data.errmsg,
+        }),
+        wx.goBack()
+      }
       console.log('getSubject', res)
     })
   },

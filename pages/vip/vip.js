@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    height: 0
+    height: 0,
+    totalBill: 0,
   },
 
   /**
@@ -14,7 +15,8 @@ Page({
   onLoad: function(options) {
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      warpHeight: parseInt(wx.getStorageSync('warpHeight'))
+      warpHeight: parseInt(wx.getStorageSync('warpHeight')),
+      totalBill: wx.getStorageSync('userInfo').totalBill
     })
   },
 

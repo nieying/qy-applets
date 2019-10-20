@@ -28,8 +28,6 @@ Page({
       } else {
         this.goToLanguagePage();
       }
-    } else {
-      this.goToLanguagePage();
     }
   },
 

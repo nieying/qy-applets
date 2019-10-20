@@ -1,18 +1,22 @@
 <view class="list" wx:for="{{datas}}" wx:for-item="item" wx:key="index">
-  <view class="type1">
+  <!-- <view class="type1">
     <text>{{item.type}}</text>
-  </view>
-  <view class="item" wx:for="{{item.childs}}" wx:for-item="item" wx:key="index">
+  </view> -->
+  <!-- <view class="item" wx:for="{{item.childs}}" wx:for-item="item" wx:key="index"> -->
+  <view class="item">
     <view class="left">
       <image></image>
       <view class="info">
-        <view class="name">用户名</view>
-        <view class="desc">申请加入时间/备注</view>
+        <view class="name">{{item.userName}}</view>
+        <view class="desc">{{item.addTime}}</view>
       </view>
     </view>
     <view class="right">
       <text wx:if="{{tab === 'union'}}">已加入</text>
-      <view class="btn" wx:if="{{tab === 'apply'}}">通过</view>
+      <view wx:else class="pass">
+        <view class="btn" bindtap="pass" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="true">通过</view>
+        <view class="btn red" bindtap="pass" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="false">拒绝</view>
+      </view>
     </view>
   </view>
 </view>

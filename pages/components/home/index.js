@@ -41,8 +41,6 @@ Component({
     })
   },
 
-
-
   onShow: function() {
     console.log('---onShow')
   },
@@ -58,11 +56,11 @@ Component({
         console.log('getUserDialectList', res)
         let userDialect = res.data;
         let currentDialect = [];
-        // if (wx.getStorageSync('lastLanguage') && wx.getStorageSync('lastLanguage').length>0) {
-        currentDialect = wx.getStorageSync('lastLanguage');
-        // } else {
-
-        // }
+        if (wx.getStorageSync('lastLanguage') && wx.getStorageSync('lastLanguage').length>0) {
+         currentDialect = wx.getStorageSync('lastLanguage');
+        } else {
+          currentDialect = userDialect[0]
+        }
         userDialect.length > 0 && userDialect.forEach(d => {
           if (currentDialect.languageId === d.languageId) {
             d.checked = true
@@ -91,8 +89,7 @@ Component({
         currentUnit
       } = this.data
       wx.navigateTo({
-        url: `/pages/subject/subject?id=${currentUnit.id}&languageId=${currentDialect.languageId}`
-      })
+        url: `/pages/subject/subject?id=${currentUnit.id}&languageId=${currentDialect.languageId}`})
     },
 
     // 获取单元列表
@@ -137,7 +134,7 @@ Component({
         currentDialect: item,
         showDialect: false
       }, () => {
-        wx.setStorageSync("lastDialect", item)
+        wx.setStorageSync("lastLanguage", item)
         this.getUnitList(item.languageId);
         this.postChangeDialect(item.languageId);
       })

@@ -6,12 +6,9 @@
     <view class="padding-box">
       <view class='title'> 申请加入协会反馈 </view>
       <view class='warp'>
-        <!-- <icon type="clear" size="30" color="#F44336" /> -->
-        <icon type="success" size="30" color="#00C853" />
-        <!-- <text class='result'>审核失败</text> -->
-        <text class='result'>申请成功</text>
-        <text class='tips'>请耐心等待审核</text>
-        <!-- <text class='tips'>请与客服联系询问原因</text> -->
+        <icon type="{{dataObj.icon}}" size="30" color="{{dataObj.color}}" />
+        <text  class='result'>{{dataObj.title}}</text>
+        <text class='tips'>{{dataObj.tips}}</text>
         <text class='kefu' bindtap='textPaste'>客服微信 test20076</text>
         <text class='copy' bindtap='textPaste'>点击可复制</text>
       </view>
