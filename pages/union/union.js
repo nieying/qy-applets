@@ -2,6 +2,7 @@ import {
   getOrganizeDetail,
   getOrganMemberList
 } from '../api/api.js'
+import {getSpell} from '../../utils/util'
 Page({
   /**
    * 页面的初始数据
@@ -96,6 +97,7 @@ Page({
       page: 1,
       limit: 1000
     }).then(res => {
+      // this.dealData(res.data.list)
       res.data.list.filter(r => {
         if (r.state === 1) {
           peddingMemberList.push(r)
@@ -109,6 +111,26 @@ Page({
       })
       wx.hideLoading()
     })
+  },
+
+  dealData(arr) {
+    var someTtitle = null;
+    var someArr = [];
+    for (var i = 0; i < arr.length; i++) {
+      var newBrands = { id: arr[i].id, name: arr[i].userName };
+      if (arr[i].initial != someTtitle) {
+        someTtitle = arr[i].initial
+        var newObj = {
+          id: i,
+          region: someTtitle,
+          brands: []
+        };
+        someArr.push(newObj)
+      }
+    console.log('newObj===>', newBrands)
+      newObj.brands.push(newBrands);
+    };
+
   },
 
   // 点击tab 切换

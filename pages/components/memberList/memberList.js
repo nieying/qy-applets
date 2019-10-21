@@ -1,6 +1,8 @@
 import {
   approvalmember
 } from '../../api/api.js'
+import { formatDate } from '../../../utils/util.js'
+
 Component({
   /**
    * 组件的属性列表
@@ -47,6 +49,7 @@ Component({
           icon: 'success',
           title: pass ? '通过成功' : '拒绝成功'
         })
+        this.triggerEvent('callback')
       })
     }
   }

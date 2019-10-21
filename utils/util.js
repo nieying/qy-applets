@@ -1,13 +1,4 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
 
 const formatNumber = n => {
   n = n.toString()
@@ -20,9 +11,9 @@ const copyText = (data) => {
   })
   wx.setClipboardData({
     data: data,
-    success: function(res) {
+    success: function (res) {
       wx.getClipboardData({
-        success: function(res) {
+        success: function (res) {
           console.log(res.data)
           return res.data
         }
@@ -55,8 +46,30 @@ const storageHeight = () => {
 }
 
 
+const getSpell = (str, sp) => {
+  var i, c, t, p, ret = "";
+  var strLength = str.length;
+  if (sp === null) { sp = '' };
+  for (i = 0; i < strLength; i++) {
+    if (str.charCodeAt(i) >= 0x4e00) {
+      p = strGB.indexOf(str.charAt(i));
+      if (p > -1 && p < 3755) {
+        for (t = qswhSpell.length - 1; t > 0; t = t - 2)
+          if (qswhSpell[t] <= p) break;
+        if (t > 0) ret += qswhSpell[t - 1] + sp;
+      }
+    } else {
+      ret += str.slice(0, strLength)
+    }
+  }
+  return ret.substr(0, ret.length - sp.length)
+}
+
+
+
+
 module.exports = {
-  formatTime: formatTime,
   copyText: copyText,
-  storageHeight: storageHeight
+  storageHeight: storageHeight,
+  getSpell: getSpell
 }

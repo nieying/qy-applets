@@ -64,26 +64,19 @@
         </view>
 
         <view class='answer-list' wx:if="{{type !== 'picture'}}">
-          <!-- correct -->
-          <view wx:for="{{subjectObj.answers}}" wx:for-item="item" wx:key="index" data-id="{{index}}" class="item {{ item.checked? 'checked' :''}} {{isAnswered ? correct === 1 && item.checked && 'correct' : 'wrong'}}" bindtap='getradio'>
-            <!-- 
-         correct #00C853
-         wrong #F44336
-          -->
-            <icon type="success" size="30" color="{{item.checked?'#282D4B':'white'}}" />
-            <!-- <icon wx:if="{{correct === 0}}" type="success" size="30" color="{{item.checked?'#282D4B':'white'}}" />
-            <icon wx:if="{{correct === 1 && item.checked}}" type="success" size="30" color="#00C853" />
-            <icon wx:if="{{correct === 2 && item.checked}}" type="error" size="30" color="#F44336" /> -->
-            <text>{{item.answer}}</text>
-          </view>
+          <block wx:for="{{subjectObj.answers}}" wx:for-item="item" wx:key="index">
+            <view data-id="{{index}}" class="item {{ item.checked? 'checked' :''}} {{(isAnswered === 1 && item.right === 1) && 'correct'}} {{(isAnswered === 2 && item.right === 0 && item.checked) && 'wrong' }}" bindtap='getradio'>
+              <icon wx:if="{{(isAnswered === 0 && !item.checked) || (isAnswered !== 0 && !item.checked && item.right !== 1)}}" type="success" size="30" color="white" />
+              <icon wx:if="{{isAnswered === 0 && item.checked}}" type="success" size="30" color="#282D4B" />
+              <icon wx:if="{{isAnswered === 1 && item.right === 1}}" type="success" size="30" color="#00C853" />
+              <icon wx:if="{{isAnswered === 2 && item.right === 0 && item.checked }}" type="clear" size="30" color="#F44336" />
+              <text>{{item.answer}}</text>
+            </view>
+          </block>
         </view>
-        <view class='answer-tips tips-correct' wx:if="{{correct === 1}}">
-          <icon type="success" size="30" color="#00C853" />
-          <text>恭喜您!</text> 答对了
-        </view>
-        <view class='answer-tips tips-wrong' wx:if="{{correct === 2}}">
-          <icon type="error" size="30" color="#F44336" />
-          <text>很遗憾! </text> 选错了
+        <view wx:if="{{isAnswered}}" class='answer-tips {{answerObj.className}}'>
+          <icon type="{{answerObj.icon}}" size="30" color="{{answerObj.color}}" />
+          <text>{{answerObj.txt1}}</text> {{answerObj.txt2}}
         </view>
       </view>
     </view>
@@ -95,7 +88,7 @@
       四川话又称巴蜀方言，属汉语西南官话。</view>
     <view class='tips'> 现今四川话形成于清朝康熙年间</view>
   </view>
-  <view class="bottom {{isAnswered ? correct ? 'correct' : 'wrong' : selectAnswer.length === 0 ? 'disable':''}}" wx:if="{{!isLoading}}" bindtap='submit'>
+  <view wx:if="{{!isLoading}}" class="bottom {{selectId && isAnswered === 0 &&  'select'}} {{selectId && isAnswered === 1 &&  'bgcorrect'}} {{selectId && isAnswered === 2 &&  'bgwrong'}}" bindtap='submit'>
     {{isAnswered?'继续':'提交'}}
   </view>
 </view>

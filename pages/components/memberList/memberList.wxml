@@ -1,3 +1,4 @@
+<wxs module="dateUtil" src="../../../utils/timeUtil.wxs"></wxs>
 <view class="list" wx:for="{{datas}}" wx:for-item="item" wx:key="index">
   <!-- <view class="type1">
     <text>{{item.type}}</text>
@@ -8,7 +9,8 @@
       <image></image>
       <view class="info">
         <view class="name">{{item.userName}}</view>
-        <view class="desc">{{item.addTime}}</view>
+        <view class="desc">{{dateUtil.dateFormat(item.addTime,'yyyy-MM-dd hh:mm:ss')}}</view>
+        <!-- <view class="desc">{{new Date(item.addTime)}}</view> -->
       </view>
     </view>
     <view class="right">

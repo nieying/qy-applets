@@ -86,10 +86,19 @@ Component({
     goSubject: function() {
       const {
         currentDialect,
-        currentUnit
+        currentUnit,
+        userInfo
       } = this.data
-      wx.navigateTo({
-        url: `/pages/subject/subject?id=${currentUnit.id}&languageId=${currentDialect.languageId}`})
+      if (userInfo.bill > 0) {
+        wx.navigateTo({
+          url: `/pages/subject/subject?id=${currentUnit.id}&languageId=${currentDialect.languageId}`
+        })
+      } else {
+        wx.showToast({
+          icon:'',
+          title: '生命值不足',
+        })
+      }
     },
 
     // 获取单元列表

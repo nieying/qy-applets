@@ -15,8 +15,8 @@ Page({
     isLoading: false,
     //normal:文字题（伪音标题），auto:听力题，picture:选图题，map:看图题
     type: 3,
-    correct: 0,
     isAnswered: 0,
+    answerObj: {},
     selectId: '',
     rightId: '',
     subjectObj: {}
@@ -53,53 +53,66 @@ Page({
 
   // 获取数据
   getData: function(options) {
+    wx.showLoading()
     getSubject({
       languageId: options.languageId
     }).then(res => {
-      if (res.data.lenght > 0) {
-        let rightId = ''
-        res.data.answers.forEach(a => {
-          if (a.right === 1) {
-            rightId = a.id
-          }
-          a.checked = false
-        })
-        this.setData({
-          subjectObj: res.data,
-          rightId: rightId
-        })
-      } else {
-        wx.showToast({
-          title: res.data.errmsg,
-        }),
-        wx.goBack()
-      }
-      console.log('getSubject', res)
+      this.dealData(res.data)
     })
+  },
+  // 获取下一题
+  getNextSubject: function(isRight) {
+    wx.showLoading()
+    postSubject({
+      right: isRight,
+      subjectId: this.data.subjectObj.id
+    }).then(res => {
+      this.dealData(res.data)
+    })
+  },
+
+  // 处理请求的数据
+  dealData: function(obj) {
+    let rightId = ''
+    obj.answers.forEach(a => {
+      if (a.right === 1) {
+        rightId = a.id
+      }
+      a.checked = false
+    })
+    this.setData({
+      subjectObj: obj,
+      rightId: rightId,
+      isAnswered: 0,
+      selectId: '',
+    })
+    wx.hideLoading()
   },
 
   //单选
   getradio: function(e) {
-    let index = e.currentTarget.dataset.id;
-    const {
-      subjectObj
-    } = this.data;
-    let radio = subjectObj.answers;
-    let selectId = '';
-    for (let i = 0; i < radio.length; i++) {
-      subjectObj.answers[i].checked = false;
+    if (this.data.isAnswered === 0) {
+      let index = e.currentTarget.dataset.id;
+      const {
+        subjectObj
+      } = this.data;
+      let radio = subjectObj.answers;
+      let selectId = '';
+      for (let i = 0; i < radio.length; i++) {
+        subjectObj.answers[i].checked = false;
+      }
+      if (radio[index].checked) {
+        subjectObj.answers[index].checked = false;
+      } else {
+        subjectObj.answers[index].checked = true;
+        selectId = subjectObj.answers[index].id
+      }
+      this.setData({
+        subjectObj: subjectObj,
+        selectId: selectId,
+      })
+      console.log('selectAnswer', this.data)
     }
-    if (radio[index].checked) {
-      subjectObj.answers[index].checked = false;
-    } else {
-      subjectObj.answers[index].checked = true;
-      selectId = subjectObj.answers[index].id
-    }
-    this.setData({
-      subjectObj: subjectObj,
-      selectId: selectId,
-    })
-    console.log('selectAnswer', this.data)
   },
 
   // 提交
@@ -109,32 +122,23 @@ Page({
       rightId,
       selectId
     } = this.data;
-    if (selectId === rightId) {
-      this.setData({
-        correct: 1,
-        isAnswered: 1,
-      })
-      // this.getNextSubject(true)
-    } else {
-      this.setData({
-        correct: 2,
-        isAnswered: 2,
-      })
-      // this.getNextSubject(false)
-    }
+    this.setData({
+      isAnswered: selectId === rightId ? 1 : 2,
+      answerObj: {
+        className: selectId === rightId ? 'correct' : 'wrong',
+        color: selectId === rightId ? '#00C853' : '#F44336',
+        icon: selectId === rightId ? 'success' : 'clear',
+        txt1: selectId === rightId ? '恭喜您!' : '很遗憾!',
+        txt2: selectId === rightId ? '答对了' : '答错了'
+      }
+    })
+    console.log(this.data)
+    // setTimeout(() => {
+    //   this.getNextSubject(selectId === rightId)
+    // }, 3000)
   },
 
-  getNextSubject: function(isRight) {
-    postSubject({
-      right: isRight,
-      subjectId: this.data.subjectObj.id
-    }).then(res => {
-      this.setData({
-        correct: 0,
-        isAnswered: 0,
-      })
-    })
-  },
+
 
   /**
    * 生命周期函数--监听页面显示
