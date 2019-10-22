@@ -2,7 +2,7 @@
   <image class='logo' src='/pages/images/qianyan_logo.png'></image>
   <view class='union'>
     <view class='dialect'>
-      <text></text> 四川大学方言学会
+      <text></text> {{startUpObj.organizeName}}
       <text></text>
     </view>
   </view>

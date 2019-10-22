@@ -10,8 +10,8 @@
       <rich-text nodes="{{actObj.content}}"></rich-text>
     </view>
   </scroll-view>
-  <view class="bottom">
+  <!-- <view class="bottom">
     <view class='btn btn-primary'>活动官网</view>
     <view class='btn btn-default'>报名入口</view>
-  </view>
+  </view> -->
 </view>

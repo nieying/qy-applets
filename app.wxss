@@ -39,6 +39,7 @@ page {
   font-weight: 600;
 }
 
+
 .header .money {
   display: flex;
   align-items: center;

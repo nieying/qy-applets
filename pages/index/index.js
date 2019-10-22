@@ -28,6 +28,10 @@ Page({
       } else {
         this.goToLanguagePage();
       }
+    } else {
+      wx.redirectTo({
+        url: "/pages/guide/guide"
+      });
     }
   },
 

@@ -10,16 +10,21 @@ Page({
   /**
    * 页面的初始数据
    */
+  //normal:文字题（伪音标题），auto:听力题，picture:选图题，map:看图题
   data: {
     height: 0,
+    warpHeight: 0,
     isLoading: false,
-    //normal:文字题（伪音标题），auto:听力题，picture:选图题，map:看图题
-    type: 3,
-    isAnswered: 0,
-    answerObj: {},
+    isAnswered: false,
+    isShowNote: false,
+    isPlay: false,
     selectId: '',
     rightId: '',
-    subjectObj: {}
+    answerObj: {},
+    subjectObj: {},
+    currentNote: {},
+    currentDialect: {},
+    userInfo: {},
   },
 
   /**
@@ -28,7 +33,9 @@ Page({
   onLoad: function(options) {
     console.log('options', options)
     this.setData({
-      height: wx.getStorageSync('statusBarHeight')
+      height: wx.getStorageSync('statusBarHeight') + 10,
+      warpHeight: parseInt(wx.getStorageSync('warpHeight')),
+      currentDialect: wx.getStorageSync('lastLanguage')
     });
     this.getData(options)
   },
@@ -37,6 +44,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
+    this.audioCtx = wx.createAudioContext('myAudio')
+
     if (this.data.isLoading) {
       timer = setTimeout(() => {
         this.setData({
@@ -45,7 +54,12 @@ Page({
       }, 3000)
     }
   },
-
+  audioPlay: function() {
+    this.audioCtx.play();
+    this.setData({
+      isPlay: true
+    })
+  },
   // 返回
   goBack: function() {
     wx.navigateBack()
@@ -61,11 +75,15 @@ Page({
     })
   },
   // 获取下一题
-  getNextSubject: function(isRight) {
+  getNextSubject: function() {
     wx.showLoading()
+    const {
+      rightId,
+      selectId
+    } = this.data;
     postSubject({
-      right: isRight,
-      subjectId: this.data.subjectObj.id
+      right: rightId === selectId,
+      subjectId: this.data.subjectObj.id,
     }).then(res => {
       this.dealData(res.data)
     })
@@ -80,10 +98,31 @@ Page({
       }
       a.checked = false
     })
+    if (obj.type === 'normal') {
+      const notes = JSON.parse(obj.notes);
+      notes.forEach(item => {
+        obj.title1 = obj.title.replace(new RegExp(`(${item.key})`, 'g'), ',$1,');
+      })
+      obj.titleList = obj.title1.split(',').filter(item => !!item).map(item => {
+        let d = notes.find(n => n.key === item);
+        if (d) {
+          return {
+            key: item,
+            value: d.value
+          }
+        } else {
+          return {
+            key: item,
+            value: ''
+          }
+        }
+      })
+    }
     this.setData({
       subjectObj: obj,
+      userInfo: obj.userInfo,
       rightId: rightId,
-      isAnswered: 0,
+      isAnswered: false,
       selectId: '',
     })
     wx.hideLoading()
@@ -91,7 +130,7 @@ Page({
 
   //单选
   getradio: function(e) {
-    if (this.data.isAnswered === 0) {
+    if (!this.data.isAnswered) {
       let index = e.currentTarget.dataset.id;
       const {
         subjectObj
@@ -117,13 +156,12 @@ Page({
 
   // 提交
   submit: function(e) {
-    // 判断是否答对了
     const {
       rightId,
       selectId
     } = this.data;
     this.setData({
-      isAnswered: selectId === rightId ? 1 : 2,
+      isAnswered: true,
       answerObj: {
         className: selectId === rightId ? 'correct' : 'wrong',
         color: selectId === rightId ? '#00C853' : '#F44336',
@@ -132,13 +170,18 @@ Page({
         txt2: selectId === rightId ? '答对了' : '答错了'
       }
     })
-    console.log(this.data)
-    // setTimeout(() => {
-    //   this.getNextSubject(selectId === rightId)
-    // }, 3000)
   },
 
-
+  // 显示注释
+  showNote: function(e) {
+    const item = e.currentTarget.dataset.item;
+    if (item.value) {
+      this.setData({
+        isShowNote: true,
+        currentNote: item
+      })
+    }
+  },
 
   /**
    * 生命周期函数--监听页面显示

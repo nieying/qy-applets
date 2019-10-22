@@ -6,9 +6,9 @@
       <image src="/pages/images/icon-{{ showDialect ? 'down' : 'up' }}.svg"></image>
     </view>
     <view class="progress">
-      <progress percent="60" active backgroundColor="#B0BEC5" color="#FBC02E" stroke-width="4" border-radius="15" />
+      <progress percent="{{currentDialect.progress}}" active backgroundColor="#B0BEC5" color="#FBC02E" stroke-width="4" border-radius="15" />
       <view class="txt">
-        98 /
+        {{currentDialect.progress}} / 
         <text>100</text>
       </view>
     </view>
