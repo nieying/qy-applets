@@ -1,7 +1,9 @@
 import {
   approvalmember
 } from '../../api/api.js'
-import { formatDate } from '../../../utils/util.js'
+import {
+  formatDate
+} from '../../../utils/util.js'
 
 Component({
   /**
@@ -9,8 +11,8 @@ Component({
    */
   properties: {
     datas: {
-      type: Object,
-      value: {}
+      type: Array,
+      value: []
     },
     tab: {
       type: String,
@@ -25,9 +27,13 @@ Component({
 
   },
 
-  attached: {
-
+  lifetimes: {
+    // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
+    attached: function() {},
+    moved: function() {},
+    detached: function() {},
   },
+
 
   /**
    * 组件的方法列表

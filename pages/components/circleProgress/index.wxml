@@ -1,19 +1,8 @@
-<view class="container">
-
-  <view class='progress_box'>
-
-    <canvas class="progress_bg" canvas-id="canvasProgressbg"> </canvas>
-
-    <canvas class="progress_canvas" canvas-id="canvasProgress"> </canvas>
-
-    <view class="progress_text">
-
-      <view class="progress_dot"></view>
-
-      <text class='progress_info'> {{progress_txt}}</text>
-
-    </view>
-
-  </view>
-
+<!-- components/circle/circle.wxml -->
+<view class="circle_box" style="width:{{size}}px;height:{{size}}px">
+  <canvas class="circle_bg" canvas-id="bg" style="width:{{size}}px;height:{{size}}px"></canvas>
+  <canvas class="circle_draw" canvas-id="draw" style="width:{{size}}px;height:{{size}}px"></canvas>
+  <image src="{{bgImg}}" class="bg-img" style="width:{{size}}px;height:{{size}}px"></image>
+  <image src="{{drawImg}}" class="draw-img" style="width:{{size}}px;height:{{size}}px"></image>
+  <slot></slot>
 </view>

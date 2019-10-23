@@ -56,8 +56,8 @@ Component({
         console.log('getUserDialectList', res)
         let userDialect = res.data;
         let currentDialect = [];
-        if (wx.getStorageSync('lastLanguage') && wx.getStorageSync('lastLanguage').length>0) {
-         currentDialect = wx.getStorageSync('lastLanguage');
+        if (wx.getStorageSync('lastLanguage') && wx.getStorageSync('lastLanguage').length > 0) {
+          currentDialect = wx.getStorageSync('lastLanguage');
         } else {
           currentDialect = userDialect[0]
         }
@@ -95,7 +95,7 @@ Component({
         })
       } else {
         wx.showToast({
-          icon:'',
+          icon: '',
           title: '生命值不足',
         })
       }
@@ -103,6 +103,7 @@ Component({
 
     // 获取单元列表
     getUnitList: function(languageId) {
+      wx.showLoading()
       getUnit({
         languageId: languageId
       }).then(res => {
@@ -117,9 +118,17 @@ Component({
 
     // 点击单元
     clickUnit: function(e) {
-      this.setData({
-        currentUnit: e.currentTarget.dataset['item'],
-      })
+      const unit = e.currentTarget.dataset['item'];
+      if (unit.progress > 0) {
+        this.setData({
+          currentUnit: e.currentTarget.dataset['item'],
+        })
+      } else {
+        wx.showToast({
+          icon: 'none',
+          title: '请先学习前面的单元'
+        })
+      }
     },
 
     // 选择方言

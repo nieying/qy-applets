@@ -5,6 +5,7 @@ import {
 } from '../api/api.js';
 let timer = ''
 const app = getApp()
+const innerAudioContext = wx.createInnerAudioContext()
 Page({
 
   /**
@@ -44,8 +45,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    this.audioCtx = wx.createAudioContext('myAudio')
-
     if (this.data.isLoading) {
       timer = setTimeout(() => {
         this.setData({
@@ -54,12 +53,7 @@ Page({
       }, 3000)
     }
   },
-  audioPlay: function() {
-    this.audioCtx.play();
-    this.setData({
-      isPlay: true
-    })
-  },
+
   // 返回
   goBack: function() {
     wx.navigateBack()
@@ -118,6 +112,7 @@ Page({
         }
       })
     }
+
     this.setData({
       subjectObj: obj,
       userInfo: obj.userInfo,
@@ -127,6 +122,35 @@ Page({
     })
     wx.hideLoading()
   },
+
+  // 播放音频
+  audioPlay: function() {
+    innerAudioContext.src = this.data.subjectObj.filePath;
+    innerAudioContext.play();
+    innerAudioContext.onPlay(() => {
+      this.setData({
+        isPlay: true
+      })
+      console.log('录音播放中');
+    });             
+    innerAudioContext.onEnded(() => {
+      this.setData({
+        isPlay: false
+      })
+      console.log('录音播放结束');
+    })
+  },
+  // 停止播放
+  audioStop:function() {
+    innerAudioContext.stop();
+    innerAudioContext.onStop(() => {
+      this.setData({
+        isPlay: false
+      })
+      console.log('录音播放停止');
+    });  
+  },
+
 
   //单选
   getradio: function(e) {
@@ -201,6 +225,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    this.audioStop()
   },
 })

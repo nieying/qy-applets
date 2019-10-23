@@ -2,7 +2,9 @@ import {
   getOrganizeDetail,
   getOrganMemberList
 } from '../api/api.js'
-import {getSpell} from '../../utils/util'
+import {
+  getSpell
+} from '../../utils/util'
 Page({
   /**
    * 页面的初始数据
@@ -100,11 +102,14 @@ Page({
       // this.dealData(res.data.list)
       res.data.list.filter(r => {
         if (r.state === 1) {
+          r.addTime = Date.parse(r.addTime)
           peddingMemberList.push(r)
         } else {
+          r.addTime = Date.parse(r.addTime)
           memberList.push(r)
         }
       })
+      console.log('peddingMemberList', peddingMemberList, memberList)
       this.setData({
         memberList: memberList,
         peddingMemberList: peddingMemberList,
@@ -117,7 +122,10 @@ Page({
     var someTtitle = null;
     var someArr = [];
     for (var i = 0; i < arr.length; i++) {
-      var newBrands = { id: arr[i].id, name: arr[i].userName };
+      var newBrands = {
+        id: arr[i].id,
+        name: arr[i].userName
+      };
       if (arr[i].initial != someTtitle) {
         someTtitle = arr[i].initial
         var newObj = {
@@ -127,7 +135,7 @@ Page({
         };
         someArr.push(newObj)
       }
-    console.log('newObj===>', newBrands)
+      console.log('newObj===>', newBrands)
       newObj.brands.push(newBrands);
     };
 

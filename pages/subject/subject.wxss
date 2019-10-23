@@ -140,7 +140,7 @@
 }
 
 .checked {
-  background: #ffd100;
+  background: #ffd100 !important;
 }
 
 .correct {
@@ -238,4 +238,12 @@
   color: #90a4ae;
   font-size: 24rpx;
   line-height: 48rpx;
+}
+
+.subject-listen .tips {
+  color: #90a4ae;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30rpx;
 }

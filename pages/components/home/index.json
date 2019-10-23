@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "buy": "/pages/components/buy/index"
+    "buy": "/pages/components/buy/index",
+    "circle": "/pages/components/circleProgress/index"
   }
 }

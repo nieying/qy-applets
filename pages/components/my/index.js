@@ -14,7 +14,7 @@ Component({
 
   /**
    * 组件的初始数据
-   */
+   */ 
   data: {
     height: 0,
     warpHeight: 0,
@@ -25,7 +25,7 @@ Component({
 
   attached: function() {
     this.getData();
-    this.getStateData();
+    // this.getStateData();
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight'))
@@ -86,24 +86,25 @@ Component({
           })
           break;
         case 3:
-          this.getUserUnion()
+          this.getStateData()
           break;
       }
     },
     getStateData: function() {
-      wx.showLoading()
+      // wx.showLoading()
       getState().then(res => {
-        this.setData({
-          userType: res.data
-        })
-        wx.hideLoading()
+        // this.setData({
+        //   userType: res.data
+        // })
+        // wx.hideLoading()
+        this.getUserUnion(res.data);
       })
     },
 
-    getUserUnion: function() {
-      const {
-        userType
-      } = this.data;
+    getUserUnion: function (userType) {
+      // const {
+      //   userType
+      // } = this.data;
       if (userType === 'leader') { // 会长
         wx.navigateTo({
           url: `/pages/union/union?userType=${userType}`,

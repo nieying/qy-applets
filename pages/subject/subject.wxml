@@ -53,9 +53,9 @@
             <view class='name'>
               <text>根据听到的内容选择</text>
               <image wx:if="{{!isPlay}}" src='/pages/images/subject/icon-listen.svg' bindtap="audioPlay"></image>
-              <image wx:else src='/pages/images/subject/icon-listen1.svg'></image>
+              <image wx:else src='/pages/images/subject/listen.gif' bindtap="audioStop"></image>
             </view>
-            <audio style="display:none" src="{{subjectObj.filePath}}" id="myAudio" controls></audio>
+            <view class='tips' wx:if="{{isPlay}}">播放音频播放中...</view>
             <view class='topic'></view>
           </view>
 

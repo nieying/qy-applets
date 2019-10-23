@@ -1,40 +1,15 @@
-.progress_box {
+.circle_box, .circle_draw {
   position: relative;
-  width: 220px;
-  height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #eee;
 }
 
-.progress_bg {
+.circle_bg, .circle_draw {
+  position: fixed;
+  top: 9999rpx;
+  left: 0;
+  width: 188rpx;
+  height: 188rpx;
+}
+
+.bg-img, .draw-img {
   position: absolute;
-  width: 220px;
-  height: 220px;
-}
-
-.progress_canvas {
-  width: 220px;
-  height: 220px;
-}
-
-.progress_text {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.progress_info {
-  font-size: 36rpx;
-  padding-left: 16rpx;
-  letter-spacing: 2rpx;
-}
-
-.progress_dot {
-  width: 16rpx;
-  height: 16rpx;
-  border-radius: 50%;
-  background-color: #fb9126;
 }

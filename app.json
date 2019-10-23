@@ -11,7 +11,8 @@
     "pages/components/buy/index",
     "pages/searchUnion/searchUnion",
     "pages/applyFeedback/applyFeedback",
-    "pages/union/union"
+    "pages/union/union",
+    "pages/out/out"
   ],
   "window": {
     "backgroundTextStyle": "light",

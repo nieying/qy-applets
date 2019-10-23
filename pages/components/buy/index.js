@@ -24,17 +24,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
-
-    clickMask() {
-      // this.setData({show: false})
-    },
-
-    cancel() {
-      this.setData({
-        show: false
-      })
-      this.triggerEvent('cancel')
+    clickMask(e) {
+      if (e.currentTarget.dataset.id == 1) {
+        this.setData({ show: false })
+      }
     },
 
     confirm() {
