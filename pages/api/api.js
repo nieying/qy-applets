@@ -110,6 +110,15 @@ export const createFeedback = (params) => {
   })
 };
 
+// 用户成就查询
+export const getUserGarde = (params) => {
+  return request.http({
+    url: "/common/grade/info",
+    method: 'GET',
+    data: params
+  })
+};
+
 // 方言列表
 export const getDialectList = (params) => {
   return request.http({

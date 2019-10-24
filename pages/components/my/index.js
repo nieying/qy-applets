@@ -1,6 +1,7 @@
 import {
   queryUserInfo,
-  getState
+  getState,
+  getUserGarde
 } from '../../api/api.js'
 const app = getApp()
 
@@ -25,6 +26,7 @@ Component({
 
   attached: function() {
     this.getData();
+    this.getAchieve()
     // this.getStateData();
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
@@ -50,6 +52,13 @@ Component({
           userInfo: res.data
         })
         wx.hideLoading()
+      })
+    },
+    // 获取成就
+    getAchieve: function() {
+      getUserGarde().then(res=> {
+        debugger
+        this.setData({gardeList: res})
       })
     },
     // 显示弹框
