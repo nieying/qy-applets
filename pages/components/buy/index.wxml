@@ -6,22 +6,22 @@
         <text class='name'>生命值</text>
         <text class='desc'>生命值介绍生命值介绍生命值介绍生命</text>
         <view class='money'>
-          <image src="/pages/images/icon-money.svg"></image>
+          <image class='icon-money' src="/pages/images/icon-money.svg"></image>
           <text>x7</text> </view>
-        <view class='btn btn-primary' bindtap='pay'>购买</view>
+        <view class='btn btn-primary' bindtap='onBuyLife'>购买</view>
       </view>
       <view class='item'>
         <image src='/pages/images/buy/icon-life-card.svg'></image>
         <text class='name'>生命卡</text>
         <text class='desc'>购买后实时到账 当日生命值不会消减</text>
         <view class='money'>
-          <image src="/pages/images/icon-money.svg"></image>
-          <text>x7</text> </view>
-        <view class='btn btn-primary' bindtap='pay'>购买</view>
+          <image  class='icon-money' src="/pages/images/icon-money.svg"></image>
+          <text>x21</text> </view>
+        <view class='btn btn-primary' bindtap='onBuyCard'>购买</view>
       </view>
     </view>
     <view class='my'>您还有钞票
-      <text>7</text>
+     <image  class='icon-money' src="/pages/images/icon-money.svg"></image>  <text>{{userInfo.cost}}</text>
     </view>
   </view>
 </view>

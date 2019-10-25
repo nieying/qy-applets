@@ -1,60 +1,52 @@
+import {
+  buyCard,
+  buyLife
+} from '../../api/api.js'
 const app = getApp()
 
 Component({
 
-  /**
-   * 组件的属性列表
-   */
   properties: {
-    //是否显示modal
     show: {
       type: Boolean,
       value: false
     },
   },
 
-  /**
-   * 组件的初始数据
-   */
   data: {
-
+    userInfo: {}
   },
 
-  /**
-   * 组件的方法列表
-   */
+  ready: function() {
+    this.setData({
+      userInfo: wx.getStorageSync('userInfo')
+    })
+  },
+
   methods: {
     clickMask(e) {
-      if (e.currentTarget.dataset.id == 1) {
-        this.setData({ show: false })
+      if (e.target.dataset.id == 1) {
+        this.triggerEvent('toggleBuyModal')
       }
     },
 
-    confirm() {
-      this.setData({
-        show: false
+    // 购买生命值
+    onBuyLife: function() {
+      buyLife().then(res => {
+        this.succCallback()
       })
-      this.triggerEvent('confirm')
+    },
+    // 购买生命卡
+    onBuyCard: function() {
+      buyCard().then(res => {
+        this.succCallback()
+      })
     },
 
-    // 充值
-    pay: function() {
-      console.log('pay.......')
-      wx.requestPayment({
-        'timeStamp': '',
-        'nonceStr': '',
-        'package': '',
-        'signType': 'MD5',
-        'paySign': '',
-        'success': function(res) {
-          console.log('success', res)
-        },
-        'fail': function(res) {
-          console.log('fail', res)
-        },
-        'complete': function(res) {
-          console.log('complete', res)
-        }
+    succCallback: function() {
+      wx.showToast({
+        icon: '',
+        title: '购买成功！',
       })
     }
   }

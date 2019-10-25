@@ -116,9 +116,9 @@ Component({
       } = this.properties
       let count = 0;
       this.drawCircleBg(r, w)
-      if (steps > 0) {
-        this.drawCircle(r, w, steps * 2 / 100)
-      }
+      // if (steps > 0) {
+      this.drawCircle(r, w, steps * 2 / 100)
+      // }
       // if (steps > 0) {
       //   let countTimer = setInterval(() => {
       //     if (count <= steps * 2) {

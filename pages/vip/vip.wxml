@@ -45,7 +45,8 @@
       </view>
     </view>
   </scroll-view>
-  <view class="bottom">
-    <text>开通会员</text>
+  <view class="bottom" bindtap='goPay'>
+    <text wx:if="{{totalBill>0}}">续费</text>
+    <text wx:else>开通会员</text>
   </view>
 </view>

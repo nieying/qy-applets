@@ -3,7 +3,7 @@ import request from "../../utils/request";
 const AppId = "wx84aa4b7c0fc9c4ca"; // 微信appid
 const SessionKey = "5579ce3a448b0ea85bfd5c6ff0e73919"; // 微信秘钥（微信后台秘钥保存好、刷新会重新生成)
 const app = getApp();
- 
+
 // 授权
 export const uploadWeChatInfo = () => {
   const that = this;
@@ -239,3 +239,18 @@ export const searchOrgan = (params) => {
 //     data: params
 //   })
 // };
+
+// 钞票购买生命卡
+export const buyCard = (params) => {
+  return request.http({
+    url: "/user/card/buy",
+    data: params
+  })
+};
+// 钞票购买生命值
+export const buyLife = (params) => {
+  return request.http({
+    url: "/user/cost/buy",
+    data: params
+  })
+};

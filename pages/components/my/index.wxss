@@ -84,6 +84,14 @@
   margin-top: 30rpx;
 }
 
+.achieve-active {
+  background: #E5F9ED;
+}
+
+.achieve-active .three {
+  background: #00C853 !important;
+}
+
 .achieve-item .left {
   flex: 1;
 }

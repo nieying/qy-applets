@@ -83,6 +83,7 @@ Component({
       })
     },
 
+    // 去答题
     goSubject: function() {
       const {
         currentDialect,
@@ -119,16 +120,16 @@ Component({
     // 点击单元
     clickUnit: function(e) {
       const unit = e.currentTarget.dataset['item'];
-      if (unit.progress > 0) {
-        this.setData({
-          currentUnit: e.currentTarget.dataset['item'],
-        })
-      } else {
-        wx.showToast({
-          icon: 'none',
-          title: '请先学习前面的单元'
-        })
-      }
+      // if (unit.progress > 0) {
+      this.setData({
+        currentUnit: e.currentTarget.dataset['item'],
+      })
+      // } else {
+      //   wx.showToast({
+      //     icon: 'none',
+      //     title: '请先学习前面的单元'
+      //   })
+      // }
     },
 
     // 选择方言
@@ -170,7 +171,7 @@ Component({
         console.log('changeDialect res', res)
       })
     },
-    showBuyModal: function() {
+    toggleBuyModal: function() {
       this.setData({
         showDialect: false,
         showBuyModal: !this.data.showBuyModal,

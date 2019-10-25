@@ -6,7 +6,7 @@
     <view class='padding-box'>
       <view class="user-info">
         <view class="money">
-          <image src="/pages/images/icon-money.svg"></image>
+          <image src="/pages/images/icon-money.svg" bindtap='goPay'></image>
           <view>{{userInfo.cost}}</view>
         </view>
         <image class="user-pic" src="{{userInfo.avatar}}"></image>
@@ -21,37 +21,16 @@
       </view>
       <view class="achieve">
         <view class="title">我的成就</view>
-        <view class="achieve-item">
+        <view class="achieve-item {{item.isActive ?'achieve-active':''}}" wx:for="{{gardeList}}" wx:for-item="item" wx:key="index">
           <view class="left">
-            <view class="one">千言冠军</view>
-            <view class="two">完成基础试题项目</view>
-            <text class="three">60/100</text>
+            <view class="one">{{item.title}}</view>
+            <view class="two">{{item.remark}}</view>
+            <text class="three" wx:if="{{item.type==='languageProcess'}}">{{item.value}}/100</text>
           </view>
           <view class="right">
-            <image src="/pages/images/my/icon-achieve.svg"></image>
-            <progress percent="60" active backgroundColor="#EAEDF2" color="#FFD100" stroke-width="4" border-radius="10" />
-          </view>
-        </view>
-        <view class="achieve-item">
-          <view class="left">
-            <view class="one">学习证明</view>
-            <view class="two">完成基础试题项目</view>
-            <text class="three">0/1000</text>
-          </view>
-          <view class="right">
-            <image src="/pages/images/my/icon-achieve2.svg"></image>
-            <progress percent="0" activebackgroundColor="#EAEDF2" color="#FFD100" stroke-width="4" border-radius="10" />
-          </view>
-        </view>
-        <view class="achieve-item">
-          <view class="left">
-            <view class="one">志愿参与时长</view>
-            <view class="two">完成基础试题项目</view>
-            <text class="three">0/1000</text>
-          </view>
-          <view class="right">
-            <image src="/pages/images/my/icon-achieve3.svg"></image>
-            <progress percent="0" activebackgroundColor="#EAEDF2" color="#FFD100" stroke-width="4" border-radius="10" />
+            <image wx:if="{{item.isActive}}" src="{{item.image}}"></image>
+            <image wx:else src="{{item.darkImage}}"></image>
+            <progress wx:if="{{item.type==='languageProcess'}}" percent="{{item.value}}" active backgroundColor="#EAEDF2" color="{{item.value === 100 ? '#00C853':'#FFD100 '}}" stroke-width="4" border-radius="10" />
           </view>
         </view>
       </view>

@@ -1,0 +1,26 @@
+/* pages/pay/pay.wxss */
+
+.list {
+  margin-top: 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 30%;
+  border: 2rpx solid #eaedf2;
+  height: 150rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 10rpx;
+  border-radius: 10rpx;
+  font-size: 36rpx;
+}
+
+.list .active {
+  border: 2rpx solid #00c853;
+  color: #00c853;
+}
+

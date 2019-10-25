@@ -12,7 +12,8 @@
     "pages/searchUnion/searchUnion",
     "pages/applyFeedback/applyFeedback",
     "pages/union/union",
-    "pages/out/out"
+    "pages/out/out",
+    "pages/pay/pay"
   ],
   "window": {
     "backgroundTextStyle": "light",

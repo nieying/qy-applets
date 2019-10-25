@@ -12,7 +12,7 @@
         <text>100</text>
       </view>
     </view>
-    <view class="money" bindtap='showBuyModal'>
+    <view class="money" bindtap='toggleBuyModal'>
       <image src="/pages/images/icon-money.svg"></image>
       {{userInfo.cost}}
     </view>
@@ -27,7 +27,7 @@
       </view>
       <view class="right" bindtap="goLanguage">+</view>
     </view>
-    <buy show="{{showBuyModal}}"></buy>
+    <buy show="{{showBuyModal}}" bind:toggleBuyModal='toggleBuyModal'></buy>
     <view class="home-warp">
       <circle wx:if="{{currentUnit.id}}" r="100" steps="{{currentUnit.progress}}">
         <!-- 这部分内容将被放置在组件 <slot> 的位置上 -->

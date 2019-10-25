@@ -15,7 +15,7 @@ Component({
 
   /**
    * 组件的初始数据
-   */ 
+   */
   data: {
     height: 0,
     warpHeight: 0,
@@ -26,7 +26,6 @@ Component({
 
   attached: function() {
     this.getData();
-    this.getAchieve()
     // this.getStateData();
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
@@ -51,14 +50,36 @@ Component({
         this.setData({
           userInfo: res.data
         })
+        this.getAchieve(res.data.lastLanguage.languageId)
         wx.hideLoading()
       })
     },
     // 获取成就
-    getAchieve: function() {
-      getUserGarde().then(res=> {
-        debugger
-        this.setData({gardeList: res})
+    getAchieve: function(id) {
+      getUserGarde({
+        languageId: id
+      }).then(res => {
+        res.data.forEach(item => {
+          if (item.type === 'languageProcess' && item.value === 100) {
+            item.isActive = true
+          } else if (item.type === 'actTimes' && item.value > 0) {
+            item.isActive = true
+          } else if ((item.type === 'bigRich' || item.type === 'bigWinner') && item.value.name) {
+            item.isActive = true
+          } else if (item.type === 'languageProveList' && item.value.length > 0) {
+            item.isActive = true
+          } else if (item.type === 'actTimes' && item.value > 0) {
+            item.isActive = true
+          } else if ((item.type === 'exactPrize' || item.type === 'smallFire' || item.type === 'mediumFire' || item.type === 'maxFire') && item.value) {
+            item.isActive = true
+          } else {
+            item.isActive = false
+          }
+        })
+        this.setData({
+          gardeList: res.data
+        })
+        console.log('gardeList====>', res.data)
       })
     },
     // 显示弹框
@@ -110,7 +131,7 @@ Component({
       })
     },
 
-    getUserUnion: function (userType) {
+    getUserUnion: function(userType) {
       // const {
       //   userType
       // } = this.data;
@@ -149,6 +170,12 @@ Component({
     // 弹框确定后触发
     onConfirm: function() {
       this.getData();
+    },
+
+    goPay: function () {
+      wx.navigateTo({
+        url: '/pages/pay/pay',
+      })
     }
   }
 })

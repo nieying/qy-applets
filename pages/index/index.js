@@ -2,18 +2,12 @@ import {
   getStartUp,
 } from "../api/api";
 const app = getApp();
+const times = 2000;
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     startUpObj: null,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function(options) {
     console.log('startup onLoad', wx.getStorageSync('token'))
     if (wx.getStorageSync('token')) {
@@ -35,9 +29,6 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function() {
     // this.goToMainPage();
   },
@@ -48,7 +39,7 @@ Page({
       wx.redirectTo({
         url: "/pages/main/main"
       });
-    }, 3000);
+    }, times);
   },
 
   // 跳转页面
@@ -57,6 +48,6 @@ Page({
       wx.redirectTo({
         url: "/pages/language/language"
       });
-    }, 3000);
+    }, times);
   }
 })

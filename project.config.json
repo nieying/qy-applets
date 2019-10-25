@@ -47,7 +47,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -109,6 +109,13 @@
 					"id": -1,
 					"name": "applyFeedback",
 					"pathName": "pages/applyFeedback/applyFeedback",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pay",
+					"pathName": "pages/pay/pay",
 					"query": "",
 					"scene": null
 				}

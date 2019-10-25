@@ -30,4 +30,10 @@ Page({
   goBack: function() {
     wx.navigateBack()
   },
+
+  goPay: function() {
+    wx.navigateTo({
+      url: '/pages/pay/pay',
+    })
+  }
 })

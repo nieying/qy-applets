@@ -74,6 +74,7 @@
   margin-top: 38rpx;
   display: flex;
   justify-content: center;
+  align-items: center;
   color: #90a4ae;
 }
 
@@ -88,8 +89,8 @@
   align-items: center;
 }
 
-.money image {
-  margin-right: 12rpx;
+.icon-money {
+  margin: 0 12rpx;
   width: 48rpx !important;
   height: 48rpx !important;
 }
