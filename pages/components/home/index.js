@@ -96,7 +96,7 @@ Component({
         })
       } else {
         wx.showToast({
-          icon: '',
+          icon: 'none',
           title: '生命值不足',
         })
       }

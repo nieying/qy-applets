@@ -15,7 +15,7 @@ Page({
   data: {
     height: 0,
     warpHeight: 0,
-    isLoading: false,
+    isLoading: true,
     isAnswered: false,
     isShowNote: false,
     isPlay: false,
@@ -50,7 +50,7 @@ Page({
         this.setData({
           isLoading: false
         })
-      }, 3000)
+      }, 2000)
     }
   },
 

@@ -73,7 +73,7 @@ Component({
       // gradient.addColorStop("0", "#2661DD");
       // gradient.addColorStop("0.5", "#40ED94");
       // gradient.addColorStop("1.0", "#5956CC");
-      gradient.addColorStop("1.0", "#FFD100");
+      gradient.addColorStop("1.0", step === 0 ? '#EAEDF2' : "#FFD100");
       context.setLineWidth(w);
       context.setStrokeStyle(gradient);
       context.setLineCap('round')
