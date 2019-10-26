@@ -7,7 +7,7 @@
       <view class="user-info">
         <view class="money">
           <image src="/pages/images/icon-money.svg" bindtap='goPay'></image>
-          <view>{{userInfo.cost}}</view>
+          <view>{{userInfo.bill}}</view>
         </view>
         <image class="user-pic" src="{{userInfo.avatar}}"></image>
         <view class="user-name" bindtap='showModal' data-type="1">{{userInfo.nickName}}</view>

@@ -1,9 +1,11 @@
 .page-start-up {
-  /* background: #ffd100; */
   position: fixed;
   height: 100%;
   width: 100%;
   display: flex;
+}
+.bg-color {
+  background: #ffd100;
 }
 
 .bg-img {

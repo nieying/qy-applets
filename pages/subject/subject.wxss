@@ -195,7 +195,7 @@
 }
 
 .tone-list .item image {
-  width: 40%;
+  width: 90%;
   height: 360rpx;
 }
 

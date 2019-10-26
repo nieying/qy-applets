@@ -5,17 +5,20 @@
   <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
     <view class='padding-box'>
       <view class="select-language">选择要学习的语言</view>
-      <view class="list" wx:for="{{dialectList}}" wx:for-item="item" wx:key="index" data-id="{{index}}" bindtap='userCheck'>
+      <view class="list" wx:if="{{dialectList.length>0}}" wx:for="{{dialectList}}" wx:for-item="item" wx:key="index" data-id="{{index}}" bindtap='userCheck'>
         <text class="type">{{item.name}}</text>
         <view class="item">
-          <view wx:for="{{item.childList}}" wx:for-item="child" wx:key="index" data-id="{{index}}" class="{{child.checked?'check':''}}">
+          <view wx:for="{{item.childList}}" wx:for-item="child" wx:key="index" data-id="{{index}}" data-state="{{child.state}}" class="{{child.checked?'check':''}}">
             {{child.languageName}}
           </view>
         </view>
       </view>
+      <view wx:if="{{dialectList.length === 0}}" class="no-datas">
+        <text>暂无数据</text>
+      </view>
     </view>
   </scroll-view>
-  <view class="bottom" bindtap="confrim">
+  <view wx:if="{{dialectList.length > 0}}" class="bottom" bindtap="confrim">
     <text>确定</text>
   </view>
 </view>

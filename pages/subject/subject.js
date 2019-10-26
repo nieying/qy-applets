@@ -23,6 +23,7 @@ Page({
     rightId: '',
     answerObj: {},
     subjectObj: {},
+    nextSubject: {},
     currentNote: {},
     currentDialect: {},
     userInfo: {},
@@ -65,35 +66,59 @@ Page({
     getSubject({
       languageId: options.languageId
     }).then(res => {
+      wx.hideLoading()
       this.dealData(res.data)
     })
   },
   // 获取下一题
-  getNextSubject: function() {
-    wx.showLoading()
-    const {
-      rightId,
-      selectId
-    } = this.data;
-    postSubject({
-      right: rightId === selectId,
-      subjectId: this.data.subjectObj.id,
-    }).then(res => {
-      this.dealData(res.data)
-    })
+  getNextSubject: function(e) {
+    const type = e.currentTarget.dataset.type;
+    if (type === 'submit') {
+      wx.showLoading()
+      const {
+        rightId,
+        selectId
+      } = this.data;
+      postSubject({
+        right: rightId === selectId,
+        subjectId: this.data.subjectObj.id,
+      }).then(res => {
+        wx.hideLoading()
+        this.setData({
+          nextSubject: res.data,
+          userInfo: res.data.userInfo,
+        })
+        this.submit()
+      })
+    } else {
+      if (this.data.nextSubject.answers) {
+        this.dealData(this.data.nextSubject)
+      } else {
+        wx.showToast({
+          icon: 'none',
+          title: '该单元已学完！',
+        })
+       setTimeout(() => {
+          wx.redirectTo({
+            url: '/pages/main/main',
+          })
+        }, 2000)
+      }
+    }
+
   },
 
   // 处理请求的数据
   dealData: function(obj) {
     let rightId = ''
     obj.answers.forEach(a => {
-      if (a.right === 1) {
+      if (a.right) {
         rightId = a.id
       }
       a.checked = false
     })
-    if (obj.type === 'normal') {
-      const notes = JSON.parse(obj.notes);
+    const notes = JSON.parse(obj.notes);
+    if (obj.type === 'normal' && notes.length > 0) {
       notes.forEach(item => {
         obj.title1 = obj.title.replace(new RegExp(`(${item.key})`, 'g'), ',$1,');
       })
@@ -115,12 +140,10 @@ Page({
 
     this.setData({
       subjectObj: obj,
-      userInfo: obj.userInfo,
       rightId: rightId,
       isAnswered: false,
       selectId: '',
     })
-    wx.hideLoading()
   },
 
   // 播放音频
@@ -141,7 +164,7 @@ Page({
     })
   },
   // 停止播放
-  audioStop:function() {
+  audioStop: function() {
     innerAudioContext.stop();
     innerAudioContext.onStop(() => {
       this.setData({
@@ -150,7 +173,6 @@ Page({
       console.log('录音播放停止');
     });  
   },
-
 
   //单选
   getradio: function(e) {
@@ -207,25 +229,12 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
   onHide: function() {
     clearTimeout(timer);
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onUnload: function() {
-    if(this.data.subjectObj.type === 'auto') {
+    if (this.data.subjectObj.type === 'auto') {
       this.audioStop()
     }
   },

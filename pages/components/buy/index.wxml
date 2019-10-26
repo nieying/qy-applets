@@ -21,7 +21,7 @@
       </view>
     </view>
     <view class='my'>您还有钞票
-     <image  class='icon-money' src="/pages/images/icon-money.svg"></image>  <text>{{userInfo.cost}}</text>
+     <image  class='icon-money' src="/pages/images/icon-money.svg"></image>  <text>{{userInfo.bill}}</text>
     </view>
   </view>
 </view>

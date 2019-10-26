@@ -4,18 +4,12 @@ import {
 const app = getApp()
 
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
 
   },
 
-  /**
-   * 组件的初始数据
-   */
   data: {
-    list: [1, 2, 3, 4, 5],
+    list: [],
     height: 0,
     warpHeight: 0,
   },
@@ -38,9 +32,6 @@ Component({
     })
   },
 
-  /**
-   * 组件的方法列表
-   */
   methods: {
     goToActivityDetail: function(e) {
       const id = e.currentTarget.dataset.id

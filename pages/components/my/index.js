@@ -50,6 +50,7 @@ Component({
         this.setData({
           userInfo: res.data
         })
+        wx.setStorageSync('userInfo', res.data)
         this.getAchieve(res.data.lastLanguage.languageId)
         wx.hideLoading()
       })

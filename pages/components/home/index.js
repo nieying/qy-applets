@@ -1,4 +1,5 @@
 import {
+  queryUserInfo,
   getUnit,
   getUserDialectList,
   changeDialect
@@ -6,16 +7,10 @@ import {
 const app = getApp()
 
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
 
   },
 
-  /**
-   * 组件的初始数据
-   */
   data: {
     height: 0,
     warpHeight: 0,
@@ -29,13 +24,13 @@ Component({
   },
 
   ready: function() {
+    this.getUserInfo();
     this.getData();
   },
 
 
   attached: function() {
     this.setData({
-      userInfo: wx.getStorageSync('userInfo'),
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight')) + 10,
     })
@@ -45,10 +40,15 @@ Component({
     console.log('---onShow')
   },
 
-  /**
-   * 组件的方法列表
-   */
   methods: {
+    getUserInfo: function() {
+      queryUserInfo().then(res => {
+        this.setData({
+          userInfo: res.data
+        })
+        wx.setStorageSync('userInfo', res.data)
+      })
+    },
     getData: function() {
       // 获取用户已经学习的方言
       wx.showLoading()
@@ -90,16 +90,23 @@ Component({
         currentUnit,
         userInfo
       } = this.data
-      if (userInfo.bill > 0) {
-        wx.navigateTo({
-          url: `/pages/subject/subject?id=${currentUnit.id}&languageId=${currentDialect.languageId}`
-        })
-      } else {
+      if (userInfo.cost === 0) {
         wx.showToast({
           icon: 'none',
           title: '生命值不足',
         })
+        return;
       }
+      if (currentUnit.learnState === 'old') {
+        wx.showToast({
+          icon: 'none',
+          title: '该单元已学完'
+        })
+        return;
+      }
+      wx.navigateTo({
+        url: `/pages/subject/subject?id=${currentUnit.id}&languageId=${currentDialect.languageId}`
+      })
     },
 
     // 获取单元列表
@@ -120,16 +127,17 @@ Component({
     // 点击单元
     clickUnit: function(e) {
       const unit = e.currentTarget.dataset['item'];
-      // if (unit.progress > 0) {
+
+      if (unit.learnState === 'future') {
+        wx.showToast({
+          icon: 'none',
+          title: '请先学习前面的单元'
+        })
+        return;
+      }
       this.setData({
         currentUnit: e.currentTarget.dataset['item'],
       })
-      // } else {
-      //   wx.showToast({
-      //     icon: 'none',
-      //     title: '请先学习前面的单元'
-      //   })
-      // }
     },
 
     // 选择方言

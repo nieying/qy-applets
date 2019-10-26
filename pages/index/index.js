@@ -11,17 +11,17 @@ Page({
   onLoad: function(options) {
     console.log('startup onLoad', wx.getStorageSync('token'))
     if (wx.getStorageSync('token')) {
-      if (wx.getStorageSync('lastLanguage') && wx.getStorageSync('lastLanguage').hasOwnProperty('languageId')) {
-        getStartUp().then(res => {
-          this.setData({
-            startUpObj: res.data
-          })
-          console.log('getStartUp res', res);
-          this.goToMainPage();
+      const lastLanguage = wx.getStorageSync('lastLanguage')
+      getStartUp().then(res => {
+        this.setData({
+          startUpObj: res.data
         })
-      } else {
-        this.goToLanguagePage();
-      }
+        if (lastLanguage.hasOwnProperty('id')) {
+          this.goToMainPage();
+        } else {
+          this.goToLanguagePage();
+        }
+      })
     } else {
       wx.redirectTo({
         url: "/pages/guide/guide"

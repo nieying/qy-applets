@@ -14,7 +14,7 @@
     </view>
     <view class="money" bindtap='toggleBuyModal'>
       <image src="/pages/images/icon-money.svg"></image>
-      {{userInfo.cost}}
+      {{userInfo.bill}}
     </view>
   </view>
   <view class="content" style="height: {{warpHeight - 10}}px">
@@ -28,34 +28,37 @@
       <view class="right" bindtap="goLanguage">+</view>
     </view>
     <buy show="{{showBuyModal}}" bind:toggleBuyModal='toggleBuyModal'></buy>
-    <view class="home-warp">
-      <circle wx:if="{{currentUnit.id}}" r="100" steps="{{currentUnit.progress}}">
-        <!-- 这部分内容将被放置在组件 <slot> 的位置上 -->
-        <view class="circle_info">
-          <view class="box">
-            <view class="star {{currentUnit.progress === 100 ? 'active':''}}">
-              <image wx:if="{{currentUnit.progress === 100}}" src="/pages/images/main/icon-star-active.svg"></image>
-              <image wx:else src="/pages/images/main/icon-star.svg"></image>
-            </view>
-            <view class="unit-img">
-              <image src="{{currentUnit.progress > 0 ? currentUnit.avatar : currentUnit.darkAvatar}}" bindtap='goSubject'></image>
-            </view>
-          </view>
-        </view>
-      </circle>
-      <view class="unit-txt" bindtap='goSubject'>{{currentUnit.name}}</view>
-    </view>
-    <scroll-view class="unit-list" scroll-x="true">
-      <block wx:for="{{unitList}}" wx:for-item="item" wx:key="index">
-        <circle r="50" w="2" steps="{{item.progress}}" class="unit-circle">
+    <block wx:if="{{unitList.length >0 }}">
+      <view class="home-warp">
+        <circle wx:if="{{currentUnit.id}}" r="100" steps="{{currentUnit.progress}}">
+          <!-- 这部分内容将被放置在组件 <slot> 的位置上 -->
           <view class="circle_info">
-            <view class="item {{item.progress > 0 ? 'active' : '' }}" data-item="{{item}}" bindtap='clickUnit'>
-              <view class="index">0{{index + 1}}</view>
-              <image src="{{item.progress > 0 ? item.avatar : item.darkAvatar}}"></image>
+            <view class="box">
+              <view class="star {{currentUnit.progress === 100 ? 'active':''}}">
+                <image wx:if="{{currentUnit.progress === 100}}" src="/pages/images/main/icon-star-active.svg"></image>
+                <image wx:else src="/pages/images/main/icon-star.svg"></image>
+              </view>
+              <view class="unit-img">
+                <image src="{{currentUnit.progress > 0 ? currentUnit.avatar : currentUnit.darkAvatar}}" bindtap='goSubject'></image>
+              </view>
             </view>
           </view>
         </circle>
-      </block>
-    </scroll-view>
+        <view class="unit-txt" bindtap='goSubject'>{{currentUnit.name}}</view>
+      </view>
+      <scroll-view class="unit-list" scroll-x="true">
+        <block wx:for="{{unitList}}" wx:for-item="item" wx:key="index">
+          <circle r="50" w="2" steps="{{item.progress}}" class="unit-circle">
+            <view class="circle_info">
+              <view class="item {{item.progress > 0 ? 'active' : '' }}" data-item="{{item}}" bindtap='clickUnit'>
+                <view class="index">0{{index + 1}}</view>
+                <image src="{{item.progress > 0 ? item.avatar : item.darkAvatar}}"></image>
+              </view>
+            </view>
+          </circle>
+        </block>
+      </scroll-view>
+    </block>
+    <view wx:else class="no-datas"> <text>暂无数据</text> </view>
   </view>
 </view>

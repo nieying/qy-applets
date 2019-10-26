@@ -13,7 +13,7 @@ Page({
     height: 0,
     warpHeight: 0,
     dialectList: [],
-    selectDialectIds: [],
+    selectDialects: [],
   },
 
   /**
@@ -60,7 +60,7 @@ Page({
       })
       this.setData({
         dialectList: list,
-        selectDialectIds: userDialect.map(d => d.languageId)
+        selectDialects: userDialect
       })
     } else {
       dailectList.forEach(d => {
@@ -85,6 +85,14 @@ Page({
     const {
       dialectList
     } = this.data;
+    let state = e.target.dataset.state;
+    if (!state) {
+      wx.showToast({
+        icon:'none',
+        title: '暂未开放,敬请等待！',
+      })
+      return
+    }
     let typeIndex = e.currentTarget.dataset.id;
     let dialectIndex = e.target.dataset.id;
     let checkBox = dialectList;
@@ -94,23 +102,34 @@ Page({
       dialectList[typeIndex].childList[dialectIndex].checked = true;
     }
 
-    let checkIds = []
+    let checks = []
     checkBox.filter((item, index) => {
-      item.childList.filter((child, index) => {
-        if (child.checked === true) {
-          checkIds.push(child.id)
-        }
+      checks = item.childList.filter((child, index) => {
+        return child.checked === true
       })
     })
 
     this.setData({
       dialectList: this.data.dialectList,
-      selectDialectIds: checkIds
+      selectDialects: checks
     })
   },
   // 确定
   confrim: function() {
-    createNewDialect(this.data.selectDialectIds).then(res => {
+    const { selectDialects } = this.data
+    if (selectDialects.length  === 0){
+      wx.showToast({
+        icon:'none',
+        title: '请选择您要学习的方言',
+      })
+      return;
+    }
+    const lastLanguage = wx.getStorageSync('lastLanguage');
+    if (!lastLanguage.hasOwnProperty('id')) {
+      wx.setStorageSync('lastLanguage', selectDialects[0])
+    } 
+    const ids = selectDialects.map(d => d.id)
+    createNewDialect(ids).then(res => {
       wx.navigateTo({
         url: '/pages/main/main'
       })
