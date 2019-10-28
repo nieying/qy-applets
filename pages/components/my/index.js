@@ -21,7 +21,8 @@ Component({
     warpHeight: 0,
     show: false,
     modalData: {},
-    userInfo: {},
+    userInfo: null,
+    gardeList: null,
   },
 
   attached: function() {

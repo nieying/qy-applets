@@ -62,7 +62,7 @@ Component({
       ctx.draw(false, () => {
         setTimeout(() => {
           this.canvasToTempImage('bg', 'bgImg');
-        }, 100);
+        }, 10);
       })
     },
     drawCircle: function(x, w, step) {
@@ -85,7 +85,7 @@ Component({
       context.draw(false, () => {
         setTimeout(() => {
           this.canvasToTempImage('draw', 'drawImg');
-        }, 100);
+        }, 10);
       })
     },
 

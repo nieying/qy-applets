@@ -16,11 +16,11 @@ Component({
     warpHeight: 0,
     showBuyModal: false,
     showDialect: false,
-    currentDialect: {},
+    currentDialect: null,
     userDialect: [],
-    unitList: [],
-    userInfo: {},
-    currentUnit: {},
+    unitList: null,
+    userInfo: null,
+    currentUnit: null,
   },
 
   ready: function() {
@@ -78,7 +78,7 @@ Component({
     },
     goLanguage: function() {
       // navigateTo
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/language/language'
       })
     },
@@ -111,7 +111,6 @@ Component({
 
     // 获取单元列表
     getUnitList: function(languageId) {
-      wx.showLoading()
       getUnit({
         languageId: languageId
       }).then(res => {
@@ -119,6 +118,7 @@ Component({
           currentUnit: res.data.length > 0 ? res.data[0] : {},
           unitList: res.data
         })
+        this.setData({ loading: false })
         wx.hideLoading()
         console.log('getUnitList res', res, this.data.currentUnit)
       })

@@ -2,9 +2,9 @@ import {
   approvalmember
 } from '../../api/api.js'
 import {
-  formatDate
+  formatDate, formatList
 } from '../../../utils/util.js'
-
+var cnChar = require('../../../utils/cnChar.js');
 Component({
   /**
    * 组件的属性列表
@@ -24,7 +24,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    listDatas: null
   },
 
   lifetimes: {
@@ -34,6 +34,18 @@ Component({
     detached: function() {},
   },
 
+  observers: {
+    'datas': function (datas) {
+      if(datas.length > 0) {
+        datas.forEach(d => {
+          d.englishName = d.userName.spell()
+        })
+        const spellArr = formatList(datas, 'englishName')
+        this.setData({ listDatas: spellArr })
+        console.log('listDatas===>', this.data, spellArr)
+      }
+    }
+  },
 
   /**
    * 组件的方法列表

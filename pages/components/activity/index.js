@@ -9,7 +9,7 @@ Component({
   },
 
   data: {
-    list: [],
+    list: null,
     height: 0,
     warpHeight: 0,
   },

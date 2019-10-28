@@ -1,4 +1,4 @@
-<view class="page-warp">
+<view class="page-warp" wx:if="{{userInfo && gardeList}}">
   <view class="header" style='padding-top: {{height}}px'>
     <text class="title">个人主页</text>
   </view>

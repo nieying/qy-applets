@@ -1,5 +1,4 @@
-<view class="page-home">
-  <!-- <header>123123</header> -->
+<view class="page-home" wx:if="{{userInfo && currentDialect}}">
   <view class="header" style="padding-top: {{height}}px">
     <view class="popver-select" bindtap='showDialect'>
       {{currentDialect.languageName}}
@@ -27,8 +26,8 @@
       </view>
       <view class="right" bindtap="goLanguage">+</view>
     </view>
-    <buy show="{{showBuyModal}}" bind:toggleBuyModal='toggleBuyModal'></buy>
-    <block wx:if="{{unitList.length >0 }}">
+    <buy show="{{showBuyModal}}" userInfo="{{userInfo}}" bind:toggleBuyModal='toggleBuyModal' bind:getUserInfo="getUserInfo"></buy>
+    <block wx:if="{{unitList.length >0}}">
       <view class="home-warp">
         <circle wx:if="{{currentUnit.id}}" r="100" steps="{{currentUnit.progress}}">
           <!-- 这部分内容将被放置在组件 <slot> 的位置上 -->
@@ -59,6 +58,7 @@
         </block>
       </scroll-view>
     </block>
-    <view wx:else class="no-datas"> <text>暂无数据</text> </view>
+    <view wx:if="{{unitList.length === 0}}" class="no-datas">
+      <text>暂无数据</text> </view>
   </view>
 </view>

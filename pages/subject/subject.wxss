@@ -22,6 +22,11 @@
   top: 200rpx;
 }
 
+.ad-img {
+  width: 100%;
+  height: 100%;
+}
+
 .page-loading .man {
   position: absolute;
   bottom: 0;

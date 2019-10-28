@@ -7,15 +7,18 @@
     <view class="money" wx:if="{{!isLoading}}">
       <image src='/pages/images/buy/icon-life.svg'></image> {{userInfo.cost}}</view>
   </view>
-  <!-- loding页面 -->
-  <view class='content' style="height: {{warpHeight - 130}}px" wx:if="{{isLoading}}">
-    <view class='page-loading'>
+  <!-- 广告页面 -->
+  <view class='content' style="height: {{warpHeight - 130}}px" wx:if="{{isLoading && adObj}}">
+    <view class='page-loading' wx:if="{{adObj && adObj.title}}">
+      <image class='ad-img' src="{{adObj.img_url}}"></image>
+    </view>
+    <view class='page-loading' wx:else>
       <image class='logo' src="/pages/images/logo.png"></image>
       <image class='man' src="/pages/images/man_woman.svg"></image>
     </view>
     <view class='bottom bottom-loading'>
       <view class='loading'>加载中…</view>
-      <view class='tips'> {{currentDialect.remark}}</view>
+      <view class='tips'> {{(adObj && adObj.title) ? adObj.title: '仟言——寓教于乐'}}</view>
     </view>
   </view>
   <block wx:else>
@@ -94,13 +97,10 @@
         </view>
       </view>
     </scroll-view>
-    <view wx:if="{{!isAnswered}}" class="bottom {{selectId && !isAnswered &&  'select'}}"     
-    data-type="submit" bindtap='getNextSubject'>
+    <view wx:if="{{!isAnswered}}" class="bottom {{selectId && !isAnswered &&  'select'}}" data-type="submit" bindtap='getNextSubject'>
       提交
     </view>
-    <view wx:else 
-    data-type="next"
-    class="bottom {{selectId === rightId && isAnswered &&  'bgcorrect'}} {{selectId !== rightId && isAnswered &&  'bgwrong'}}" bindtap='getNextSubject'>
+    <view wx:else data-type="next" class="bottom {{selectId === rightId && isAnswered &&  'bgcorrect'}} {{selectId !== rightId && isAnswered &&  'bgwrong'}}" bindtap='getNextSubject'>
       继续
     </view>
   </block>

@@ -1,7 +1,8 @@
 import {
   getSubject,
   postSubject,
-  getUnitSubject
+  getUnitSubject,
+  getAdPage
 } from '../api/api.js';
 let timer = ''
 const app = getApp()
@@ -27,6 +28,7 @@ Page({
     currentNote: {},
     currentDialect: {},
     userInfo: {},
+    adObj: null,
   },
 
   /**
@@ -47,11 +49,17 @@ Page({
    */
   onReady: function() {
     if (this.data.isLoading) {
-      timer = setTimeout(() => {
+      getAdPage().then(res => {
         this.setData({
-          isLoading: false
+          adObj: res.data[0]
         })
-      }, 2000)
+        timer = setTimeout(() => {
+          this.setData({
+            isLoading: false
+          })
+        }, 2000)
+      })
+
     }
   },
 
@@ -98,7 +106,7 @@ Page({
           icon: 'none',
           title: '该单元已学完！',
         })
-       setTimeout(() => {
+        setTimeout(() => {
           wx.redirectTo({
             url: '/pages/main/main',
           })
@@ -140,6 +148,7 @@ Page({
 
     this.setData({
       subjectObj: obj,
+      userInfo: obj.userInfo,
       rightId: rightId,
       isAnswered: false,
       selectId: '',
@@ -196,7 +205,6 @@ Page({
         subjectObj: subjectObj,
         selectId: selectId,
       })
-      console.log('selectAnswer', this.data)
     }
   },
 

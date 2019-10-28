@@ -11,16 +11,23 @@ Component({
       type: Boolean,
       value: false
     },
+    userInfo: {
+      type: Object,
+      value: null
+    },
   },
 
+
   data: {
-    userInfo: {}
   },
 
   ready: function() {
-    this.setData({
-      userInfo: wx.getStorageSync('userInfo')
-    })
+  },
+
+  observers: {
+    'userInfo': function (userInfo) {
+       this.properties.userInfo = userInfo
+    }
   },
 
   methods: {
@@ -33,13 +40,13 @@ Component({
     // 购买生命值
     onBuyLife: function() {
       buyLife().then(res => {
-        this.succCallback()
+        res && this.succCallback()
       })
     },
     // 购买生命卡
     onBuyCard: function() {
       buyCard().then(res => {
-        this.succCallback()
+        res && this.succCallback()
       })
     },
 
@@ -48,6 +55,7 @@ Component({
         icon: '',
         title: '购买成功！',
       })
+      this.triggerEvent('getUserInfo')
     }
   }
 })

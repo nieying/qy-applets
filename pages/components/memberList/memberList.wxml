@@ -1,24 +1,28 @@
 <wxs module="dateUtil" src="../../../utils/timeUtil.wxs"></wxs>
-<view class="list" wx:for="{{datas}}" wx:for-item="item" wx:key="index">
-  <!-- <view class="type1">
-    <text>{{item.type}}</text>
-  </view> -->
-  <!-- <view class="item" wx:for="{{item.childs}}" wx:for-item="item" wx:key="index"> -->
-  <view class="item">
-    <view class="left">
-      <image></image>
-      <view class="info">
-        <view class="name">{{item.userName}}</view>
-        <view class="desc">{{dateUtil.dateFormat(item.addTime,'yyyy-MM-dd hh:mm:ss')}}</view>
-        <!-- <view class="desc">{{new Date(item.addTime)}}</view> -->
-      </view>
+<view class="list">
+  <view wx:if="{{listDatas.length>0}}" wx:for="{{listDatas}}" wx:for-item="item" wx:key="index">
+    <view class="type1">
+      <text>{{item.title}}</text>
     </view>
-    <view class="right">
-      <text wx:if="{{tab === 'union'}}">已加入</text>
-      <view wx:else class="pass">
-        <view class="btn" bindtap="pass" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="true">通过</view>
-        <view class="btn red" bindtap="pass" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="false">拒绝</view>
+    <view class="item" wx:for="{{item.list}}" wx:for-item="item" wx:key="index">
+      <!-- <view class="item"> -->
+      <view class="left">
+        <image src="{{item.avatar}}"></image>
+        <view class="info">
+          <view class="name">{{item.userName}}</view>
+          <view class="desc">{{dateUtil.dateFormat(item.addTime,'yyyy-MM-dd hh:mm:ss')}}</view>
+          <!-- <view class="desc">{{new Date(item.addTime)}}</view> -->
+        </view>
+      </view>
+      <view class="right">
+        <text wx:if="{{tab === 'union'}}">已加入</text>
+        <view wx:else class="pass">
+          <view class="btn" bindtap="pass" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="true">通过</view>
+          <view class="btn red" bindtap="pass" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="false">拒绝</view>
+        </view>
       </view>
     </view>
   </view>
+  <view wx:if="{{listDatas.length===0}}" class="no-datas">暂无数据</view>
+
 </view>

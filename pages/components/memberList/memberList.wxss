@@ -1,3 +1,6 @@
+@import "../../../app.wxss";
+
+
 .list .type1 {
   background: white;
   padding: 0 30rpx;
@@ -66,4 +69,8 @@
 }
 .red {
   background: #F44336;
+}
+.no-datas {
+  background: white;
+  margin: 0;
 }

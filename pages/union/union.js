@@ -2,9 +2,6 @@ import {
   getOrganizeDetail,
   getOrganMemberList
 } from '../api/api.js'
-import {
-  getSpell
-} from '../../utils/util'
 Page({
   /**
    * 页面的初始数据
@@ -35,7 +32,7 @@ Page({
     }],
     memberList: [],
     peddingMemberList: [],
-    userType: null
+    userType: null,
   },
 
   /**
@@ -70,6 +67,7 @@ Page({
         }]
       })
     }
+
   },
 
   /**
@@ -77,7 +75,7 @@ Page({
    */
   onReady: function() {
     this.getOrganDetail();
-    this.getMemberList()
+    this.getMemberList();
   },
   goBack: function() {
     wx.navigateBack()
@@ -99,7 +97,6 @@ Page({
       page: 1,
       limit: 1000
     }).then(res => {
-      // this.dealData(res.data.list)
       res.data.list.filter(r => {
         if (r.state === 1) {
           r.addTime = Date.parse(r.addTime)
@@ -109,36 +106,12 @@ Page({
           memberList.push(r)
         }
       })
-      console.log('peddingMemberList', peddingMemberList, memberList)
       this.setData({
         memberList: memberList,
         peddingMemberList: peddingMemberList,
       })
       wx.hideLoading()
     })
-  },
-
-  dealData(arr) {
-    var someTtitle = null;
-    var someArr = [];
-    for (var i = 0; i < arr.length; i++) {
-      var newBrands = {
-        id: arr[i].id,
-        name: arr[i].userName
-      };
-      if (arr[i].initial != someTtitle) {
-        someTtitle = arr[i].initial
-        var newObj = {
-          id: i,
-          region: someTtitle,
-          brands: []
-        };
-        someArr.push(newObj)
-      }
-      console.log('newObj===>', newBrands)
-      newObj.brands.push(newBrands);
-    };
-
   },
 
   // 点击tab 切换
@@ -163,40 +136,5 @@ Page({
       })
     }
     console.log('this.data', currentTab)
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
+  }
 })

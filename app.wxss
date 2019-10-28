@@ -159,6 +159,7 @@ page {
   color: #90a4ae;
   font-size: 24rpx;
 }
+
 .no-datas {
   color: #90a4ae;
   font-size: 28rpx;
@@ -166,4 +167,5 @@ page {
   justify-content: center;
   align-items: center;
   margin: 30rpx 0;
+  background: transparent;
 }
