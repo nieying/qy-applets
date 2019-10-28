@@ -4,6 +4,7 @@ import {
   getUnitSubject,
   getAdPage
 } from '../api/api.js';
+import { showToast} from '../../utils/util.js'
 let timer = ''
 const app = getApp()
 const innerAudioContext = wx.createInnerAudioContext()
@@ -102,10 +103,7 @@ Page({
       if (this.data.nextSubject.answers) {
         this.dealData(this.data.nextSubject)
       } else {
-        wx.showToast({
-          icon: 'none',
-          title: '该单元已学完！',
-        })
+        showToast('该单元已学完！')
         setTimeout(() => {
           wx.redirectTo({
             url: '/pages/main/main',

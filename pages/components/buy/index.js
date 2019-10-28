@@ -2,6 +2,9 @@ import {
   buyCard,
   buyLife
 } from '../../api/api.js'
+import {
+  showToast
+} from '../../../utils/util.js'
 const app = getApp()
 
 Component({
@@ -51,10 +54,7 @@ Component({
     },
 
     succCallback: function() {
-      wx.showToast({
-        icon: '',
-        title: '购买成功！',
-      })
+      showToast('购买成功！')
       this.triggerEvent('getUserInfo')
     }
   }

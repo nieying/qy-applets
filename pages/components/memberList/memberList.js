@@ -2,7 +2,7 @@ import {
   approvalmember
 } from '../../api/api.js'
 import {
-  formatDate, formatList
+  formatDate, formatList, showToast
 } from '../../../utils/util.js'
 var cnChar = require('../../../utils/cnChar.js');
 Component({
@@ -63,10 +63,7 @@ Component({
         userId: userid
       }).then(res => {
         //  todo
-        wx.showToast({
-          icon: 'success',
-          title: pass ? '通过成功' : '拒绝成功'
-        })
+        showToast(pass ? '通过成功' : '拒绝成功')
         this.triggerEvent('callback')
       })
     }

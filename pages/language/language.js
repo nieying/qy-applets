@@ -3,6 +3,9 @@ import {
   getUserDialectList,
   createNewDialect
 } from '../api/api.js'
+import {
+  showToast
+} from '../../utils/util.js'
 const app = getApp()
 Page({
 
@@ -82,38 +85,38 @@ Page({
 
   //多选
   userCheck: function(e) {
+
     const {
       dialectList
     } = this.data;
     let state = e.target.dataset.state;
-    if (!state) {
-      wx.showToast({
-        icon: 'none',
-        title: '暂未开放,敬请等待！',
-      })
-      return
-    }
-    let typeIndex = e.currentTarget.dataset.id;
-    let dialectIndex = e.target.dataset.id;
-    let checkBox = dialectList;
-    if (checkBox[typeIndex].childList[dialectIndex].checked) {
-      dialectList[typeIndex].childList[dialectIndex].checked = false;
-    } else {
-      dialectList[typeIndex].childList[dialectIndex].checked = true;
-    }
+    if (state !== undefined) {
+      if (!state) {
+        showToast('暂未开放,敬请等待！')
+        return
+      }
+      let typeIndex = e.currentTarget.dataset.id;
+      let dialectIndex = e.target.dataset.id;
+      let checkBox = dialectList;
+      if (checkBox[typeIndex].childList[dialectIndex].checked) {
+        dialectList[typeIndex].childList[dialectIndex].checked = false;
+      } else {
+        dialectList[typeIndex].childList[dialectIndex].checked = true;
+      }
 
-    let checks = []
-    checkBox.filter((item, index) => {
-      item.childList.filter(child => {
-        if (child.checked) {
-          checks.push(child)
-        }
+      let checks = []
+      checkBox.filter((item, index) => {
+        item.childList.filter(child => {
+          if (child.checked) {
+            checks.push(child)
+          }
+        })
       })
-    })
-    this.setData({
-      dialectList: this.data.dialectList,
-      selectDialects: checks
-    })
+      this.setData({
+        dialectList: this.data.dialectList,
+        selectDialects: checks
+      })
+    }
   },
   // 确定
   confrim: function() {
@@ -121,10 +124,7 @@ Page({
       selectDialects
     } = this.data
     if (selectDialects.length === 0) {
-      wx.showToast({
-        icon: 'none',
-        title: '请选择您要学习的方言',
-      })
+      showToast('请选择您要学习的方言')
       return;
     }
     const lastLanguage = wx.getStorageSync('lastLanguage');

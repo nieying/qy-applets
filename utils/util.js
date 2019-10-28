@@ -1,4 +1,10 @@
-
+const showToast = (title) => {
+  wx.showToast({
+    icon:'none',
+    title: title,
+    duration: 1000,
+  })
+}
 
 const formatNumber = n => {
   n = n.toString()
@@ -100,5 +106,6 @@ module.exports = {
   copyText: copyText,
   storageHeight: storageHeight,
   getSpell: getSpell,
-  formatList: formatList
+  formatList: formatList,
+  showToast: showToast,
 }

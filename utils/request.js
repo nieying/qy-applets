@@ -28,6 +28,7 @@ function http(params) {
           wx.showToast({
             icon: 'none',
             title: res.data.errmsg,
+            duration: 1000,
           })
           wx.hideLoading();
           // wx.showModal({

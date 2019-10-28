@@ -4,6 +4,9 @@ import {
   getUserDialectList,
   changeDialect
 } from '../../api/api.js'
+import {
+  showToast
+} from '../../../utils/util.js'
 const app = getApp()
 
 Component({
@@ -91,17 +94,11 @@ Component({
         userInfo
       } = this.data
       if (userInfo.cost === 0) {
-        wx.showToast({
-          icon: 'none',
-          title: '生命值不足',
-        })
+        showToast('生命值不足')
         return;
       }
       if (currentUnit.learnState === 'old') {
-        wx.showToast({
-          icon: 'none',
-          title: '该单元已学完'
-        })
+        showToast('该单元已学完')
         return;
       }
       wx.navigateTo({
@@ -118,7 +115,9 @@ Component({
           currentUnit: res.data.length > 0 ? res.data[0] : {},
           unitList: res.data
         })
-        this.setData({ loading: false })
+        this.setData({
+          loading: false
+        })
         wx.hideLoading()
         console.log('getUnitList res', res, this.data.currentUnit)
       })
@@ -129,10 +128,7 @@ Component({
       const unit = e.currentTarget.dataset['item'];
 
       if (unit.learnState === 'future') {
-        wx.showToast({
-          icon: 'none',
-          title: '请先学习前面的单元'
-        })
+        showToast('请先学习前面的单元')
         return;
       }
       this.setData({
