@@ -245,7 +245,7 @@
   line-height: 48rpx;
 }
 
-.subject-listen .tips {
+.subject-txt .tips {
   color: #90a4ae;
   display: flex;
   justify-content: center;

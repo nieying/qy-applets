@@ -4,7 +4,9 @@ import {
   getUnitSubject,
   getAdPage
 } from '../api/api.js';
-import { showToast} from '../../utils/util.js'
+import {
+  showToast
+} from '../../utils/util.js'
 let timer = ''
 const app = getApp()
 const innerAudioContext = wx.createInnerAudioContext()
@@ -100,8 +102,15 @@ Page({
         this.submit()
       })
     } else {
-      if (this.data.nextSubject.answers) {
-        this.dealData(this.data.nextSubject)
+      const {
+        nextSubject
+      } = this.data
+      if (nextSubject.answers) {
+        if (nextSubject.userInfo.cost === 0) {
+          showToast('生命值不足无法答题');
+          return;
+        }
+        this.dealData(nextSubject)
       } else {
         showToast('该单元已学完！')
         setTimeout(() => {
@@ -111,7 +120,6 @@ Page({
         }, 2000)
       }
     }
-
   },
 
   // 处理请求的数据
@@ -124,7 +132,7 @@ Page({
       a.checked = false
     })
     const notes = JSON.parse(obj.notes);
-    if (obj.type === 'normal' && notes.length > 0) {
+    if (obj.type !== 'map' && notes.length > 0) {
       notes.forEach(item => {
         obj.title1 = obj.title.replace(new RegExp(`(${item.key})`, 'g'), ',$1,');
       })
@@ -143,7 +151,6 @@ Page({
         }
       })
     }
-
     this.setData({
       subjectObj: obj,
       userInfo: obj.userInfo,
