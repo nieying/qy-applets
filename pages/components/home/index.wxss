@@ -35,6 +35,7 @@
   border-radius: 40rpx;
   padding: 28rpx 40rpx;
   overflow: hidden;
+  z-index: 9999;
 }
 
 .popver-list .left {

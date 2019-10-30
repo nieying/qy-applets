@@ -2,7 +2,9 @@ import {
   approvalmember
 } from '../../api/api.js'
 import {
-  formatDate, formatList, showToast
+  formatDate,
+  formatList,
+  showToast
 } from '../../../utils/util.js'
 var cnChar = require('../../../utils/cnChar.js');
 Component({
@@ -35,13 +37,15 @@ Component({
   },
 
   observers: {
-    'datas': function (datas) {
-      if(datas.length > 0) {
+    'datas': function(datas) {
+      if (datas.length > 0) {
         datas.forEach(d => {
           d.englishName = d.userName.spell()
         })
         const spellArr = formatList(datas, 'englishName')
-        this.setData({ listDatas: spellArr })
+        this.setData({
+          listDatas: spellArr
+        })
         console.log('listDatas===>', this.data, spellArr)
       }
     }
@@ -52,6 +56,10 @@ Component({
    */
   methods: {
     pass: function(e) {
+      wx.showLoading({
+        title: '',
+        mask: true
+      })
       const {
         organizeid,
         pass,
@@ -63,8 +71,8 @@ Component({
         userId: userid
       }).then(res => {
         //  todo
-        showToast(pass ? '通过成功' : '拒绝成功')
         this.triggerEvent('callback')
+        showToast(pass ? '通过成功' : '拒绝成功')
       })
     }
   }

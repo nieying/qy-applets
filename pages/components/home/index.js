@@ -97,10 +97,10 @@ Component({
         showToast('生命值不足')
         return;
       }
-      if (currentUnit.learnState === 'old') {
-        showToast('该单元已学完')
-        return;
-      }
+      // if (currentUnit.learnState === 'old') {
+      //   showToast('该单元已学完')
+      //   return;
+      // }
       wx.navigateTo({
         url: `/pages/subject/subject?id=${currentUnit.id}&languageId=${currentDialect.languageId}`
       })

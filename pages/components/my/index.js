@@ -123,20 +123,16 @@ Component({
       }
     },
     getStateData: function() {
-      // wx.showLoading()
+      wx.showLoading({
+        title: '',
+        mask: true
+      })
       getState().then(res => {
-        // this.setData({
-        //   userType: res.data
-        // })
-        // wx.hideLoading()
         this.getUserUnion(res.data);
       })
     },
 
     getUserUnion: function(userType) {
-      // const {
-      //   userType
-      // } = this.data;
       if (userType === 'leader') { // 会长
         wx.navigateTo({
           url: `/pages/union/union?userType=${userType}`,
@@ -174,7 +170,7 @@ Component({
       this.getData();
     },
 
-    goPay: function () {
+    goPay: function() {
       wx.navigateTo({
         url: '/pages/pay/pay',
       })

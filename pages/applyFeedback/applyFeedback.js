@@ -25,7 +25,7 @@ Page({
         dataObj: {
           icon:'clear',
           color:'#F44336',
-          title:'审核失败',
+          title:'请求没有被通过',
           tips:'请与客服联系询问原因'
         }
       })

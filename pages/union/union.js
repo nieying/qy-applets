@@ -23,13 +23,6 @@ Page({
         active: ""
       }
     ],
-    peopleList: [{
-      type: 'a',
-      childs: [1, 2, 3, 4, 5, 6, 7, 8]
-    }, {
-      type: 'b',
-      childs: [1, 2, 3, 4, 5, 6, 7, 8]
-    }],
     memberList: [],
     peddingMemberList: [],
     userType: null,
@@ -90,6 +83,7 @@ Page({
   },
   // 获取协会成员类表
   getMemberList: function() {
+    debugger
     wx.showLoading()
     const peddingMemberList = [];
     const memberList = [];
@@ -105,6 +99,19 @@ Page({
           r.addTime = Date.parse(r.addTime)
           memberList.push(r)
         }
+        peddingMemberList.push({
+          "organizeId": 4,
+          "role": "normal",
+          "addTime": "2019-10-28T14:10:14.000+0000",
+          "level": "1",
+          "id": 23,
+          "avatar": "https://wx.qlogo.cn/mmopen/vi_32/NmicV4kT5uPxJicThleAtQMj6dIJR2w435GC2txkYyMS4ACdQwQfiaViamrIpkYoDlRico20epibuOXHHoIEThFNpqBw/132",
+          "state": 2,
+          "sort": 23,
+          "userName": "\uD83C\uDF2A",
+          "type": "normal",
+          "userId": 12
+        })
       })
       this.setData({
         memberList: memberList,

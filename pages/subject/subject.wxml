@@ -18,7 +18,7 @@
     </view>
     <view class='bottom bottom-loading'>
       <view class='loading'>加载中…</view>
-      <view class='tips'> {{(adObj && adObj.title) ? adObj.title: '仟言——寓教于乐'}}</view>
+      <view class='tips'> {{(adObj && adObj.content) ? adObj.content: '仟言——寓教于乐'}}</view>
     </view>
   </view>
   <block wx:else>
