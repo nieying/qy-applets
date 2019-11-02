@@ -46,6 +46,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 9,
 			"list": [
@@ -117,6 +121,12 @@
 					"name": "pay",
 					"pathName": "pages/pay/pay",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "guide",
+					"pathName": "pages/guide/guide",
 					"scene": null
 				}
 			]

@@ -1,3 +1,15 @@
-<view class="page-index">
-  <button open-type="getUserInfo" bindgetuserinfo="getAuthorize">微信登录</button>
+<view class="page-guide">
+  <view class="header" style='padding-top: {{height}}px'>
+    <text style="color:transparent">111</text>
+  </view>
+  <view class="content guide-warp">
+    <view class="padding-box">
+      <view class="logo">
+        <image src="/pages/images/qianyan_logo.svg"></image>
+      </view>
+      <view class="name"><text>获取申请一下权限 </text> <icon  type="success_no_circle" size="20" color="#2265D5" /></view>
+      <view class="desc">获得你的公开信息（昵称、头像等）</view>
+      <button open-type="getUserInfo" bindgetuserinfo="getAuthorize">进入仟言</button>
+    </view>
+  </view>
 </view>

@@ -5,11 +5,16 @@ const app = getApp();
 
 Page({
   data: {
-
+    height: 0,
+    warpHeight: 0,
   },
 
   onLoad: function () {
-
+    console.log('onLoad', wx.getStorageSync('statusBarHeight'))
+    this.setData({
+      height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
+      warpHeight: parseInt(wx.getStorageSync('warpHeight'))
+    })
   },
 
   getAuthorize: function (e) {
