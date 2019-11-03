@@ -68,15 +68,21 @@ Page({
 
   // 返回
   goBack: function() {
-    wx.navigateBack()
+    wx.reLaunch({
+      url: '/pages/main/main',
+    })
   },
 
   // 获取数据
   getData: function(options) {
     wx.showLoading()
-    getSubject({
+    let params = {
       languageId: options.languageId
-    }).then(res => {
+    }
+    if (options.state === 'old') {
+      params.unitId = options.unitId
+    }
+    getSubject(params).then(res => {
       wx.hideLoading()
       this.dealData(res.data)
     })
@@ -84,12 +90,16 @@ Page({
   // 获取下一题
   getNextSubject: function(e) {
     const type = e.currentTarget.dataset.type;
+    const {
+      rightId,
+      selectId
+    } = this.data;
+    if (!selectId) {
+      return
+    }
+    this.stopAuto();
     if (type === 'submit') {
       wx.showLoading()
-      const {
-        rightId,
-        selectId
-      } = this.data;
       postSubject({
         right: rightId === selectId,
         subjectId: this.data.subjectObj.id,
@@ -106,7 +116,7 @@ Page({
         nextSubject
       } = this.data
       if (nextSubject.answers) {
-        if (nextSubject.userInfo.cost === 0) {
+        if (nextSubject.userInfo.cost === 0 && !nextSubject.userInfo.costLock) {
           showToast('生命值不足无法答题');
           return;
         }
@@ -114,7 +124,7 @@ Page({
       } else {
         showToast('该单元已学完！')
         setTimeout(() => {
-          wx.redirectTo({
+          wx.reLaunch({
             url: '/pages/main/main',
           })
         }, 2000)
@@ -247,8 +257,12 @@ Page({
   },
 
   onUnload: function() {
+    this.stopAuto()
+  },
+
+  stopAuto: function() {
     if (this.data.subjectObj.type === 'auto') {
       this.audioStop()
     }
-  },
+  }
 })

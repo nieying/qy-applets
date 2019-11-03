@@ -6,6 +6,7 @@
     <view class="padding-box">
       <view class='title'>欢迎您</view>
       <view class="card">
+      <view wx:if="{{userType !== 'leader'}}" class="btn btn-warn" bindtap="quitUnit">退出协会</view>
         <image src="{{organDetail.avatar}}"></image>
         <view class="name">{{organDetail.name}}</view>
         <view class="desc">{{organDetail.remark}}</view>
@@ -20,10 +21,10 @@
       </view>
       <view class="tab-content">
         <view class="union-people" wx:if="{{currentTab==='union'}}">
-          <memberList tab="{{currentTab}}" datas="{{memberList}}" bind:callback='getMemberList' />
+          <memberList tab="{{currentTab}}" userType="{{userType}}" datas="{{memberList}}" bind:callback='getMemberList' />
         </view>
         <view class="apply-list" wx:if="{{currentTab==='apply'}}">
-          <memberList tab="{{currentTab}}" datas="{{peddingMemberList}}" bind:callback='getMemberList' />
+          <memberList tab="{{currentTab}}" userType="{{userType}}"  datas="{{peddingMemberList}}" bind:callback='getMemberList' />
         </view>
       </view>
     </view>

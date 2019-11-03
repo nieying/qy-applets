@@ -12,6 +12,14 @@
   background: rgba(245, 247, 249, 1);
   border-radius: 20rpx;
   margin-top: 32rpx;
+  position: relative;
+}
+
+.card .btn {
+  position: absolute;
+  right: 15rpx;
+  top: 15rpx;
+  font-size: 20rpx;
 }
 
 .card image {
@@ -75,4 +83,3 @@
   width: 100%;
   overflow-x: hidden;
 }
-

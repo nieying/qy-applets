@@ -14,11 +14,13 @@
           <!-- <view class="desc">{{new Date(item.addTime)}}</view> -->
         </view>
       </view>
-      <view class="right">
-        <text wx:if="{{tab === 'union'}}">已加入</text>
-        <view wx:else class="pass">
-          <view class="btn" bindtap="pass" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="true">通过</view>
-          <view class="btn red" bindtap="pass" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="false">拒绝</view>
+      <view class="right" wx:if="{{userType === 'leader'}}">
+        <view  class="pass">
+          <view wx:if="{{item.role !== 'owner' && tab === 'union'}}" class="btn btn-warn" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="false" bindtap="tichu">踢除</view>
+        </view>
+        <view  class="pass" wx:if="{{tab !== 'union'}}">
+          <view class="btn btn-green" bindtap="pass" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="true">通过</view>
+          <view class="btn btn-warn" bindtap="pass" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="false">拒绝</view>
         </view>
       </view>
     </view>

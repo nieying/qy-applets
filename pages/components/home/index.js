@@ -57,6 +57,7 @@ Component({
       wx.showLoading()
       getUserDialectList().then(res => {
         console.log('getUserDialectList', res)
+        wx.hideLoading()
         let userDialect = res.data;
         let currentDialect = [];
         if (wx.getStorageSync('lastLanguage') && wx.getStorageSync('lastLanguage').length > 0) {
@@ -75,7 +76,10 @@ Component({
           userDialect: userDialect,
           currentDialect: currentDialect,
         }, () => {
-          this.getUnitList(this.data.currentDialect.languageId)
+          const {
+            currentDialect
+          } = this.data;
+          currentDialect && this.getUnitList(currentDialect.languageId)
         })
       })
     },
@@ -93,24 +97,36 @@ Component({
         currentUnit,
         userInfo
       } = this.data
-      if (userInfo.cost === 0) {
+      if (userInfo.cost === 0 && !userInfo.costLock) {
         showToast('生命值不足')
         return;
       }
-      // if (currentUnit.learnState === 'old') {
-      //   showToast('该单元已学完')
-      //   return;
-      // }
-      wx.navigateTo({
-        url: `/pages/subject/subject?id=${currentUnit.id}&languageId=${currentDialect.languageId}`
-      })
+      if (currentUnit.learnState === 'old') {
+        // showToast('该单元已学完')
+        // return;
+        wx.navigateTo({
+          url: `/pages/subject/subject?unitId=${currentUnit.id}&languageId=${currentDialect.languageId}&state=${currentUnit.learnState}`
+        })
+      } else {
+        wx.navigateTo({
+          url: `/pages/subject/subject?unitId=${currentUnit.id}&languageId=${currentDialect.languageId}`
+        })
+      }
     },
 
     // 获取单元列表
     getUnitList: function(languageId) {
+      wx.showLoading()
       getUnit({
         languageId: languageId
       }).then(res => {
+        res.data.forEach((r, i) => {
+          if (r.progress > 0) {
+            r.active = true
+          } else {
+            r.active = false
+          }
+        })
         this.setData({
           currentUnit: res.data.length > 0 ? res.data[0] : {},
           unitList: res.data

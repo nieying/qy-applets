@@ -215,6 +215,13 @@ export const getOrganMemberList = (params) => {
     data: params
   })
 };
+// 退出协会
+export const quitOrgan = (params) => {
+  return request.http({
+    url: "/organize/member/out",
+    data: params
+  })
+};
 // 获取状态
 export const getState = (params) => {
   return request.http({
@@ -251,6 +258,15 @@ export const buyCard = (params) => {
 export const buyLife = (params) => {
   return request.http({
     url: "/user/cost/buy",
+    data: params
+  })
+};
+
+// 获取协议 
+export const getProtocol = (params) => {
+  return request.http({
+    url: "/config/agreement_ca",
+    method: 'GET',
     data: params
   })
 };

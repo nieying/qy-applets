@@ -19,6 +19,10 @@ Component({
     tab: {
       type: String,
       value: "union"
+    },
+    userType: {
+      type: String,
+      value: '',
     }
   },
 
@@ -26,12 +30,17 @@ Component({
    * 组件的初始数据
    */
   data: {
-    listDatas: null
+    listDatas: null,
+    userInfo: null
   },
 
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
-    attached: function() {},
+    attached: function() {
+      this.setData({
+        userInfo: wx.getStorageSync('userInfo')
+      })
+    },
     moved: function() {},
     detached: function() {},
   },
@@ -46,7 +55,10 @@ Component({
         this.setData({
           listDatas: spellArr
         })
-        console.log('listDatas===>', this.data, spellArr)
+      } else {
+        this.setData({
+          listDatas: []
+        })
       }
     }
   },
@@ -70,9 +82,28 @@ Component({
         pass: pass,
         userId: userid
       }).then(res => {
-        //  todo
         this.triggerEvent('callback')
         showToast(pass ? '通过成功' : '拒绝成功')
+      })
+    },
+
+    tichu: function(e) {
+      wx.showModal({
+        title: '提示',
+        content: '确定踢除该成员吗？',
+        success(res) {
+          if (res.confirm) {
+            const {
+              organizeid,
+              pass,
+              userid
+            } = e.currentTarget.dataset
+            quitOrgan().then(res => {
+              showToast('踢出成功！')
+              this.triggerEvent('callback')
+            })
+          } else if (res.cancel) {}
+        }
       })
     }
   }

@@ -20,7 +20,7 @@ Page({
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
     })
-    if (option.userType === 'rejected') {
+    if (options.userType === 'rejected') {
       this.setData({
         dataObj: {
           icon:'clear',
@@ -39,7 +39,6 @@ Page({
         }
       })
     }
-   
   },
 
   /**

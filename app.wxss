@@ -118,6 +118,20 @@ page {
   background: #1a1d30;
 }
 
+.btn-green {
+  color: white;
+  background: rgba(0, 200, 83, 1);
+}
+
+.btn-warn {
+  color: white;
+  background: #F44336;
+}
+
+/* .btn-warn:hover {
+  background: #1a1d30;
+} */
+
 .warp {
   height: 508rpx;
   background: rgba(245, 247, 249, 1);

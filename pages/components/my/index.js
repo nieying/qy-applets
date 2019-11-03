@@ -59,7 +59,7 @@ Component({
     // 获取成就
     getAchieve: function(id) {
       getUserGarde({
-        languageId: id
+        languageId: id || 0
       }).then(res => {
         res.data.forEach(item => {
           if (item.type === 'languageProcess' && item.value === 100) {
@@ -124,11 +124,11 @@ Component({
     },
     getStateData: function() {
       wx.showLoading({
-        title: '',
         mask: true
       })
       getState().then(res => {
         this.getUserUnion(res.data);
+        wx.hideLoading()
       })
     },
 
@@ -164,7 +164,6 @@ Component({
         }
       }
     },
-
     // 弹框确定后触发
     onConfirm: function() {
       this.getData();

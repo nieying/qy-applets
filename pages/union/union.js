@@ -1,7 +1,11 @@
 import {
   getOrganizeDetail,
-  getOrganMemberList
+  getOrganMemberList,
+  quitOrgan
 } from '../api/api.js'
+import {
+  showToast
+} from '../../utils/util.js'
 Page({
   /**
    * 页面的初始数据
@@ -12,17 +16,7 @@ Page({
     currentTab: "union",
     nowIndex: 0,
     organDetail: {},
-    tabs: [{
-        key: 'union',
-        name: "协会成员",
-        active: "active"
-      },
-      {
-        key: 'apply',
-        name: "申请列表",
-        active: ""
-      }
-    ],
+    tabs: [],
     memberList: [],
     peddingMemberList: [],
     userType: null,
@@ -83,7 +77,6 @@ Page({
   },
   // 获取协会成员类表
   getMemberList: function() {
-    debugger
     wx.showLoading()
     const peddingMemberList = [];
     const memberList = [];
@@ -91,33 +84,39 @@ Page({
       page: 1,
       limit: 1000
     }).then(res => {
-      res.data.list.filter(r => {
-        if (r.state === 1) {
-          r.addTime = Date.parse(r.addTime)
-          peddingMemberList.push(r)
-        } else {
-          r.addTime = Date.parse(r.addTime)
-          memberList.push(r)
-        }
-        peddingMemberList.push({
-          "organizeId": 4,
-          "role": "normal",
-          "addTime": "2019-10-28T14:10:14.000+0000",
-          "level": "1",
-          "id": 23,
-          "avatar": "https://wx.qlogo.cn/mmopen/vi_32/NmicV4kT5uPxJicThleAtQMj6dIJR2w435GC2txkYyMS4ACdQwQfiaViamrIpkYoDlRico20epibuOXHHoIEThFNpqBw/132",
-          "state": 2,
-          "sort": 23,
-          "userName": "\uD83C\uDF2A",
-          "type": "normal",
-          "userId": 12
+      if (res && res.data.list.length > 0) {
+        res.data.list.filter(r => {
+          if (r.state === 1) {
+            r.addTime = Date.parse(r.addTime)
+            peddingMemberList.push(r)
+          } else {
+            r.addTime = Date.parse(r.addTime)
+            memberList.push(r)
+          }
         })
-      })
-      this.setData({
-        memberList: memberList,
-        peddingMemberList: peddingMemberList,
-      })
-      wx.hideLoading()
+        this.setData({
+          memberList: memberList,
+          peddingMemberList: peddingMemberList,
+        })
+        wx.hideLoading()
+      }
+    })
+  },
+  // 退出协会
+  quitUnit: function(e) {
+    wx.showModal({
+      title: '提示',
+      content: '确定退出该协会吗？',
+      success(res) {
+        if (res.confirm) {
+          quitOrgan().then(res => {
+            showToast('退出成功！')
+            wx.navigateTo({
+              url: '/pages/main/main',
+            })
+          })
+        } else if (res.cancel) {}
+      }
     })
   },
 

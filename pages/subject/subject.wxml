@@ -9,7 +9,7 @@
   </view>
   <!-- 广告页面 -->
   <view class='content' style="height: {{warpHeight - 130}}px" wx:if="{{isLoading && adObj}}">
-    <view class='page-loading' wx:if="{{adObj && adObj.title}}">
+    <view class='page-loading' wx:if="{{adObj && adObj.content}}">
       <image class='ad-img' src="{{adObj.img_url}}"></image>
     </view>
     <view class='page-loading' wx:else>

@@ -16,7 +16,22 @@
           </view>
         </view>
       </view>
-      <view wx:if="{{list.length===0}}" class="no-datas"><text>暂无数据</text></view>
+      <view wx:if="{{list.length===0}}" class="no-datas">
+        <text>暂无数据</text>
+      </view>
     </view>
   </scroll-view>
+  <view class='mask' wx:if='{{show && userInfo.firstLogin}}' data-id="1" catchtap='clickMask'>
+    <view class='modal-content' data-id="2" catchtap='clickMask'>
+      <view class='main-content'>
+        <view class='modal-title'>协议</view>
+        <view class="modal-content">
+          <rich-text nodes="{{protocol}}"></rich-text>
+        </view>
+      </view>
+      <view class='modal-btn-wrapper'>
+        <view class='confirm-btn' catchtap='confirm'>确定</view>
+      </view>
+    </view>
+  </view>
 </view>
