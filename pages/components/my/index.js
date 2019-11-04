@@ -4,7 +4,9 @@ import {
   getUserGarde
 } from '../../api/api.js'
 const app = getApp()
-
+import {
+  tapedFun
+} from '../../../utils/util.js'
 Component({
   /**
    * 组件的属性列表
@@ -23,6 +25,7 @@ Component({
     modalData: {},
     userInfo: null,
     gardeList: null,
+    buttonClicked: false
   },
 
   attached: function() {
@@ -39,6 +42,7 @@ Component({
    */
   methods: {
     goVip: function() {
+      tapedFun(this)
       wx.navigateTo({
         url: '/pages/vip/vip',
       })
@@ -170,6 +174,7 @@ Component({
     },
 
     goPay: function() {
+      tapedFun(this)
       wx.navigateTo({
         url: '/pages/pay/pay',
       })

@@ -24,7 +24,7 @@
           <text class="{{item.checked?'select':''}}">{{item.languageName}}</text>
         </view>
       </view>
-      <view class="right" bindtap="goLanguage">+</view>
+      <view class="right" bindtap="{{!buttonClicked ? 'goLanguage' : ''}}">+</view>
     </view>
     <buy show="{{showBuyModal}}" userInfo="{{userInfo}}" bind:toggleBuyModal='toggleBuyModal' bind:getUserInfo="getUserInfo"></buy>
     <block wx:if="{{unitList.length >0}}">

@@ -5,7 +5,8 @@ import {
   changeDialect
 } from '../../api/api.js'
 import {
-  showToast
+  showToast,
+  tapedFun
 } from '../../../utils/util.js'
 const app = getApp()
 
@@ -24,6 +25,7 @@ Component({
     unitList: null,
     userInfo: null,
     currentUnit: null,
+    buttonClicked: false
   },
 
   ready: function() {
@@ -85,6 +87,7 @@ Component({
     },
     goLanguage: function() {
       // navigateTo
+      tapedFun(this);
       wx.navigateTo({
         url: '/pages/language/language'
       })

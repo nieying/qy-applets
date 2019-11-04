@@ -28,7 +28,6 @@ const copyText = (data) => {
   })
 }
 
-
 const storageHeight = () => {
   wx.getSystemInfo({
     success: (res) => {
@@ -50,7 +49,6 @@ const storageHeight = () => {
     }
   })
 }
-
 
 const getSpell = (str, sp) => {
   var i, c, t, p, ret = "";
@@ -99,7 +97,16 @@ const formatList = (arr, keyword) =>{
   return newArr1;
 }
 
-
+const tapedFun = (self) => {
+  self.setData({
+    buttonClicked: true
+  })
+  setTimeout(function () {
+    self.setData({
+      buttonClicked: false
+    })
+  }, 500)
+}
 
 
 module.exports = {
@@ -108,4 +115,5 @@ module.exports = {
   getSpell: getSpell,
   formatList: formatList,
   showToast: showToast,
+  tapedFun: tapedFun
 }

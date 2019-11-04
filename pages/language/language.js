@@ -4,7 +4,8 @@ import {
   createNewDialect
 } from '../api/api.js'
 import {
-  showToast
+  showToast,
+  tapedFun
 } from '../../utils/util.js'
 const app = getApp()
 Page({
@@ -17,6 +18,8 @@ Page({
     warpHeight: 0,
     dialectList: [],
     selectDialects: [],
+    isSelect: false,
+    buttonClicked: false
   },
 
   /**
@@ -85,7 +88,6 @@ Page({
 
   //多选
   userCheck: function(e) {
-
     const {
       dialectList
     } = this.data;
@@ -114,13 +116,16 @@ Page({
       })
       this.setData({
         dialectList: this.data.dialectList,
-        selectDialects: checks
+        selectDialects: checks,
+        isSelect: true
       })
     }
   },
   // 确定
   confrim: function() {
+    tapedFun(this)
     const {
+      isSelect,
       selectDialects
     } = this.data
     if (selectDialects.length === 0) {
@@ -131,7 +136,12 @@ Page({
     if (!lastLanguage.hasOwnProperty('id')) {
       wx.setStorageSync('lastLanguage', selectDialects[0])
     }
-    const ids = selectDialects.map(d => d.id)
+    let ids = []
+    if (isSelect) {
+      ids = selectDialects.map(d => d.id)
+    } else {
+      ids = selectDialects.map(d => d.languageId)
+    }
     createNewDialect(ids).then(res => {
       wx.navigateTo({
         url: '/pages/main/main'
