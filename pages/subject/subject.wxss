@@ -138,6 +138,18 @@
   padding: 0 40rpx;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.answer-tips .left {
+  display: flex;
+  align-items: center;
+}
+
+.answer-tips .right image {
+  margin-top: 10rpx;
+  width: 64rpx;
+  height: 64rpx;
 }
 
 .answer-tips text {
@@ -230,7 +242,7 @@
 .bottom-loading {
   height: 442rpx;
   flex-direction: column;
-  background-color:#282d4b;
+  background-color: #282d4b;
 }
 
 .bottom-loading .loading {
@@ -251,4 +263,14 @@
   justify-content: center;
   align-items: center;
   margin-top: 30rpx;
+}
+
+
+.weui-input {
+  margin-top: 40rpx;
+  width: 496rpx;
+  height: 52rpx;
+  border-radius: 20rpx;
+  padding: 35rpx 40rpx;
+  border: 4rpx solid rgba(234, 237, 242, 1);
 }

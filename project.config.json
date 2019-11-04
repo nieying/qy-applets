@@ -82,10 +82,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "subject",
 					"pathName": "pages/subject/subject",
-					"query": "",
+					"query": "languageId=29",
 					"scene": null
 				},
 				{
@@ -127,6 +127,7 @@
 					"id": -1,
 					"name": "guide",
 					"pathName": "pages/guide/guide",
+					"query": "",
 					"scene": null
 				}
 			]

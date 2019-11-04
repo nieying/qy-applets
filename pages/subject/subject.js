@@ -2,7 +2,8 @@ import {
   getSubject,
   postSubject,
   getUnitSubject,
-  getAdPage
+  getAdPage,
+  createFeedback
 } from '../api/api.js';
 import {
   showToast
@@ -25,13 +26,20 @@ Page({
     isPlay: false,
     selectId: '',
     rightId: '',
-    answerObj: {},
+    answerObj: {
+      className: 'correct',
+      color: '#00C853',
+      icon: 'success',
+      txt1: '恭喜您!',
+      txt2: '答对了'
+    },
     subjectObj: {},
     nextSubject: {},
     currentNote: {},
     currentDialect: {},
     userInfo: {},
     adObj: null,
+    showFeedbackModal: false
   },
 
   /**
@@ -166,6 +174,7 @@ Page({
       userInfo: obj.userInfo,
       rightId: rightId,
       isAnswered: false,
+      // isAnswered: true,
       selectId: '',
     })
   },
@@ -264,5 +273,44 @@ Page({
     if (this.data.subjectObj.type === 'auto') {
       this.audioStop()
     }
+  },
+
+  clickMask: function(e) {
+    let id = e.currentTarget.dataset.id;
+    if (id == 1) {
+      this.setData({
+        showFeedbackModal: false
+      })
+    }
+  },
+
+  showModal: function() {
+    this.setData({
+      showFeedbackModal: true
+    })
+  },
+
+  getTextAreaValue: function(e) {
+    this.setData({
+      feedback: e.detail.value
+    })
+  },
+
+  confirm: function() {
+    if (!this.data.feedback) {
+      showToast('请输入反馈内容');
+      return
+    }
+    createFeedback({
+      content: this.data.feedback,
+      subjectId: this.data.subjectObj.id 
+    }).then(res => {
+      if (res) {
+        showToast('反馈成功！');
+        this.setData({
+          showFeedbackModal: false
+        })
+      }
+    })
   }
 })

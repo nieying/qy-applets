@@ -3,7 +3,7 @@
     <view class='main-content'>
       <view class='title'>{{modalData.title}}</view>
       <input wx:if="{{modalData.type !== 2}}" value="{{modalData.inputValue}}" bindinput="getInputValue" class="weui-input" maxlength="10" placeholder="{{modalData.placeholder}}" />
-      <textarea wx:if="{{modalData.type === 2}}" value="{{modalData.inputValue}}" bindinput="getTextAreaValue" class="weui-input" maxlength="30" placeholder="{{modalData.placeholder}}" placeholder="{{modalData.placeholder}}" />
+      <textarea wx:if="{{modalData.type === 2}}" value="{{modalData.inputValue}}" bindinput="getTextAreaValue" class="weui-input" maxlength="30" placeholder="{{modalData.placeholder}}" />
 
       <view class='tips' wx:if="{{isErr}}">{{modalData.tips}}</view>
     </view>

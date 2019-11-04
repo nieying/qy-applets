@@ -61,7 +61,6 @@
             </view> -->
             <image src="{{subjectObj.filePath}}"></image>
           </view>
-         
           <!-- 答题选项 -->
           <view class="{{subjectObj.type !== 'picture' ? 'answer-list':'tone-list'}}">
             <block wx:for="{{subjectObj.answers}}" wx:for-item="item" wx:key="index">
@@ -78,8 +77,13 @@
           </view>
           <!-- 回答正确与否 -->
           <view wx:if="{{isAnswered}}" class='answer-tips {{answerObj.className}}'>
-            <icon type="{{answerObj.icon}}" size="30" color="{{answerObj.color}}" />
-            <text>{{answerObj.txt1}}</text> {{answerObj.txt2}}
+            <view class="left">
+              <icon type="{{answerObj.icon}}" size="30" color="{{answerObj.color}}" />
+              <text>{{answerObj.txt1}}</text> {{answerObj.txt2}}
+            </view>
+            <view class="right">
+              <image src="/pages/images/subject/icon-answer-{{selectId === rightId?'right':'wrong'}}.svg" bindtap="showModal"></image>
+            </view>
           </view>
         </view>
       </view>
@@ -91,4 +95,17 @@
       继续
     </view>
   </block>
+</view>
+<view class='mask' wx:if='{{showFeedbackModal}}' data-id="1" catchtap='clickMask'>
+  <view class='modal-content' data-id="2" catchtap='clickMask'>
+    <view class='main-content'>
+      <view class='modal-title'>题目反馈</view>
+      <view class="modal-content">
+        <textarea bindinput="getTextAreaValue" class="weui-input" maxlength="30" />
+      </view>
+    </view>
+    <view class='modal-btn-wrapper'>
+      <view class='confirm-btn' catchtap='confirm'>确定</view>
+    </view>
+  </view>
 </view>
