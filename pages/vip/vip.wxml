@@ -8,7 +8,7 @@
       <view class='list'>
         <view class="item {{totalBill >= 100 ? 'active' : ''}}">
           <view class='left'>
-            <view class='one'>爱心者</view>
+            <view class='one'>方言爱心者</view>
             <view class='two'>会员特权会员特权会员特权 会员特权会员特权
             </view>
             <text class='three'>拥有钞票<text>100</text></text>
@@ -20,7 +20,7 @@
         </view>
         <view class="item {{totalBill >= 1000 ? 'active' : ''}}">
           <view class='left'>
-            <view class='one'>慈善明星</view>
+            <view class='one'>方言慈善明星</view>
             <view class='two'>会员特权会员特权会员特权 会员特权会员特权
             </view>
             <text class='three'>拥有钞票 <text>1000</text></text>
@@ -32,7 +32,7 @@
         </view>
         <view class="item {{totalBill === 5000 ? 'active' : ''}}">
           <view class='left'>
-            <view class='one'>大慈善家</view>
+            <view class='one'>方言慈善家</view>
             <view class='two'>会员特权会员特权会员特权 会员特权会员特权
             </view>
             <text class='three'>拥有钞票<text>5000</text></text>

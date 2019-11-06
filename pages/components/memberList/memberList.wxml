@@ -1,17 +1,14 @@
-<wxs module="dateUtil" src="../../../utils/timeUtil.wxs"></wxs>
 <view class="list">
   <view wx:if="{{listDatas.length>0}}" wx:for="{{listDatas}}" wx:for-item="item" wx:key="index">
     <view class="type1">
       <text>{{item.title}}</text>
     </view>
     <view class="item" wx:for="{{item.list}}" wx:for-item="item" wx:key="index">
-      <!-- <view class="item"> -->
       <view class="left">
         <image src="{{item.avatar}}"></image>
         <view class="info">
           <view class="name">{{item.userName}}</view>
-          <view class="desc">{{dateUtil.dateFormat(item.addTime,'yyyy-MM-dd hh:mm:ss')}}</view>
-          <!-- <view class="desc">{{new Date(item.addTime)}}</view> -->
+          <view class="desc">{{item.addTime}}</view>
         </view>
       </view>
       <view class="right" wx:if="{{userType === 'leader'}}">

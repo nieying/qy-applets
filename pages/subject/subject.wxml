@@ -48,7 +48,7 @@
                   <view class='value'>{{currentNote.value}}</view>
                 </view>
               </block>
-              <view wx:else class='topic'>{{subjectObj.title}}</view>
+              <view wx:else class='topic'>{{subjectObj.title1}}</view>
             </view>
           </view>
           <!-- 看图题 -->

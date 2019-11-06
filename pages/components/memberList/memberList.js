@@ -1,5 +1,6 @@
 import {
-  approvalmember
+  approvalmember,
+  kickOrgan
 } from '../../api/api.js'
 import {
   formatDate,
@@ -98,7 +99,10 @@ Component({
               pass,
               userid
             } = e.currentTarget.dataset
-            quitOrgan().then(res => {
+            kickOrgan({
+              userId: userid,
+              organizeId: organizeid
+            }).then(res => {
               showToast('踢出成功！')
               this.triggerEvent('callback')
             })

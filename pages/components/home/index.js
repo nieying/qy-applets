@@ -37,7 +37,9 @@ Component({
   attached: function() {
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      warpHeight: parseInt(wx.getStorageSync('warpHeight')) + 10,
+      warpHeight: parseInt(wx.getStorageSync('warpHeight')),
+      currentUnitR: parseInt(wx.getStorageSync('warpHeight')) === 388 ? 84 : 100,
+      unitR: parseInt(wx.getStorageSync('warpHeight')) === 388 ? 42 : 50,
     })
   },
 

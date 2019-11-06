@@ -87,10 +87,8 @@ Page({
       if (res && res.data.list.length > 0) {
         res.data.list.filter(r => {
           if (r.state === 1) {
-            r.addTime = Date.parse(r.addTime)
             peddingMemberList.push(r)
           } else {
-            r.addTime = Date.parse(r.addTime)
             memberList.push(r)
           }
         })

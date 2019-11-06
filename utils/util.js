@@ -37,12 +37,12 @@ const storageHeight = () => {
       wx.setStorageSync('statusBarHeight', statusBarHeight)
       if (deviceHeight <= 568) {
         let height = deviceHeight - statusBarHeight - 160
-        let height2 = deviceHeight - statusBarHeight
+        let height2 = deviceHeight - statusBarHeight - 75
         wx.setStorageSync('warpHeight', height)
         wx.setStorageSync('pageHeight', height2)
       } else {
         let height = deviceHeight - statusBarHeight - 185
-        let height2 = deviceHeight - statusBarHeight
+        let height2 = deviceHeight - statusBarHeight - 85
         wx.setStorageSync('warpHeight', height)
         wx.setStorageSync('pageHeight', height2)
       }

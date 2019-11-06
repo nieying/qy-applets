@@ -16,7 +16,7 @@
       {{userInfo.bill}}
     </view>
   </view>
-  <view class="content" style="height: {{warpHeight - 10}}px">
+  <view class="content" style="height: {{warpHeight}}px">
     <view class="popver-list" wx:if="{{showDialect}}">
       <view class="left">
         <view class='item' wx:for="{{userDialect}}" wx:for-item="item" wx:key="index" data-index="{{index}}" data-item="{{item}}" bindtap="selectDialect">
@@ -29,7 +29,7 @@
     <buy show="{{showBuyModal}}" userInfo="{{userInfo}}" bind:toggleBuyModal='toggleBuyModal' bind:getUserInfo="getUserInfo"></buy>
     <block wx:if="{{unitList.length >0}}">
       <view class="home-warp">
-        <circle wx:if="{{currentUnit.id}}" r="100" steps="{{currentUnit.progress}}">
+        <circle wx:if="{{currentUnit.id}}" r="{{currentUnitR}}" steps="{{currentUnit.progress}}">
           <!-- 这部分内容将被放置在组件 <slot> 的位置上 -->
           <view class="circle_info">
             <view class="box">
@@ -47,7 +47,7 @@
       </view>
       <scroll-view class="unit-list" scroll-x="true">
         <block wx:for="{{unitList}}" wx:for-item="item" wx:key="index">
-          <circle r="50" w="2" steps="{{item.progress}}" class="unit-circle">
+          <circle r="{{unitR}}" w="2" steps="{{item.progress}}" class="unit-circle">
             <view class="circle_info">
               <view class="item {{item.learnState !== 'future'  ? 'active' : '' }}" data-item="{{item}}" bindtap='clickUnit'>
                 <view class="index">0{{index + 1}}</view>

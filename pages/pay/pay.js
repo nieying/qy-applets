@@ -1,4 +1,11 @@
 // pages/pay/pay.js
+import {
+  getPay
+} from '../api/api.js'
+import {
+  showToast,
+  tapedFun
+} from '../../utils/util.js'
 Page({
 
   /**
@@ -8,16 +15,16 @@ Page({
     height: 0,
     totalBill: 0,
     moneyList: [{
-        value: 10,
-        checked: false
+        value: 0.01,
+        checked: true
       },
       {
-        value: 30,
+        value: 1,
         checked: false
       },
       {
         value: 50,
-        checked: true
+        checked: false
       },
       {
         value: 100,
@@ -32,10 +39,11 @@ Page({
         checked: false
       },
     ],
-    currentMoney: [{
-      value: 50,
+    currentMoney: {
+      value: 0.01,
       checked: true
-    }]
+    },
+    buttonClicked: false
   },
 
   /**
@@ -48,7 +56,6 @@ Page({
     })
   },
 
-  // 选择方言
   selectMoney: function(e) {
     const {
       moneyList
@@ -75,9 +82,40 @@ Page({
 
   // 充值
   payMoney: function() {
-    wx.showToast({
-      icon: 'none',
-      title: '该功能未完善',
+    // wx.showToast({
+    //   icon: 'none',
+    //   title: '该功能未完善',
+    // })
+    tapedFun(this)
+    getPay({
+      amount: this.data.currentMoney.value
+    }).then(res => {
+      const that = this;
+      if (res && res.data) {
+        const payParams = res.data;
+        wx.requestPayment({
+          'appId': payParams.appId,
+          'timeStamp': payParams.timeStamp.toString(),
+          'nonceStr': payParams.nonceStr,
+          'package': payParams.packageValue,
+          'signType': payParams.signType,
+          'paySign': payParams.paySign,
+          'success': function(res) {
+            if (res.errMsg == "requestPayment:ok") { // 调用支付成功
+              that.goBack();
+              showToast('支付成功')
+            } else if (res.errMsg === 'requestPayment:cancel') { // 用户取消支付的操作
+              showToast('取消支付')
+            }
+          },
+          'fail': function(res) {
+            // showToast('支付失败')
+            return false;
+          },
+          'complete': function(res) {}
+        })
+      }
+
     })
   },
 

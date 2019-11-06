@@ -12,7 +12,7 @@
       </view>
     </view>
   </scroll-view>
-  <view class="bottom" bindtap="payMoney">
+  <view class="bottom" bindtap="{{!buttonClicked?'payMoney':''}}">
     <text>充值</text>
   </view>
 </view>

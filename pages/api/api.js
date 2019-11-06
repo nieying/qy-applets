@@ -222,6 +222,13 @@ export const quitOrgan = (params) => {
     data: params
   })
 };
+// 踢除协会
+export const kickOrgan = (params) => {
+  return request.http({
+    url: "/organize/member/quit",
+    data: params
+  })
+};
 // 获取状态
 export const getState = (params) => {
   return request.http({
@@ -267,6 +274,14 @@ export const getProtocol = (params) => {
   return request.http({
     url: "/config/agreement_ca",
     method: 'GET',
+    data: params
+  })
+};
+
+// 充值
+export const getPay = (params) => {
+  return request.http({
+    url: "/pay/prepay",
     data: params
   })
 };

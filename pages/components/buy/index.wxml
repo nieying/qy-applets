@@ -1,5 +1,5 @@
-<view class='mask' wx:if='{{show}}' data-id="1" bindtap='clickMask'>
-  <view class='modal-content' data-id="2" bindtap='clickMask'>
+<view class='mask1' wx:if='{{show}}' data-id="1" bindtap='clickMask'>
+  <view class='modal-content1' data-id="2" bindtap='clickMask'>
     <view class='card'>
       <view class='item'>
         <image src='/pages/images/buy/icon-life.svg'></image>

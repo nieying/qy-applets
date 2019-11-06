@@ -20,7 +20,7 @@ Page({
   data: {
     height: 0,
     warpHeight: 0,
-    isLoading: true,
+    isLoading: false,
     isAnswered: false,
     isShowNote: false,
     isPlay: false,
@@ -150,11 +150,13 @@ Page({
       a.checked = false
     })
     const notes = JSON.parse(obj.notes);
+    obj.title1 = obj.title;
     if (obj.type !== 'map' && notes.length > 0) {
       notes.forEach(item => {
-        obj.title1 = obj.title.replace(new RegExp(`(${item.key})`, 'g'), ',$1,');
+        obj.title = obj.title.replace(new RegExp(`(${item.key})`, 'g'), ',$1,');
       })
-      obj.titleList = obj.title1.split(',').filter(item => !!item).map(item => {
+      console.log('obj.title1', obj.title, notes, obj.title1)
+      obj.titleList = obj.title.split(',').filter(item => !!item).map(item => {
         let d = notes.find(n => n.key === item);
         if (d) {
           return {
@@ -168,6 +170,8 @@ Page({
           }
         }
       })
+
+      console.log('------>obj.titleList', obj.titleList)
     }
     this.setData({
       subjectObj: obj,
@@ -303,7 +307,7 @@ Page({
     }
     createFeedback({
       content: this.data.feedback,
-      subjectId: this.data.subjectObj.id 
+      subjectId: this.data.subjectObj.id
     }).then(res => {
       if (res) {
         showToast('反馈成功！');
