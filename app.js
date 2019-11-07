@@ -5,6 +5,7 @@ import {
   storageHeight
 } from './utils/util'
 const app = getApp();
+const ald = require('./utils/ald-stat.js')
 App({
   onLaunch: function() {
     storageHeight();

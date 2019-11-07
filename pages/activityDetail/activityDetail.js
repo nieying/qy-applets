@@ -11,6 +11,7 @@ Page({
     height: 0,
     warpHeight: 0,
     actObj: {},
+    showSkeleton: true,
   },
 
   /**
@@ -31,6 +32,11 @@ Page({
         actObj: res.data
       })
       wx.hideLoading()
+      // setTimeout(() => {
+      //   this.setData({
+      //     showSkeleton: false
+      //   })
+      // }, 1000)
     })
   },
 

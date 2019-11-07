@@ -75,10 +75,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "activityDetail",
 					"pathName": "pages/activityDetail/activityDetail",
-					"query": "",
+					"query": "id=7",
 					"scene": null
 				},
 				{
@@ -127,6 +127,13 @@
 					"id": -1,
 					"name": "guide",
 					"pathName": "pages/guide/guide",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "pages/test/test",
 					"query": "",
 					"scene": null
 				}

@@ -6,7 +6,7 @@
     <view class="padding-box">
       <view class='title'>会员中心</view>
       <view class='list'>
-        <view class="item {{totalBill >= 100 ? 'active' : ''}}">
+        <view class="item {{userInfo.userLevel > 0 ? 'active' : ''}}">
           <view class='left'>
             <view class='one'>方言爱心者</view>
             <view class='two'>会员特权会员特权会员特权 会员特权会员特权
@@ -14,11 +14,11 @@
             <text class='three'>拥有钞票<text>100</text></text>
           </view>
           <view class='right'>
-            <image wx:if="{{totalBill < 100}}" src='/pages/images/vip/icon-love.svg'></image>
-            <image wx:else src='/pages/images/vip/icon-love-active.svg'></image>
+            <image wx:if="{{userInfo.userLevel > 0}}" src='/pages/images/vip/icon-love-active.svg'></image>
+            <image wx:else src='/pages/images/vip/icon-love.svg'></image>
           </view>
         </view>
-        <view class="item {{totalBill >= 1000 ? 'active' : ''}}">
+        <view class="item {{userInfo.userLevel > 1 ? 'active' : ''}}">
           <view class='left'>
             <view class='one'>方言慈善明星</view>
             <view class='two'>会员特权会员特权会员特权 会员特权会员特权
@@ -26,11 +26,11 @@
             <text class='three'>拥有钞票 <text>1000</text></text>
           </view>
           <view class='right'>
-            <image wx:if="{{totalBill < 1000}}" src='/pages/images/vip/icon-charitable.svg'></image>
-            <image wx:else src='/pages/images/vip/icon-charitable-active.svg'></image>
+            <image wx:if="{{userInfo.userLevel > 1}}" src='/pages/images/vip/icon-charitable-active.svg'></image>
+            <image wx:else src='/pages/images/vip/icon-charitable.svg'></image>
           </view>
         </view>
-        <view class="item {{totalBill === 5000 ? 'active' : ''}}">
+        <view class="item {{userInfo.userLevel > 2 ? 'active' : ''}}">
           <view class='left'>
             <view class='one'>方言慈善家</view>
             <view class='two'>会员特权会员特权会员特权 会员特权会员特权
@@ -38,8 +38,8 @@
             <text class='three'>拥有钞票<text>5000</text></text>
           </view>
           <view class='right'>
-            <image wx:if="{{totalBill < 5000}}" src='/pages/images/vip/icon-big-charitable.svg'></image>
-            <image wx:else src='/pages/images/vip/icon-big-charitable-active.svg'></image>
+            <image wx:if="{{userInfo.userLevel > 2}}" src='/pages/images/vip/icon-big-charitable-active.svg'></image>
+            <image wx:else src='/pages/images/vip/icon-big-charitable.svg'></image>
           </view>
         </view>
       </view>

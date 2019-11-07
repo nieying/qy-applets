@@ -6,7 +6,7 @@ Page({
    */
   data: {
     height: 0,
-    totalBill: 0,
+    userInfo: null,
   },
 
   /**
@@ -16,7 +16,7 @@ Page({
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight')),
-      totalBill: wx.getStorageSync('userInfo').totalBill
+      userInfo: wx.getStorageSync('userInfo')
     })
   },
 

@@ -18,6 +18,7 @@ Page({
   },
 
   getAuthorize: function (e) {
+    app.aldstat.sendEvent("微信登入", "用户点击了微信登入")
     storageHeight();
     console.log('getAuthorize', e);
     let errMsg = e.detail.errMsg;

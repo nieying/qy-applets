@@ -1,7 +1,7 @@
 <view class="page-guide">
-  <view class="header" style='padding-top: {{height}}px'>
+  <!-- <view class="header" style='padding-top: {{height}}px'>
     <text style="color:transparent">111</text>
-  </view>
+  </view> -->
   <view class="guide-warp">
     <view class="logo">
       <image src="/pages/images/guide_logo.svg"></image>

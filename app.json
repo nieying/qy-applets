@@ -13,7 +13,8 @@
     "pages/applyFeedback/applyFeedback",
     "pages/union/union",
     "pages/out/out",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",
