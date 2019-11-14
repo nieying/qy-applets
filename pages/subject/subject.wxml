@@ -22,7 +22,7 @@
     </view>
   </view>
   <block wx:else>
-    <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
+    <scroll-view scroll-y="true" style="height: {{warpHeight + 10}}px" class="content">
       <view class='padding-box'>
         <view class='subject-type' wx:if="{{!isLoading}}">
           <!-- 防伪标题 -->
@@ -39,16 +39,14 @@
             <view wx:if="{{(subjectObj.type === 'auto' && isAnswered) || subjectObj.type !== 'auto'}}">
               <block wx:if="{{isAnswered && subjectObj.titleList.length >0}}">
                 <view class='topic'>
-                  <view wx:for="{{subjectObj.titleList}}" wx:for-item="item" wx:key="index">
-                    <text class="{{item.value ? 'underline' :''}}" data-item="{{item}}" bindtap="showNote">{{item.key}}</text>
-                  </view>
+                  <text wx:for="{{subjectObj.titleList}}" wx:for-item="item" wx:key="index" class="{{item.value ? 'underline' :''}}" data-item="{{item}}" bindtap="showNote">{{item.key}}</text>
                 </view>
                 <view class="popover" wx:if="{{isShowNote}}">
                   <view class='key'>{{currentNote.key}}:</view>
                   <view class='value'>{{currentNote.value}}</view>
                 </view>
               </block>
-              <view wx:else class='topic'>{{subjectObj.title1}}</view>
+              <view wx:else class='topic1'>{{subjectObj.title1}}</view>
             </view>
           </view>
           <!-- 看图题 -->

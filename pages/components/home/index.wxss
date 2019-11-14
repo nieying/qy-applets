@@ -17,6 +17,13 @@
   font-size: 24rpx;
 }
 
+.header .popver-select text {
+  max-width: 160rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .content {
   position: relative;
 }
@@ -138,7 +145,7 @@
 }
 
 .home-warp .box .active {
-    border: 6rpx solid #ffd100;
+  border: 6rpx solid #ffd100;
 }
 
 .home-warp .box .star image {
