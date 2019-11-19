@@ -54,6 +54,7 @@
             <view class='name'>
               <text>根据图片情境选择正确答案</text>
             </view>
+            <view class='topic1'>{{subjectObj.title}}</view>
             <!-- <view class='title'>
               <text>{{subjectObj.title}}</text>
             </view> -->
