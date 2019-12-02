@@ -16,7 +16,19 @@ Page({
     currentTab: "union",
     nowIndex: 0,
     organDetail: {},
-    tabs: [],
+    tabs: [{
+      key: 'activity',
+      name: "协会活动",
+      active: "active"
+    }, {
+      key: 'task',
+      name: "任务列表",
+      active: ""
+    }, {
+      key: 'union',
+      name: "协会成员",
+      active: ""
+    }],
     memberList: [],
     peddingMemberList: [],
     userType: null,
@@ -32,29 +44,14 @@ Page({
       userType: options.userType
     })
     if (options.userType === "leader") {
-      this.setData({
-        tabs: [{
-            key: 'union',
-            name: "协会成员",
-            active: "active"
-          },
-          {
-            key: 'apply',
-            name: "申请列表",
-            active: ""
-          }
-        ]
-      })
-    } else {
-      this.setData({
-        tabs: [{
-          key: 'union',
-          name: "协会成员",
-          active: "active"
-        }]
-      })
+      // this.setData({
+      //   tabs: this.data.tabs.push([{
+      //     key: 'apply',
+      //     name: "申请列表",
+      //     active: ""
+      //   }])
+      // })
     }
-
   },
 
   /**

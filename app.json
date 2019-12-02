@@ -14,7 +14,9 @@
     "pages/union/union",
     "pages/out/out",
     "pages/pay/pay",
-    "pages/test/test"
+    "pages/setting/setting",
+    "pages/userInfo/userInfo",
+    "pages/tags/tags"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,30 @@
+<view class="page-setting">
+  <view class="header" style='padding-top: {{height + 10}}px'>
+    <icon type="clear" size="30" color="black" bindtap="goBack" />
+  </view>
+  <view class="content">
+    <view class="padding-box">
+      <view class='title'> 设置 </view>
+      <view class='list'>
+        <view class='item'>
+          <view class='left'>
+            <view class="name">意见反馈</view>
+            <view class="desc">欢迎提出建议及体验反馈</view>
+          </view>
+          <view class='right'>
+            <view class="btn btn-black" bindtap="showModal">反馈</view>
+          </view>
+        </view>
+        <view class='item'>
+          <view class='left'>
+            <view class="name">切换协会</view>
+          </view>
+          <view class='right'>
+            <view class="btn btn-black">切换</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <feedModal show="{{show}}" feedType="2" bind:confirm='onConfirm' />
+</view>

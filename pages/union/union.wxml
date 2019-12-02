@@ -20,6 +20,12 @@
         </view>
       </view>
       <view class="tab-content">
+       <view class="union-activity" wx:if="{{currentTab==='union'}}">
+          <memberList tab="{{currentTab}}" userType="{{userType}}" datas="{{memberList}}" bind:callback='getMemberList' />
+        </view>
+         <view class="union-task" wx:if="{{currentTab==='union'}}">
+          <memberList tab="{{currentTab}}" userType="{{userType}}" datas="{{memberList}}" bind:callback='getMemberList' />
+        </view>
         <view class="union-people" wx:if="{{currentTab==='union'}}">
           <memberList tab="{{currentTab}}" userType="{{userType}}" datas="{{memberList}}" bind:callback='getMemberList' />
         </view>

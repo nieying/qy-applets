@@ -1,0 +1,13 @@
+<view class='mask' wx:if='{{show}}' data-id="1" catchtap='clickMask'>
+  <view class='modal-content' data-id="2" catchtap='clickMask'>
+    <view class='main-content'>
+      <view class='modal-title'>题目反馈</view>
+      <view class="modal-content">
+        <textarea bindinput="getTextAreaValue" class="weui-input" maxlength="30" />
+      </view>
+    </view>
+    <view class='modal-btn-wrapper'>
+      <view class='confirm-btn' catchtap='confirm'>确定</view>
+    </view>
+  </view>
+</view>

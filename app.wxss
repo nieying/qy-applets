@@ -39,7 +39,6 @@ page {
   font-weight: 600;
 }
 
-
 .header .money {
   display: flex;
   align-items: center;
@@ -72,8 +71,9 @@ page {
   padding: 40rpx 0;
   overflow-y: auto;
 }
-.padding-box{
-  padding:  0 30rpx;
+
+.padding-box {
+  padding: 0 30rpx;
 }
 
 .bottom {
@@ -105,6 +105,11 @@ page {
   background: #ffd100;
 }
 
+.btn-black {
+  color: #ffd100;
+  background: #282d4b;
+}
+
 .btn-primary:hover {
   background: #fbc02e;
 }
@@ -125,7 +130,7 @@ page {
 
 .btn-warn {
   color: white;
-  background: #F44336;
+  background: #f44336;
 }
 
 /* .btn-warn:hover {
@@ -184,7 +189,6 @@ page {
   background: transparent;
 }
 
-
 .mask {
   position: absolute;
   left: 0;
@@ -204,6 +208,15 @@ page {
   width: 90%;
   background-color: #fff;
   border-radius: 40rpx;
+}
+
+.modal-content textarea {
+  margin-top: 50rpx;
+  width: 90%;
+  height: 100rpx;
+  border-radius: 20rpx;
+  padding: 35rpx 40rpx;
+  border: 4rpx solid rgba(234, 237, 242, 1);
 }
 
 .modal-btn-wrapper {

@@ -1,0 +1,41 @@
+.page-tags {
+  height: 100%;
+  background: #eaedf2;
+}
+
+.warp, .list {
+  margin-top: 32rpx;
+}
+
+.list .item {
+  display: flex;
+  height: 40rpx;
+  border-bottom: 2rpx solid rgba(245, 247, 249, 1);
+  border-radius: 20rpx;
+  padding: 30rpx 30rpx;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20rpx 0;
+}
+
+.name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: rgba(40, 45, 75, 1);
+  line-height: 48rpx;
+}
+
+.wx-switch-input {
+  width: 82rpx !important;
+  height: 36rpx !important;
+}
+
+.wx-switch-input::before {
+  width: 80rpx !important;
+  height: 36rpx !important;
+}
+
+.wx-switch-input::after {
+  width: 40rpx !important;
+  height: 36rpx !important;
+}

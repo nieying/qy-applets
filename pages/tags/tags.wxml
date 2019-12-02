@@ -1,0 +1,17 @@
+<view class="page-tags">
+  <view class="header" style='padding-top: {{height + 10}}px'>
+    <icon type="clear" size="30" color="black" bindtap="goBack" />
+  </view>
+  <view class="content">
+    <view class="padding-box">
+      <view class='list'>
+        <view class='item' wx:for="{{tags}}" wx:for-item="item" wx:key="index">
+          <view class="name">{{item.name}}</view>
+          <view class="switch">
+          <switch checked="{{item.checked}}" color="#282d4b" bindchange="switchChange" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

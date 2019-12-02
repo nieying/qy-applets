@@ -39,7 +39,7 @@ Page({
     currentDialect: {},
     userInfo: {},
     adObj: null,
-    showFeedbackModal: false
+    show: false
   },
 
   /**
@@ -290,31 +290,7 @@ Page({
 
   showModal: function() {
     this.setData({
-      showFeedbackModal: true
-    })
-  },
-
-  getTextAreaValue: function(e) {
-    this.setData({
-      feedback: e.detail.value
-    })
-  },
-
-  confirm: function() {
-    if (!this.data.feedback) {
-      showToast('请输入反馈内容');
-      return
-    }
-    createFeedback({
-      content: this.data.feedback,
-      subjectId: this.data.subjectObj.id
-    }).then(res => {
-      if (res) {
-        showToast('反馈成功！');
-        this.setData({
-          showFeedbackModal: false
-        })
-      }
+      show: true
     })
   }
 })

@@ -8,16 +8,11 @@ import {
   tapedFun
 } from '../../../utils/util.js'
 Component({
-  /**
-   * 组件的属性列表
-   */
+ 
   properties: {
 
   },
 
-  /**
-   * 组件的初始数据
-   */
   data: {
     height: 0,
     warpHeight: 0,
@@ -37,9 +32,6 @@ Component({
     })
   },
 
-  /**
-   * 组件的方法列表
-   */
   methods: {
     goVip: function() {
       tapedFun(this)

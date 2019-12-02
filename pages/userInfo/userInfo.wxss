@@ -1,0 +1,55 @@
+.page-tags {
+  height: 100%;
+  background: #eaedf2;
+}
+
+.warp, .list {
+  margin-top: 32rpx;
+}
+
+.section {
+  padding: 20rpx 30rpx;
+  align-items: center;
+  margin: 20rpx 0;
+  border-bottom: 4rpx solid rgba(245, 247, 249, 1);
+}
+
+.desc {
+  margin-bottom: 20rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: rgba(144, 164, 174, 1);
+}
+
+.name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: rgba(40, 45, 75, 1);
+  line-height: 48rpx;
+}
+
+.wx-switch-input {
+  width: 82rpx !important;
+  height: 36rpx !important;
+}
+
+.wx-switch-input::before {
+  width: 80rpx !important;
+  height: 36rpx !important;
+}
+
+.wx-switch-input::after {
+  width: 40rpx !important;
+  height: 36rpx !important;
+}
+
+.tip-warp {
+  margin-top: 80rpx;
+  display: flex;
+  flex-direction: column;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: rgba(144, 164, 174, 1);
+  text-align: center;
+}
+

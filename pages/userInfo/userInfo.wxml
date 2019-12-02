@@ -1,0 +1,38 @@
+<view class="page-tags">
+  <view class="header" style='padding-top: {{height + 10}}px'>
+    <icon type="clear" size="30" color="black" bindtap="goBack" />
+  </view>
+  <view class="content">
+    <view class="padding-box">
+      <form>
+        <view class="section">
+          <view class="desc">姓名</view>
+          <input name="input" placeholder="请输入姓名" />
+        </view>
+        <view class="section">
+          <view class="desc">学校</view>
+          <input name="input" placeholder="请输入学校（选填）" />
+        </view>
+        <view class="section">
+          <view class="desc">班级</view>
+          <input name="input" placeholder="请输入班级（选填）" />
+        </view>
+        <view class="section">
+          <view class="desc">手机号码</view>
+          <input name="input" placeholder="方便联系到您 " />
+        </view>
+        <view class="section">
+          <view class="desc">个人介绍</view>
+          <input name="input" placeholder="简要描述 " />
+        </view>
+      </form>
+      <view class="tip-warp">
+        <text>加入协会需要交纳30元作为会费， </text>
+        <text>将用于协会支出等</text>
+      </view>
+    </view>
+  </view>
+  <view class="bottom " bindtap="{{!buttonClicked? 'onSubmit': ''}} ">
+    <text>提交</text>
+  </view>
+</view>
