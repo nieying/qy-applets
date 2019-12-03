@@ -1,0 +1,13 @@
+<view class="achieve">
+  <view class="achieve-item {{item.isActive ?'achieve-active':''}}" wx:for="{{listDatas}}" wx:for-item="item" wx:key="index">
+    <view class="left">
+      <view class="one">{{item.title}}</view>
+      <view class="two">{{item.detail}}</view>
+    </view>
+    <view class="right">
+      <image wx:if="{{item.isActive}}" src="{{itefm.avatar}}"></image>
+      <image wx:else src="{{item.darkAvatar}}"></image>
+      <progress wx:if="{{item.type==='languageProcess'}}" percent="{{item.value}}" active backgroundColor="#EAEDF2" color="{{item.value === 100 ? '#00C853':'#FFD100 '}}" stroke-width="4" border-radius="10" />
+    </view>
+  </view>
+</view>

@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "memberList": "/pages/components/memberList/memberList"
+    "memberList": "/pages/components/memberList/memberList",
+    "activityList": "/pages/components/activityList/activityList",
+    "taskList": "/pages/components/taskList/taskList"
   },
   "disableScroll": true
 }

@@ -1,0 +1,33 @@
+<view class="page-search">
+  <view class="header" style='padding-top: {{height + 10}}px'>
+    <icon type="clear" size="30" color="black" bindtap="goBack" />
+  </view>
+  <view class="content">
+    <view class="padding-box">
+      <view class='title'> 搜索协会 </view>
+      <view class="search-input">
+        <input class="weui-input" maxlength="35" placeholder="请输入协会ID/协会名字来搜索" bindinput="bindKeyInput" />
+        <icon type="search" size="23" color="#90A4AE" bindtap="{{!buttonClicked?'onSearch':''}}" />
+      </view>
+      <view class='list'>
+        <view wx:if="{{organList.length > 0}}"  class='item' wx:for="{{organList}}" wx:for-item="item" wx:key="index" bindtap="clickItem" data-id="{{item.id}}">
+          <view class='left'>
+            <view>
+              <image src="{{item.avatar}}"></image>
+            </view>
+            <view>
+              <view class='name'>{{item.name}}</view>
+              <view class='desc'>{{item.remark}}</view>
+            </view>
+          </view>
+          <view class='right'>
+            <view class="btn btn-green" bindtap="{{!buttonClicked?'onJoin':''}}" data-organizeid="{{item.organizeId}}">加入</view>
+
+            <view class="btn btn-default" bindtap="{{!buttonClicked?'onQuit':''}}" data-organizeid="{{item.organizeId}}">退出</view>
+          </view>
+        </view>
+        <view wx:if="{{organList.length === 0}}" class="no-datas">暂无数据</view>
+      </view>
+    </view>
+  </view>
+</view>

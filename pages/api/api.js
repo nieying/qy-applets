@@ -229,6 +229,26 @@ export const kickOrgan = (params) => {
     data: params
   })
 };
+
+// 协会活动列表
+export const getOrganActivityList = (params) => {
+  return request.http({
+    url: "/organize/activity/list",
+    method: 'GET',
+    data: params
+  })
+};
+
+
+// 协会任务列表
+export const getTaskList = (params) => {
+  return request.http({
+    url: "/organize/task/list",
+    method: 'GET',
+    data: params
+  })
+};
+
 // 获取状态
 export const getState = (params) => {
   return request.http({

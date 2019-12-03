@@ -3,6 +3,33 @@
   background: #eaedf2;
 }
 
+.tab-header {
+  display: flex;
+  padding-left: 20rpx;
+}
+
+.tab-header .tab-item {
+  margin: 0 20rpx;
+  color: #90a4ae;
+  font-size: 28rpx;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tab-header  .active {
+  color: #282d4b;
+}
+
+.tab-header  .line {
+  margin-top: 16rpx;
+  width: 56rpx;
+  height: 6rpx;
+  background: rgba(255, 209, 0, 1);
+  border-radius: 3rpx;
+}
+
 .warp, .list {
   margin-top: 32rpx;
 }
@@ -14,14 +41,14 @@
   border-bottom: 4rpx solid rgba(245, 247, 249, 1);
 }
 
-.desc {
+.user-form .desc {
   margin-bottom: 20rpx;
   font-size: 24rpx;
   font-weight: 400;
   color: rgba(144, 164, 174, 1);
 }
 
-.name {
+.user-form  .name {
   font-size: 32rpx;
   font-weight: 600;
   color: rgba(40, 45, 75, 1);
@@ -52,4 +79,3 @@
   color: rgba(144, 164, 174, 1);
   text-align: center;
 }
-

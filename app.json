@@ -16,6 +16,7 @@
     "pages/pay/pay",
     "pages/setting/setting",
     "pages/userInfo/userInfo",
+    "pages/search/search",
     "pages/tags/tags"
   ],
   "window": {

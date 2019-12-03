@@ -7,13 +7,11 @@ import {
   showToast
 } from '../../utils/util.js'
 Page({
-  /**
-   * 页面的初始数据
-   */
+  
   data: {
     height: 0,
     pageHeight: 0,
-    currentTab: "union",
+    currentTab: "activity",
     nowIndex: 0,
     organDetail: {},
     tabs: [{
@@ -34,9 +32,7 @@ Page({
     userType: null,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  
   onLoad: function(options) {
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
@@ -54,9 +50,6 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function() {
     this.getOrganDetail();
     this.getMemberList();
@@ -137,5 +130,11 @@ Page({
       })
     }
     console.log('this.data', currentTab)
+  },
+
+  goSetting: function() {
+    wx.redirectTo({
+      url: '/pages/setting/setting',
+    })
   }
 })

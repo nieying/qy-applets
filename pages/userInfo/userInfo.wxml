@@ -2,20 +2,42 @@
   <view class="header" style='padding-top: {{height + 10}}px'>
     <icon type="clear" size="30" color="black" bindtap="goBack" />
   </view>
+
   <view class="content">
+    <view class="tabs">
+      <view class="tab-header">
+        <view class="tab-item {{item.active ? 'active':''}}" wx:for="{{tabs}}" wx:for-item="item" wx:key="index" bindtap="hanldeTab" data-tab="{{item.key}}">
+          <view class="name">{{item.name}}</view>
+          <view class="line" wx:if="{{item.active}}"></view>
+        </view>
+      </view>
+    </view>
     <view class="padding-box">
-      <form>
+      <form class="user-form">
         <view class="section">
           <view class="desc">姓名</view>
           <input name="input" placeholder="请输入姓名" />
         </view>
-        <view class="section">
-          <view class="desc">学校</view>
-          <input name="input" placeholder="请输入学校（选填）" />
+        <view wx-if="{{currentTab==='student'}}">
+          <view class="section">
+            <view class="desc">学校</view>
+            <input name="input" placeholder="请输入学校（选填）" />
+          </view>
+          <view class="section">
+            <view class="desc">班级</view>
+            <input name="input" placeholder="请输入班级（选填）" />
+          </view>
         </view>
-        <view class="section">
-          <view class="desc">班级</view>
-          <input name="input" placeholder="请输入班级（选填）" />
+
+        <view wx:else>
+          <view class="section">
+            <view class="desc">公司</view>
+            <input name="input" placeholder="请输入您所在的公司（选填）" />
+          </view>
+          <view class="section">
+            <view class="desc">职位</view>
+            <input name="input" placeholder="请输入您的职位（选填）" />
+          </view>
         </view>
         <view class="section">
           <view class="desc">手机号码</view>
