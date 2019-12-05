@@ -5,13 +5,11 @@ import {
 import {
   formatDate,
   formatList,
-  showToast
+  showToast,
+  tapedFun
 } from '../../../utils/util.js'
 var cnChar = require('../../../utils/cnChar.js');
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
     datas: {
       type: Array,
@@ -21,23 +19,23 @@ Component({
       type: String,
       value: "union"
     },
-    userType: {
+    role: {
       type: String,
       value: '',
     }
   },
 
-  /**
-   * 组件的初始数据
-   */
   data: {
     listDatas: null,
-    userInfo: null
+    userInfo: null,
+    buttonClicked: false,
+    showModal: false
   },
 
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function() {
+      console.log('role', this.properties.role)
       this.setData({
         userInfo: wx.getStorageSync('userInfo')
       })
@@ -68,23 +66,20 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    pass: function(e) {
-      wx.showLoading({
-        title: '',
-        mask: true
+
+    goTag: function(e) {
+      tapedFun(this)
+      const id = e.currentTarget.dataset.id;
+      wx.navigateTo({
+        url: `/pages/tags/tags?userId=${id}`,
       })
-      const {
-        organizeid,
-        pass,
-        userid
-      } = e.currentTarget.dataset
-      approvalmember({
-        organizeId: organizeid,
-        pass: pass,
-        userId: userid
-      }).then(res => {
-        this.triggerEvent('callback')
-        showToast(pass ? '通过成功' : '拒绝成功')
+    },
+
+    onShowModal: function(e) {
+      this.setData({
+        showModal: true,
+        userId: e.currentTarget.dataset.userid,
+        organizeId: e.currentTarget.dataset.organizeid,
       })
     },
 
@@ -109,6 +104,35 @@ Component({
           } else if (res.cancel) {}
         }
       })
-    }
+    },
+
+    // 审核
+    onConfirm: function(e) {
+      wx.showLoading({
+        title: '',
+        mask: true
+      })
+      const type = e.currentTarget.dataset.type;
+      approvalmember({
+        organizeId: this.data.organizeId,
+        pass: type === 'comfirm',
+        userId: this.data.userId
+      }).then(res => {
+        this.triggerEvent('callback')
+        showToast(pass ? '通过成功' : '拒绝成功')
+        this.setData({
+          showModal: false
+        })
+      })
+    },
+
+    clickMask(e) {
+      let id = e.currentTarget.dataset.id;
+      if (id == 1) {
+        this.setData({
+          showModal: false
+        })
+      }
+    },
   }
 })

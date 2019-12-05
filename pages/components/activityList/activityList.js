@@ -13,7 +13,7 @@ Component({
       type: String,
       value: "task"
     },
-    userType: {
+    organizeId: {
       type: String,
       value: '',
     }
@@ -39,7 +39,7 @@ Component({
   methods: {
     getData: function() {
       getOrganActivityList({
-        organizeId: 21
+        organizeId: this.properties.organizeId
       }).then(res => {
         res && this.setData({
           listDatas: res.data.list

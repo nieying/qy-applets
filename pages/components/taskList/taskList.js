@@ -13,6 +13,10 @@ Component({
       type: String,
       value: "task"
     },
+    organizeId: {
+      type: String,
+      value: ""
+    },
     userType: {
       type: String,
       value: '',
@@ -41,7 +45,7 @@ Component({
 
     getData: function() {
       getTaskList({
-        organizeId: 21
+        organizeId: this.properties.organizeId
       }).then(res => {
         res && this.setData({
           listDatas: res.data.list

@@ -10,4 +10,5 @@
       <progress wx:if="{{item.type==='languageProcess'}}" percent="{{item.value}}" active backgroundColor="#EAEDF2" color="{{item.value === 100 ? '#00C853':'#FFD100 '}}" stroke-width="4" border-radius="10" />
     </view>
   </view>
+  <view wx:if="{{listDatas.length===0}}" class="no-datas">暂无数据</view>
 </view>

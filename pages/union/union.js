@@ -1,13 +1,13 @@
 import {
   getOrganizeDetail,
-  getOrganMemberList,
-  quitOrgan
+  getOrganMemberList
 } from '../api/api.js'
 import {
+  tapedFun,
   showToast
 } from '../../utils/util.js'
 Page({
-  
+
   data: {
     height: 0,
     pageHeight: 0,
@@ -29,50 +29,66 @@ Page({
     }],
     memberList: [],
     peddingMemberList: [],
-    userType: null,
+    organizeId: null,
+    buttonClicked: false
   },
 
-  
+
   onLoad: function(options) {
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       pageHeight: parseInt(wx.getStorageSync('pageHeight')),
-      userType: options.userType
+      organizeId: options.organizeId
     })
-    if (options.userType === "leader") {
-      // this.setData({
-      //   tabs: this.data.tabs.push([{
-      //     key: 'apply',
-      //     name: "申请列表",
-      //     active: ""
-      //   }])
-      // })
-    }
+    this.getOrganDetail(options.organizeId);
+    this.getMemberList(options.organizeId);
   },
 
-  onReady: function() {
-    this.getOrganDetail();
-    this.getMemberList();
-  },
   goBack: function() {
     wx.navigateBack()
   },
   // 获取协会详情
-  getOrganDetail: function() {
-    getOrganizeDetail().then(res => {
-      this.setData({
-        organDetail: res.data
-      })
+  getOrganDetail: function(id) {
+    getOrganizeDetail({
+      organizeId: id
+    }).then(res => {
+      if (res) {
+        if (res.data.role === 'owner') {
+          this.setData({
+            tabs: [{
+              key: 'activity',
+              name: "协会活动",
+              active: "active"
+            }, {
+              key: 'task',
+              name: "任务列表",
+              active: ""
+            }, {
+              key: 'union',
+              name: "协会成员",
+              active: ""
+            }, {
+              key: 'apply',
+              name: "申请列表",
+              active: ""
+            }],
+            organDetail: res.data
+          })
+        } else {
+          this.setData({
+            organDetail: res.data
+          })
+        }
+      }
     })
   },
   // 获取协会成员类表
-  getMemberList: function() {
+  getMemberList: function(id) {
     wx.showLoading()
     const peddingMemberList = [];
     const memberList = [];
     getOrganMemberList({
-      page: 1,
-      limit: 1000
+      organizeId: id
     }).then(res => {
       if (res && res.data.list.length > 0) {
         res.data.list.filter(r => {
@@ -87,23 +103,6 @@ Page({
           peddingMemberList: peddingMemberList,
         })
         wx.hideLoading()
-      }
-    })
-  },
-  // 退出协会
-  quitUnit: function(e) {
-    wx.showModal({
-      title: '提示',
-      content: '确定退出该协会吗？',
-      success(res) {
-        if (res.confirm) {
-          quitOrgan().then(res => {
-            showToast('退出成功！')
-            wx.navigateTo({
-              url: '/pages/main/main',
-            })
-          })
-        } else if (res.cancel) {}
       }
     })
   },
@@ -133,8 +132,15 @@ Page({
   },
 
   goSetting: function() {
-    wx.redirectTo({
-      url: '/pages/setting/setting',
+    tapedFun(this);
+    wx.navigateTo({
+      url: `/pages/setting/setting?organizeId=${this.data.organizeId}`,
+    })
+  },
+  followTopic: function() {
+    tapedFun(this);
+    wx.navigateTo({
+      url: `/pages/userInfo/userInfo?organizeId=${this.data.organizeId}`,
     })
   }
 })

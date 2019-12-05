@@ -3,7 +3,15 @@
     <view class="activity-item" bindtap='goToActivityDetail' data-id="{{item.id}}">
       <view class="left">
         <view class="name">{{item.title}}</view>
-        <view class="time">{{item.actDate}} {{item.type === 'official' ? '官方活动':'协会活动'}}</view>
+        <view class="time">{{item.actDate}}
+
+          <view class="type yellow" wx:if="{{item.type === 'official'}}">
+            <image src="/pages/images/main/icon-home-active.svg"></image> 官方
+          </view>
+          <view class="type blue" wx:else>
+            <image src="/pages/images/my/icon-union-active.svg"></image> 协会
+          </view>
+        </view>
       </view>
       <view class="right">
         <image src="{{item.imgUrl}}"></image>

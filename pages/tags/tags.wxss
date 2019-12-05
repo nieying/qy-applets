@@ -39,3 +39,42 @@
   width: 40rpx !important;
   height: 36rpx !important;
 }
+
+.fui-switch {
+  width: 87rpx;
+  height: 50rpx;
+  border-radius: 25rpx;
+  background-color: #282D4B;
+  position: relative;
+}
+
+.fui-switch::after, .fui-switch::before {
+  content: "";
+  position: absolute;
+  height: 50rpx;
+  top: 0rpx;
+  left: -1rpx;
+  border-radius: 25rpx;
+  border: 1rpx solid #dfdfdf;
+  transition-duration: 0.3s;
+}
+
+.fui-switch:before {
+  width: 90rpx;
+  background-color: #fdfdfd;
+}
+
+.fui-switch.checked:before {
+  transform: scale(0);
+}
+
+.fui-switch:after {
+  top: 4rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background-color: #fff;
+}
+
+.fui-switch.checked:after {
+  transform: translateX(42rpx);
+}

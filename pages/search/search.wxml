@@ -1,6 +1,6 @@
 <view class="page-search">
   <view class="header" style='padding-top: {{height + 10}}px'>
-    <icon type="clear" size="30" color="black" bindtap="goBack" />
+    <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
   </view>
   <view class="content">
     <view class="padding-box">
@@ -10,7 +10,7 @@
         <icon type="search" size="23" color="#90A4AE" bindtap="{{!buttonClicked?'onSearch':''}}" />
       </view>
       <view class='list'>
-        <view wx:if="{{organList.length > 0}}"  class='item' wx:for="{{organList}}" wx:for-item="item" wx:key="index" bindtap="clickItem" data-id="{{item.id}}">
+        <view wx:if="{{organList.length > 0}}" class='item' wx:for="{{organList}}" wx:for-item="item" wx:key="index" catchtap="{{!buttonClicked?'clickItem':''}}" data-id="{{item.id}}" data-role="{{item.role}}">
           <view class='left'>
             <view>
               <image src="{{item.avatar}}"></image>
@@ -21,9 +21,8 @@
             </view>
           </view>
           <view class='right'>
-            <view class="btn btn-green" bindtap="{{!buttonClicked?'onJoin':''}}" data-organizeid="{{item.organizeId}}">加入</view>
-
-            <view class="btn btn-default" bindtap="{{!buttonClicked?'onQuit':''}}" data-organizeid="{{item.organizeId}}">退出</view>
+            <view wx:if="{{item.role}}" class="btn btn-default" catchtap="{{!buttonClicked?'onQuit':''}}" data-organizeid="{{item.organizeId}}">退出</view>
+            <view wx:else class="btn btn-green" catchtap="{{!buttonClicked?'onJoin':''}}" data-organizeid="{{item.organizeId}}">加入</view>
           </view>
         </view>
         <view wx:if="{{organList.length === 0}}" class="no-datas">暂无数据</view>

@@ -1,30 +1,46 @@
 <view class="page-union">
   <view class="header" style='padding-top: {{height}}px'>
-    <icon type="clear" size="30" color="black" bindtap="goBack" />
+    <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
   </view>
   <scroll-view scroll-y="true" style="height: {{pageHeight}}px" class="content">
     <view class="padding-box">
-      <!-- <view class='title'>欢迎您</view> -->
-      <view class="card">
+      <view class="show-all">
+        <view class="card">
+          <view class="setting">
+            <image src="/pages/images/setting.svg" bindtap="goSetting"></image>
+          </view>
+          <image class="avatar" src="{{organDetail.avatar}}"></image>
+          <view class="name">{{organDetail.name}}</view>
+          <!-- <view class="desc">{{organDetail.remark}}</view> -->
+        </view>
+        <view class="union-info" wx:if="{{organDetail.role !== 'none'}}">
+          <view class="item">
+            <view class="name">999</view>
+            <view class="desc">参加活动(次)</view>
+          </view>
+          <view class="item">
+            <view class="name">新生</view>
+            <view class="desc">我的职称</view>
+          </view>
+        </view>
+        <view class="follow-topic" wx:else>
+              <text class="btn btn-green" bindtap="{{!buttonClicked?'followTopic':''}}">+ 关注话题</text>
+        </view>
+      </view>
+      <view class="show-section" wx:if="{{false}}">
+        <view class="left">
+          <image class="avatar" src="{{organDetail.avatar}}"></image>
+          <view>
+            <view class="name">{{organDetail.name}}</view>
+            <view class="desc">我的职称: 123</view>
+          </view>
+        </view>
         <view class="setting">
           <image src="/pages/images/setting.svg" bindtap="goSetting"></image>
         </view>
-        <!-- <view wx:if="{{userType !== 'leader'}}" class="btn btn-warn" bindtap="quitUnit">退出协会</view> -->
-        <image class="avatar" src="{{organDetail.avatar}}"></image>
-        <view class="name">{{organDetail.name}}</view>
-        <!-- <view class="desc">{{organDetail.remark}}</view> -->
-      </view>
-      <view class="union-info">
-        <view class="item">
-          <view class="name">999</view>
-          <view class="desc">参加活动(次)</view>
-        </view>
-        <view class="item">
-          <view class="name">新生</view>
-          <view class="desc">我的职称</view>
-        </view>
       </view>
     </view>
+
     <view class="tabs">
       <view class="tab-header">
         <view class="tab-item {{item.active ? 'active':''}}" wx:for="{{tabs}}" wx:for-item="item" wx:key="index" bindtap="hanldeTab" data-tab="{{item.key}}">
@@ -34,16 +50,16 @@
       </view>
       <view class="tab-content">
         <view class="union-activity" wx:if="{{currentTab==='activity'}}">
-          <activityList tab="{{currentTab}}" userType="{{activityList}}" />
+          <activityList tab="{{currentTab}}" organizeId="{{organizeId}}"  />
         </view>
         <view class="union-task" wx:if="{{currentTab==='task'}}">
-          <taskList tab="{{currentTab}}" userType="{{userType}}" />
+          <taskList tab="{{currentTab}}" organizeId="{{organizeId}}"  />
         </view>
         <view class="union-people" wx:if="{{currentTab==='union'}}">
-          <memberList tab="{{currentTab}}" userType="{{userType}}" datas="{{memberList}}" bind:callback='getMemberList' />
+          <memberList tab="{{currentTab}}" role="{{organDetail.role}}" datas="{{memberList}}" bind:callback='getMemberList' />
         </view>
         <view class="apply-list" wx:if="{{currentTab==='apply'}}">
-          <memberList tab="{{currentTab}}" userType="{{userType}}" datas="{{peddingMemberList}}" bind:callback='getMemberList' />
+          <memberList tab="{{currentTab}}" role="{{organDetail.role}}" datas="{{peddingMemberList}}" bind:callback='getMemberList' />
         </view>
       </view>
     </view>

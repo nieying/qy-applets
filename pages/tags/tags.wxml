@@ -1,17 +1,19 @@
 <view class="page-tags">
   <view class="header" style='padding-top: {{height + 10}}px'>
-    <icon type="clear" size="30" color="black" bindtap="goBack" />
+    <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
   </view>
-  <view class="content">
+  <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
     <view class="padding-box">
       <view class='list'>
         <view class='item' wx:for="{{tags}}" wx:for-item="item" wx:key="index">
           <view class="name">{{item.name}}</view>
           <view class="switch">
-          <switch checked="{{item.checked}}" color="#282d4b" bindchange="switchChange" />
+            <view class="switch-list">
+              <view class="fui-switch {{item.checked?'checked':''}}" type="checkbox" data-id="{{item.id}}" bindtap="toggleSwitch"></view>
+            </view>
           </view>
         </view>
       </view>
     </view>
-  </view>
+  </scroll-view>
 </view>

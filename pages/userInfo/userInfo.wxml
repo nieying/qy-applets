@@ -1,6 +1,6 @@
 <view class="page-tags">
   <view class="header" style='padding-top: {{height + 10}}px'>
-    <icon type="clear" size="30" color="black" bindtap="goBack" />
+    <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
   </view>
 
   <view class="content">

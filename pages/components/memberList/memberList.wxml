@@ -1,26 +1,49 @@
 <view class="list">
-  <view wx:if="{{listDatas.length>0}}" wx:for="{{listDatas}}" wx:for-item="item" wx:key="index">
-    <view class="type1">
-      <text>{{item.title}}</text>
-    </view>
-    <view class="item" wx:for="{{item.list}}" wx:for-item="item" wx:key="index">
-      <view class="left">
-        <image src="{{item.avatar}}"></image>
-        <view class="info">
-          <view class="name">{{item.userName}}</view>
-          <view class="desc">{{item.addTime}}</view>
-        </view>
+  <view  wx:if="{{listDatas.length>0}}">
+    <view class="total">共{{listDatas.length}}人</view>
+    <view wx:for="{{listDatas}}" wx:for-item="item" wx:key="index">
+      <view class="type1">
+        <text>{{item.title}}</text>
       </view>
-      <view class="right" wx:if="{{userType === 'leader'}}">
-        <view  class="pass">
-          <view wx:if="{{item.role !== 'owner' && tab === 'union'}}" class="btn btn-warn" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="false" bindtap="tichu">踢除</view>
+      <view class="item" wx:for="{{item.list}}" wx:for-item="item" wx:key="index" data-id="{{item.userId}}" catchtap="{{role === 'owner' && !buttonClicked ? 'goTag' : ''}}">
+        <view class="left">
+          <image src="{{item.avatar}}"></image>
+          <view class="info">
+            <view class="name">{{item.userName}}</view>
+            <view class="desc">{{item.addTime}}</view>
+          </view>
         </view>
-        <view  class="pass" wx:if="{{tab !== 'union'}}">
-          <view class="btn btn-green" bindtap="pass" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="true">通过</view>
-          <view class="btn btn-warn" bindtap="pass" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="false">拒绝</view>
+        <view class="right">
+          <view class="pass" wx:if="{{tab === 'union'}}">
+            <view class="tag leader" wx:if="{{item.role==='owner'}}">会长</view>
+            <view class="tag vip" wx:else>会员</view>
+            <!-- <view class="tag keqing">客卿</view> -->
+            <!-- <view wx:if="{{item.role !== 'owner' && tab === 'union'}}" class="btn btn-warn" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="false" bindtap="tichu">踢除</view> -->
+            <image src="/pages/images/right.svg" wx:if="{{role === 'owner'}}"></image>
+          </view>
+
+          <view class="pass" wx:if="{{tab === 'apply'}}">
+            <view class="btn btn-default" catchtap="{{!buttonClicked?'onShowModal':''}}" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}">通过</view>
+          </view>
         </view>
       </view>
     </view>
   </view>
+
   <view wx:if="{{listDatas.length===0}}" class="no-datas">暂无数据</view>
+</view>
+
+<view class='mask' wx:if='{{showModal}}' data-id="1" catchtap='clickMask'>
+  <view class='modal-content' data-id="2" catchtap='clickMask'>
+    <view class='main-content'>
+      <view class='modal-title'>请确定审核</view>
+      <view class="modal-content">
+        若审核通过，该用户将成为客卿
+      </view>
+    </view>
+    <view class='modal-btn-wrapper'>
+      <view class='confirm-btn refuse' data-type="refuse" catchtap="{{!buttonClicked?'onConfirm':''}}">拒绝</view>
+      <view class='confirm-btn' data-type="comfirm" catchtap="{{!buttonClicked?'onConfirm':''}}">确定</view>
+    </view>
+  </view>
 </view>

@@ -4,8 +4,11 @@ import {
   tapedFun
 } from '../../utils/util.js'
 import {
+  getUserOrganList,
   joinOrganize,
-  searchOrgan
+  quitOrgan,
+  searchOrgan,
+  jumpUnion
 } from '../api/api.js'
 const app = getApp()
 Page({
@@ -22,13 +25,12 @@ Page({
   onLoad: function(options) {
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
-      // organList: wx.getStorageSync('seachOrganList')
-    })
+      userInfo: wx.getStorageSync('userInfo')
+    });
+    this.getData();
   },
 
-  onReady: function() {
-    console.log('===>', this.data.organList)
-  },
+  onReady: function() {},
 
   goBack: function() {
     wx.navigateBack()
@@ -40,12 +42,12 @@ Page({
     })
   },
 
-  onSearch: function(e) {
-    tapedFun(this)
-    // 查询协会列表
-    searchOrgan({
-      name: this.data.searchKey
-    }).then(res => {
+  getData: function() {
+    let params = {}
+    if (this.data.searchKey) {
+      params.name = this.data.searchKey
+    }
+    searchOrgan(params).then(res => {
       this.setData({
         organList: res.data.list
       })
@@ -53,25 +55,72 @@ Page({
   },
 
   clickItem: function(e) {
+    tapedFun(this)
     const id = e.currentTarget.dataset.id
+    const role = e.currentTarget.dataset.role // owner 会长 normal 成员  没有这个字段就是没有加入该协会
+    if (role) {
+      jumpUnion({
+        id: id
+      }).then(res => {
+        wx.navigateTo({
+          url: `/pages/union/union?organizeId=${id}`,
+        })
+      })
+    } else {
+      wx.navigateTo({
+        url: `/pages/union/union?organizeId=${id}`,
+      })
+    }
+  },
+
+  onSearch: function(e) {
+    tapedFun(this)
+    this.getData()
+  },
+
+  onJoin: function(e) {
+    const id = e.currentTarget.dataset.organizeid
+    wx.redirectTo({
+      url: `/pages/userInfo/userInfo?organizeId=${id}`,
+    })
+    // wx.showModal({
+    //   title: "提示",
+    //   content: `是否加入该协会`,
+    //   success(res) {
+    //     if (res.confirm) {
+    //       joinOrganize({
+    //         organizeId: id
+    //       }).then(res => {
+    //         wx.showToast({
+    //           icon: '',
+    //           title: '申请已提交，待会长审核',
+    //         })
+    //         // wx.navigateTo({
+    //         //   url: '/pages/applyFeedback/applyFeedback?type=1',
+    //         // })
+    //       })
+    //     } else if (res.cancel) {}
+    //   }
+    // });
+  },
+
+  // 退出协会
+  onQuit: function(e) {
+    const that = this;
+    const id = e.currentTarget.dataset.organizeid
     wx.showModal({
-      title: "提示",
-      content: `是否加入该协会`,
+      title: '提示',
+      content: '确定退出该协会吗？',
       success(res) {
         if (res.confirm) {
-          joinOrganize({
+          quitOrgan({
             organizeId: id
           }).then(res => {
-            wx.showToast({
-              icon: '',
-              title: '申请已提交，待会长审核',
-            })
-            // wx.navigateTo({
-            //   url: '/pages/applyFeedback/applyFeedback?type=1',
-            // })
+            showToast('退出成功！')
+            that.getData()
           })
         } else if (res.cancel) {}
       }
-    });
-  }
+    })
+  },
 })

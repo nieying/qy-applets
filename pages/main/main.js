@@ -36,10 +36,21 @@ Page({
     });
   },
   toActivityPage() {
-    this.setData({
-      nowPage: "activityPage",
-      nowIndex: 1
-    });
+    // this.setData({
+    //   nowPage: "activityPage",
+    //   nowIndex: 1
+    // });
+    const userInfo = wx.getStorageSync('userInfo')
+    if (userInfo.lastOrganize && userInfo.lastOrganize.organizeId) {
+      wx.navigateTo({
+        url: `/pages/union/union?organizeId=${userInfo.lastOrganize.organizeId}`,
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/search/search',
+      })
+    }
+
   },
   toMyPage() {
     this.setData({
@@ -48,9 +59,7 @@ Page({
     });
   },
 
-  onLoad: function(options) {
-  },
+  onLoad: function(options) {},
 
-  onReady: function() {
-  },
+  onReady: function() {},
 });

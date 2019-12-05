@@ -1,5 +1,22 @@
 @import "../../../app.wxss";
 
+.list {
+  position: relative;
+}
+
+.total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50rpx;
+  padding: 4rpx 16rpx;
+  color: rgba(144, 164, 174, 1);
+  background: #f5f7f9;
+  position: absolute;
+  right: 40rpx;
+  top: 20rpx;
+  font-size: 24rpx;
+}
 
 .list .type1 {
   background: white;
@@ -36,7 +53,7 @@
   display: flex;
 }
 
-.list .item image {
+.list .item .left image {
   width: 88rpx;
   height: 88rpx;
   background: rgba(176, 190, 197, 1);
@@ -58,6 +75,38 @@
 
 .right .pass {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list .item .right image {
+  width: 24rpx;
+  height: 40rpx;
+  margin-left: 24rpx;
+  color: #b0bec5;
+}
+
+.tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50rpx;
+  padding: 4rpx 16rpx;
+}
+
+.leader {
+  background: #d6e6ff;
+  color: #3380ff;
+}
+
+.vip {
+  background: #fff2b2;
+  color: #f57f17;
+}
+
+.keqing {
+  background: #ccf4dd;
+  color: #00c853;
 }
 
 .btn {
@@ -65,7 +114,17 @@
   margin: 0 10rpx;
 }
 
-.no-datas {
-  background: white;
-  margin: 0;
+.modal-content {
+  margin: 30rpx;
+  text-align: center;
+  color: #b0bec5;
+}
+
+.modal-btn-wrapper .confirm-btn {
+  border-radius: 0 0 40rpx 0;
+}
+
+.modal-btn-wrapper .refuse {
+  color: #b0bec5 !important;
+  border-radius: 0 0 0 40rpx;
 }

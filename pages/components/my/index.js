@@ -8,7 +8,7 @@ import {
   tapedFun
 } from '../../../utils/util.js'
 Component({
- 
+
   properties: {
 
   },
@@ -25,7 +25,6 @@ Component({
 
   attached: function() {
     this.getData();
-    // this.getStateData();
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight'))
@@ -33,12 +32,7 @@ Component({
   },
 
   methods: {
-    goVip: function() {
-      tapedFun(this)
-      wx.navigateTo({
-        url: '/pages/vip/vip',
-      })
-    },
+
     // 获取用户相关信息
     getData: function() {
       wx.showLoading()
@@ -113,53 +107,65 @@ Component({
             }
           })
           break;
-        case 3:
-          this.getStateData()
-          break;
       }
     },
-    getStateData: function() {
-      wx.showLoading({
-        mask: true
-      })
-      getState().then(res => {
-        this.getUserUnion(res.data);
-        wx.hideLoading()
-      })
-    },
-
-    getUserUnion: function(userType) {
-      if (userType === 'leader') { // 会长
+    // 所属协会
+    goPage: function() {
+      tapedFun(this)
+      const {
+        userInfo
+      } = this.data
+      if (userInfo.lastOrganize && userInfo.lastOrganize.organizeId) {
         wx.navigateTo({
-          url: `/pages/union/union?userType=${userType}`,
+          url: `/pages/union/union?organizeId=${userInfo.lastOrganize.organizeId}`,
         })
-      } else { // 成员
-        if (userType === 'none') { // 未加入协会
-          this.setData({
-            show: true,
-            modalData: {
-              type: 3,
-              title: '搜索协会',
-              placeholder: '请输入协会ID/协会名字来搜索',
-              // tips: '格式/字数/重复等错误提示',
-              confirmTxt: '搜索'
-            }
-          })
-        } else if (userType === 'applied') { // 加入协会审核中
-          wx.navigateTo({
-            url: `/pages/applyFeedback/applyFeedback?userType=${userType}`,
-          })
-        } else if (userType === 'rejected') { // 审核失败
-          wx.navigateTo({
-            url: `/pages/applyFeedback/applyFeedback?userType=${userType}`,
-          })
-        } else { // 审核成功
-          wx.navigateTo({
-            url: `/pages/union/union?userType=${userType}`,
-          })
-        }
+      } else {
+        wx.navigateTo({
+          url: `/pages/search/search`,
+        })
       }
     },
+    // getStateData: function() {
+    //   wx.showLoading({
+    //     mask: true
+    //   })
+    //   getState().then(res => {
+    //     this.getUserUnion(res.data);
+    //     wx.hideLoading()
+    //   })
+    // },
+    // getUserUnion: function(userType) {
+    //   if (userType === 'leader') { // 会长
+    //     wx.navigateTo({
+    //       url: `/pages/union/union?userType=${userType}`,
+    //     })
+    //   } else { // 成员
+    //     if (userType === 'none') { // 未加入协会
+    //       this.setData({
+    //         show: true,
+    //         modalData: {
+    //           type: 3,
+    //           title: '搜索协会',
+    //           placeholder: '请输入协会ID/协会名字来搜索',
+    //           // tips: '格式/字数/重复等错误提示',
+    //           confirmTxt: '搜索'
+    //         }
+    //       })
+    //     } else if (userType === 'applied') { // 加入协会审核中
+    //       wx.navigateTo({
+    //         url: `/pages/applyFeedback/applyFeedback?userType=${userType}`,
+    //       })
+    //     } else if (userType === 'rejected') { // 审核失败
+    //       wx.navigateTo({
+    //         url: `/pages/applyFeedback/applyFeedback?userType=${userType}`,
+    //       })
+    //     } else { // 审核成功
+    //       wx.navigateTo({
+    //         url: `/pages/union/union?userType=${userType}`,
+    //       })
+    //     }
+    //   }
+    // },
     // 弹框确定后触发
     onConfirm: function() {
       this.getData();
@@ -169,6 +175,12 @@ Component({
       tapedFun(this)
       wx.navigateTo({
         url: '/pages/pay/pay',
+      })
+    },
+    goVip: function() {
+      tapedFun(this)
+      wx.navigateTo({
+        url: '/pages/vip/vip',
       })
     }
   }

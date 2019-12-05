@@ -33,6 +33,9 @@
   align-items: center;
   justify-content: space-between;
 }
+.list .item:not(:last-child) {
+  margin-bottom: 20rpx;
+}
 
 .list .item .left {
   display: flex;
@@ -44,6 +47,7 @@
   height: 112rpx;
   background: rgba(176, 190, 197, 1);
   margin-right: 24rpx;
+  border-radius: 50%;
 }
 
 .list .item .right {

@@ -6,22 +6,75 @@ Page({
 
   data: {
     height: 0,
-    show: false,
     tags: [{
+        id: 1,
+        name: '会长',
+        checked: true
+      },
+      {
+        id: 2,
+        name: '副会长',
+        checked: false
+      },
+      {
+        id: 3,
+        name: '秘书长',
+        checked: false
+      },
+      {
+        id: 4,
+        name: '副秘书长',
+        checked: false
+      },
+      {
+        id: 5,
+        name: '宣传部部长',
+        checked: false
+      },
+      {
+        id: 6,
+        name: '宣传部副部长',
+        checked: false
+      },
+      {
+        id: 7,
+        name: '组织部部长',
+        checked: false
+      },
+      {
+        id: 8,
+        name: '组织部副部长',
+        checked: false
+      },
+      {
+        id: 9,
         name: '外联部部长',
         checked: false
       },
       {
-        name: '外联部部长1',
+        id: 10,
+        name: '外联部副部长',
         checked: false
       },
       {
-        name: '外联部部长2',
+        id: 11,
+        name: '技术部部长',
         checked: false
       },
       {
-        name: '外联部部长3',
-        checked: true
+        id: 12,
+        name: '技术部副部长',
+        checked: false
+      },
+      {
+        id: 13,
+        name: '传承部部长',
+        checked: false
+      },
+      {
+        id: 14,
+        name: '传承部副部长',
+        checked: false
       }
     ]
   },
@@ -29,6 +82,7 @@ Page({
   onLoad: function(options) {
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
+      warpHeight: parseInt(wx.getStorageSync('pageHeight')),
       organList: wx.getStorageSync('seachOrganList')
     })
   },
@@ -39,7 +93,18 @@ Page({
     wx.navigateBack()
   },
 
-  switchChange: function(e) {
-    console.log(e.detail.value)
+  toggleSwitch: function(e) {
+    const id = e.currentTarget.dataset.id;
+    const tags = this.data.tags;
+    tags.forEach(tag => {
+      if (tag.id === id) {
+        tag.checked = true
+      } else {
+        tag.checked = false
+      }
+    })
+    this.setData({
+      tags
+    })
   }
 })

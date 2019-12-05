@@ -57,6 +57,11 @@ page {
   line-height: 44rpx;
 }
 
+.go-back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
 .title {
   border-left: 6rpx solid #ffd100;
   padding-left: 20rpx;
@@ -190,7 +195,7 @@ page {
 }
 
 .mask {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;

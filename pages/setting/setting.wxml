@@ -1,6 +1,6 @@
 <view class="page-setting">
   <view class="header" style='padding-top: {{height + 10}}px'>
-    <icon type="clear" size="30" color="black" bindtap="goBack" />
+    <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
   </view>
   <view class="content">
     <view class="padding-box">
@@ -20,11 +20,11 @@
             <view class="name">切换协会</view>
           </view>
           <view class='right'>
-            <view class="btn btn-black">切换</view>
+            <view class="btn btn-black" bindtap="goSearch">切换</view>
           </view>
         </view>
       </view>
     </view>
   </view>
-  <feedModal show="{{show}}" feedType="2" bind:confirm='onConfirm' />
+  <feedModal show="{{show}}" feedType="2" organizeId="{{organizeId}}" bind:confirm='onConfirm' />
 </view>

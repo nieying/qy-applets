@@ -7,7 +7,7 @@
       </view>
     </view>
     <view class='modal-btn-wrapper'>
-      <view class='confirm-btn' catchtap='confirm'>确定</view>
+      <view class='confirm-btn' catchtap="confirm">确定</view>
     </view>
   </view>
 </view>

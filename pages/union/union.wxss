@@ -1,6 +1,30 @@
 .page-union {
   height: 100%;
   background: #eaedf2;
+  position: relative;
+}
+
+.show-section {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.show-section .left {
+  display: flex;
+  align-items: center;
+}
+
+.show-section .left image {
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 50%;
+  background: rgba(176, 190, 197, 1);
+  margin-right: 32rpx;
+}
+
+.show-section .setting {
+  right: 40rpx;
 }
 
 .card {
@@ -8,8 +32,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* height: 344rpx; */
-  /* background: rgba(245, 247, 249, 1); */
+  /* height: 344rpx; *//* background: rgba(245, 247, 249, 1); */
   border-radius: 20rpx;
   /* margin-top: 32rpx; */
   position: relative;
@@ -21,6 +44,11 @@
   top: 15rpx;
   font-size: 20rpx;
 } */
+
+.follow-topic {
+  margin: 50rpx 0;
+  text-align: center;
+}
 
 .setting {
   position: absolute;
@@ -40,16 +68,17 @@
   height: 160rpx;
   border-radius: 50%;
   background: rgba(176, 190, 197, 1);
+  margin-bottom: 10rpx;
 }
 
-.card .name, .union-info .name {
+.card .name, .union-info .name, .show-section .name {
   font-size: 38rpx;
   font-weight: 600;
   color: rgba(40, 45, 75, 1);
-  margin: 24rpx 0 8rpx 0;
+  /* margin: 24rpx 0 8rpx 0; */
 }
 
-.card .desc, .union-info .desc {
+.card .desc, .union-info .desc, .show-section .desc {
   font-size: 32rpx;
   font-weight: 400;
   color: rgba(144, 164, 174, 1);
@@ -59,11 +88,11 @@
   display: flex;
 }
 
-.union-info .name {
+.union-info .name, .show-section .name {
   font-size: 32rpx;
 }
 
-.union-info .desc {
+.union-info .desc, .show-section .desc {
   font-size: 24rpx;
 }
 

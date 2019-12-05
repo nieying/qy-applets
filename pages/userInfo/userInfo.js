@@ -40,7 +40,8 @@ Page({
     //   icon: 'none',
     //   title: '该功能未完善',
     // })
-    tapedFun(this)
+    tapedFun(this);
+    
   },
   // 点击tab 切换
   hanldeTab: function (e) {

@@ -110,6 +110,14 @@ export const createFeedback = (params) => {
   })
 };
 
+// 新增协会反馈
+export const createOrganFeedback = (params) => {
+  return request.http({
+    url: "/common/feedback/organize/create",
+    data: params
+  })
+};
+
 // 用户成就查询
 export const getUserGarde = (params) => {
   return request.http({
@@ -266,14 +274,20 @@ export const searchOrgan = (params) => {
   })
 };
 // 用户协会列表
-// export const getUserOrgan = (params) => {
-//   return request.http({
-//     url: "/organize/user",
-//     method: 'GET',
-//     data: params
-//   })
-// };
-
+export const getUserOrganList = (params) => {
+  return request.http({
+    url: "/organize/user",
+    method: 'GET',
+    data: params
+  })
+};
+// 切换协会
+export const jumpUnion = (params) => {
+  return request.http({
+    url: "/organize/jump",
+    data: params
+  })
+};
 // 钞票购买生命卡
 export const buyCard = (params) => {
   return request.http({
