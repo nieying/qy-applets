@@ -1,11 +1,11 @@
 <view class="list">
-  <view  wx:if="{{listDatas.length>0}}">
+  <view wx:if="{{listDatas.length>0}}">
     <view class="total">共{{listDatas.length}}人</view>
     <view wx:for="{{listDatas}}" wx:for-item="item" wx:key="index">
       <view class="type1">
         <text>{{item.title}}</text>
       </view>
-      <view class="item" wx:for="{{item.list}}" wx:for-item="item" wx:key="index" data-id="{{item.userId}}" catchtap="{{role === 'owner' && !buttonClicked ? 'goTag' : ''}}">
+      <view class="item" wx:for="{{item.list}}" wx:for-item="item" wx:key="index" data-item="{{item}}" catchtap="{{role === 'owner' && !buttonClicked ? 'goTag' : ''}}">
         <view class="left">
           <image src="{{item.avatar}}"></image>
           <view class="info">
@@ -16,7 +16,7 @@
         <view class="right">
           <view class="pass" wx:if="{{tab === 'union'}}">
             <view class="tag leader" wx:if="{{item.role==='owner'}}">会长</view>
-            <view class="tag vip" wx:else>会员</view>
+            <view class="tag vip" wx:else>{{item.rank}}</view>
             <!-- <view class="tag keqing">客卿</view> -->
             <!-- <view wx:if="{{item.role !== 'owner' && tab === 'union'}}" class="btn btn-warn" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="false" bindtap="tichu">踢除</view> -->
             <image src="/pages/images/right.svg" wx:if="{{role === 'owner'}}"></image>

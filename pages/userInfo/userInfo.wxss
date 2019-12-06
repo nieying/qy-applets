@@ -79,3 +79,25 @@
   color: rgba(144, 164, 174, 1);
   text-align: center;
 }
+
+.bottom button {
+  background: transparent;
+  border: none;
+  color: #ffd100;
+}
+
+.success-tips {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.success-tips image {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.success-tips .text {
+  color: #90a4ae;
+  font-size: 28rpx;
+}

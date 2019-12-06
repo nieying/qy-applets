@@ -6,9 +6,13 @@
     <view class="padding-box">
       <view class='title'> 申请加入协会反馈 </view>
       <view class='warp'>
-        <icon type="{{dataObj.icon}}" size="30" color="{{dataObj.color}}" />
-        <text  class='result'>{{dataObj.title}}</text>
-        <text class='tips'>{{dataObj.tips}}</text>
+        <icon type="success" size="30" color="#00C853" />
+        <text class='result'>提交成功</text>
+        <text class='tips'>
+        您所提交的申请报告我们已经收到了哦，
+我们将在24小时内审核哦！
+详细结果将使用短信进行通知，请您留意！
+审核不通过时可通过联系客服进行退款</text>
         <text class='kefu' bindtap='textPaste'>客服微信 test20076</text>
         <text class='copy' bindtap='textPaste'>点击可复制</text>
       </view>

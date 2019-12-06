@@ -20,21 +20,12 @@ Page({
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
     })
-    if (options.userType === 'rejected') {
-      this.setData({
-        dataObj: {
-          icon:'clear',
-          color:'#F44336',
-          title:'请求没有被通过',
-          tips:'请与客服联系询问原因'
-        }
-      })
-    } else {
+    if (parseInt(options.type) === 1) {
       this.setData({
         dataObj: {
           icon: 'success',
           color: '#F44336',
-          title: '审核中...',
+          title: '提交成功',
           tips: '请耐心等待审核'
         }
       })

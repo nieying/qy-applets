@@ -66,12 +66,14 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
     goTag: function(e) {
       tapedFun(this)
-      const id = e.currentTarget.dataset.id;
+      const item = e.currentTarget.dataset.item;
+      if(item.role === 'owner' || item.rank === '客卿') {
+        return false;
+      }
       wx.navigateTo({
-        url: `/pages/tags/tags?userId=${id}`,
+        url: `/pages/tags/tags?memberId=${item.id}&organizeId=${item.organizeId}`,
       })
     },
 

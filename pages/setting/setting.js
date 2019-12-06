@@ -1,6 +1,4 @@
-import {
-  joinOrganize
-} from '../api/api.js'
+
 const app = getApp()
 Page({
 

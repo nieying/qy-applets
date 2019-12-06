@@ -238,6 +238,14 @@ export const kickOrgan = (params) => {
   })
 };
 
+// 编辑成员
+export const editMember = (params) => {
+  return request.http({
+    url: "/organize/member/info",
+    data: params
+  })
+};
+
 // 协会活动列表
 export const getOrganActivityList = (params) => {
   return request.http({
@@ -312,7 +320,7 @@ export const getProtocol = (params) => {
   })
 };
 
-// 充值
+// 支付
 export const getPay = (params) => {
   return request.http({
     url: "/pay/prepay",

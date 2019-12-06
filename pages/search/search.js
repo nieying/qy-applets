@@ -5,7 +5,6 @@ import {
 } from '../../utils/util.js'
 import {
   getUserOrganList,
-  joinOrganize,
   quitOrgan,
   searchOrgan,
   jumpUnion
@@ -83,25 +82,6 @@ Page({
     wx.redirectTo({
       url: `/pages/userInfo/userInfo?organizeId=${id}`,
     })
-    // wx.showModal({
-    //   title: "提示",
-    //   content: `是否加入该协会`,
-    //   success(res) {
-    //     if (res.confirm) {
-    //       joinOrganize({
-    //         organizeId: id
-    //       }).then(res => {
-    //         wx.showToast({
-    //           icon: '',
-    //           title: '申请已提交，待会长审核',
-    //         })
-    //         // wx.navigateTo({
-    //         //   url: '/pages/applyFeedback/applyFeedback?type=1',
-    //         // })
-    //       })
-    //     } else if (res.cancel) {}
-    //   }
-    // });
   },
 
   // 退出协会

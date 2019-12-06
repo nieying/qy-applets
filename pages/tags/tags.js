@@ -1,6 +1,9 @@
 import {
-  joinOrganize
+  editMember
 } from '../api/api.js'
+import {
+  showToast,
+} from '../../utils/util.js'
 const app = getApp()
 Page({
 
@@ -80,10 +83,12 @@ Page({
   },
 
   onLoad: function(options) {
+    console.log('page tag options===> ', options)
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
       warpHeight: parseInt(wx.getStorageSync('pageHeight')),
-      organList: wx.getStorageSync('seachOrganList')
+      memberId: options.memberId,
+      organizeId: options.organizeId,
     })
   },
 
@@ -93,12 +98,26 @@ Page({
     wx.navigateBack()
   },
 
+  updateMemeber: function (remark) {
+    editMember({
+      memberId: this.data.memberId,
+      organizeId: this.data.organizeId,
+      rank: remark
+    }).then(res => {
+      showToast("设置成功");
+    })
+  },
+
   toggleSwitch: function(e) {
     const id = e.currentTarget.dataset.id;
     const tags = this.data.tags;
     tags.forEach(tag => {
       if (tag.id === id) {
         tag.checked = true
+        this.updateMemeber(tag.name)
+        // this.setData({
+        //   remark: tag.name
+        // })
       } else {
         tag.checked = false
       }
