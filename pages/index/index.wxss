@@ -4,6 +4,7 @@
   width: 100%;
   display: flex;
 }
+
 .bg-color {
   background: #ffd100;
 }

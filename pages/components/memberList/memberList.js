@@ -69,7 +69,7 @@ Component({
     goTag: function(e) {
       tapedFun(this)
       const item = e.currentTarget.dataset.item;
-      if(item.role === 'owner' || item.rank === '客卿') {
+      if (item.role === 'owner' || item.rank === '客卿') {
         return false;
       }
       wx.navigateTo({
@@ -80,12 +80,13 @@ Component({
     onShowModal: function(e) {
       this.setData({
         showModal: true,
-        userId: e.currentTarget.dataset.userid,
-        organizeId: e.currentTarget.dataset.organizeid,
+        userId: e.currentTarget.dataset.item.userId,
+        organizeId: e.currentTarget.dataset.item.organizeId,
       })
     },
 
     tichu: function(e) {
+      const that = this;
       wx.showModal({
         title: '提示',
         content: '确定踢除该成员吗？',
@@ -101,7 +102,7 @@ Component({
               organizeId: organizeid
             }).then(res => {
               showToast('踢出成功！')
-              this.triggerEvent('callback')
+              that.triggerEvent('callback')
             })
           } else if (res.cancel) {}
         }
@@ -110,23 +111,48 @@ Component({
 
     // 审核
     onConfirm: function(e) {
-      wx.showLoading({
-        title: '',
-        mask: true
+      const item = e.currentTarget.dataset.item;
+      const that = this;
+      wx.showModal({
+        title: '提示',
+        content: `若审核通过，该用户将成为${item.rank}`,
+        success(res) {
+          if (res.confirm) {
+            approvalmember({
+              organizeId: item.organizeId,
+              pass: true,
+              userId: item.userId
+            }).then(res => {
+              that.triggerEvent('callback')
+              showToast(pass ? '通过成功' : '拒绝成功')
+            })
+          } else if (res.cancel) {
+
+          }
+        }
       })
-      const type = e.currentTarget.dataset.type;
-      approvalmember({
-        organizeId: this.data.organizeId,
-        pass: type === 'comfirm',
-        userId: this.data.userId
-      }).then(res => {
-        this.triggerEvent('callback')
-        showToast(pass ? '通过成功' : '拒绝成功')
-        this.setData({
-          showModal: false
-        })
-      })
+
     },
+
+    // 审核
+    // onConfirm: function(e) {
+    //   wx.showLoading({
+    //     title: '',
+    //     mask: true
+    //   })
+    //   const type = e.currentTarget.dataset.type;
+    //   approvalmember({
+    //     organizeId: this.data.organizeId,
+    //     pass: type === 'comfirm',
+    //     userId: this.data.userId
+    //   }).then(res => {
+    //     this.setData({
+    //       showModal: false
+    //     })
+    //     this.triggerEvent('callback')
+    //     showToast(pass ? '通过成功' : '拒绝成功')
+    //   })
+    // },
 
     clickMask(e) {
       let id = e.currentTarget.dataset.id;

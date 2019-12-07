@@ -13,17 +13,17 @@
           <view class="name">{{organDetail.name}}</view>
           <!-- <view class="desc">{{organDetail.remark}}</view> -->
         </view>
-        <view class="union-info" wx:if="{{organDetail.role !== 'none'}}">
+        <view class="union-info" wx:if="{{organDetail.state === 2}}">
           <view class="item">
             <view class="name">999</view>
             <view class="desc">参加活动(次)</view>
           </view>
           <view class="item">
-            <view class="name">新生</view>
+            <view class="name">{{organDetail.rank}}</view>
             <view class="desc">我的职称</view>
           </view>
         </view>
-        <view class="follow-topic" wx:else>
+        <view class="follow-topic" wx:if="{{organDetail.state === -1}}">
               <text class="btn btn-green" bindtap="{{!buttonClicked?'followTopic':''}}">+ 关注话题</text>
         </view>
       </view>
@@ -32,7 +32,7 @@
           <image class="avatar" src="{{organDetail.avatar}}"></image>
           <view>
             <view class="name">{{organDetail.name}}</view>
-            <view class="desc">我的职称: 123</view>
+            <view class="desc" wx:if="{{organDetail.state === 2}}">我的职称: {{organDetail.rank}}</view>
           </view>
         </view>
         <view class="setting">
@@ -48,7 +48,7 @@
           <view class="line" wx:if="{{item.active}}"></view>
         </view>
       </view>
-      <view class="tab-content">
+      <view class="tab-content" style="height: {{pageHeight-200}}px">
         <view class="union-activity" wx:if="{{currentTab==='activity'}}">
           <activityList tab="{{currentTab}}" organizeId="{{organizeId}}"  />
         </view>

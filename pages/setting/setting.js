@@ -4,6 +4,7 @@ Page({
 
   data: {
     height: 0,
+    pageHeight:0,
     dataObj: {
       type: '',
       organList: []
@@ -14,6 +15,7 @@ Page({
   onLoad: function(options) {
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
+      pageHeight: wx.getStorageSync('pageHeight'),
       organList: wx.getStorageSync('seachOrganList'),
       organizeId: options.organizeId
     })

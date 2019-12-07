@@ -9,24 +9,28 @@
         <input class="weui-input" maxlength="35" placeholder="请输入协会ID/协会名字来搜索" bindinput="bindKeyInput" />
         <icon type="search" size="23" color="#90A4AE" bindtap="{{!buttonClicked?'onSearch':''}}" />
       </view>
-      <view class='list'>
-        <view wx:if="{{organList.length > 0}}" class='item' wx:for="{{organList}}" wx:for-item="item" wx:key="index" catchtap="{{!buttonClicked?'clickItem':''}}" data-id="{{item.id}}" data-role="{{item.role}}">
-          <view class='left'>
-            <view>
-              <image src="{{item.avatar}}"></image>
+      <scroll-view scroll-y="true" style="height: {{pageHeight - 100}}px">
+        <view class='list'>
+          <view wx:if="{{organList.length > 0}}" class='item' wx:for="{{organList}}" wx:for-item="item" wx:key="index" catchtap="{{!buttonClicked?'clickItem':''}}" data-item="{{item}}">
+            <view class='left'>
+              <view>
+                <image src="{{item.avatar}}"></image>
+              </view>
+              <view>
+                <view class='name'>{{item.name}}</view>
+                <view class='desc'>{{item.remark}}</view>
+              </view>
             </view>
-            <view>
-              <view class='name'>{{item.name}}</view>
-              <view class='desc'>{{item.remark}}</view>
+            <view class='right'>
+              <view wx:if="{{item.state === -1}}" class=" btn btn-green" catchtap="{{!buttonClicked? 'onJoinOrgan':''}}" data-item="{{item}}">加入</view>
+              <view wx:if="{{item.state === 2 && item.role !== 'owner'}}" class="btn btn-default" catchtap="{{!buttonClicked?'onQuit':''}}" data-item="{{item}}">退出</view>
+              <view wx:if="{{item.state === 1}}">待审核</view>
+              <view wx:if="{{item.state === 0}}">待支付</view>
             </view>
           </view>
-          <view class='right'>
-            <view wx:if="{{item.role}}" class="btn btn-default" catchtap="{{!buttonClicked?'onQuit':''}}" data-organizeid="{{item.organizeId}}">退出</view>
-            <view wx:else class="btn btn-green" catchtap="{{!buttonClicked?'onJoin':''}}" data-organizeid="{{item.organizeId}}">加入</view>
-          </view>
+          <view wx:if="{{organList.length === 0}}" class="no-datas">暂无数据</view>
         </view>
-        <view wx:if="{{organList.length === 0}}" class="no-datas">暂无数据</view>
-      </view>
+      </scroll-view>
     </view>
   </view>
 </view>

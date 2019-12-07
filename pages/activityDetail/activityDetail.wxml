@@ -1,15 +1,13 @@
-<!-- <skeleton selector="skeleton" loading="spin" bgcolor="#FFF" wx:if="{{showSkeleton}}"></skeleton> -->
-
-<view class="page-activity-detail skeleton">
+<view class="page-activity-detail">
   <view class="header" style='padding-top: {{height}}px'>
-    <icon type="clear" size="30" color="black" bindtap="goBack" class="skeleton-radius" />
+    <icon type="clear" size="30" color="black" bindtap="goBack" />
   </view>
   <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
     <view class="padding-box">
-      <text class="act-title skeleton-rect">{{actObj.title}}</text>
-      <text class="act-time skeleton-rect">{{actObj.type ==="offical"?"官方活动":"协会活动"}} {{actObj.actDate}} </text>
-      <image class="act-img skeleton-rect" src="{{actObj.imgUrl}}"></image>
-      <view class="rich-text skeleton-rect">
+      <text class="act-title">{{actObj.title}}</text>
+      <text class="act-time">{{actObj.type ==="offical"?"官方活动":"协会活动"}} {{actObj.actDate}} </text>
+      <image class="act-img" src="{{actObj.imgUrl}}"></image>
+      <view class="rich-text">
         <rich-text nodes="{{actObj.content}}"></rich-text>
       </view>
     </view>

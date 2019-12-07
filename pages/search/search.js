@@ -13,6 +13,7 @@ const app = getApp()
 Page({
   data: {
     height: 0,
+    pageHeight: 0,
     dataObj: {
       type: '',
       organList: null,
@@ -24,6 +25,7 @@ Page({
   onLoad: function(options) {
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
+      pageHeight: wx.getStorageSync('pageHeight'),
       userInfo: wx.getStorageSync('userInfo')
     });
     this.getData();
@@ -42,25 +44,31 @@ Page({
   },
 
   getData: function() {
+    wx.showLoading()
     let params = {}
     if (this.data.searchKey) {
       params.name = this.data.searchKey
     }
     searchOrgan(params).then(res => {
-      this.setData({
+      wx.hideLoading()
+      res && this.setData({
         organList: res.data.list
       })
     })
   },
 
   clickItem: function(e) {
+    console.log('jump====>', e)
     tapedFun(this)
-    const id = e.currentTarget.dataset.id
-    const role = e.currentTarget.dataset.role // owner 会长 normal 成员  没有这个字段就是没有加入该协会
-    if (role) {
+    const {
+      id,
+      state
+    } = e.currentTarget.dataset.item
+    if (state === 2) {
       jumpUnion({
         id: id
       }).then(res => {
+        wx.setStorageSync('lastOrganize', { organizeId: id})
         wx.navigateTo({
           url: `/pages/union/union?organizeId=${id}`,
         })
@@ -77,8 +85,9 @@ Page({
     this.getData()
   },
 
-  onJoin: function(e) {
-    const id = e.currentTarget.dataset.organizeid
+  onJoinOrgan: function(e) {
+    tapedFun(this)
+    const id = e.currentTarget.dataset.item.id
     wx.redirectTo({
       url: `/pages/userInfo/userInfo?organizeId=${id}`,
     })
@@ -87,14 +96,14 @@ Page({
   // 退出协会
   onQuit: function(e) {
     const that = this;
-    const id = e.currentTarget.dataset.organizeid
+    const id = e.currentTarget.dataset.item.id
     wx.showModal({
       title: '提示',
       content: '确定退出该协会吗？',
       success(res) {
         if (res.confirm) {
           quitOrgan({
-            organizeId: id
+            organizeId: parseInt(id)
           }).then(res => {
             showToast('退出成功！')
             that.getData()

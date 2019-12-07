@@ -1,6 +1,7 @@
 /**app.wxss**/
 
 page {
+  position: relative;
   z-index: 9999998;
   color: #282d4b;
   font-family: PingFangSC-Semibold, PingFangSC;
@@ -73,7 +74,7 @@ page {
 .content {
   background: white;
   border-radius: 40rpx 40rpx 0 0;
-  padding: 40rpx 0;
+  padding-top: 40rpx;
   overflow-y: auto;
 }
 
@@ -184,7 +185,6 @@ page {
   color: #90a4ae;
   font-size: 24rpx;
 }
-
 
 .warp image {
   width: 64rpx;

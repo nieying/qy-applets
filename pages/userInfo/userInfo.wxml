@@ -2,8 +2,8 @@
   <view class="header" style='padding-top: {{height + 10}}px'>
     <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
   </view>
+  <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content" wx:if="{{!showTips}}">
 
-  <view class="content" wx:if="{{!showTips}}">
     <view class="tabs">
       <view class="tab-header">
         <view class="tab-item {{item.active ? 'active':''}}" wx:for="{{tabs}}" wx:for-item="item" wx:key="index" bindtap="hanldeTab" data-tab="{{item.key}}">
@@ -56,7 +56,7 @@
         <text>将用于协会支出等</text>
       </view>
     </view>
-  </view>
+  </scroll-view>
 
   <view class="content" wx:else>
     <view class="padding-box">

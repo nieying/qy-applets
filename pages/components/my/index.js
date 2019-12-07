@@ -115,11 +115,12 @@ Component({
       const {
         userInfo
       } = this.data
-      if (userInfo.lastOrganize && userInfo.lastOrganize.organizeId) {
+      const lastOrganize = wx.getStorageSync('lastOrganize')
+      if (lastOrganize && lastOrganize.organizeId) {
         wx.navigateTo({
-          url: `/pages/union/union?organizeId=${userInfo.lastOrganize.organizeId}`,
+          url: `/pages/union/union?organizeId=${lastOrganize.organizeId}`,
         })
-      } else {
+      }  else {
         wx.navigateTo({
           url: `/pages/search/search`,
         })

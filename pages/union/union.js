@@ -45,7 +45,9 @@ Page({
   },
 
   goBack: function() {
-    wx.navigateBack()
+    wx.navigateTo({
+      url: '/pages/main/main',
+    })
   },
   // 获取协会详情
   getOrganDetail: function(id) {

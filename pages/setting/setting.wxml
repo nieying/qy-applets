@@ -2,7 +2,7 @@
   <view class="header" style='padding-top: {{height + 10}}px'>
     <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
   </view>
-  <view class="content">
+  <view class="content" style="height: {{pageHeight}}px">
     <view class="padding-box">
       <view class='title'> 设置 </view>
       <view class='list'>

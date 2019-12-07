@@ -45,6 +45,12 @@ Component({
           listDatas: res.data.list
         })
       })
+    },
+    goToActivityDetail: function (e) {
+      const id = e.currentTarget.dataset.id
+      wx.navigateTo({
+        url: `/pages/activityDetail/activityDetail?id=${id}`,
+      })
     }
   }
 })

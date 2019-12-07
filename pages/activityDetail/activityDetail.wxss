@@ -16,6 +16,9 @@ scroll-view {
   font-size: 44rpx;
   font-weight: 600;
   color: rgba(40, 45, 75, 1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .act-time {

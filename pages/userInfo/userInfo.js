@@ -28,6 +28,7 @@ Page({
   onLoad: function(options) {
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
+      warpHeight: parseInt(wx.getStorageSync('warpHeight')),
       organizeId: options.organizeId
     })
   },
@@ -68,14 +69,16 @@ Page({
       mobile,
       remark
     }).then(res => {
-      res && this.pay()
+      res && this.pay(res.data)
     })
   },
 
-  pay: function(e) {
+  pay: function(d) {
     getPay({
+      amount: d.amount,
+      orderId: d.orderId,
+      orderSn: d.orderSn,
       type: 'join_organize',
-      amount: 30
     }).then(res => {
       const that = this;
       if (res && res.data) {

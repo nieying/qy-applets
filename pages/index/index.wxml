@@ -1,6 +1,6 @@
-<view class="page-start-up" wx:if="{{startUpObj}}">
+<view class="page-start-up {{ startUpObj ? '' : 'bg-color'}}">
   <image class='bg-img' src="{{startUpObj.imgUrl}}"></image>
-  <!-- <image class='logo' src='/pages/images/qianyan_logo.png'></image> -->
+  <image class='logo' src='/pages/images/qianyan_logo.svg'></image>
   <view class='union'>
     <view class='dialect' wx:if="{{startUpObj.title}}">
       <text></text> {{startUpObj.title}}

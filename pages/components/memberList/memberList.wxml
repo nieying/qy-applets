@@ -23,7 +23,7 @@
           </view>
 
           <view class="pass" wx:if="{{tab === 'apply'}}">
-            <view class="btn btn-default" catchtap="{{!buttonClicked?'onShowModal':''}}" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}">通过</view>
+            <view class="btn btn-default" catchtap="{{!buttonClicked?'onConfirm':''}}" data-item="{{item}}">通过</view>
           </view>
         </view>
       </view>
@@ -33,7 +33,7 @@
   <view wx:if="{{listDatas.length===0}}" class="no-datas">暂无数据</view>
 </view>
 
-<view class='mask' wx:if='{{showModal}}' data-id="1" catchtap='clickMask'>
+<!-- <view class='mask' wx:if='{{showModal}}' data-id="1" catchtap='clickMask'>
   <view class='modal-content' data-id="2" catchtap='clickMask'>
     <view class='main-content'>
       <view class='modal-title'>请确定审核</view>
@@ -46,4 +46,4 @@
       <view class='confirm-btn' data-type="comfirm" catchtap="{{!buttonClicked?'onConfirm':''}}">确定</view>
     </view>
   </view>
-</view>
+</view> -->

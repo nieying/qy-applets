@@ -121,7 +121,6 @@ Component({
 
     // 获取单元列表
     getUnitList: function(languageId) {
-      wx.showLoading()
       getUnit({
         languageId: languageId
       }).then(res => {
@@ -139,7 +138,6 @@ Component({
         this.setData({
           loading: false
         })
-        wx.hideLoading()
         console.log('getUnitList res', res, this.data.currentUnit)
       })
     },

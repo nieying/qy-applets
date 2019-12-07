@@ -1,6 +1,6 @@
 <view class="page-subject">
   <view class="header" style='padding-top: {{height}}px'>
-    <icon type="clear" size="30" color="black" bindtap="goBack" />
+    <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
     <view class='progress' wx:if="{{!isLoading}}">
       <progress percent="{{userInfo.unitProgress}}" backgroundColor="#B0BEC5" color="#FFD500" stroke-width="8" border-radius="8" />
     </view>
@@ -94,5 +94,5 @@
       继续
     </view>
   </block>
-  <feedModal show="{{show}}"  id="{{subjectObj.id}}" feedType="1" bind:confirm='onConfirm' />
+  <feedModal show="{{show}}" id="{{subjectObj.id}}" feedType="1" bind:confirm='onConfirm' />
 </view>
