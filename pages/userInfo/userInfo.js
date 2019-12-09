@@ -13,6 +13,7 @@ Page({
     height: 0,
     buttonClicked: false,
     showTips: false,
+    pageType: 1, // 1 提交信息页面， 2 支付完成提示页面， 3 待支付页面
     currentTab: 'work',
     tabs: [{
       key: 'work',
@@ -22,18 +23,22 @@ Page({
       key: 'student',
       name: "我是学生",
       active: ""
-    }]
+    }],
+    state: null,
   },
 
   onLoad: function(options) {
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight')),
-      organizeId: options.organizeId
+      organizeId: options.organizeId,
     })
+    if (options.state && parseInt(options.state) === 0) {
+      this.setData({
+        pageType: 3
+      })
+    }
   },
-
-  onReady: function() {},
 
   goBack: function() {
     wx.navigateBack()
@@ -73,6 +78,20 @@ Page({
     })
   },
 
+  onConfirm: function() {
+    tapedFun(this);
+    wx.navigateTo({
+      url: '/pages/main/main',
+    })
+  },
+
+  onPay: function() {
+    tapedFun(this);
+    const params = JSON.parse(wx.getStorageSync('payInfo'))
+    console.log('params', params)
+    this.pay(params)
+  },
+
   pay: function(d) {
     getPay({
       amount: d.amount,
@@ -93,7 +112,7 @@ Page({
           'success': function(res) {
             if (res.errMsg == "requestPayment:ok") { // 调用支付成功
               that.setData({
-                showTips: true
+                pageType: 2
               })
               showToast('支付成功')
             } else if (res.errMsg === 'requestPayment:cancel') { // 用户取消支付的操作
@@ -115,7 +134,6 @@ Page({
     copyText('test20076')
   },
 
-  // 点击tab 切换
   hanldeTab: function(e) {
     const {
       currentTab,

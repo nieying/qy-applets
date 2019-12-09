@@ -1,6 +1,5 @@
 const ENV = 0;
 const domainName = ["https://api.talkiin.cn/app/wx"][ENV];
-// const domainName = ["http://192.168.0.10:8083//wx"][ENV];
 const app = getApp();
 
 function http(params) {
@@ -12,7 +11,6 @@ function http(params) {
       header: {
         // 'Content-Type': 'application/x-www-form-urlencoded',
         'token': wx.getStorageSync('token') || ''
-        // 'X-Token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0aGlzIGlzIGxpdGVtYWxsIHRva2VuIiwiYXVkIjoiTUlOSUFQUCIsImlzcyI6IkxJVEVNQUxMIiwiZXhwIjoxNTcyMDY2MjQ1LCJ1c2VySWQiOjQsImlhdCI6MTU3MjA1OTA0NX0.r5hvIUB2TKssEywnHLO57VnX1lB1n_mFlFXeE-mpQ-8'
       },
       success: function(res) {
         if (res.data.errno === 0) {

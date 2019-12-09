@@ -2,8 +2,7 @@
   <view class="header" style='padding-top: {{height + 10}}px'>
     <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
   </view>
-  <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content" wx:if="{{!showTips}}">
-
+  <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content" wx:if="{{pageType===1}}">
     <view class="tabs">
       <view class="tab-header">
         <view class="tab-item {{item.active ? 'active':''}}" wx:for="{{tabs}}" wx:for-item="item" wx:key="index" bindtap="hanldeTab" data-tab="{{item.key}}">
@@ -57,8 +56,8 @@
       </view>
     </view>
   </scroll-view>
-
-  <view class="content" wx:else>
+  <!-- 支付完成 -->
+  <view class="content" wx:if="{{pageType===2}}">
     <view class="padding-box">
       <view class='warp'>
         <image src="/pages/images/success.svg"></image>
@@ -73,6 +72,25 @@
         <text class='copy' bindtap='textPaste'>点击可复制</text>
       </view>
     </view>
+    <view class="bottom">
+      <text bindtap="{{!buttonClicked?'onConfirm':''}}"> 确定</text>
+    </view>
   </view>
-  <!-- bindtap="{{!buttonClicked? 'onSubmit': ''}} " -->
+  <!-- 待支付 -->
+  <view class="content" wx:if="{{pageType===3}}">
+    <view class="padding-box">
+      <view class='warp'>
+        <image src="/pages/images/success.svg"></image>
+        <text class='result'>待支付</text>
+        <text class="tips">
+         您有30元会费(将用于协会支出)待支付
+        </text>
+        <!-- <text class='kefu' bindtap='textPaste'>客服微信 test20076</text>
+        <text class='copy' bindtap='textPaste'>点击可复制</text> -->
+      </view>
+    </view>
+    <view class="bottom">
+      <text bindtap="{{!buttonClicked?'onPay':''}}">支付</text>
+    </view>
+  </view>
 </view>

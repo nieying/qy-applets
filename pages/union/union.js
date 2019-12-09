@@ -12,6 +12,7 @@ Page({
     height: 0,
     pageHeight: 0,
     currentTab: "activity",
+    showAllInfo: true,
     nowIndex: 0,
     organDetail: {},
     tabs: [{
@@ -41,13 +42,17 @@ Page({
       organizeId: options.organizeId
     })
     this.getOrganDetail(options.organizeId);
-    this.getMemberList(options.organizeId);
+  },
+
+  onShow: function() {
+    this.getMemberList(this.data.organizeId);
   },
 
   goBack: function() {
-    wx.navigateTo({
-      url: '/pages/main/main',
-    })
+    // wx.navigateTo({
+    //   url: '/pages/main/main',
+    // })
+    wx.navigateBack()
   },
   // 获取协会详情
   getOrganDetail: function(id) {
@@ -144,5 +149,28 @@ Page({
     wx.navigateTo({
       url: `/pages/userInfo/userInfo?organizeId=${this.data.organizeId}`,
     })
+  },
+  onPay: function() {
+    tapedFun(this)
+    wx.setStorageSync('payInfo', JSON.stringify({
+      amount: this.data.organDetail.amount,
+      orderId: this.data.organDetail.orderId,
+      orderSn: this.data.organDetail.orderSn,
+    }))
+    wx.redirectTo({
+      url: `/pages/userInfo/userInfo?organizeId=${this.data.organizeId}&state=${this.data.organDetail.state}`,
+    })
+  },
+
+  scroll: function(e) {
+    if (e.detail.scrollTop < 2) {
+      this.setData({
+        showAllInfo: true
+      })
+    } else {
+      this.setData({
+        showAllInfo: false
+      })
+    }
   }
 })

@@ -68,14 +68,16 @@ Page({
       jumpUnion({
         id: id
       }).then(res => {
-        wx.setStorageSync('lastOrganize', { organizeId: id})
+        wx.setStorageSync('lastOrganize', {
+          organizeId: id
+        })
         wx.navigateTo({
           url: `/pages/union/union?organizeId=${id}`,
         })
       })
     } else {
       wx.navigateTo({
-        url: `/pages/union/union?organizeId=${id}`,
+        url: `/pages/union/union?organizeId=${id}&state=${state}`,
       })
     }
   },
@@ -90,6 +92,19 @@ Page({
     const id = e.currentTarget.dataset.item.id
     wx.redirectTo({
       url: `/pages/userInfo/userInfo?organizeId=${id}`,
+    })
+  },
+
+  onPay: function(e) {
+    tapedFun(this)
+    const item = e.currentTarget.dataset.item
+    wx.setStorageSync('payInfo', JSON.stringify({
+      amount: item.amount,
+      orderId: item.orderId,
+      orderSn: item.orderSn,
+    }))
+    wx.redirectTo({
+      url: `/pages/userInfo/userInfo?organizeId=${item.id}&state=${item.state}`,
     })
   },
 

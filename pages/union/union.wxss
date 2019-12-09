@@ -23,9 +23,9 @@
   margin-right: 32rpx;
 }
 
-.show-section .setting {
+/* .show-section .setting {
   right: 40rpx;
-}
+} */
 
 .card {
   display: flex;

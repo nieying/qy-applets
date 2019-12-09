@@ -5,6 +5,7 @@
 
 .search-input {
   position: relative;
+  margin-bottom: 32rpx;
 }
 
 .weui-input {
@@ -21,7 +22,7 @@
 }
 
 .warp, .list {
-  margin-top: 32rpx;
+  /* margin-top: 32rpx; */
 }
 
 .list .item {

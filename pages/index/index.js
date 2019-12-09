@@ -13,9 +13,15 @@ Page({
     if (wx.getStorageSync('token')) {
       const lastLanguage = wx.getStorageSync('lastLanguage')
       getStartUp().then(res => {
-        this.setData({
-          startUpObj: res.data
-        })
+        if(res) {
+          this.setData({
+            startUpObj: res.data
+          })
+        } else {
+          this.setData({
+            startUpObj: {}
+          })
+        }
         if (lastLanguage.hasOwnProperty('id')) {
           this.goToMainPage();
         } else {

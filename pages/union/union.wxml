@@ -2,9 +2,10 @@
   <view class="header" style='padding-top: {{height}}px'>
     <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
   </view>
-  <scroll-view scroll-y="true" style="height: {{pageHeight}}px" class="content">
+  <scroll-view scroll-y="true" style="height: {{pageHeight}}px" bindscroll="scroll" class="content">
+    <!-- <view class="content"> -->
     <view class="padding-box">
-      <view class="show-all">
+      <view class="show-all" wx:if="{{showAllInfo}}">
         <view class="card">
           <view class="setting">
             <image src="/pages/images/setting.svg" bindtap="goSetting"></image>
@@ -24,10 +25,13 @@
           </view>
         </view>
         <view class="follow-topic" wx:if="{{organDetail.state === -1}}">
-              <text class="btn btn-green" bindtap="{{!buttonClicked?'followTopic':''}}">+ 关注话题</text>
+          <text class="btn btn-green" bindtap="{{!buttonClicked?'followTopic':''}}">+ 关注话题</text>
+        </view>
+        <view class="follow-topic" wx:if="{{organDetail.state === 0}}">
+          <text class="btn btn-primary" bindtap="{{!buttonClicked?'onPay':''}}">会费待支付</text>
         </view>
       </view>
-      <view class="show-section" wx:if="{{false}}">
+      <view class="show-section" wx:else>
         <view class="left">
           <image class="avatar" src="{{organDetail.avatar}}"></image>
           <view>
@@ -48,12 +52,12 @@
           <view class="line" wx:if="{{item.active}}"></view>
         </view>
       </view>
-      <view class="tab-content" style="height: {{pageHeight-200}}px">
+      <view class="tab-content">
         <view class="union-activity" wx:if="{{currentTab==='activity'}}">
-          <activityList tab="{{currentTab}}" organizeId="{{organizeId}}"  />
+          <activityList tab="{{currentTab}}" organizeId="{{organizeId}}" />
         </view>
         <view class="union-task" wx:if="{{currentTab==='task'}}">
-          <taskList tab="{{currentTab}}" organizeId="{{organizeId}}"  />
+          <taskList tab="{{currentTab}}" organizeId="{{organizeId}}" />
         </view>
         <view class="union-people" wx:if="{{currentTab==='union'}}">
           <memberList tab="{{currentTab}}" role="{{organDetail.role}}" datas="{{memberList}}" bind:callback='getMemberList' />
@@ -63,5 +67,6 @@
         </view>
       </view>
     </view>
+    <!-- </view> -->
   </scroll-view>
 </view>

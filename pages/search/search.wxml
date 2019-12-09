@@ -25,7 +25,7 @@
               <view wx:if="{{item.state === -1}}" class=" btn btn-green" catchtap="{{!buttonClicked? 'onJoinOrgan':''}}" data-item="{{item}}">加入</view>
               <view wx:if="{{item.state === 2 && item.role !== 'owner'}}" class="btn btn-default" catchtap="{{!buttonClicked?'onQuit':''}}" data-item="{{item}}">退出</view>
               <view wx:if="{{item.state === 1}}">待审核</view>
-              <view wx:if="{{item.state === 0}}">待支付</view>
+              <view wx:if="{{item.state === 0 && item.role !== 'owner'}}" class="btn btn-default" catchtap="{{!buttonClicked?'onPay':''}}" data-item="{{item}}">待支付</view>
             </view>
           </view>
           <view wx:if="{{organList.length === 0}}" class="no-datas">暂无数据</view>

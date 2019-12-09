@@ -73,7 +73,7 @@ Component({
         return false;
       }
       wx.navigateTo({
-        url: `/pages/tags/tags?memberId=${item.id}&organizeId=${item.organizeId}`,
+        url: `/pages/tags/tags?memberId=${item.id}&organizeId=${item.organizeId}&rank=${item.rank}`,
       })
     },
 

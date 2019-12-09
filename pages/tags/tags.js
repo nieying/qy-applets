@@ -83,22 +83,37 @@ Page({
   },
 
   onLoad: function(options) {
-    console.log('page tag options===> ', options)
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
       warpHeight: parseInt(wx.getStorageSync('pageHeight')),
       memberId: options.memberId,
       organizeId: options.organizeId,
     })
+    const tags = this.data.tags;
+    if (options.rank) {
+      tags.forEach(tag => {
+        if (tag.name === options.rank) {
+          tag.checked = true
+        } else {
+          tag.checked = false
+        }
+      })
+    }
+    this.setData({
+      tags
+    })
   },
 
   onReady: function() {},
 
   goBack: function() {
-    wx.navigateBack()
+    wx.navigateBack();
+    // wx.redirectTo({
+    //   url: `/pages/union/union?organizeId=${this.data.organizeId}`,
+    // })
   },
 
-  updateMemeber: function (remark) {
+  updateMemeber: function(remark) {
     editMember({
       memberId: this.data.memberId,
       organizeId: this.data.organizeId,

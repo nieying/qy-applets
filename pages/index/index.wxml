@@ -1,15 +1,17 @@
-<view class="page-start-up {{ startUpObj ? '' : 'bg-color'}}">
-  <image class='bg-img' src="{{startUpObj.imgUrl}}"></image>
-  <image class='logo' src='/pages/images/qianyan_logo.svg'></image>
-  <view class='union'>
-    <view class='dialect' wx:if="{{startUpObj.title}}">
-      <text></text> {{startUpObj.title}}
-      <text></text>
+<view wx:if="{{startUpObj}}">
+  <view class="page-start-up {{ startUpObj ? '' : 'bg-color'}}">
+    <image class='bg-img' src="{{startUpObj.imgUrl}}"></image>
+    <image class='logo' src='/pages/images/qianyan_logo.svg'></image>
+    <view class='union'>
+      <view class='dialect' wx:if="{{startUpObj.title}}">
+        <text></text> {{startUpObj.title}}
+        <text></text>
+      </view>
     </view>
-  </view>
-  <view class='bottom'>
-    <view>仟丨言</view>
-    <view class='copy-right' style='margin-top: 40rpx'>Copyright © 2013 - 2019 Talkiin. </view>
-    <view class='copy-right' style='margin-top: 10rpx; padding-bottom:80rpx'>All Right Reserved.</view>
+    <view class='bottom'>
+      <view>仟丨言</view>
+      <view class='copy-right' style='margin-top: 40rpx'>Copyright © 2013 - 2019 Talkiin. </view>
+      <view class='copy-right' style='margin-top: 10rpx; padding-bottom:80rpx'>All Right Reserved.</view>
+    </view>
   </view>
 </view>
