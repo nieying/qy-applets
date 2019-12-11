@@ -80,7 +80,7 @@
   <view class="content" wx:if="{{pageType===3}}">
     <view class="padding-box">
       <view class='warp'>
-        <image src="/pages/images/success.svg"></image>
+        <image src="/pages/images/money.svg"></image>
         <text class='result'>待支付</text>
         <text class="tips">
          您有30元会费(将用于协会支出)待支付

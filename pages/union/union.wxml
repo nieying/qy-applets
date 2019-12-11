@@ -16,7 +16,7 @@
         </view>
         <view class="union-info" wx:if="{{organDetail.state === 2}}">
           <view class="item">
-            <view class="name">999</view>
+            <view class="name">{{organDetail.totalActivity || 0}}</view>
             <view class="desc">参加活动(次)</view>
           </view>
           <view class="item">

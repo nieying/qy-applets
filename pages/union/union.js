@@ -152,11 +152,6 @@ Page({
   },
   onPay: function() {
     tapedFun(this)
-    wx.setStorageSync('payInfo', JSON.stringify({
-      amount: this.data.organDetail.amount,
-      orderId: this.data.organDetail.orderId,
-      orderSn: this.data.organDetail.orderSn,
-    }))
     wx.redirectTo({
       url: `/pages/userInfo/userInfo?organizeId=${this.data.organizeId}&state=${this.data.organDetail.state}`,
     })

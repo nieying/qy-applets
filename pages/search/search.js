@@ -58,26 +58,29 @@ Page({
   },
 
   clickItem: function(e) {
-    console.log('jump====>', e)
     tapedFun(this)
-    const {
-      id,
-      state
-    } = e.currentTarget.dataset.item
-    if (state === 2) {
+    const item = e.currentTarget.dataset.item
+    if (item.state === 2) {
       jumpUnion({
-        id: id
+        id: item.id
       }).then(res => {
         wx.setStorageSync('lastOrganize', {
-          organizeId: id
+          organizeId: item.id
         })
         wx.navigateTo({
-          url: `/pages/union/union?organizeId=${id}`,
+          url: `/pages/union/union?organizeId=${item.id}`,
         })
       })
     } else {
+      if (item.state === 0) {
+        wx.setStorageSync('payInfo', JSON.stringify({
+          amount: item.amount,
+          orderId: item.orderId,
+          orderSn: item.orderSn,
+        }))
+      }
       wx.navigateTo({
-        url: `/pages/union/union?organizeId=${id}&state=${state}`,
+        url: `/pages/union/union?organizeId=${item.id}&state=${item.state}`,
       })
     }
   },

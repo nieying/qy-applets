@@ -114,6 +114,7 @@ Page({
               that.setData({
                 pageType: 2
               })
+              wx.setStorageSync('payInfo', null)
               showToast('支付成功')
             } else if (res.errMsg === 'requestPayment:cancel') { // 用户取消支付的操作
               showToast('取消支付')
