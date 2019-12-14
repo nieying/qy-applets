@@ -9,6 +9,8 @@ Page({
 
   data: {
     height: 0,
+    showTag: false,
+    currentUser: {},
     tags: [{
         id: 1,
         name: '会长',
@@ -88,6 +90,7 @@ Page({
       warpHeight: parseInt(wx.getStorageSync('pageHeight')),
       memberId: options.memberId,
       organizeId: options.organizeId,
+      showTag: options.type && options.type === 'tag'
     })
     const tags = this.data.tags;
     if (options.rank) {
@@ -102,6 +105,11 @@ Page({
     this.setData({
       tags
     })
+    if (!options.type) {
+      this.setData({
+        currentUser: JSON.parse(wx.getStorageSync('user'))
+      })
+    }
   },
 
   onReady: function() {},

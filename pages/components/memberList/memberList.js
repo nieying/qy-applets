@@ -69,14 +69,21 @@ Component({
     goTag: function(e) {
       tapedFun(this)
       const item = e.currentTarget.dataset.item;
+      const page = e.currentTarget.dataset.page;
       if (item.role === 'owner' || item.rank === '客卿') {
         return false;
       }
-      wx.navigateTo({
-        url: `/pages/tags/tags?memberId=${item.id}&organizeId=${item.organizeId}&rank=${item.rank}`,
-      })
+      if (page === 'tag') {
+        wx.navigateTo({
+          url: `/pages/tags/tags?memberId=${item.id}&organizeId=${item.organizeId}&type=tag`,
+        })
+      } else {
+        wx.setStorageSync('user', JSON.stringify(item))
+        wx.navigateTo({
+          url: `/pages/tags/tags?memberId=${item.id}&organizeId=${item.organizeId}`,
+        })
+      }
     },
-
     onShowModal: function(e) {
       this.setData({
         showModal: true,

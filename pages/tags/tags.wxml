@@ -4,7 +4,7 @@
   </view>
   <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
     <view class="padding-box">
-      <view class='list'>
+      <view class='list' wx:if="{{showTag}}">
         <view class='item' wx:for="{{tags}}" wx:for-item="item" wx:key="index">
           <view class="name">{{item.name}}</view>
           <view class="switch">
@@ -12,6 +12,40 @@
               <view class="fui-switch {{item.checked?'checked':''}}" type="checkbox" data-id="{{item.id}}" bindtap="toggleSwitch"></view>
             </view>
           </view>
+        </view>
+      </view>
+      <view wx:else class="user-info">
+        <view class="user-img">
+          <image src="{{currentUser.avatar}}"></image>
+          <view>{{currentUser.userName || '--'}}</view>
+        </view>
+        <view wx:if="{{currentUser.rank !== '客卿'}}">
+          <view class="user-item">
+            <view class="desc">学校</view>
+            <view class="name">{{currentUser.school || '--'}}</view>
+          </view>
+          <view class="user-item">
+            <view class="desc">班级</view>
+            <view class="name">{{currentUser.garde || '--'}}</view>
+          </view>
+        </view>
+        <view wx:else>
+          <view class="user-item">
+            <view class="desc">公司</view>
+            <view class="name">{{currentUser.company || '--'}}</view>
+          </view>
+          <view class="user-item">
+            <view class="desc">职位</view>
+            <view class="name">{{currentUser.work || '--'}}</view>
+          </view>
+        </view>
+        <view class="user-item">
+          <view class="desc">手机号</view>
+          <view class="name">{{currentUser.mobile || '--'}}</view>
+        </view>
+        <view class="user-item">
+          <view class="desc">个人介绍</view>
+          <view class="name">{{currentUser.remark || '--'}}</view>
         </view>
       </view>
     </view>

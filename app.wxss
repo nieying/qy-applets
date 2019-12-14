@@ -1,6 +1,7 @@
 /**app.wxss**/
 
 page {
+  height: 100%;
   position: relative;
   z-index: 9999998;
   color: #282d4b;
