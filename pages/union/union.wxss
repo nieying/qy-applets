@@ -1,5 +1,5 @@
 .page-union {
-  height: 100%;
+  /* height: 100%; */
   background: #eaedf2;
   position: relative;
 }

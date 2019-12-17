@@ -100,8 +100,8 @@ Component({
         this.setData({
           show: false
         })
+        this.triggerEvent('confirm')
       });
-      this.triggerEvent('confirm')
     }
   }
 })

@@ -58,7 +58,7 @@
             <!-- <view class='title'>
               <text>{{subjectObj.title}}</text>
             </view> -->
-            <image src="{{subjectObj.filePath}}"></image>
+            <image src="{{subjectObj.filePath}}" mode="aspectFit"></image>
           </view>
           <!-- 答题选项 -->
           <view class="{{subjectObj.type !== 'picture' ? 'answer-list':'tone-list'}}">
@@ -70,7 +70,7 @@
                 <icon wx:if="{{isAnswered && !item.right && item.checked}}" type="clear" size="30" color="#F44336" />
 
                 <text wx:if="{{subjectObj.type !== 'picture'}}">{{item.answer}}</text>
-                <image wx:else src='{{item.answer}}'></image>
+                <image wx:else src='{{item.answer}}' mode="aspectFit"></image>
               </view>
             </block>
           </view>

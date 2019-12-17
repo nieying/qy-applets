@@ -1,5 +1,5 @@
 <view class="page-search">
-  <view class="header" style='padding-top: {{height + 10}}px'>
+  <view class="header" style='padding-top: {{height}}px'>
     <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
   </view>
   <view class="content">

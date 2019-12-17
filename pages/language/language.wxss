@@ -1,5 +1,5 @@
 .page-language {
-  height: 100%;
+  /* height: 100%; */
   background: #eaedf2;
   width: 100%;
 }

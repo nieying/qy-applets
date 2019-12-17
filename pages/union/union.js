@@ -49,10 +49,10 @@ Page({
   },
 
   goBack: function() {
-    // wx.navigateTo({
-    //   url: '/pages/main/main',
-    // })
-    wx.navigateBack()
+    wx.navigateTo({
+      url: '/pages/main/main',
+    })
+    // wx.navigateBack()
   },
   // 获取协会详情
   getOrganDetail: function(id) {

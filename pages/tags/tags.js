@@ -80,6 +80,11 @@ Page({
         id: 14,
         name: '传承部副部长',
         checked: false
+      },
+      {
+        id: 15,
+        name: '会员',
+        checked: false
       }
     ]
   },
