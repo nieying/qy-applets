@@ -25,6 +25,7 @@ Page({
       active: ""
     }],
     state: null,
+    formData: {},
   },
 
   onLoad: function(options) {
@@ -40,19 +41,17 @@ Page({
     }
   },
 
+  bindKeyInput: function(e) {
+    const { formData } = this.data;
+    formData[e.target.dataset.key] = e.detail.value;
+    this.setData({ formData })
+  },
+
   goBack: function() {
     wx.navigateBack()
   },
 
   onSubmit: function(e) {
-    if (!(/^1[3456789]\d{9}$/.test(e.detail.value.mobile))) {
-      wx.showToast({
-        title: '手机号码有误',
-        duration: 2000,
-        icon: 'none'
-      });
-      return false;
-    }
     tapedFun(this);
     const {
       name,
@@ -62,7 +61,15 @@ Page({
       school,
       mobile,
       remark
-    } = e.detail.value
+    } = this.data.formData
+    if (!(/^1[3456789]\d{9}$/.test(mobile))) {
+      wx.showToast({
+        title: '手机号码有误',
+        duration: 2000,
+        icon: 'none'
+      });
+      return false;
+    }
     joinOrganize({
       joinType: this.data.currentTab,
       organizeId: this.data.organizeId,
@@ -152,10 +159,10 @@ Page({
       })
       this.setData({
         tabs: tabs,
-        currentTab: e.currentTarget.dataset['tab']
+        currentTab: e.currentTarget.dataset['tab'],
+        formData: {}
       })
     }
-    console.log('this.data', currentTab)
   }
 
 })

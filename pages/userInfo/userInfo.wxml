@@ -15,40 +15,38 @@
       <form class="user-form" bindsubmit='onSubmit'>
         <view class="section">
           <view class="desc">姓名</view>
-          <input name="input" placeholder="请输入姓名" name="name" />
+          <input name="input" placeholder="请输入姓名" data-key='name' bindinput="bindKeyInput" name="name" />
         </view>
         <view wx-if="{{currentTab==='student'}}">
           <view class="section">
             <view class="desc">学校</view>
-            <input name="input" placeholder="请输入学校（选填）" name="school" />
+            <input name="input" placeholder="请输入学校（选填）" data-key='school' bindinput="bindKeyInput" name="school" />
           </view>
           <view class="section">
             <view class="desc">班级</view>
-            <input name="input" placeholder="请输入班级（选填）" name="garde" />
+            <input name="input" placeholder="请输入班级（选填）" data-key='garde' bindinput="bindKeyInput" name="garde" />
           </view>
         </view>
 
         <view wx:else>
           <view class="section">
             <view class="desc">公司</view>
-            <input name="input" placeholder="请输入您所在的公司（选填）" name="company" />
+            <input name="input" placeholder="请输入您所在的公司（选填）" data-key='company' bindinput="bindKeyInput" name="company" />
           </view>
           <view class="section">
             <view class="desc">职位</view>
-            <input name="input" placeholder="请输入您的职位（选填）" name="work" />
+            <input name="input" placeholder="请输入您的职位（选填）" data-key='work' bindinput="bindKeyInput" name="work" />
           </view>
         </view>
         <view class="section">
           <view class="desc">手机号码</view>
-          <input name="input" placeholder="方便联系到您 " name="mobile" />
+          <input name="input" placeholder="方便联系到您 " data-key='mobile' bindinput="bindKeyInput" name="mobile" />
         </view>
         <view class="section">
           <view class="desc">个人介绍</view>
-          <input name="input" placeholder="简要描述 " name="remark" />
+          <input name="input" placeholder="简要描述 " data-key='remark' bindinput="bindKeyInput" name="remark" />
         </view>
-        <view class="bottom">
-          <button form-type='submit'>提交</button>
-        </view>
+
       </form>
       <view class="tip-warp">
         <text>加入协会需要交纳30元作为会费， </text>
@@ -56,6 +54,10 @@
       </view>
     </view>
   </scroll-view>
+  <view class="bottom" wx:if="{{pageType===1}}">
+    <text bindtap="{{!buttonClicked?'onSubmit':''}}"> 确定</text>
+    <!-- <button formType="submit">提交</button> -->
+  </view>
   <!-- 支付完成 -->
   <view class="content" wx:if="{{pageType===2}}">
     <view class="padding-box">

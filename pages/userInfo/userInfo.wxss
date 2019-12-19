@@ -2,6 +2,9 @@
   /* height: 100%; */
   background: #eaedf2;
 }
+.ov-auto {
+  overflow-y: auto;
+}
 
 .tab-header {
   display: flex;
@@ -84,11 +87,11 @@ input {
   text-align: center;
 }
 
-.bottom button {
+/* .bottom button {
   background: transparent;
   border: none;
   color: #ffd100;
-}
+} */
 
 .success-tips {
   display: flex;
