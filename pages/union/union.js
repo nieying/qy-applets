@@ -45,7 +45,7 @@ Page({
   },
 
   onShow: function() {
-    this.getMemberList(this.data.organizeId);
+    this.getMemberList();
   },
 
   goBack: function() {
@@ -90,12 +90,12 @@ Page({
     })
   },
   // 获取协会成员类表
-  getMemberList: function(id) {
+  getMemberList: function() {
     wx.showLoading()
     const peddingMemberList = [];
     const memberList = [];
     getOrganMemberList({
-      organizeId: id
+      organizeId: this.data.organizeId
     }).then(res => {
       if (res && res.data.list.length > 0) {
         res.data.list.filter(r => {

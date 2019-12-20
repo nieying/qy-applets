@@ -22,6 +22,10 @@ Component({
     role: {
       type: String,
       value: '',
+    },
+    memberCount: {
+      type: String,
+      value: '',
     }
   },
 
@@ -140,26 +144,6 @@ Component({
       })
 
     },
-
-    // 审核
-    // onConfirm: function(e) {
-    //   wx.showLoading({
-    //     title: '',
-    //     mask: true
-    //   })
-    //   const type = e.currentTarget.dataset.type;
-    //   approvalmember({
-    //     organizeId: this.data.organizeId,
-    //     pass: type === 'comfirm',
-    //     userId: this.data.userId
-    //   }).then(res => {
-    //     this.setData({
-    //       showModal: false
-    //     })
-    //     this.triggerEvent('callback')
-    //     showToast(pass ? '通过成功' : '拒绝成功')
-    //   })
-    // },
 
     clickMask(e) {
       let id = e.currentTarget.dataset.id;

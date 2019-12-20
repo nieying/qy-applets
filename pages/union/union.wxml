@@ -60,10 +60,10 @@
           <taskList tab="{{currentTab}}" organizeId="{{organizeId}}" />
         </view>
         <view class="union-people" wx:if="{{currentTab==='union'}}">
-          <memberList tab="{{currentTab}}" role="{{organDetail.role}}" datas="{{memberList}}" bind:callback='getMemberList' />
+          <memberList tab="{{currentTab}}" role="{{organDetail.role}}" memberCount="{{memberList.length}}" datas="{{memberList}}" bind:callback='getMemberList' />
         </view>
         <view class="apply-list" wx:if="{{currentTab==='apply'}}">
-          <memberList tab="{{currentTab}}" role="{{organDetail.role}}" datas="{{peddingMemberList}}" bind:callback='getMemberList' />
+          <memberList tab="{{currentTab}}" role="{{organDetail.role}}" memberCount="{{peddingMemberList.length}}" datas="{{peddingMemberList}}" bind:callback='getMemberList' />
         </view>
       </view>
     </view>

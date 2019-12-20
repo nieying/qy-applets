@@ -1,13 +1,12 @@
 <view class="list">
   <view wx:if="{{listDatas.length>0}}">
-    <view class="total">共{{listDatas.length}}人</view>
+    <!-- <view class="total">共{{tab === 'union' ? memberCount : listDatas.length}}人</view> -->
+    <view class="total">共{{memberCount}}人</view>
     <view wx:for="{{listDatas}}" wx:for-item="item" wx:key="index">
       <view class="type1">
         <text>{{item.title}}</text>
       </view>
-      <view class="item" wx:for="{{item.list}}" wx:for-item="item" wx:key="index" data-item="{{item}}" 
-      data-page='userInfo'
-      catchtap="{{role === 'owner' && !buttonClicked ? 'goTag' : ''}}">
+      <view class="item" wx:for="{{item.list}}" wx:for-item="item" wx:key="index" data-item="{{item}}" data-page='userInfo' catchtap="{{role === 'owner' && !buttonClicked ? 'goTag' : ''}}">
         <view class="left">
           <image src="{{item.avatar}}"></image>
           <view class="info">
@@ -18,9 +17,7 @@
         <view class="right">
           <view class="pass" wx:if="{{tab === 'union'}}">
             <view class="tag leader" wx:if="{{item.role==='owner'}}">会长</view>
-            <view class="tag vip" wx:else 
-            data-item="{{item}}" 
-              data-page='tag' catchtap="{{role === 'owner' && !buttonClicked ? 'goTag' : ''}}">{{item.rank}}</view>
+            <view class="tag vip" wx:else data-item="{{item}}" data-page='tag' catchtap="{{role === 'owner' && !buttonClicked ? 'goTag' : ''}}">{{item.rank}}</view>
             <!-- <view class="tag keqing">客卿</view> -->
             <!-- <view wx:if="{{item.role !== 'owner' && tab === 'union'}}" class="btn btn-warn" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="false" bindtap="tichu">踢除</view> -->
             <image src="/pages/images/right.svg" wx:if="{{role === 'owner'}}"></image>
