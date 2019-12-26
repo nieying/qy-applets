@@ -74,6 +74,10 @@ Component({
       tapedFun(this)
       const item = e.currentTarget.dataset.item;
       const page = e.currentTarget.dataset.page;
+      if (item.rank_type === 'admin') {
+        showToast('该标签不能被修改！')
+        return;
+      }
       if (item.role === 'owner' || item.rank === '客卿') {
         return false;
       }
