@@ -13,7 +13,7 @@
 我们将在24小时内审核哦！
 详细结果将使用短信进行通知，请您留意！
 审核不通过时可通过联系客服进行退款</text>
-        <text class='kefu' bindtap='textPaste'>客服微信 test20076</text>
+        <text class='kefu' bindtap='textPaste'>客服微信 657465669</text>
         <text class='copy' bindtap='textPaste'>点击可复制</text>
       </view>
     </view>

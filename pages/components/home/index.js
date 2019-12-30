@@ -6,7 +6,8 @@ import {
 } from '../../api/api.js'
 import {
   showToast,
-  tapedFun
+  tapedFun,
+  countRpx
 } from '../../../utils/util.js'
 const app = getApp()
 
@@ -38,8 +39,8 @@ Component({
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight')),
-      currentUnitR: parseInt(wx.getStorageSync('warpHeight')) === 388 ? 84 : 100,
-      unitR: parseInt(wx.getStorageSync('warpHeight')) === 388 ? 42 : 50,
+      currentUnitR: countRpx(200,app.globalData.windowWidth),
+      unitR: countRpx(100,app.globalData.windowWidth)
     })
   },
 

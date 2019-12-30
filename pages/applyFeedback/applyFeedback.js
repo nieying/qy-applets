@@ -40,7 +40,7 @@ Page({
   },
 
   textPaste: function() {
-    copyText('test20076')
+    copyText('657465669')
   },
 
   goBack: function() {

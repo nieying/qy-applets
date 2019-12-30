@@ -80,11 +80,6 @@
 }
 
 
-.user-info {
-
-}
-
-
 .user-info .user-item {
   padding: 20rpx 30rpx;
   align-items: center;

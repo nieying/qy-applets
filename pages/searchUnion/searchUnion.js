@@ -31,7 +31,7 @@ Page({
 
   // 复制
   textPaste() {
-    copyText('test20076')
+    copyText('657465669')
   },
 
   /**

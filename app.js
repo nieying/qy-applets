@@ -8,7 +8,7 @@ const app = getApp();
 const ald = require('./utils/ald-stat.js')
 App({
   onLaunch: function() {
-    storageHeight();
+    storageHeight(this);
     // 判断网络是否正常
     wx.onNetworkStatusChange(function(res) {
       if (res.isConnected == false) { // res.isConnected false无网络  res.networkType wifi
@@ -61,6 +61,7 @@ App({
     })
   },
   globalData: {
+    windowWidth: null,
     userInfo: null,
     token: null,
   }

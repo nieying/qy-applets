@@ -28,26 +28,31 @@ const copyText = (data) => {
   })
 }
 
-const storageHeight = () => {
+const storageHeight = (that) => {
   wx.getSystemInfo({
     success: (res) => {
       console.log('wx.getSystemInfo::', res)
+      that.globalData.windowWidth = res.windowWidth
       let statusBarHeight = res.statusBarHeight
       let deviceHeight = res.windowHeight
       wx.setStorageSync('statusBarHeight', statusBarHeight)
       if (deviceHeight <= 568) {
-        let height = deviceHeight - statusBarHeight - 160
+        let height = deviceHeight - statusBarHeight - 140
         let height2 = deviceHeight - statusBarHeight - 75
         wx.setStorageSync('warpHeight', height)
         wx.setStorageSync('pageHeight', height2)
       } else {
-        let height = deviceHeight - statusBarHeight - 180
+        let height = deviceHeight - statusBarHeight - 165
         let height2 = deviceHeight - statusBarHeight - 85
         wx.setStorageSync('warpHeight', height)
         wx.setStorageSync('pageHeight', height2)
       }
     }
   })
+}
+
+const countRpx = (val, width) => {
+  return val/750 * width
 }
 
 const getSpell = (str, sp) => {
@@ -115,5 +120,6 @@ module.exports = {
   getSpell: getSpell,
   formatList: formatList,
   showToast: showToast,
-  tapedFun: tapedFun
+  tapedFun: tapedFun,
+  countRpx: countRpx
 }

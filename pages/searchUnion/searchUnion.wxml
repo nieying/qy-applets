@@ -19,7 +19,7 @@
       <view class='warp' wx:else>
         <text class='result'>该校区暂无协会</text>
         <text class='tips'>有意创建协会者请联系客服</text>
-        <text class='kefu' bindtap='textPaste'>客服微信 test20076</text>
+        <text class='kefu' bindtap='textPaste'>客服微信 657465669</text>
         <text class='copy' bindtap='textPaste'>点击可复制</text>
       </view>
     </view>

@@ -92,7 +92,7 @@ Page({
   onLoad: function(options) {
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
-      warpHeight: parseInt(wx.getStorageSync('pageHeight')),
+      warpHeight: parseInt(wx.getStorageSync('pageHeight')) + 10,
       memberId: options.memberId,
       organizeId: options.organizeId,
       showTag: options.type && options.type === 'tag'

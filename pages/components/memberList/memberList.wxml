@@ -17,7 +17,7 @@
         <view class="right">
           <view class="pass" wx:if="{{tab === 'union'}}">
             <view class="tag leader" wx:if="{{item.role==='owner'}}">会长</view>
-            <view class="tag vip" wx:else data-item="{{item}}" data-page='tag' catchtap="{{role === 'owner' && !buttonClicked ? 'goTag' : ''}}">{{item.rank}}</view>
+            <view class="tag {{ item.rank_type === 'admin' ? 'keqing' : 'vip'}}" wx:else data-item="{{item}}" data-page='tag' catchtap="{{role === 'owner' && !buttonClicked ? 'goTag' : ''}}">{{item.rank}}</view>
             <!-- <view class="tag keqing">客卿</view> -->
             <!-- <view wx:if="{{item.role !== 'owner' && tab === 'union'}}" class="btn btn-warn" data-organizeid="{{item.organizeId}}" data-userid="{{item.userId}}" data-pass="false" bindtap="tichu">踢除</view> -->
             <image src="/pages/images/right.svg" wx:if="{{role === 'owner'}}"></image>

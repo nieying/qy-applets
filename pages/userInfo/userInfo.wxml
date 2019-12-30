@@ -70,7 +70,7 @@
           详细结果将使用短信进行通知，请您留意！
           审核不通过时可通过联系客服进行退款
         </text>
-        <text class='kefu' bindtap='textPaste'>客服微信 test20076</text>
+        <text class='kefu' bindtap='textPaste'>客服微信 657465669</text>
         <text class='copy' bindtap='textPaste'>点击可复制</text>
       </view>
     </view>
@@ -87,7 +87,7 @@
         <text class="tips">
          您有30元会费(将用于协会支出)待支付
         </text>
-        <!-- <text class='kefu' bindtap='textPaste'>客服微信 test20076</text>
+        <!-- <text class='kefu' bindtap='textPaste'>客服微信 657465669</text>
         <text class='copy' bindtap='textPaste'>点击可复制</text> -->
       </view>
     </view>

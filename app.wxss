@@ -200,6 +200,7 @@ page {
   align-items: center;
   margin: 30rpx 0;
   background: transparent;
+  text-align: center;
 }
 
 .mask {

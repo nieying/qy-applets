@@ -1,24 +1,24 @@
 <view class="page-language">
-  <view class="header" style='padding-top: {{height}}px'>
-    <icon type="clear" size="30" color="#282D4B" bindtap="goBack" />
-  </view>
-  <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
-    <view class='padding-box'>
-      <view class="select-language">选择要学习的语言</view>
-      <view class="list" wx:if="{{dialectList.length>0}}" wx:for="{{dialectList}}" wx:for-item="item" wx:key="index" data-id="{{index}}" bindtap='userCheck'>
-        <text class="type">{{item.name}}</text>
-        <view class="item">
-          <view wx:for="{{item.childList}}" wx:for-item="child" wx:key="index" data-id="{{index}}" data-state="{{child.state}}" class="{{child.checked?'check':''}}">
-            {{child.languageName}}
-          </view>
-        </view>
-      </view>
-      <view wx:if="{{dialectList.length === 0}}" class="no-datas">
-        <text>暂无数据</text>
-      </view>
-    </view>
-  </scroll-view>
-  <view wx:if="{{dialectList.length > 0}}" class="bottom" bindtap="{{!buttonClicked?'confrim':''}}">
-    <text>确定</text>
-  </view>
+	<view class="header" style='padding-top: {{height}}px'>
+		<image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
+	</view>
+	<scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
+		<view class='padding-box'>
+			<view class="select-language">选择要学习的语言</view>
+			<view class="list" wx:if="{{dialectList.length>0}}" wx:for="{{dialectList}}" wx:for-item="item" wx:key="index" data-id="{{index}}" bindtap='userCheck'>
+				<text class="type">{{item.name}}</text>
+				<view class="item">
+					<view wx:for="{{item.childList}}" wx:for-item="child" wx:key="index" data-id="{{index}}" data-state="{{child.state}}" class="{{child.checked?'check':''}}">
+						{{child.languageName}}
+					</view>
+				</view>
+			</view>
+			<view wx:if="{{dialectList.length === 0}}" class="no-datas">
+				<text>暂无数据</text>
+			</view>
+		</view>
+	</scroll-view>
+	<view wx:if="{{dialectList.length > 0}}" class="bottom" bindtap="{{!buttonClicked?'confrim':''}}">
+		<text>确定</text>
+	</view>
 </view>

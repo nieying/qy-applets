@@ -6,21 +6,19 @@ import {
   createFeedback
 } from '../api/api.js';
 import {
-  showToast
+  showToast,
+  countRpx
 } from '../../utils/util.js'
 let timer = ''
 const app = getApp()
 const innerAudioContext = wx.createInnerAudioContext()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   //normal:文字题（伪音标题），auto:听力题，picture:选图题，map:看图题
   data: {
     height: 0,
     warpHeight: 0,
-    isLoading: false,
+    isLoading: true,
     isAnswered: false,
     isShowNote: false,
     isPlay: false,
@@ -42,28 +40,28 @@ Page({
     show: false
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+ 
   onLoad: function(options) {
     console.log('options', options)
+    const warpHeight = parseInt(wx.getStorageSync('warpHeight')) + 10
     this.setData({
-      height: wx.getStorageSync('statusBarHeight') + 10,
-      warpHeight: parseInt(wx.getStorageSync('warpHeight')),
-      currentDialect: wx.getStorageSync('lastLanguage')
+      height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
+      warpHeight: warpHeight,
+      currentDialect: wx.getStorageSync('lastLanguage'),
+      adHeight: warpHeight - countRpx(280, app.globalData.windowWidth)
     });
     this.getData(options)
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+  
   onReady: function() {
     if (this.data.isLoading) {
       getAdPage().then(res => {
-        this.setData({
-          adObj: res.data[0]
-        })
+        if (res && res.data[0]) {
+          this.setData({
+            adObj: res.data[0]
+          })
+        }
         timer = setTimeout(() => {
           this.setData({
             isLoading: false
