@@ -43,6 +43,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30rpx;
 }
 
 .subject-type .name text {
@@ -57,9 +58,9 @@
   height: 64rpx;
 }
 
+
 .subject-type .topic1 {
-  margin-top: 48rpx;
-  font-size: 44rpx;
+  font-size: 40rpx;
   text-overflow: ellipsis;
   overflow: hidden;
   text-overflow: -o-ellipsis-lastline;
@@ -121,7 +122,8 @@
   width: 80%;
   top: 38%; 
   height: 392rpx; */
-  margin-top: 18%;
+  /* margin-top: 18%; */
+  margin-top: 40rpx;
   border-radius: 20rpx;
   padding: 40rpx;
   border: 4rpx solid rgba(234, 237, 242, 1);
@@ -149,14 +151,20 @@
   overflow: hidden;
 }
 
+.answer-tips-box {
+  background: white;
+  height: 264rpx;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
 .answer-tips {
-  /* position: absolute;
-  width: 80%;
-  bottom: 0; */
-  margin-top: 40rpx;
   height: 150rpx;
+  width: 80%;
   border-radius: 92rpx;
   font-size: 44rpx;
+  margin: 0 40rpx;
   padding: 0 40rpx;
   display: flex;
   align-items: center;
@@ -199,14 +207,14 @@
 }
 
 .subject-pic image {
-  margin: 32rpx 0 116rpx 0;
+  margin-top: 32rpx;
   height: 280rpx;
   background: rgba(176, 190, 197, 1);
   border-radius: 20rpx;
   width: 100%;
 }
 
-.subject-tone  .topic {
+.subject-tone .topic {
   margin-top: 0;
 }
 
@@ -215,6 +223,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20rpx;
 }
 
 .tone-list .item {
@@ -272,6 +281,15 @@
   color: white;
   margin: 24rpx 0 32rpx 0;
 }
+
+.desc {
+  padding: 0 40rpx;
+  font-size: 24rpx;
+  color: #b0bec5;
+  margin-bottom: 30rpx;
+  line-height: 48rpx;
+}
+
 
 .bottom-loading .tips {
   color: #90a4ae;

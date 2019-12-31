@@ -1,6 +1,6 @@
 const showToast = (title) => {
   wx.showToast({
-    icon:'none',
+    icon: 'none',
     title: title,
     duration: 1000,
   })
@@ -28,13 +28,13 @@ const copyText = (data) => {
   })
 }
 
-const storageHeight = (that) => {
+const storageHeight = () => {
   wx.getSystemInfo({
     success: (res) => {
       console.log('wx.getSystemInfo::', res)
-      that.globalData.windowWidth = res.windowWidth
       let statusBarHeight = res.statusBarHeight
       let deviceHeight = res.windowHeight
+      wx.setStorageSync('windowWidth', res.windowWidth)
       wx.setStorageSync('statusBarHeight', statusBarHeight)
       if (deviceHeight <= 568) {
         let height = deviceHeight - statusBarHeight - 140
@@ -52,13 +52,15 @@ const storageHeight = (that) => {
 }
 
 const countRpx = (val, width) => {
-  return val/750 * width
+  return val / 750 * width
 }
 
 const getSpell = (str, sp) => {
   var i, c, t, p, ret = "";
   var strLength = str.length;
-  if (sp === null) { sp = '' };
+  if (sp === null) {
+    sp = ''
+  };
   for (i = 0; i < strLength; i++) {
     if (str.charCodeAt(i) >= 0x4e00) {
       p = strGB.indexOf(str.charAt(i));
@@ -74,14 +76,14 @@ const getSpell = (str, sp) => {
   return ret.substr(0, ret.length - sp.length)
 }
 
-const formatList = (arr, keyword) =>{
+const formatList = (arr, keyword) => {
   let newArr1 = [];
   let tempArr = [];
   let reg = /\b(\w)|\s(\w)/g;
   let k = 0;
-  let firstWord = arr[0][keyword].charAt(0).toUpperCase();//获取第一个分类字母
+  let firstWord = arr[0][keyword].charAt(0).toUpperCase(); //获取第一个分类字母
   arr.map((v) => {
-    v[keyword] = v[keyword].replace(reg, m => m.toUpperCase());//首字母大写
+    v[keyword] = v[keyword].replace(reg, m => m.toUpperCase()); //首字母大写
     if (firstWord == v[keyword].charAt(0)) {
       tempArr.push(v);
       newArr1[k] = {
@@ -90,10 +92,10 @@ const formatList = (arr, keyword) =>{
       }
     } else {
       //这里循环到这表示已经第二个字母了
-      firstWord = v[keyword].charAt(0);//设置第二字母
-      tempArr = [];//把之前的清除掉
-      tempArr.push(v);//添加第一个
-      newArr1[++k] = {//自增
+      firstWord = v[keyword].charAt(0); //设置第二字母
+      tempArr = []; //把之前的清除掉
+      tempArr.push(v); //添加第一个
+      newArr1[++k] = { //自增
         title: firstWord,
         list: tempArr
       }

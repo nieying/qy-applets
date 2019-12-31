@@ -156,6 +156,12 @@ Page({
       url: `/pages/userInfo/userInfo?organizeId=${this.data.organizeId}&state=${this.data.organDetail.state}`,
     })
   },
+  goActivity: function() {
+    tapedFun(this);
+    wx.navigateTo({
+      url: `/pages/activity`,
+    })
+  },
 
   scroll: function(e) {
     if (e.detail.scrollTop < 2) {

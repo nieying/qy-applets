@@ -196,6 +196,7 @@ page {
   color: #90a4ae;
   font-size: 28rpx;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 30rpx 0;
@@ -265,4 +266,8 @@ page {
   font-weight: 600;
   color: rgba(40, 45, 75, 1);
   text-align: center;
+}
+
+.btn-hover{
+  box-shadow:0rpx 0rpx 8rpx #ccc inset; 
 }

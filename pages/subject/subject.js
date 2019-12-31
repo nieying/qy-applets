@@ -1,9 +1,7 @@
 import {
   getSubject,
   postSubject,
-  getUnitSubject,
   getAdPage,
-  createFeedback
 } from '../api/api.js';
 import {
   showToast,
@@ -12,8 +10,9 @@ import {
 let timer = ''
 const app = getApp()
 const innerAudioContext = wx.createInnerAudioContext()
-Page({
+const warpHeight = parseInt(wx.getStorageSync('warpHeight')) + 10
 
+Page({
   //normal:文字题（伪音标题），auto:听力题，picture:选图题，map:看图题
   data: {
     height: 0,
@@ -40,21 +39,20 @@ Page({
     show: false
   },
 
- 
-  onLoad: function(options) {
+
+  onLoad: function (options) {
     console.log('options', options)
-    const warpHeight = parseInt(wx.getStorageSync('warpHeight')) + 10
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: warpHeight,
       currentDialect: wx.getStorageSync('lastLanguage'),
-      adHeight: warpHeight - countRpx(280, app.globalData.windowWidth)
+      adHeight: warpHeight - countRpx(280, parseInt(wx.getStorageSync('windowWidth')))
     });
     this.getData(options)
   },
 
-  
-  onReady: function() {
+
+  onReady: function () {
     if (this.data.isLoading) {
       getAdPage().then(res => {
         if (res && res.data[0]) {
@@ -73,14 +71,14 @@ Page({
   },
 
   // 返回
-  goBack: function() {
+  goBack: function () {
     wx.reLaunch({
       url: '/pages/main/main',
     })
   },
 
   // 获取数据
-  getData: function(options) {
+  getData: function (options) {
     wx.showLoading()
     let params = {
       languageId: options.languageId
@@ -94,7 +92,7 @@ Page({
     })
   },
   // 获取下一题
-  getNextSubject: function(e) {
+  getNextSubject: function (e) {
     const type = e.currentTarget.dataset.type;
     const {
       rightId,
@@ -139,7 +137,7 @@ Page({
   },
 
   // 处理请求的数据
-  dealData: function(obj) {
+  dealData: function (obj) {
     let rightId = ''
     obj.answers.forEach(a => {
       if (a.right) {
@@ -182,7 +180,7 @@ Page({
   },
 
   // 播放音频
-  audioPlay: function() {
+  audioPlay: function () {
     innerAudioContext.src = this.data.subjectObj.filePath;
     innerAudioContext.play();
     innerAudioContext.onPlay(() => {
@@ -190,7 +188,7 @@ Page({
         isPlay: true
       })
       console.log('录音播放中');
-    });             
+    });
     innerAudioContext.onEnded(() => {
       this.setData({
         isPlay: false
@@ -199,18 +197,18 @@ Page({
     })
   },
   // 停止播放
-  audioStop: function() {
+  audioStop: function () {
     innerAudioContext.stop();
     innerAudioContext.onStop(() => {
       this.setData({
         isPlay: false
       })
       console.log('录音播放停止');
-    });  
+    });
   },
 
   //单选
-  getradio: function(e) {
+  getradio: function (e) {
     if (!this.data.isAnswered) {
       let index = e.currentTarget.dataset.id;
       const {
@@ -235,13 +233,14 @@ Page({
   },
 
   // 提交
-  submit: function(e) {
+  submit: function (e) {
     const {
       rightId,
       selectId
     } = this.data;
     this.setData({
       isAnswered: true,
+      warpHeight: warpHeight - countRpx(236, parseInt(wx.getStorageSync('windowWidth'))),
       answerObj: {
         className: selectId === rightId ? 'correct' : 'wrong',
         color: selectId === rightId ? '#00C853' : '#F44336',
@@ -253,7 +252,7 @@ Page({
   },
 
   // 显示注释
-  showNote: function(e) {
+  showNote: function (e) {
     const item = e.currentTarget.dataset.item;
     if (item.value) {
       this.setData({
@@ -263,21 +262,21 @@ Page({
     }
   },
 
-  onHide: function() {
+  onHide: function () {
     clearTimeout(timer);
   },
 
-  onUnload: function() {
+  onUnload: function () {
     this.stopAuto()
   },
 
-  stopAuto: function() {
+  stopAuto: function () {
     if (this.data.subjectObj.type === 'auto') {
       this.audioStop()
     }
   },
 
-  clickMask: function(e) {
+  clickMask: function (e) {
     let id = e.currentTarget.dataset.id;
     if (id == 1) {
       this.setData({
@@ -286,7 +285,7 @@ Page({
     }
   },
 
-  showModal: function() {
+  showModal: function () {
     this.setData({
       show: true
     })

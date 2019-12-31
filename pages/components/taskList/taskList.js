@@ -2,11 +2,9 @@ import {
   getTaskList
 } from '../../api/api.js'
 import {
-  formatDate,
-  formatList,
-  showToast
+  showToast,
+  tapedFun
 } from '../../../utils/util.js'
-var cnChar = require('../../../utils/cnChar.js');
 Component({
   properties: {
     tab: {
@@ -24,26 +22,27 @@ Component({
   },
   data: {
     listDatas: null,
-    userInfo: null
+    userInfo: null,
+    buttonClicked: false,
   },
 
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
-    attached: function() {
+    attached: function () {
       this.setData({
         userInfo: wx.getStorageSync('userInfo')
       })
     },
-    moved: function() {},
-    detached: function() {},
+    moved: function () {},
+    detached: function () {},
   },
-  ready: function() {
+  ready: function () {
     this.getData()
   },
 
   methods: {
 
-    getData: function() {
+    getData: function () {
       getTaskList({
         organizeId: this.properties.organizeId
       }).then(res => {
@@ -51,6 +50,14 @@ Component({
           listDatas: res.data.list
         })
       })
-    }
+    },
+    onClickItem: function (e) {
+      tapedFun(this)
+      const item = e.currentTarget.dataset.item;
+      if (item.taskProgress === 100) {
+        return;
+      }
+      showToast('该任务还没完成快去通知会长吧');
+    },
   }
 })

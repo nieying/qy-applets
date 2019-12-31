@@ -5,14 +5,10 @@ import {
 } from '../../api/api.js'
 const app = getApp()
 import {
-  tapedFun
+  tapedFun,
+  showToast
 } from '../../../utils/util.js'
 Component({
-
-  properties: {
-
-  },
-
   data: {
     height: 0,
     warpHeight: 0,
@@ -112,9 +108,6 @@ Component({
     // 所属协会
     goPage: function() {
       tapedFun(this)
-      const {
-        userInfo
-      } = this.data
       const lastOrganize = wx.getStorageSync('lastOrganize')
       if (lastOrganize && lastOrganize.organizeId) {
         wx.navigateTo({
@@ -170,6 +163,14 @@ Component({
     // 弹框确定后触发
     onConfirm: function() {
       this.getData();
+    },
+
+    onClickAchieve: function(e) {
+      tapedFun(this)
+      const item = e.currentTarget.dataset.item;
+      if (item.type === 'languageProveList' && item.value.length > 0) {
+        showToast("你已通关该课程!")
+      }
     },
 
     goPay: function() {

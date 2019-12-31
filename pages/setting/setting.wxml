@@ -12,7 +12,7 @@
             <view class="desc">欢迎提出建议及体验反馈</view>
           </view>
           <view class='right'>
-            <view class="btn btn-black" bindtap="showModal">反馈</view>
+            <view class="btn btn-black" bindtap="showModal" hover-class="btn-hover">反馈</view>
           </view>
         </view>
         <view class='item'>
@@ -20,7 +20,7 @@
             <view class="name">切换协会</view>
           </view>
           <view class='right'>
-            <view class="btn btn-black" bindtap="goSearch">切换</view>
+            <view class="btn btn-black" bindtap="goSearch" hover-class="btn-hover">切换</view>
           </view>
         </view>
       </view>

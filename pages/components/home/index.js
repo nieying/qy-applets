@@ -29,27 +29,27 @@ Component({
     buttonClicked: false
   },
 
-  ready: function() {
+  ready: function () {
     this.getUserInfo();
     this.getData();
   },
 
 
-  attached: function() {
+  attached: function () {
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight')),
-      currentUnitR: countRpx(200,app.globalData.windowWidth),
-      unitR: countRpx(100,app.globalData.windowWidth)
+      currentUnitR: countRpx(200, parseInt(wx.getStorageSync('windowWidth'))),
+      unitR: countRpx(100, parseInt(wx.getStorageSync('windowWidth')))
     })
   },
 
-  onShow: function() {
+  onShow: function () {
     console.log('---onShow')
   },
 
   methods: {
-    getUserInfo: function() {
+    getUserInfo: function () {
       queryUserInfo().then(res => {
         this.setData({
           userInfo: res.data
@@ -57,7 +57,7 @@ Component({
         wx.setStorageSync('userInfo', res.data)
       })
     },
-    getData: function() {
+    getData: function () {
       // 获取用户已经学习的方言
       wx.showLoading()
       getUserDialectList().then(res => {
@@ -88,7 +88,7 @@ Component({
         })
       })
     },
-    goLanguage: function() {
+    goLanguage: function () {
       // navigateTo
       tapedFun(this);
       wx.navigateTo({
@@ -97,7 +97,7 @@ Component({
     },
 
     // 去答题
-    goSubject: function() {
+    goSubject: function () {
       const {
         currentDialect,
         currentUnit,
@@ -121,7 +121,7 @@ Component({
     },
 
     // 获取单元列表
-    getUnitList: function(languageId) {
+    getUnitList: function (languageId) {
       getUnit({
         languageId: languageId
       }).then(res => {
@@ -144,7 +144,7 @@ Component({
     },
 
     // 点击单元
-    clickUnit: function(e) {
+    clickUnit: function (e) {
       const unit = e.currentTarget.dataset['item'];
 
       if (unit.learnState === 'future') {
@@ -157,7 +157,7 @@ Component({
     },
 
     // 选择方言
-    selectDialect: function(e) {
+    selectDialect: function (e) {
       const {
         userDialect
       } = this.data
@@ -188,21 +188,21 @@ Component({
       // console.log(value)
     },
     // 方言切换请求
-    postChangeDialect: function(languageId) {
+    postChangeDialect: function (languageId) {
       changeDialect({
         id: languageId
       }).then(res => {
         console.log('changeDialect res', res)
       })
     },
-    toggleBuyModal: function() {
+    toggleBuyModal: function () {
       this.setData({
         showDialect: false,
         showBuyModal: !this.data.showBuyModal,
       })
     },
 
-    showDialect: function() {
+    showDialect: function () {
       this.setData({
         showBuyModal: false,
         showDialect: !this.data.showDialect

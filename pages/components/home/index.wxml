@@ -1,6 +1,6 @@
 <view class="page-home" wx:if="{{userInfo}}">
   <view class="header" style="padding-top: {{height}}px">
-    <view class="popver-select" bindtap='showDialect'>
+    <view class="popver-select" bindtap='showDialect' hover-class="btn-hover">
       <text>{{currentDialect.languageName}}</text>
       <image src="/pages/images/icon-{{ showDialect ? 'down' : 'up' }}.svg"></image>
     </view>

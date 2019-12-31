@@ -7,10 +7,10 @@ import {
 const app = getApp();
 const ald = require('./utils/ald-stat.js')
 App({
-  onLaunch: function() {
-    storageHeight(this);
+  onLaunch: function () {
+    storageHeight(app);
     // 判断网络是否正常
-    wx.onNetworkStatusChange(function(res) {
+    wx.onNetworkStatusChange(function (res) {
       if (res.isConnected == false) { // res.isConnected false无网络  res.networkType wifi
         wx.showModal({
           title: '网络错误',
@@ -18,7 +18,7 @@ App({
           confirmText: '知道了',
           mask: true,
           showCancel: false,
-          success: function(res) {
+          success: function (res) {
             if (res.confirm) {
               wx.redirectTo({ //路由跳转
                 url: '/pages/startup/startup'
@@ -61,7 +61,6 @@ App({
     })
   },
   globalData: {
-    windowWidth: null,
     userInfo: null,
     token: null,
   }

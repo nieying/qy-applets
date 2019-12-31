@@ -1,10 +1,10 @@
 <view class="achieve">
-  <view class="achieve-item {{item.taskTarget === 100 ?'achieve-active':''}}" wx:for="{{listDatas}}" wx:for-item="item" wx:key="index">
+  <view class="achieve-item {{item.taskProgress === 100 ?'achieve-active':''}}" wx:for="{{listDatas}}" wx:for-item="item" wx:key="index" catchtap="{{!buttonClicked?'onClickItem':''}}" data-item="{{item}}">
     <view class="left">
       <view class="one">{{item.title}}</view>
       <view class="two">{{item.detail}}</view>
-      <view class="three success" wx:if="{{item.taskTarget === 100}}"> 完成</view>
-      <!-- <view class="three disable" wx:else>{{item.taskTarget === 100}}</view> -->
+      <view class="three success" wx:if="{{item.taskProgress === 100}}"> 完成</view>
+      <!-- <view class="three disable" wx:else>{{item.taskProgress === 100}}</view> -->
     </view>
     <view class="right">
       <image wx:if="{{item.isActive}}" src="{{itefm.avatar}}"></image>

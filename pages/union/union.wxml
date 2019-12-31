@@ -7,15 +7,15 @@
     <view class="padding-box">
       <view class="show-all" wx:if="{{showAllInfo}}">
         <view class="card">
-          <view class="setting">
-            <image src="/pages/images/setting.svg" bindtap="goSetting"></image>
+          <view class="setting" >
+            <image src="/pages/images/setting.svg" hover-class="btn-hover" bindtap="{{!buttonClicked?'goSetting':''}}"></image>
           </view>
           <image class="avatar" src="{{organDetail.avatar}}"></image>
           <view class="name">{{organDetail.name}}</view>
           <!-- <view class="desc">{{organDetail.remark}}</view> -->
         </view>
         <view class="union-info" wx:if="{{organDetail.state === 2}}">
-          <view class="item">
+          <view class="item" bindtap="{{!buttonClicked?'goActivity':''}}">
             <view class="name">{{organDetail.totalActivity || 0}}</view>
             <view class="desc">参加活动(次)</view>
           </view>

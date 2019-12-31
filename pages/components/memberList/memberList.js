@@ -146,7 +146,6 @@ Component({
           }
         }
       })
-
     },
 
     clickMask(e) {
