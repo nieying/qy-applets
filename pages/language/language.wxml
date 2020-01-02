@@ -1,6 +1,6 @@
 <view class="page-language">
 	<view class="header" style='padding-top: {{height}}px'>
-		<image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
+		<image class="go-back" hover-class="hover-white" src="/pages/images/left-f.svg" bindtap="goBack"></image>
 	</view>
 	<scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
 		<view class='padding-box'>

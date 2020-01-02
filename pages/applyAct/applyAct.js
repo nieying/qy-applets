@@ -1,5 +1,4 @@
 import {
-  getJoinOrganizePay,
   joinOrganize,
   getPay
 } from '../api/api.js'
@@ -13,20 +12,33 @@ Page({
   data: {
     height: 0,
     buttonClicked: false,
-    showTips: false,
-    pageType: 1, // 1 提交信息页面， 2 支付完成提示页面， 3 待支付页面
-    currentTab: 'work',
-    tabs: [{
-      key: 'work',
-      name: "我是在职",
-      active: "active"
-    }, {
-      key: 'student',
-      name: "我是学生",
-      active: ""
-    }],
-    state: null,
     formData: {},
+    genderList: [{
+      id: 1,
+      name: '男',
+      checked: true
+    }, {
+      id: 2,
+      name: '女',
+      checked: false
+    }],
+    ageList: [{
+      id: 1,
+      name: '20岁以下',
+      checked: true
+    }, {
+      id: 2,
+      name: '20-25岁',
+      checked: false
+    }, {
+      id: 3,
+      name: '25-30岁',
+      checked: false
+    }, {
+      id: 4,
+      name: '30岁以上',
+      checked: false
+    }]
   },
 
   onLoad: function (options) {
@@ -34,9 +46,7 @@ Page({
       height: wx.getStorageSync('statusBarHeight') + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight')),
       organizeId: options.organizeId,
-    })
-    getJoinOrganizePay().then(res => {
-      this.setData({money: res.data})
+      activityId: options.activityId,
     })
     if (options.state && parseInt(options.state) === 0) {
       this.setData({
@@ -59,14 +69,41 @@ Page({
     wx.navigateBack()
   },
 
+  selectGender: function (e) {
+    tapedFun(this);
+    const index = e.currentTarget.dataset.index;
+    const {
+      genderList
+    } = this.data;
+    genderList.forEach(d => {
+      return d.checked = false
+    })
+    genderList[index].checked = true;
+    this.setData({
+      genderList: genderList
+    })
+    console.log(genderList.filter(g => g.checked)[0].name)
+  },
+  selectAge: function (e) {
+    tapedFun(this);
+    const index = e.currentTarget.dataset.index;
+    const {
+      ageList
+    } = this.data;
+    ageList.forEach(d => {
+      return d.checked = false
+    })
+    ageList[index].checked = true;
+    this.setData({
+      ageList: ageList
+    })
+  },
+
   onSubmit: function (e) {
     tapedFun(this);
     const {
       name,
-      company,
       job,
-      grade,
-      school,
       mobile,
       remark
     } = this.data.formData
@@ -79,13 +116,12 @@ Page({
       return false;
     }
     joinOrganize({
-      joinType: this.data.currentTab,
       organizeId: this.data.organizeId,
-      company,
-      grade,
-      job,
+      activityId: this.data.organizeId,
       name,
-      school,
+      gender: genderList.filter(item => item.checked)[0].name,
+      age: ageList.filter(item => item.checked)[0].name,
+      job,
       mobile,
       remark
     }).then(res => {
@@ -149,28 +185,5 @@ Page({
   textPaste: function () {
     copyText('657465669')
   },
-
-  hanldeTab: function (e) {
-    const {
-      currentTab,
-      tabs
-    } = this.data;
-    if (currentTab === e.currentTarget.dataset['tab']) {
-      return false
-    } else {
-      tabs.forEach(tab => {
-        if (tab.key === e.currentTarget.dataset['tab']) {
-          tab.active = true;
-        } else {
-          tab.active = false;
-        }
-      })
-      this.setData({
-        tabs: tabs,
-        currentTab: e.currentTarget.dataset['tab'],
-        formData: {}
-      })
-    }
-  }
 
 })

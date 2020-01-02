@@ -1,98 +1,98 @@
 <view class="page-tags">
-  <view class="header" style='padding-top: {{height}}px'>
-    <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
-  </view>
-  <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content" wx:if="{{pageType===1}}">
-    <view class="tabs">
-      <view class="tab-header">
-        <view class="tab-item {{item.active ? 'active':''}}" wx:for="{{tabs}}" wx:for-item="item" wx:key="index" bindtap="hanldeTab" data-tab="{{item.key}}">
-          <view class="name">{{item.name}}</view>
-          <view class="line" wx:if="{{item.active}}"></view>
-        </view>
-      </view>
-    </view>
-    <view class="padding-box">
-      <form class="user-form" bindsubmit='onSubmit'>
-        <view class="section">
-          <view class="desc">姓名</view>
-          <input name="input" placeholder="请输入姓名" data-key='name' bindinput="bindKeyInput" name="name" />
-        </view>
-        <view wx-if="{{currentTab==='student'}}">
-          <view class="section">
-            <view class="desc">学校</view>
-            <input name="input" placeholder="请输入学校（选填）" data-key='school' bindinput="bindKeyInput" name="school" />
-          </view>
-          <view class="section">
-            <view class="desc">班级</view>
-            <input name="input" placeholder="请输入班级（选填）" data-key='garde' bindinput="bindKeyInput" name="garde" />
-          </view>
-        </view>
+	<view class="header" style='padding-top: {{height}}px'>
+		<image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
+	</view>
+	<scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content" wx:if="{{pageType===1}}">
+		<view class="tabs">
+			<view class="tab-header">
+				<view class="tab-item {{item.active ? 'active':''}}" wx:for="{{tabs}}" wx:for-item="item" wx:key="index" bindtap="hanldeTab" data-tab="{{item.key}}">
+					<view class="name">{{item.name}}</view>
+					<view class="line" wx:if="{{item.active}}"></view>
+				</view>
+			</view>
+		</view>
+		<view class="padding-box">
+			<form class="user-form" bindsubmit='onSubmit'>
+				<view class="section">
+					<view class="desc">姓名</view>
+					<input name="input" placeholder="请输入姓名" data-key='name' bindinput="bindKeyInput" name="name" />
+				</view>
+				<view wx-if="{{currentTab==='student'}}">
+					<view class="section">
+						<view class="desc">学校</view>
+						<input name="input" placeholder="请输入学校（选填）" data-key='school' bindinput="bindKeyInput" name="school" />
+					</view>
+					<view class="section">
+						<view class="desc">班级</view>
+						<input name="input" placeholder="请输入班级（选填）" data-key='garde' bindinput="bindKeyInput" name="garde" />
+					</view>
+				</view>
 
-        <view wx:else>
-          <view class="section">
-            <view class="desc">公司</view>
-            <input name="input" placeholder="请输入您所在的公司（选填）" data-key='company' bindinput="bindKeyInput" name="company" />
-          </view>
-          <view class="section">
-            <view class="desc">职位</view>
-            <input name="input" placeholder="请输入您的职位（选填）" data-key='work' bindinput="bindKeyInput" name="work" />
-          </view>
-        </view>
-        <view class="section">
-          <view class="desc">手机号码</view>
-          <input name="input" placeholder="方便联系到您 " data-key='mobile' bindinput="bindKeyInput" name="mobile" />
-        </view>
-        <view class="section">
-          <view class="desc">个人介绍</view>
-          <input name="input" placeholder="简要描述 " data-key='remark' bindinput="bindKeyInput" name="remark" />
-        </view>
+				<view wx:else>
+					<view class="section">
+						<view class="desc">公司</view>
+						<input name="input" placeholder="请输入您所在的公司（选填）" data-key='company' bindinput="bindKeyInput" name="company" />
+					</view>
+					<view class="section">
+						<view class="desc">职位</view>
+						<input name="input" placeholder="请输入您的职位（选填）" data-key='work' bindinput="bindKeyInput" name="work" />
+					</view>
+				</view>
+				<view class="section">
+					<view class="desc">手机号码</view>
+					<input name="input" placeholder="方便联系到您 " data-key='mobile' bindinput="bindKeyInput" name="mobile" />
+				</view>
+				<view class="section">
+					<view class="desc">个人介绍</view>
+					<input name="input" placeholder="简要描述 " data-key='remark' bindinput="bindKeyInput" name="remark" />
+				</view>
 
-      </form>
-      <view class="tip-warp">
-        <text>加入协会需要交纳30元作为会费， </text>
-        <text>将用于协会支出等</text>
-      </view>
-    </view>
-  </scroll-view>
-  <view class="bottom" wx:if="{{pageType===1}}">
-    <text bindtap="{{!buttonClicked?'onSubmit':''}}" hover-class="btn-hover"> 确定</text>
-    <!-- <button formType="submit">提交</button> -->
-  </view>
-  <!-- 支付完成 -->
-  <view class="content" wx:if="{{pageType===2}}">
-    <view class="padding-box">
-      <view class='warp'>
-        <image src="/pages/images/success.svg"></image>
-        <text class='result'>提交成功</text>
-        <text class="tips">
+			</form>
+			<view class="tip-warp">
+				<text>加入协会需要交纳{{money}}元作为会费， </text>
+				<text>将用于协会支出等</text>
+			</view>
+		</view>
+	</scroll-view>
+	<view class="bottom" wx:if="{{pageType===1}}">
+		<text bindtap="{{!buttonClicked?'onSubmit':''}}" hover-class="hover-grey"> 确定</text>
+		<!-- <button formType="submit">提交</button> -->
+	</view>
+	<!-- 支付完成 -->
+	<view class="content" wx:if="{{pageType===2}}">
+		<view class="padding-box">
+			<view class='warp'>
+				<image src="/pages/images/success.svg"></image>
+				<text class='result'>提交成功</text>
+				<text class="tips">
           您所提交的申请报告我们已经收到了哦，
           我们将在24小时内审核哦！
           详细结果将使用短信进行通知，请您留意！
           审核不通过时可通过联系客服进行退款
         </text>
-        <text class='kefu' bindtap='textPaste'>客服微信 657465669</text>
-        <text class='copy' bindtap='textPaste'>点击可复制</text>
-      </view>
-    </view>
-    <view class="bottom">
-      <text bindtap="{{!buttonClicked?'onConfirm':''}}" hover-class="btn-hover"> 确定</text>
-    </view>
-  </view>
-  <!-- 待支付 -->
-  <view class="content" wx:if="{{pageType===3}}">
-    <view class="padding-box">
-      <view class='warp'>
-        <image src="/pages/images/money.svg"></image>
-        <text class='result'>待支付</text>
-        <text class="tips">
+				<text class='kefu' bindtap='textPaste'>客服微信 657465669</text>
+				<text class='copy' bindtap='textPaste'>点击可复制</text>
+			</view>
+		</view>
+		<view class="bottom">
+			<text bindtap="{{!buttonClicked?'onConfirm':''}}" hover-class="hover-grey"> 确定</text>
+		</view>
+	</view>
+	<!-- 待支付 -->
+	<view class="content" wx:if="{{pageType===3}}">
+		<view class="padding-box">
+			<view class='warp'>
+				<image src="/pages/images/money.svg"></image>
+				<text class='result'>待支付</text>
+				<text class="tips">
          您有30元会费(将用于协会支出)待支付
         </text>
-        <!-- <text class='kefu' bindtap='textPaste'>客服微信 657465669</text>
+				<!-- <text class='kefu' bindtap='textPaste'>客服微信 657465669</text>
         <text class='copy' bindtap='textPaste'>点击可复制</text> -->
-      </view>
-    </view>
-    <view class="bottom">
-      <text bindtap="{{!buttonClicked?'onPay':''}}" hover-class="btn-hover">支付</text>
-    </view>
-  </view>
+			</view>
+		</view>
+		<view class="bottom">
+			<text bindtap="{{!buttonClicked?'onPay':''}}" hover-class="hover-grey">支付</text>
+		</view>
+	</view>
 </view>

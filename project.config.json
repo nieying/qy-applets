@@ -157,6 +157,13 @@
 					"pathName": "pages/search/search",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/applyAct/applyAct",
+					"pathName": "pages/applyAct/applyAct",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

@@ -64,7 +64,7 @@ Page({
           this.setData({
             isLoading: false
           })
-        }, 2000)
+        }, 3000)
       })
 
     }
@@ -112,6 +112,7 @@ Page({
         this.setData({
           nextSubject: res.data,
           userInfo: res.data.userInfo,
+
         })
         this.submit()
       })
@@ -119,6 +120,9 @@ Page({
       const {
         nextSubject
       } = this.data
+      this.setData({
+        warpHeight: warpHeight,
+      })
       if (nextSubject.answers) {
         if (nextSubject.userInfo.cost === 0 && !nextSubject.userInfo.costLock) {
           showToast('生命值不足无法答题');

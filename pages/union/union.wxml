@@ -1,72 +1,72 @@
 <view class="page-union">
-  <view class="header" style='padding-top: {{height}}px'>
-    <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
-  </view>
-  <scroll-view scroll-y="true" style="height: {{pageHeight}}px" bindscroll="scroll" class="content">
-    <!-- <view class="content"> -->
-    <view class="padding-box">
-      <view class="show-all" wx:if="{{showAllInfo}}">
-        <view class="card">
-          <view class="setting" >
-            <image src="/pages/images/setting.svg" hover-class="btn-hover" bindtap="{{!buttonClicked?'goSetting':''}}"></image>
-          </view>
-          <image class="avatar" src="{{organDetail.avatar}}"></image>
-          <view class="name">{{organDetail.name}}</view>
-          <!-- <view class="desc">{{organDetail.remark}}</view> -->
-        </view>
-        <view class="union-info" wx:if="{{organDetail.state === 2}}">
-          <view class="item" bindtap="{{!buttonClicked?'goActivity':''}}">
-            <view class="name">{{organDetail.totalActivity || 0}}</view>
-            <view class="desc">参加活动(次)</view>
-          </view>
-          <view class="item">
-            <view class="name">{{organDetail.rank}}</view>
-            <view class="desc">我的职称</view>
-          </view>
-        </view>
-        <view class="follow-topic" wx:if="{{organDetail.state === -1}}">
-          <text class="btn btn-green" bindtap="{{!buttonClicked?'followTopic':''}}">+ 关注话题</text>
-        </view>
-        <view class="follow-topic" wx:if="{{organDetail.state === 0}}">
-          <text class="btn btn-primary" bindtap="{{!buttonClicked?'onPay':''}}">会费待支付</text>
-        </view>
-      </view>
-      <view class="show-section" wx:else>
-        <view class="left">
-          <image class="avatar" src="{{organDetail.avatar}}"></image>
-          <view>
-            <view class="name">{{organDetail.name}}</view>
-            <view class="desc" wx:if="{{organDetail.state === 2}}">我的职称: {{organDetail.rank}}</view>
-          </view>
-        </view>
-        <view class="setting">
-          <image src="/pages/images/setting.svg" bindtap="goSetting"></image>
-        </view>
-      </view>
-    </view>
+	<view class="header" style='padding-top: {{height}}px'>
+		<image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
+	</view>
+	<scroll-view scroll-y="true" style="height: {{pageHeight}}px" bindscroll="scroll" class="content">
+		<!-- <view class="content"> -->
+		<view class="padding-box">
+			<view class="show-all" wx:if="{{showAllInfo}}">
+				<view class="card">
+					<view class="setting" hover-class="hover-grey" bindtap="{{!buttonClicked?'goSetting':''}}">
+						<image src="/pages/images/setting.svg"></image>
+					</view>
+					<image class="avatar" src="{{organDetail.avatar}}"></image>
+					<view class="name">{{organDetail.name}}</view>
+					<!-- <view class="desc">{{organDetail.remark}}</view> -->
+				</view>
+				<view class="union-info" wx:if="{{organDetail.state === 2}}">
+					<view class="item" hover-class="hover-grey" bindtap="{{!buttonClicked?'goActivity':''}}">
+						<view class="name">{{organDetail.totalActivity || 0}}</view>
+						<view class="desc">参加活动(次)</view>
+					</view>
+					<view class="item">
+						<view class="name">{{organDetail.rank}}</view>
+						<view class="desc">我的职称</view>
+					</view>
+				</view>
+				<view class="follow-topic" wx:if="{{organDetail.state === -1}}">
+					<text class="btn btn-green" bindtap="{{!buttonClicked?'followTopic':''}}">+ 关注话题</text>
+				</view>
+				<view class="follow-topic" wx:if="{{organDetail.state === 0}}">
+					<text class="btn btn-primary" bindtap="{{!buttonClicked?'onPay':''}}">会费待支付</text>
+				</view>
+			</view>
+			<view class="show-section" wx:else>
+				<view class="left">
+					<image class="avatar" src="{{organDetail.avatar}}"></image>
+					<view>
+						<view class="name">{{organDetail.name}}</view>
+						<view class="desc" wx:if="{{organDetail.state === 2}}">我的职称: {{organDetail.rank}}</view>
+					</view>
+				</view>
+				<view class="setting">
+					<image src="/pages/images/setting.svg" bindtap="goSetting"></image>
+				</view>
+			</view>
+		</view>
 
-    <view class="tabs">
-      <view class="tab-header">
-        <view class="tab-item {{item.active ? 'active':''}}" wx:for="{{tabs}}" wx:for-item="item" wx:key="index" bindtap="hanldeTab" data-tab="{{item.key}}">
-          <view class="name">{{item.name}}</view>
-          <view class="line" wx:if="{{item.active}}"></view>
-        </view>
-      </view>
-      <view class="tab-content">
-        <view class="union-activity" wx:if="{{currentTab==='activity'}}">
-          <activityList tab="{{currentTab}}" organizeId="{{organizeId}}" />
-        </view>
-        <view class="union-task" wx:if="{{currentTab==='task'}}">
-          <taskList tab="{{currentTab}}" organizeId="{{organizeId}}" />
-        </view>
-        <view class="union-people" wx:if="{{currentTab==='union'}}">
-          <memberList tab="{{currentTab}}" role="{{organDetail.role}}" memberCount="{{memberList.length}}" datas="{{memberList}}" bind:callback='getMemberList' />
-        </view>
-        <view class="apply-list" wx:if="{{currentTab==='apply'}}">
-          <memberList tab="{{currentTab}}" role="{{organDetail.role}}" memberCount="{{peddingMemberList.length}}" datas="{{peddingMemberList}}" bind:callback='getMemberList' />
-        </view>
-      </view>
-    </view>
-    <!-- </view> -->
-  </scroll-view>
+		<view class="tabs">
+			<view class="tab-header">
+				<view class="tab-item {{item.active ? 'active':''}}" wx:for="{{tabs}}" wx:for-item="item" wx:key="index" bindtap="hanldeTab" data-tab="{{item.key}}">
+					<view class="name">{{item.name}}</view>
+					<view class="line" wx:if="{{item.active}}"></view>
+				</view>
+			</view>
+			<view class="tab-content">
+				<view class="union-activity" wx:if="{{currentTab==='activity'}}">
+					<activityList tab="{{currentTab}}" organizeId="{{organizeId}}" />
+				</view>
+				<view class="union-task" wx:if="{{currentTab==='task'}}">
+					<taskList tab="{{currentTab}}" organizeId="{{organizeId}}" />
+				</view>
+				<view class="union-people" wx:if="{{currentTab==='union'}}">
+					<memberList tab="{{currentTab}}" role="{{organDetail.role}}" memberCount="{{memberList.length}}" datas="{{memberList}}" bind:callback='getMemberList' />
+				</view>
+				<view class="apply-list" wx:if="{{currentTab==='apply'}}">
+					<memberList tab="{{currentTab}}" role="{{organDetail.role}}" memberCount="{{peddingMemberList.length}}" datas="{{peddingMemberList}}" bind:callback='getMemberList' />
+				</view>
+			</view>
+		</view>
+		<!-- </view> -->
+	</scroll-view>
 </view>

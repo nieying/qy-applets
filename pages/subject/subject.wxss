@@ -71,7 +71,7 @@
 
 .subject-type .topic {
   display: flex;
-  margin-top: 48rpx;
+  margin-top: 30rpx;
   font-size: 44rpx;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -90,6 +90,7 @@
   white-space: normal !important;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  line-height: 65rpx;
 }
 
 .subject-type .topic text.underline {

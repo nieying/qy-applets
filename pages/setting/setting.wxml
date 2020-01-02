@@ -1,30 +1,35 @@
 <view class="page-setting">
-  <view class="header" style='padding-top: {{height}}px'>
-    <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
-  </view>
-  <view class="content" style="height: {{pageHeight}}px">
-    <view class="padding-box">
-      <view class='title'> 设置 </view>
-      <view class='list'>
-        <view class='item'>
-          <view class='left'>
-            <view class="name">意见反馈</view>
-            <view class="desc">欢迎提出建议及体验反馈</view>
-          </view>
-          <view class='right'>
-            <view class="btn btn-black" bindtap="showModal" hover-class="btn-hover">反馈</view>
-          </view>
-        </view>
-        <view class='item'>
-          <view class='left'>
-            <view class="name">切换协会</view>
-          </view>
-          <view class='right'>
-            <view class="btn btn-black" bindtap="goSearch" hover-class="btn-hover">切换</view>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
-  <feedModal show="{{show}}" feedType="2" organizeId="{{organizeId}}" bind:confirm='onConfirm' />
+	<view class="header" style='padding-top: {{height}}px'>
+		<image class="go-back" src="/pages/images/left-f.svg" hover-class="hover-red" bindtap="goBack"></image>
+	</view>
+	<view class="content" style="height: {{pageHeight}}px">
+		<view class="padding-box">
+			<view class='title'> 设置 </view>
+			<view class='list'>
+				<view class='item'>
+					<view class='left'>
+						<view class="name">意见反馈</view>
+						<view class="desc">欢迎提出建议及体验反馈</view>
+					</view>
+					<view class='right'>
+						<view class="btn btn-black" bindtap="showModal" hover-class="hover-grey">反馈</view>
+					</view>
+				</view>
+				<view class='item'>
+					<view class='left'>
+						<view class="name">切换协会</view>
+					</view>
+					<view class='right'>
+						<view class="btn btn-black" bindtap="goSearch" hover-class="hover-grey">切换</view>
+					</view>
+				</view>
+			</view>
+
+			<view class="kefu">
+				<!--  bindtap='textPaste' -->
+				<text class="name">客服微信 657465669 </text>
+			</view>
+		</view>
+	</view>
+	<feedModal show="{{show}}" feedType="2" organizeId="{{organizeId}}" bind:confirm='onConfirm' />
 </view>

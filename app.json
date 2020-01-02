@@ -4,6 +4,7 @@
     "pages/guide/guide",
     "pages/main/main",
     "pages/language/language",
+    "pages/activity/activity",
     "pages/activityDetail/activityDetail",
     "pages/subject/subject",
     "pages/vip/vip",
@@ -17,7 +18,8 @@
     "pages/setting/setting",
     "pages/userInfo/userInfo",
     "pages/search/search",
-    "pages/tags/tags"
+    "pages/tags/tags",
+    "pages/applyAct/applyAct"
   ],
   "window": {
     "backgroundTextStyle": "light",

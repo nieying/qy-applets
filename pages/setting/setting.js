@@ -1,10 +1,12 @@
-
+import {
+  copyText
+} from '../../utils/util.js'
 const app = getApp()
 Page({
 
   data: {
     height: 0,
-    pageHeight:0,
+    pageHeight: 0,
     dataObj: {
       type: '',
       organList: []
@@ -12,7 +14,7 @@ Page({
     show: false
   },
 
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
       pageHeight: wx.getStorageSync('pageHeight'),
@@ -21,17 +23,20 @@ Page({
     })
   },
 
-  onReady: function() {},
+  onReady: function () {},
 
-  goBack: function() {
+  goBack: function () {
     wx.navigateBack()
   },
-  goSearch: function() {
+  goSearch: function () {
     wx.redirectTo({
       url: '/pages/search/search',
     })
   },
-  showModal: function() {
+  textPaste: function () {
+    copyText('657465669')
+  },
+  showModal: function () {
     this.setData({
       show: true
     })

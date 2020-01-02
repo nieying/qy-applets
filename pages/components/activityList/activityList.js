@@ -1,12 +1,6 @@
 import {
   getOrganActivityList
 } from '../../api/api.js'
-import {
-  formatDate,
-  formatList,
-  showToast
-} from '../../../utils/util.js'
-var cnChar = require('../../../utils/cnChar.js');
 Component({
   properties: {
     tab: {
@@ -25,19 +19,19 @@ Component({
 
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
-    attached: function() {
+    attached: function () {
       this.setData({
         userInfo: wx.getStorageSync('userInfo')
       })
     }
   },
 
-  ready: function() {
+  ready: function () {
     this.getData()
   },
 
   methods: {
-    getData: function() {
+    getData: function () {
       getOrganActivityList({
         organizeId: this.properties.organizeId
       }).then(res => {
@@ -49,7 +43,7 @@ Component({
     goToActivityDetail: function (e) {
       const id = e.currentTarget.dataset.id
       wx.navigateTo({
-        url: `/pages/activityDetail/activityDetail?id=${id}`,
+        url: `/pages/activityDetail/activityDetail?id=${id}&organizeId=${this.properties.organizeId}`,
       })
     }
   }

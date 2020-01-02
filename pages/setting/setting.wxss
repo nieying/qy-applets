@@ -3,7 +3,8 @@
   background: #eaedf2;
 }
 
-.warp, .list {
+.warp,
+.list {
   margin-top: 32rpx;
 }
 
@@ -34,4 +35,9 @@
   font-size: 24rpx;
   font-weight: 400;
   color: rgba(144, 164, 174, 1);
+}
+
+.kefu {
+  margin-top: 60rpx;
+  text-align: center;
 }

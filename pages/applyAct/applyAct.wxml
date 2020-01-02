@@ -1,0 +1,49 @@
+<view class="page-tags">
+	<view class="header" style='padding-top: {{height}}px'>
+		<image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
+	</view>
+	<scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
+		<view class="padding-box">
+			<view class="title1">仟言首届方言保护活动报名</view>
+			<view class="time">官方 2019.10.10 - 2020.10.10</view>
+			<view class="user-form">
+				<view class="section">
+					<view class="desc"><text>*</text> 1.姓名</view>
+					<input name="input" placeholder="请输入姓名" data-key='name' bindinput="bindKeyInput" name="name" />
+				</view>
+				<view class="section">
+					<view class="desc"><text>*</text> 2.您的性别</view>
+					<view class="select-list">
+						<view wx:for="{{genderList}}" wx:for-item="item" wx:key="index" data-index="{{index}}" class="{{item.checked?'checked':''}}" bindtap="{{!buttonClicked?'selectGender':''}}">{{item.name}}</view>
+					</view>
+				</view>
+				<view class="section">
+					<view class="desc"><text>*</text> 3.您的年龄</view>
+					<view class="select-list">
+						<view wx:for="{{ageList}}" wx:for-item="item" wx:key="index" data-index="{{index}}" class="{{item.checked?'checked':''}}" bindtap="{{!buttonClicked?'selectAge':''}}">{{item.name}}</view>
+					</view>
+				</view>
+				<view class="section">
+					<view class="desc"><text>*</text> 4.您的职业</view>
+					<input name="input" placeholder="请输入您的职业" data-key='garde' bindinput="bindKeyInput" name="garde" />
+				</view>
+
+				<view class="section">
+					<view class="desc"><text>*</text>5.您的手机号码</view>
+					<input name="input" placeholder="方便联系到您 " data-key='mobile' bindinput="bindKeyInput" name="mobile" />
+				</view>
+				<view class="section">
+					<view class="desc">6.希望本次活动我们能提供您什么帮助或您希望在本次活动中得到什么收货？</view>
+					<input name="input" placeholder="简要描述 " data-key='remark' bindinput="bindKeyInput" name="remark" />
+				</view>
+			</view>
+			<view class="tip-warp">
+				<text>加入活动需要交纳30元作为活动费， </text>
+				<text>将用于活动支出等</text>
+			</view>
+		</view>
+	</scroll-view>
+	<view class="bottom">
+		<text bindtap="{{!buttonClicked?'onSubmit':''}}" hover-class="hover-grey"> 确定</text>
+	</view>
+</view>

@@ -1,5 +1,4 @@
 .page-activity-detail {
-  height: 100%;
   background: #eaedf2;
 }
 
@@ -38,6 +37,7 @@ scroll-view {
 
 .rich-text {
   min-height: 300rpx;
+  word-wrap: break-word;
 }
 
 .bottom {

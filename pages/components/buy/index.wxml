@@ -8,7 +8,7 @@
         <view class='money'>
           <image class='icon-money' src="/pages/images/icon-money.svg"></image>
           <text>x7</text> </view>
-        <view class='btn btn-primary' bindtap='onBuyLife' hover-class="btn-hover">购买</view>
+        <view class='btn btn-primary' bindtap='onBuyLife' hover-class="hover-grey">购买</view>
       </view>
       <view class='item'>
         <image src='/pages/images/buy/icon-life-card.svg'></image>
@@ -17,7 +17,7 @@
         <view class='money'>
           <image  class='icon-money' src="/pages/images/icon-money.svg"></image>
           <text>x21</text> </view>
-        <view class='btn btn-primary' bindtap='onBuyCard' hover-class="btn-hover">购买</view>
+        <view class='btn btn-primary' bindtap='onBuyCard' hover-class="hover-grey">购买</view>
       </view>
     </view>
     <view class='my'>您还有钞票

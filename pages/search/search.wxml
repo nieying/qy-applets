@@ -7,7 +7,7 @@
 			<view class='title'> 搜索协会 </view>
 			<view class="search-input">
 				<input class="weui-input" maxlength="35" placeholder="请输入协会ID/协会名字来搜索" bindinput="bindKeyInput" />
-				<icon type="search" size="23" color="#90A4AE" bindtap="{{!buttonClicked?'onSearch':''}}" hover-class="btn-hover" />
+				<icon type="search" size="23" color="#90A4AE" bindtap="{{!buttonClicked?'onSearch':''}}" hover-class="hover-grey" />
 			</view>
 			<scroll-view scroll-y="true" style="height: {{pageHeight - 100}}px">
 				<view class='list'>
@@ -23,9 +23,9 @@
 						</view>
 						<view class='right'>
 							<view wx:if="{{item.state === -1}}" class=" btn btn-green" catchtap="{{!buttonClicked? 'onJoinOrgan':''}}" data-item="{{item}}">加入</view>
-							<view wx:if="{{item.state === 2 && item.role !== 'owner'}}" class="btn btn-default" catchtap="{{!buttonClicked?'onQuit':''}}" data-item="{{item}}" hover-class="btn-hover">退出</view>
+							<view wx:if="{{item.state === 2 && item.role !== 'owner'}}" class="btn btn-default" catchtap="{{!buttonClicked?'onQuit':''}}" data-item="{{item}}" hover-class="hover-grey">退出</view>
 							<view wx:if="{{item.state === 1}}">待审核</view>
-							<view wx:if="{{item.state === 0 && item.role !== 'owner'}}" class="btn btn-default" catchtap="{{!buttonClicked?'onPay':''}}" data-item="{{item}}" hover-class="btn-hover">待支付</view>
+							<view wx:if="{{item.state === 0 && item.role !== 'owner'}}" class="btn btn-default" catchtap="{{!buttonClicked?'onPay':''}}" data-item="{{item}}" hover-class="hover-grey">待支付</view>
 						</view>
 					</view>
 					<view wx:if="{{organList.length === 0}}" class="no-datas">

@@ -5,23 +5,23 @@ const app = getApp();
 const times = 2000;
 Page({
   data: {
+    loading: true,
     startUpObj: null,
   },
 
-  onLoad: function(options) {
+  onLoad: function (options) {
     console.log('startup onLoad', wx.getStorageSync('token'))
     if (wx.getStorageSync('token')) {
       const lastLanguage = wx.getStorageSync('lastLanguage')
       getStartUp().then(res => {
-        if(res) {
+        if (res) {
           this.setData({
-            startUpObj: res.data
+            startUpObj: res.data,
+            loading: false
           })
-        } else {
-          this.setData({
-            startUpObj: {}
-          })
-        }
+          console.log('this.', this.data.startUpObj)
+        } 
+
         if (lastLanguage.hasOwnProperty('id')) {
           this.goToMainPage();
         } else {
@@ -35,12 +35,12 @@ Page({
     }
   },
 
-  onReady: function() {
+  onReady: function () {
     // this.goToMainPage();
   },
 
   // 跳转页面
-  goToMainPage: function() {
+  goToMainPage: function () {
     const timer = setTimeout(() => {
       wx.redirectTo({
         url: "/pages/main/main"
@@ -49,7 +49,7 @@ Page({
   },
 
   // 跳转页面
-  goToLanguagePage: function() {
+  goToLanguagePage: function () {
     const timer = setTimeout(() => {
       wx.redirectTo({
         url: "/pages/language/language"

@@ -1,7 +1,7 @@
 <view class="page-activity">
-  <view class="header" style='padding-top: {{height}}px'>
-    <text class="title">活动列表</text>
-  </view>
+  	<view class="header" style='padding-top: {{height}}px'>
+		<image class="go-back" hover-class="hover-white" src="/pages/images/left-f.svg" bindtap="goBack"></image>
+	</view>
   <!-- bindtap="{{item.tapFunction}}" -->
   <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
     <view class='padding-box'>

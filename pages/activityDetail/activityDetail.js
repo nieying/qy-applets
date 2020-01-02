@@ -21,7 +21,9 @@ Page({
     console.log(options)
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      warpHeight: parseInt(wx.getStorageSync('warpHeight'))
+      warpHeight: parseInt( options.pageType ? wx.getStorageSync('warpHeight') : wx.getStorageSync('pageHeight')),
+      organizeId: options.organizeId,
+      pageType: options.pageType
     })
     wx.showLoading()
     getActivityDetail({

@@ -2,7 +2,7 @@ const showToast = (title) => {
   wx.showToast({
     icon: 'none',
     title: title,
-    duration: 1000,
+    duration: 1500,
   })
 }
 

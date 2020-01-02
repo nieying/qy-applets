@@ -93,6 +93,14 @@ export const getActivityList = (params) => {
     data: params
   })
 };
+// 获取用户参加的活动列表
+export const getUserActivityList = (params) => {
+  return request.http({
+    url: "/common/user/activity/list",
+    method: 'GET',
+    data: params
+  })
+};
 
 // 获取活动详情
 export const getActivityDetail = (params) => {
@@ -325,6 +333,23 @@ export const getProtocol = (params) => {
 export const getPay = (params) => {
   return request.http({
     url: "/pay/prepay",
+    data: params
+  })
+};
+
+// 获取加入协会金额
+export const getJoinOrganizePay = (params) => {
+  return request.http({
+    url: "/config/price_join_organize",
+    method: 'GET',
+    data: params
+  })
+};
+// 获取加入活动金额
+export const getJoinActivityPay = (params) => {
+  return request.http({
+    url: "/config/price_join_activity",
+    method: 'GET',
     data: params
   })
 };

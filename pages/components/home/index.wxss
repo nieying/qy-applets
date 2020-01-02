@@ -7,6 +7,10 @@
   overflow-x: hidden;
 }
 
+.content {
+  padding-top: 0;
+}
+
 .header .popver-select {
   display: flex;
   align-items: center;
@@ -38,7 +42,6 @@
   position: absolute;
   left: 30rpx;
   width: 81%;
-  margin-top: -40rpx;
   background: #ffd100;
   border-radius: 40rpx;
   padding: 28rpx 40rpx;
@@ -73,8 +76,7 @@
   top: 2rpx;
 }
 
-.popver-list text.check {
-}
+.popver-list text.check {}
 
 .popver-list text.select {
   background: #00c853;
@@ -184,18 +186,22 @@
 
 .unit-list {
   position: absolute;
-  bottom: 20rpx;
-  height: 220rpx;
+  bottom: 52rpx;
   white-space: nowrap;
   width: 100%;
+  /* display: flex;
+  align-items: center; */
 }
 
 .unit-list .item {
   position: relative;
   /* padding: 25rpx; */
-  text-align: center;
+  /* text-align: center;
   border-radius: 50%;
-  display: inline-block;
+  display: inline-block; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .unit-list .item:not(:first-child) {
@@ -204,7 +210,7 @@
 
 .unit-list .item .index {
   position: absolute;
-  top: -30rpx;
+  top: -24rpx;
   left: -20rpx;
   width: 64rpx;
   height: 64rpx;
@@ -229,8 +235,8 @@
 }
 
 .unit-list .item image {
-  width: 140rpx;
-  height: 140rpx;
+  width: 160rpx;
+  height: 160rpx;
   border-radius: 50%;
   background: rgba(234, 237, 242, 1);
 }

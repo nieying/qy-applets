@@ -23,10 +23,6 @@
   margin-right: 32rpx;
 }
 
-/* .show-section .setting {
-  right: 40rpx;
-} */
-
 .card {
   display: flex;
   justify-content: center;
@@ -52,10 +48,10 @@
 
 .setting {
   position: absolute;
-  right: -30rpx;
+  right: 0;
   top: 0;
-  width: 80rpx;
-  height: 80rpx;
+  width: 45rpx;
+  height: 45rpx;
 }
 
 .setting image {

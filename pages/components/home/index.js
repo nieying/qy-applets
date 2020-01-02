@@ -38,8 +38,9 @@ Component({
   attached: function () {
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      warpHeight: parseInt(wx.getStorageSync('warpHeight')),
-      currentUnitR: countRpx(200, parseInt(wx.getStorageSync('windowWidth'))),
+      warpHeight: parseInt(wx.getStorageSync('warpHeight')) + 20,
+      // warpHeight: countRpx(1000, parseInt(wx.getStorageSync('windowWidth'))),
+      currentUnitR: countRpx(190, parseInt(wx.getStorageSync('windowWidth'))),
       unitR: countRpx(100, parseInt(wx.getStorageSync('windowWidth')))
     })
   },
@@ -146,7 +147,10 @@ Component({
     // 点击单元
     clickUnit: function (e) {
       const unit = e.currentTarget.dataset['item'];
-
+      if (!unit.state) {
+        showToast('该单元暂时还没完善噢，请耐性等候一下下吧！')
+        return;
+      }
       if (unit.learnState === 'future') {
         showToast('请先学习前面的单元')
         return;

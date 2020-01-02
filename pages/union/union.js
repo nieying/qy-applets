@@ -159,7 +159,7 @@ Page({
   goActivity: function() {
     tapedFun(this);
     wx.navigateTo({
-      url: `/pages/activity`,
+      url: `/pages/activity/activity`,
     })
   },
 
