@@ -135,6 +135,13 @@ export const getUserGarde = (params) => {
     data: params
   })
 };
+// 用户成就查询
+export const joinActivity = (params) => {
+  return request.http({
+    url: "/common/activity/join",
+    data: params
+  })
+};
 
 // 方言列表
 export const getDialectList = (params) => {

@@ -1,16 +1,15 @@
 import {
-  joinOrganize,
+  joinActivity,
+  getJoinActivityPay,
   getPay
 } from '../api/api.js'
 import {
   showToast,
   tapedFun,
-  copyText
 } from '../../utils/util.js'
 const app = getApp()
 Page({
   data: {
-    height: 0,
     buttonClicked: false,
     formData: {},
     genderList: [{
@@ -42,11 +41,17 @@ Page({
   },
 
   onLoad: function (options) {
+    console.log('apply act options',options)
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight')),
       organizeId: options.organizeId,
       activityId: options.activityId,
+    })
+    getJoinActivityPay().then(res => {
+      res && this.setData({
+        money: res.data
+      })
     })
     if (options.state && parseInt(options.state) === 0) {
       this.setData({
@@ -104,51 +109,44 @@ Page({
     const {
       name,
       job,
-      mobile,
+      phone,
       remark
     } = this.data.formData
-    if (!(/^1[3456789]\d{9}$/.test(mobile))) {
+    if (!name) {
+      showToast('请输入您的姓名！')
+      return;
+    }
+    if (!job) {
+      showToast('请输入您的职业！')
+      return;
+    }
+    if (!(/^1[3456789]\d{9}$/.test(phone))) {
       wx.showToast({
         title: '手机号码有误',
         duration: 2000,
         icon: 'none'
       });
-      return false;
+      return;
     }
-    joinOrganize({
-      organizeId: this.data.organizeId,
-      activityId: this.data.organizeId,
+    joinActivity({
+      activityId: this.data.activityId,
       name,
-      gender: genderList.filter(item => item.checked)[0].name,
-      age: ageList.filter(item => item.checked)[0].name,
+      gender: this.data.genderList.filter(item => item.checked)[0].id,
+      ageRange: this.data.ageList.filter(item => item.checked)[0].name,
       job,
-      mobile,
+      phone,
       remark
     }).then(res => {
       res && this.pay(res.data)
     })
   },
 
-  onConfirm: function () {
-    tapedFun(this);
-    wx.navigateTo({
-      url: '/pages/main/main',
-    })
-  },
-
-  onPay: function () {
-    tapedFun(this);
-    const params = JSON.parse(wx.getStorageSync('payInfo'))
-    console.log('params', params)
-    this.pay(params)
-  },
-
   pay: function (d) {
     getPay({
-      amount: d.amount,
+      amount: this.data.money,
       orderId: d.orderId,
       orderSn: d.orderSn,
-      type: 'join_organize',
+      type: 'join_activity',
     }).then(res => {
       const that = this;
       if (res && res.data) {
@@ -180,10 +178,5 @@ Page({
       }
 
     })
-  },
-
-  textPaste: function () {
-    copyText('657465669')
-  },
-
+  }
 })

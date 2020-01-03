@@ -18,33 +18,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options)
+    console.log('act details', options)
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt( options.pageType ? wx.getStorageSync('warpHeight') : wx.getStorageSync('pageHeight')),
+      activityId: options.activityId,
       organizeId: options.organizeId,
       pageType: options.pageType
     })
     wx.showLoading()
     getActivityDetail({
-      activityId: options.id
+      activityId: options.activityId
     }).then(res => {
       console.log('getActivityDetail res', res)
       this.setData({
         actObj: res.data
       })
       wx.hideLoading()
-      // setTimeout(() => {
-      //   this.setData({
-      //     showSkeleton: false
-      //   })
-      // }, 1000)
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+
   onReady: function() {
 
   },
@@ -53,15 +47,12 @@ Page({
     wx.navigateBack()
   },
 
-  goBaidu: function() {
+  goApplyAct: function() {
     wx.navigateTo({
-      url: '/pages/out/out'
+      url: `/pages/applyAct/applyAct?activityId=${this.data.activityId}`
     })
   },
 
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function() {
 
   }

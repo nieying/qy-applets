@@ -8,8 +8,6 @@ Page({
   data: {
     list: null,
     protocol: '',
-    height: 0,
-    warpHeight: 0,
     show: false,
     userInfo: null,
   },
@@ -17,7 +15,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      warpHeight: parseInt(wx.getStorageSync('warpHeight')),
+      pageHeight: parseInt(wx.getStorageSync('pageHeight')),
       userInfo: wx.getStorageSync('userInfo')
     })
   },
@@ -45,7 +43,7 @@ Page({
   goToActivityDetail: function (e) {
     const id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: `/pages/activityDetail/activityDetail?id=${id}&pageType=1`,
+      url: `/pages/activityDetail/activityDetail?activityId=${id}&pageType=1`,
     })
   },
 

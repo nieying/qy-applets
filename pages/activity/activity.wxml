@@ -3,7 +3,7 @@
 		<image class="go-back" hover-class="hover-white" src="/pages/images/left-f.svg" bindtap="goBack"></image>
 	</view>
   <!-- bindtap="{{item.tapFunction}}" -->
-  <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
+  <scroll-view scroll-y="true" style="height: {{pageHeight}}px" class="content">
     <view class='padding-box'>
       <view wx:if="{{list.length>0}}" wx:for="{{list}}" wx:for-item="item" wx:key="index">
         <view class="activity-item" bindtap='goToActivityDetail' data-id="{{item.id}}">

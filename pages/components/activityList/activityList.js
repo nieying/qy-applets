@@ -43,7 +43,7 @@ Component({
     goToActivityDetail: function (e) {
       const id = e.currentTarget.dataset.id
       wx.navigateTo({
-        url: `/pages/activityDetail/activityDetail?id=${id}&organizeId=${this.properties.organizeId}`,
+        url: `/pages/activityDetail/activityDetail?activityId=${id}&organizeId=${this.properties.organizeId}`,
       })
     }
   }

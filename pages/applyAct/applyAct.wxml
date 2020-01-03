@@ -4,6 +4,9 @@
 	</view>
 	<scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
 		<view class="padding-box">
+			<view class="act-img">
+				<image src="/pages/images/act-logo.svg"></image>
+			</view>
 			<view class="title1">仟言首届方言保护活动报名</view>
 			<view class="time">官方 2019.10.10 - 2020.10.10</view>
 			<view class="user-form">
@@ -25,12 +28,12 @@
 				</view>
 				<view class="section">
 					<view class="desc"><text>*</text> 4.您的职业</view>
-					<input name="input" placeholder="请输入您的职业" data-key='garde' bindinput="bindKeyInput" name="garde" />
+					<input name="input" placeholder="请输入您的职业" data-key='job' bindinput="bindKeyInput" name="job" />
 				</view>
 
 				<view class="section">
 					<view class="desc"><text>*</text>5.您的手机号码</view>
-					<input name="input" placeholder="方便联系到您 " data-key='mobile' bindinput="bindKeyInput" name="mobile" />
+					<input name="input" placeholder="方便联系到您 " data-key='phone' bindinput="bindKeyInput" name="phone" />
 				</view>
 				<view class="section">
 					<view class="desc">6.希望本次活动我们能提供您什么帮助或您希望在本次活动中得到什么收货？</view>
@@ -38,7 +41,7 @@
 				</view>
 			</view>
 			<view class="tip-warp">
-				<text>加入活动需要交纳30元作为活动费， </text>
+				<text>加入活动需要交纳{{money}}元作为活动费， </text>
 				<text>将用于活动支出等</text>
 			</view>
 		</view>

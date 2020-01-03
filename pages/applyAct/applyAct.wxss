@@ -12,6 +12,12 @@
   margin-top: 32rpx;
 }
 
+.act-img image {
+  width: 240rpx;
+  height: 240rpx;
+  margin-bottom: 64rpx;
+}
+
 .title1 {
   font-size: 36rpx;
   font-weight: 600;
@@ -23,6 +29,7 @@
   font-size: 24rpx;
   font-weight: 400;
   color: rgba(144, 164, 174, 1);
+  margin-bottom: 56rpx;
 }
 
 .section {
@@ -53,13 +60,14 @@
 
 .user-form .desc {
   margin-bottom: 20rpx;
-  font-size: 24rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
-  color: rgba(144, 164, 174, 1);
+  color:rgba(40,45,75,1);
 }
 
 .user-form .desc text {
-  color: cornflowerblue;
+  color: #3380FF;
 }
 
 .user-form .name {
@@ -92,7 +100,7 @@ input {
 }
 
 .tip-warp {
-  margin-top: 80rpx;
+  margin: 60rpx 0;
   display: flex;
   flex-direction: column;
   font-size: 24rpx;

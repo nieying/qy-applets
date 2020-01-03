@@ -244,7 +244,7 @@ Page({
     } = this.data;
     this.setData({
       isAnswered: true,
-      warpHeight: warpHeight - countRpx(236, parseInt(wx.getStorageSync('windowWidth'))),
+      warpHeight: warpHeight - countRpx(200, parseInt(wx.getStorageSync('windowWidth'))),
       answerObj: {
         className: selectId === rightId ? 'correct' : 'wrong',
         color: selectId === rightId ? '#00C853' : '#F44336',

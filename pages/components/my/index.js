@@ -19,7 +19,7 @@ Component({
     buttonClicked: false
   },
 
-  attached: function() {
+  attached: function () {
     this.getData();
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
@@ -30,7 +30,7 @@ Component({
   methods: {
 
     // 获取用户相关信息
-    getData: function() {
+    getData: function () {
       wx.showLoading()
       queryUserInfo().then(res => {
         console.log('queryUserInfo', res)
@@ -43,7 +43,7 @@ Component({
       })
     },
     // 获取成就
-    getAchieve: function(id) {
+    getAchieve: function (id) {
       getUserGarde({
         languageId: id || 0
       }).then(res => {
@@ -71,7 +71,7 @@ Component({
       })
     },
     // 显示弹框
-    showModal: function(e) {
+    showModal: function (e) {
       const {
         userInfo
       } = this.data;
@@ -106,80 +106,53 @@ Component({
       }
     },
     // 所属协会
-    goPage: function() {
+    goPage: function () {
       tapedFun(this)
       const lastOrganize = wx.getStorageSync('lastOrganize')
       if (lastOrganize && lastOrganize.organizeId) {
         wx.navigateTo({
           url: `/pages/union/union?organizeId=${lastOrganize.organizeId}`,
         })
-      }  else {
+      } else {
         wx.navigateTo({
           url: `/pages/search/search`,
         })
       }
     },
-    // getStateData: function() {
-    //   wx.showLoading({
-    //     mask: true
-    //   })
-    //   getState().then(res => {
-    //     this.getUserUnion(res.data);
-    //     wx.hideLoading()
-    //   })
-    // },
-    // getUserUnion: function(userType) {
-    //   if (userType === 'leader') { // 会长
-    //     wx.navigateTo({
-    //       url: `/pages/union/union?userType=${userType}`,
-    //     })
-    //   } else { // 成员
-    //     if (userType === 'none') { // 未加入协会
-    //       this.setData({
-    //         show: true,
-    //         modalData: {
-    //           type: 3,
-    //           title: '搜索协会',
-    //           placeholder: '请输入协会ID/协会名字来搜索',
-    //           // tips: '格式/字数/重复等错误提示',
-    //           confirmTxt: '搜索'
-    //         }
-    //       })
-    //     } else if (userType === 'applied') { // 加入协会审核中
-    //       wx.navigateTo({
-    //         url: `/pages/applyFeedback/applyFeedback?userType=${userType}`,
-    //       })
-    //     } else if (userType === 'rejected') { // 审核失败
-    //       wx.navigateTo({
-    //         url: `/pages/applyFeedback/applyFeedback?userType=${userType}`,
-    //       })
-    //     } else { // 审核成功
-    //       wx.navigateTo({
-    //         url: `/pages/union/union?userType=${userType}`,
-    //       })
-    //     }
-    //   }
-    // },
+
     // 弹框确定后触发
-    onConfirm: function() {
+    onConfirm: function () {
       this.getData();
     },
 
-    onClickAchieve: function(e) {
+    onClickAchieve: function (e) {
       tapedFun(this)
       const item = e.currentTarget.dataset.item;
-      if (item.type === 'languageProveList' && item.value.length > 0) {
-        showToast("你已通关该课程!")
+      const lastLanguage = this.data.userInfo.lastLanguage
+      if (item.type === 'languageProveList') {
+        if (item.value.length > 0) {
+          showToast("你已通关该课程!")
+        } else {
+          showToast(`当前语言进度${lastLanguage.progress}/100`)
+        }
+        return;
+      }
+
+      if (item.type === 'actTimes' && item.value > 0) {
+        wx.navigateTo({
+          url: '/pages/activity/activity',
+        })
+        return;
       }
     },
 
-    goPay: function() {
+    goPay: function () {
       tapedFun(this)
       wx.navigateTo({
         url: '/pages/pay/pay',
       })
     },
-    goVip: function() {
+    goVip: function () {
       tapedFun(this)
       wx.navigateTo({
         url: '/pages/vip/vip',

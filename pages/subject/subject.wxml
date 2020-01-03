@@ -91,7 +91,8 @@
 					<text>{{answerObj.txt1}}</text> {{answerObj.txt2}}
 				</view>
 				<view class="right" hover-class="hover-grey" bindtap="showModal">
-					<image src="/pages/images/subject/icon-answer-{{selectId === rightId?'right':'wrong'}}.svg" ></image>
+					<image src="/pages/images/subject/icon-answer-white.svg"></image>
+					<!-- <image src="/pages/images/subject/icon-answer-{{selectId === rightId?'right':'wrong'}}.svg" ></image> -->
 				</view>
 			</view>
 		</view>

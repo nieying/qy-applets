@@ -26,7 +26,7 @@
 				<view class="achieve-item {{item.isActive ?'achieve-active':''}}" wx:for="{{gardeList}}" wx:for-item="item" wx:key="index" data-item="{{item}}" bindtap="{{!buttonClicked?'onClickAchieve':''}}">
 					<view class="left">
 						<view class="one">{{item.title}}</view>
-						<view class="two">{{item.remark}}</view>
+						<view class="two">{{item.remark}} <text wx:if="{{item.type === 'actTimes' && item.value > 0}}"> {{item.value}}</text></view>
 						<text class="three" wx:if="{{item.type==='languageProcess'}}">{{item.value}}/100</text>
 					</view>
 					<view class="right">

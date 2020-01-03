@@ -154,7 +154,7 @@
 
 .answer-tips-box {
   background: white;
-  height: 264rpx;
+  /* height: 264rpx; */
   display: flex;
   align-items: center;
   width: 100%;
