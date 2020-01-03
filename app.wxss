@@ -154,6 +154,7 @@ page {
   padding: 64rpx 0;
 }
 
+
 .warp .result {
   font-size: 38rpx;
   font-weight: 600;

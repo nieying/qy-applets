@@ -28,9 +28,10 @@
 							<view wx:if="{{item.state === 0 && item.role !== 'owner'}}" class="btn btn-default" catchtap="{{!buttonClicked?'onPay':''}}" data-item="{{item}}" hover-class="hover-grey">待支付</view>
 						</view>
 					</view>
-					<view wx:if="{{organList.length === 0}}" class="no-datas">
-						<view>目前还没有该协会噢，快联系客服吧！</view>
-						<view>客服微信 657465669</view>
+					<view wx:if="{{organList.length === 0}}" class="warp">
+						<view class="tips">目前还没有该协会噢，快联系客服吧！</view>
+						<text class='kefu' bindtap='textPaste'>客服微信 657465669</text>
+						<text class='copy' bindtap='textPaste'>点击可复制</text>
 					</view>
 				</view>
 			</scroll-view>

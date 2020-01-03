@@ -4,7 +4,6 @@ import {
   tapedFun
 } from '../../utils/util.js'
 import {
-  getUserOrganList,
   quitOrgan,
   searchOrgan,
   jumpUnion
@@ -129,5 +128,9 @@ Page({
         } else if (res.cancel) {}
       }
     })
+  },
+
+  textPaste: function () {
+    copyText('657465669')
   },
 })

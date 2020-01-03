@@ -24,10 +24,9 @@
 					</view>
 				</view>
 			</view>
-
-			<view class="kefu">
-				<!--  bindtap='textPaste' -->
-				<text class="name">客服微信 657465669 </text>
+			<view class="warp">
+				<text class='kefu' bindtap='textPaste'>客服微信 657465669</text>
+				<text class='copy' bindtap='textPaste'>点击可复制</text>
 			</view>
 		</view>
 	</view>
