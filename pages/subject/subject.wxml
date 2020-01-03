@@ -9,7 +9,7 @@
 		</view>
 	</view>
 	<!-- 广告页面 -->
-	<view class='content' style="height: {{adHeight}}px" wx:if="{{isLoading}}">
+	<view class='content' style="height: 52vh" wx:if="{{isLoading}}">
 		<view class='page-loading' wx:if="{{adObj && adObj.content}}">
 			<image class='ad-img' src="{{adObj.img_url}}"></image>
 		</view>
@@ -26,7 +26,7 @@
 		</view>
 	</view>
 	<block wx:else>
-		<scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
+		<scroll-view scroll-y="true" style="height: {{warpHeight}}vh" class="content">
 			<view class='padding-box'>
 				<view class='subject-type' wx:if="{{!isLoading}}">
 					<!-- 防伪标题 -->

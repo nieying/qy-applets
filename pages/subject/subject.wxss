@@ -272,7 +272,7 @@
 }
 
 .bottom-loading {
-  height: 442rpx;
+  height: 35vh;
   flex-direction: column;
   background-color: #282d4b;
 }

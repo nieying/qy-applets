@@ -15,8 +15,7 @@ const warpHeight = parseInt(wx.getStorageSync('warpHeight')) + 10
 Page({
   //normal:文字题（伪音标题），auto:听力题，picture:选图题，map:看图题
   data: {
-    height: 0,
-    warpHeight: 0,
+    warpHeight: 84,
     isLoading: true,
     isAnswered: false,
     isShowNote: false,
@@ -44,9 +43,7 @@ Page({
     console.log('options', options)
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      warpHeight: warpHeight,
       currentDialect: wx.getStorageSync('lastLanguage'),
-      adHeight: warpHeight - countRpx(280, parseInt(wx.getStorageSync('windowWidth')))
     });
     this.getData(options)
   },
@@ -121,7 +118,7 @@ Page({
         nextSubject
       } = this.data
       this.setData({
-        warpHeight: warpHeight,
+        warpHeight: 84,
       })
       if (nextSubject.answers) {
         if (nextSubject.userInfo.cost === 0 && !nextSubject.userInfo.costLock) {
@@ -244,7 +241,7 @@ Page({
     } = this.data;
     this.setData({
       isAnswered: true,
-      warpHeight: warpHeight - countRpx(200, parseInt(wx.getStorageSync('windowWidth'))),
+      warpHeight: 60,
       answerObj: {
         className: selectId === rightId ? 'correct' : 'wrong',
         color: selectId === rightId ? '#00C853' : '#F44336',

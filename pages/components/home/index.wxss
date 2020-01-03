@@ -210,7 +210,7 @@
 
 .unit-list .item .index {
   position: absolute;
-  top: -24rpx;
+  top: -20rpx;
   left: -20rpx;
   width: 64rpx;
   height: 64rpx;

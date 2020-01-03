@@ -16,7 +16,7 @@
 			{{userInfo.bill}}
 		</view>
 	</view>
-	<view class="content" style="height: {{warpHeight}}px">
+	<view class="content" style="height: {{100-6-15}}vh">
 		<view class="popver-list" wx:if="{{showDialect}}">
 			<view class="left">
 				<view class='item' wx:for="{{userDialect}}" wx:for-item="item" wx:key="index" data-index="{{index}}" data-item="{{item}}" bindtap="selectDialect">
