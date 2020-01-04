@@ -1,6 +1,8 @@
 <view class="page-warp" wx:if="{{userInfo && gardeList}}">
 	<view class="header" style='padding-top: {{height}}px'>
-		<text class="title">个人主页</text>
+		<view class="title">
+			<view class="line"></view> 个人主页
+		</view>
 	</view>
 	<scroll-view class='content' scroll-y="true" style="height: {{warpHeight}}px">
 		<view class='padding-box'>
@@ -22,7 +24,9 @@
 				</view>
 			</view>
 			<view class="achieve">
-				<view class="title">我的成就</view>
+				<view class="title">
+					<view class="line"></view> 我的成就
+				</view>
 				<view class="achieve-item {{item.isActive ?'achieve-active':''}}" wx:for="{{gardeList}}" wx:for-item="item" wx:key="index" data-item="{{item}}" bindtap="{{!buttonClicked?'onClickAchieve':''}}">
 					<view class="left">
 						<view class="one">{{item.title}}</view>

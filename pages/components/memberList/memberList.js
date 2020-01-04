@@ -74,7 +74,7 @@ Component({
       tapedFun(this)
       const item = e.currentTarget.dataset.item;
       const page = e.currentTarget.dataset.page;
-      if (item.rank_type === 'admin' || item.rank === '会长' || item.rank === '客卿') {
+      if (item.rank_type === 'admin' || item.rank === '会长' || item.rank === '客卿' || item.rank === '会员') {
         showToast('该标签不能被修改！')
         return;
       }

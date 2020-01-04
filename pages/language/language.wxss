@@ -3,6 +3,7 @@
   background: #eaedf2;
   width: 100%;
 }
+
 scroll-view {
   width: auto;
 }
@@ -13,11 +14,17 @@ scroll-view {
 }
 
 .list .type {
-  display: inline-block;
-  border-left: 3px solid #ffd100;
-  padding-left: 10px;
-  font-size: 16px;
-  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  margin: 40rpx 0;
+}
+
+.list .type .line {
+  width: 6rpx;
+  height: 40rpx;
+  background: #ffd100;
+  margin-right: 16rpx;
 }
 
 .list {

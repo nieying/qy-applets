@@ -1,18 +1,21 @@
 <view class="page-vip">
-  <view class="header" style='padding-top: {{height}}px'>
-    <image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
-  </view>
-  <scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
-    <view class="padding-box">
-      <view class='title'>VIP充值</view>
-      <view class='list'>
-        <view class="item {{item.checked ?'active':''}}" wx:for="{{moneyList}}" wx:for-item="item" wx:key="index" data-index="{{index}}" bindtap='selectMoney'>
-          {{item.value}} 元
-        </view>
-      </view>
-    </view>
-  </scroll-view>
-  <view class="bottom" bindtap="{{!buttonClicked?'payMoney':''}}">
-    <text>充值</text>
-  </view>
+	<view class="header" style='padding-top: {{height}}px'>
+		<image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
+	</view>
+	<scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
+		<view class="padding-box">
+			<view class='title'>
+				<view class="line"></view>VIP充值
+			</view>
+			<view class='list'>
+				<view class="item {{item.checked ?'active':''}}" wx:for="{{moneyList}}" wx:for-item="item" wx:key="index" data-index="{{index}}" bindtap='selectMoney'>
+					<view>{{item.value1}} 钞票</view>
+					<view class="desc">{{item.value}} 元</view>
+				</view>
+			</view>
+		</view>
+	</scroll-view>
+	<view class="bottom" bindtap="{{!buttonClicked?'payMoney':''}}">
+		<text>充值</text>
+	</view>
 </view>

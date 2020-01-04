@@ -4,7 +4,9 @@
 	</view>
 	<view class="content" style="height: {{pageHeight}}px">
 		<view class="padding-box">
-			<view class='title'> 设置 </view>
+			<view class="title">
+				<view class="line"></view> 设置
+			</view>
 			<view class='list'>
 				<view class='item'>
 					<view class='left'>

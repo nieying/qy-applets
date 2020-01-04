@@ -49,7 +49,7 @@
 
 .user-opts {
   display: flex;
-  margin-bottom: 30rpx;
+  margin-bottom: 48rpx;
 }
 
 .user-opts .vip, .user-opts .union {

@@ -36,15 +36,12 @@ App({
       success: res => {
         console.log('是否授权', res.authSetting['scope.userInfo'])
         if (res.authSetting['scope.userInfo']) {
-          uploadWeChatInfo();
           console.log(1111)
+          uploadWeChatInfo();
         } else {
-          console.log(2222)
-          // todo
           wx.reLaunch({
             url: "/pages/guide/guide"
           });
-          console.log(333)
         }
       }
     })

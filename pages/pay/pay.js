@@ -15,27 +15,33 @@ Page({
     height: 0,
     totalBill: 0,
     moneyList: [{
-        value: 0.01,
+        value: 6.3,
+        value1: 5,
         checked: true
       },
       {
-        value: 1,
+        value: 15.0,
+        value1: 12,
         checked: false
       },
       {
-        value: 50,
+        value: 31.3,
+        value1: 25,
         checked: false
       },
       {
-        value: 100,
+        value: 62.2,
+        value1: 55,
         checked: false
       },
       {
-        value: 200,
+        value: 135.6,
+        value1: 120,
         checked: false
       },
       {
-        value: 500,
+        value: 282.5,
+        value1: 250,
         checked: false
       },
     ],

@@ -4,7 +4,9 @@
 	</view>
 	<view class="content">
 		<view class="padding-box">
-			<view class='title'> 搜索协会 </view>
+			<view class="title">
+				<view class="line"></view> 搜索协会
+			</view>
 			<view class="search-input">
 				<input class="weui-input" maxlength="35" placeholder="请输入协会ID/协会名字来搜索" bindinput="bindKeyInput" />
 				<icon type="search" size="23" color="#90A4AE" bindtap="{{!buttonClicked?'onSearch':''}}" hover-class="hover-grey" />

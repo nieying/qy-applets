@@ -10,7 +10,6 @@ Page({
   },
 
   onLoad: function () {
-    console.log('onLoad', wx.getStorageSync('statusBarHeight'))
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight'))

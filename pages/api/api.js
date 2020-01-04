@@ -7,6 +7,7 @@ const app = getApp();
 // 授权
 export const uploadWeChatInfo = () => {
   const that = this;
+  console.log('uploadWeChatInfo', wx.getStorageSync('loginCode'))
   if (wx.getStorageSync('loginCode')) {
     wx.getUserInfo({
       success: function(res) {
@@ -33,6 +34,11 @@ export const uploadWeChatInfo = () => {
             })
             console.log('login res', res)
           })
+        } else {
+          console.log('uploadWeChatInfo 2')
+          wx.redirectTo({
+            url: '/pages/startup/startup'
+          });
         }
       }
     })
