@@ -1,27 +1,29 @@
 <view class='mask1' wx:if='{{show}}' data-id="1" bindtap='clickMask'>
-  <view class='modal-content1' data-id="2" bindtap='clickMask'>
-    <view class='card'>
-      <view class='item'>
-        <image src='/pages/images/buy/icon-life.svg'></image>
-        <text class='name'>生命值</text>
-        <text class='desc'>生命值介绍生命值介绍生命值介绍生命</text>
-        <view class='money'>
-          <image class='icon-money' src="/pages/images/icon-money.svg"></image>
-          <text>x7</text> </view>
-        <view class='btn btn-primary' bindtap='onBuyLife' hover-class="hover-grey">购买</view>
-      </view>
-      <view class='item'>
-        <image src='/pages/images/buy/icon-life-card.svg'></image>
-        <text class='name'>生命卡</text>
-        <text class='desc'>购买后实时到账 当日生命值不会消减</text>
-        <view class='money'>
-          <image  class='icon-money' src="/pages/images/icon-money.svg"></image>
-          <text>x21</text> </view>
-        <view class='btn btn-primary' bindtap='onBuyCard' hover-class="hover-grey">购买</view>
-      </view>
-    </view>
-    <view class='my'>您还有钞票
-     <image  class='icon-money' src="/pages/images/icon-money.svg"></image>  <text>{{userInfo.bill}}</text>
-    </view>
-  </view>
+	<view class='modal-content1' data-id="2" bindtap='clickMask'>
+		<view class='card'>
+			<view class='item'>
+				<image src='/pages/images/icon-life.svg'></image>
+				<text class='name'>生命值</text>
+				<text class='desc'>生命值介绍生命值介绍生命值介绍生命</text>
+				<view class='money'>
+					<image class='icon-money' src="/pages/images/icon-money.svg"></image>
+					<text>x 7</text>
+				</view>
+				<view class='btn btn-primary' bindtap='onBuyLife' hover-class="hover-grey">购买</view>
+			</view>
+			<view class='item'>
+				<image src='/pages/images/icon-life-card.svg'></image>
+				<text class='name'>生命卡</text>
+				<text class='desc'>购买后实时到账 当日生命值不会消减</text>
+				<view class='money'>
+					<image class='icon-money' src="/pages/images/icon-money.svg"></image>
+					<text>x 21</text>
+				</view>
+				<view class='btn btn-primary' bindtap='onBuyCard' hover-class="hover-grey">购买</view>
+			</view>
+		</view>
+		<view class='my'>您还有钞票
+			<image class='icon-money' src="/pages/images/icon-money.svg"></image> <text>{{userInfo.bill}}</text>
+		</view>
+	</view>
 </view>

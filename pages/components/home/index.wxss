@@ -16,7 +16,7 @@
   align-items: center;
   background: #282d4b;
   color: white;
-  padding: 14rpx 24rpx;
+  padding: 15rpx 24rpx;
   border-radius: 40rpx;
 }
 
@@ -26,7 +26,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 24rpx;
-  font-weight: 600;
+  font-weight: bold;
+  font-family: 'webfont';
+  line-height:36rpx;
 }
 
 .content {
@@ -65,51 +67,48 @@
   background: #282d4b;
   color: white;
   border-radius: 40rpx;
-  padding: 10rpx 20rpx;
-  margin: 10rpx;
+  padding: 15rpx 24rpx;
+  margin: 12rpx;
   font-family: San Francisco;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .popver-list .item image {
-  width: 20rpx;
-  height: 20rpx;
+  width: 30rpx;
+  height: 30rpx;
   position: absolute;
-  right: 10rpx;
+  right: 5rpx;
   top: 2rpx;
 }
-
-.popver-list text.check {}
 
 .popver-list text.select {
   background: #00c853;
 }
 
-.popver-list .right {
+.popver-list .right image {
   float: right;
-  background: #282d4b;
-  color: white;
-  font-size: 40rpx;
-  font-weight: bold;
-  border-radius: 50%;
-  /* padding: 8rpx; */
   width: 64rpx;
   height: 64rpx;
-  text-align: center;
+  margin-top: 10rpx;
+}
+
+.header view.progress progress {
+  width: 128rpx;
 }
 
 .header view.progress {
+  padding-top: 6rpx;
   margin: 0 40rpx;
   font-size: 24rpx;
 }
 
 .header view.progress .txt {
   margin-top: 6rpx;
+  font-weight: bold;
 }
 
 .header view.progress text {
   color: #b0bec5;
-  font-weight: bold;
 }
 
 .home-warp {
@@ -167,7 +166,8 @@
   font-size: 32rpx;
   font-weight: 600;
   color: rgba(40, 45, 75, 1);
-  padding: 8rpx 40rpx;
+  padding: 8rpx 20rpx;
+  font-family: "webfont" !important;
 }
 
 .home-warp .box .unit-img {
@@ -213,14 +213,14 @@
 
 .unit-list .item .index {
   position: absolute;
-  top: -20rpx;
-  left: -20rpx;
+  top: -16rpx;
+  left: -10rpx;
   width: 64rpx;
   height: 64rpx;
   background: #cfd8dc;
   color: white;
   font-size: 28rpx;
-  font-weight: 800;
+  font-weight: 600;
   border-radius: 50%;
   border: 4rpx solid #fff;
   display: flex;
@@ -238,8 +238,8 @@
 }
 
 .unit-list .item image {
-  width: 160rpx;
-  height: 160rpx;
+  width: 176rpx;
+  height: 176rpx;
   border-radius: 50%;
   background: rgba(234, 237, 242, 1);
 }

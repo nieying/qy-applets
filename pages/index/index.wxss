@@ -45,14 +45,19 @@
   margin: 0 24rpx;
 }
 
-.bottom {
-  height: 288rpx;
+
+.guide-bottom {
+  display: flex;
   flex-direction: column;
-  color: white;
+  align-items: center;
+  justify-content: center;
+  height: 288rpx;
+  border-radius: 40rpx 40rpx 0 0;
+  background: #282D4B;
+  padding-top: 20rpx;
 }
 
-.copy-right {
-  font-size: 24rpx;
-  color: #90a4ae;
-  font-family: FFDINPro-MediumItalic, FFDINPro;
+.guide-bottom .qianyan,
+.guide-bottom .copy-right {
+  color: white;
 }

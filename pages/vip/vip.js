@@ -32,6 +32,7 @@ Page({
   },
 
   goPay: function() {
+    console.log(111)
     wx.navigateTo({
       url: '/pages/pay/pay',
     })

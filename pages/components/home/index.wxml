@@ -2,13 +2,13 @@
 	<view class="header" style="padding-top: {{height}}px">
 		<view class="popver-select" bindtap='showDialect' hover-class="hover-white">
 			<text>{{currentDialect.languageName}}</text>
-			<image src="/pages/images/icon-{{ showDialect ? 'down' : 'up' }}.svg"></image>
+			<image src="/pages/images/icon-{{ showDialect ? 'up' : 'down' }}.svg"></image>
 		</view>
 		<view class="progress">
-			<progress percent="{{currentDialect.progress}}" active backgroundColor="#B0BEC5" color="#FBC02E" stroke-width="4" border-radius="15" />
+			<progress percent="{{currentDialect.progress}}" active backgroundColor="#B0BEC5" color="#FBC02E" stroke-width="8" border-radius="15" />
 			<view class="txt">
 				{{currentDialect.progress}} /
-				<text>100</text>
+				<text>100</text> 
 			</view>
 		</view>
 		<view class="money" bindtap='toggleBuyModal' hover-class="hover-grey">
@@ -24,7 +24,8 @@
 					<text class="{{item.checked?'select':''}}">{{item.languageName}}</text>
 				</view>
 			</view>
-			<view class="right" hover-class="hover-white" bindtap="{{!buttonClicked ? 'goLanguage' : ''}}">+</view>
+			<view class="right" hover-class="hover-white" bindtap="{{!buttonClicked ? 'goLanguage' : ''}}">
+			<image src="/pages/images/icon-add-black.svg"></image></view>
 		</view>
 		<buy show="{{showBuyModal}}" userInfo="{{userInfo}}" bind:toggleBuyModal='toggleBuyModal' bind:getUserInfo="getUserInfo"></buy>
 		<block wx:if="{{unitList.length >0}}">

@@ -16,7 +16,7 @@
   flex-direction: column;
   width: 90%;
   background-color: #fff;
-  border-radius: 40rpx;
+  border-radius: 20rpx;
 }
 
 .modal-btn-wrapper {
@@ -29,13 +29,14 @@
 
 .cancel-btn, .confirm-btn {
   flex: 1;
-  height: 100rpx;
-  line-height: 100rpx;
+  height: 112rpx;
+  line-height: 112rpx;
   text-align: center;
   font-size: 36rpx;
   color: #ffd100;
   background: #282d4b;
-  border-radius: 0 0 40rpx 40rpx;
+  border-radius: 0 0 20rpx 20rpx;
+  font-weight: 600;
 }
 
 .main-content {
@@ -54,16 +55,13 @@
 }
 
 .weui-input {
+  font-size:32rpx;
   margin-top: 40rpx;
   width: 496rpx;
   height: 52rpx;
   border-radius: 20rpx;
   padding: 35rpx 40rpx;
   border: 4rpx solid rgba(234, 237, 242, 1);
-}
-
-textarea {
-  
 }
 
 .tips {

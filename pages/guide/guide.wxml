@@ -8,15 +8,16 @@
     </view>
     <view class="name">
       <text>获取申请一下权限 </text>
+      <!-- <image src="/pages/images/guide_logo.svg"></image> -->
       <icon type="success_no_circle" size="20" color="#2265D5" />
     </view>
   </view>
 </view>
 <view class="guide-btn">
-  <button open-type="getUserInfo" bindgetuserinfo="getAuthorize">微信登录</button>
+  <button  open-type="getUserInfo" bindgetuserinfo="getAuthorize">微信登录</button>
 </view>
 <view class='guide-bottom'>
-  <view class="qianyan">仟丨言</view>
+  <view class="qianyan">仟 <view></view> 言</view>
   <view class='copy-right' style='margin-top: 40rpx'>Copyright © 2013 - 2019 Talkiin. </view>
   <view class='copy-right' style='margin-top: 10rpx; padding-bottom:80rpx'>All Right Reserved.</view>
 </view>

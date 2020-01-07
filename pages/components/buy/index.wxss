@@ -80,8 +80,10 @@
 
 .my text {
   font-size: 28rpx;
+  font-family: SFUIDisplay-Heavy, SFUIDisplay;
   font-weight: 800;
   color: rgba(40, 45, 75, 1);
+  line-height: 44rpx;
 }
 
 .money {
@@ -93,4 +95,17 @@
   margin: 0 12rpx;
   width: 48rpx !important;
   height: 48rpx !important;
+}
+
+.btn-primary {
+  width: 128rpx;
+  height: 48rpx;
+  background: rgba(255, 209, 0, 1);
+  border-radius: 8rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: rgba(40, 45, 75, 1);
+  line-height: 48rpx;
 }

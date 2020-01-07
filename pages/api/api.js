@@ -34,12 +34,7 @@ export const uploadWeChatInfo = () => {
             })
             console.log('login res', res)
           })
-        } else {
-          console.log('uploadWeChatInfo 2')
-          wx.redirectTo({
-            url: '/pages/startup/startup'
-          });
-        }
+        } 
       }
     })
   } else {

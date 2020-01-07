@@ -43,10 +43,12 @@ scroll-view {
 .bottom {
   background: #eaedf2;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .bottom .btn {
   margin-left: 24rpx;
+  height: 50rpx;
 }
 
 .bottom .btn:last-child {

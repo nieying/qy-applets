@@ -19,12 +19,18 @@ page {
   height: 360rpx;
 }
 
+.icon-success {
+  width: 33rpx;
+  height: 24rpx;
+}
+
 .name {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 64rpx;
   margin-left: 30rpx;
+  line-height:44rpx;
 }
 
 .name text {
@@ -49,31 +55,15 @@ button {
   width: 368rpx;
   height: 80rpx;
   background: rgba(0, 200, 83, 1);
+  font-size: 32rpx;
   border-radius: 8rpx;
   color: white;
   font-family: PingFangSC-Medium, PingFang SC;
+  border: none;
 }
 
-.guide-bottom {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  color: #90a4ae;
-  text-align: center;
+button::after {
+  border: none !important;
+  box-sizing: none !important;
 }
 
-.qianyan {
-  font-size: 32rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-  color: rgba(144, 164, 174, 1);
-  line-height: 48rpx;
-}
-
-.copy-right {
-  font-size: 24rpx;
-  font-family: FFDINPro-MediumItalic, FFDINPro;
-  font-weight: normal;
-  color: rgba(144, 164, 174, 1);
-  line-height: 36rpx;
-}

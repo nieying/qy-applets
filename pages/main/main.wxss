@@ -10,14 +10,14 @@
   height: 176rpx;
   border-radius: 40rpx 40rpx 0rpx 0rpx;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .tab-bar .tab-item {
   flex: 1;
   float: left;
   text-align: center;
-  padding-top: 10rpx;
+  padding-top: 50rpx;
 }
 
 .tab-bar .tab-item .icons {

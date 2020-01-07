@@ -38,18 +38,18 @@ Component({
 
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
-    attached: function() {
+    attached: function () {
       console.log('role', this.properties.role)
       this.setData({
         userInfo: wx.getStorageSync('userInfo')
       })
     },
-    moved: function() {},
-    detached: function() {},
+    moved: function () {},
+    detached: function () {},
   },
 
   observers: {
-    'datas': function(datas) {
+    'datas': function (datas) {
       if (datas.length > 0) {
         datas.forEach(d => {
           d.englishName = d.userName.spell()
@@ -70,20 +70,20 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    goTag: function(e) {
+    goTag: function (e) {
       tapedFun(this)
       const item = e.currentTarget.dataset.item;
       const page = e.currentTarget.dataset.page;
-      if (item.rank_type === 'admin' || item.rank === '会长' || item.rank === '客卿' || item.rank === '会员') {
-        showToast('该标签不能被修改！')
-        return;
-      }
-      if (item.role === 'owner' || item.rank === '客卿') {
-        return false;
-      }
       if (page === 'tag') {
+        if (item.rank_type === 'admin' || item.rank === '会长' || item.rank === '客卿') {
+          showToast('该标签不能被修改！')
+          return;
+        }
+        if (item.role === 'owner' || item.rank === '客卿') {
+          return false;
+        }
         wx.navigateTo({
-          url: `/pages/tags/tags?memberId=${item.id}&organizeId=${item.organizeId}&type=tag`,
+          url: `/pages/tags/tags?memberId=${item.id}&organizeId=${item.organizeId}&rank=${item.rank}&type=tag`,
         })
       } else {
         wx.setStorageSync('user', JSON.stringify(item))
@@ -92,7 +92,7 @@ Component({
         })
       }
     },
-    onShowModal: function(e) {
+    onShowModal: function (e) {
       this.setData({
         showModal: true,
         userId: e.currentTarget.dataset.item.userId,
@@ -100,7 +100,7 @@ Component({
       })
     },
 
-    tichu: function(e) {
+    tichu: function (e) {
       const that = this;
       wx.showModal({
         title: '提示',
@@ -125,7 +125,7 @@ Component({
     },
 
     // 审核
-    onConfirm: function(e) {
+    onConfirm: function (e) {
       const item = e.currentTarget.dataset.item;
       const that = this;
       wx.showModal({

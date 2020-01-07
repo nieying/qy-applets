@@ -21,7 +21,7 @@ App({
           success: function (res) {
             if (res.confirm) {
               wx.redirectTo({ //路由跳转
-                url: '/pages/startup/startup'
+                url: '/pages/index/index'
               });
             } else if (res.cancel) {
               console.log('用户点击取消');

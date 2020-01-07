@@ -1,4 +1,5 @@
-.page-subject {
+.page-subject,
+.subject-tips {
   /* height: 100%; */
   background: #eaedf2;
 }
@@ -43,12 +44,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30rpx;
+  margin-bottom: 48rpx;
 }
 
 .subject-type .name text {
   color: #90a4ae;
   font-size: 32rpx;
+  font-weight: 600;
+  line-height: 48rpx;
   flex: 1;
   text-align: center;
 }
@@ -60,7 +63,10 @@
 
 
 .subject-type .topic1 {
-  font-size: 40rpx;
+  font-size: 44rpx;
+  font-weight: 600;
+  color: rgba(40, 45, 75, 1);
+  line-height: 64rpx;
   text-overflow: ellipsis;
   overflow: hidden;
   text-overflow: -o-ellipsis-lastline;
@@ -72,8 +78,10 @@
 
 .subject-type .topic {
   display: flex;
-  /* margin-top: 30rpx; */
-  font-size: 40rpx;
+  font-size: 44rpx;
+  font-weight: 600;
+  color: rgba(40, 45, 75, 1);
+  line-height: 64rpx;
   text-overflow: ellipsis;
   overflow: hidden;
   text-overflow: -o-ellipsis-lastline;
@@ -151,18 +159,20 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  font-weight: 600;
+  line-height: 48rpx;
 }
 
 .answer-tips-box {
   background: white;
-  /* height: 264rpx; */
+  height: 264rpx;
   display: flex;
   align-items: center;
   width: 100%;
 }
 
 .answer-tips {
-  height: 150rpx;
+  height: 184rpx;
   width: 80%;
   border-radius: 92rpx;
   font-size: 44rpx;
@@ -171,6 +181,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-weight: 600;
+  line-height: 64rpx;
 }
 
 .answer-tips .left {
@@ -178,14 +190,18 @@
   align-items: center;
 }
 
-.answer-tips .right image {
+.answer-tips .left image {
   margin-top: 10rpx;
+}
+
+.answer-tips image {
   width: 64rpx;
   height: 64rpx;
 }
 
 .answer-tips text {
   margin-left: 32rpx;
+  margin-right: 20rpx;
 }
 
 .checked {
@@ -230,7 +246,7 @@
 
 .tone-list .item {
   position: relative;
-  width: 320rpx;
+  width: 310rpx;
   height: 400rpx;
   border-radius: 20rpx;
   border: 4rpx solid rgba(234, 237, 242, 1);
@@ -256,12 +272,18 @@
 }
 
 .bottom {
+  font-size: 36rpx;
   background: #b0bec5;
+  color: white;
+}
+
+.bottom text {
   color: white;
 }
 
 .select {
   background: #282d4b;
+  color: #ffd100;
 }
 
 .bgcorrect {
@@ -314,4 +336,44 @@
   border-radius: 20rpx;
   padding: 35rpx 40rpx;
   border: 4rpx solid rgba(234, 237, 242, 1);
+}
+
+.subject-tips-box {
+  border-radius: 20rpx;
+  margin: 40rpx;
+  background: #eaedf2;
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.subject-tips-box .image1 {
+  width: 96rpx;
+  height: 96rpx;
+  margin-bottom: 40rpx;
+}
+
+.subject-tips-box .image2 {
+  margin: 32rpx 0 24rpx 0;
+  width: 360rpx;
+  height: 120rpx;
+}
+
+.subject-tips-box .name {
+  color: #282d4b;
+  font-size: 32rpx;
+}
+
+.subject-tips-box .name1 {
+  color: #282d4b;
+  font-size: 28rpx;
+  margin: 10rpx 0;
+}
+
+.subject-tips-box .tips {
+  color: #90a4ae;
+  font-size: 24rpx;
+  line-height: 48rpx;
 }

@@ -1,4 +1,29 @@
 /**app.wxss**/
+/* @font-face {
+  font-family: 'webfont';
+  font-display: swap;
+  src: url('iconfont/webfont.eot'); 
+ 
+}
+
+.web-font {
+  font-family: "webfont" !important;
+  font-size: 24rpx;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */
+
+/* @font-face {
+  font-family: 'webfont';
+  font-display: swap;
+  src: url('//at.alicdn.com/t/webfont_8cmxgl8zcg5.eot');
+  src: url('//at.alicdn.com/t/webfont_8cmxgl8zcg5.eot?#iefix') format('embedded-opentype'), 
+  url('//at.alicdn.com/t/webfont_8cmxgl8zcg5.woff2') format('woff2'),
+  url('//at.alicdn.com/t/webfont_8cmxgl8zcg5.woff') format('woff'), 
+  url('//at.alicdn.com/t/webfont_8cmxgl8zcg5.ttf') format('truetype'), 
+  url('//at.alicdn.com/t/webfont_8cmxgl8zcg5.svg#思源黑体-极细') format('svg'); 
+} */
 
 page {
   height: 100%;
@@ -45,6 +70,7 @@ page {
   height: 40rpx;
   background: #ffd100;
   margin-right: 16rpx;
+  border-radius: 20rpx;
 }
 
 .header .money {
@@ -80,12 +106,12 @@ page {
 .content {
   background: white;
   border-radius: 40rpx 40rpx 0 0;
-  padding-top: 40rpx;
+  padding-top: 48rpx;
   overflow-y: auto;
 }
 
 .padding-box {
-  padding: 0 30rpx;
+  padding: 0 40rpx;
 }
 
 .bottom {
@@ -93,17 +119,21 @@ page {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 160rpx;
+  height: 176rpx;
   background-color: #282d4b;
   z-index: 500;
   border-radius: 40rpx 40rpx 0 0;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .bottom text {
+  padding-top: 50rpx;
   color: #ffd100;
+  font-size: 36rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  line-height: 56rpx;
 }
 
 .btn {
@@ -228,7 +258,7 @@ page {
   flex-direction: column;
   width: 90%;
   background-color: #fff;
-  border-radius: 40rpx;
+  border-radius: 20rpx;
 }
 
 .modal-content textarea {
@@ -251,13 +281,13 @@ page {
 .cancel-btn,
 .confirm-btn {
   flex: 1;
-  height: 100rpx;
-  line-height: 100rpx;
+  height: 112rpx;
+  line-height: 112rpx;
   text-align: center;
   font-size: 36rpx;
   color: #ffd100;
   background: #282d4b;
-  border-radius: 0 0 40rpx 40rpx;
+  border-radius: 0 0 20rpx 20rpx;
 }
 
 .main-content {
@@ -289,4 +319,41 @@ page {
 
 .hover-red {
   box-shadow: 0rpx 0rpx 8rpx black inset;
+}
+
+.guide-bottom {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  color: #90a4ae;
+  text-align: center;
+}
+
+.guide-bottom .qianyan view {
+  display: inline-block;
+  width: 4rpx;
+  background: rgba(144, 164, 174, 1);
+  height: 28rpx;
+  margin: 0 10rpx;
+  opacity: 0.5;
+}
+
+.qianyan {
+  font-size: 32rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: rgba(144, 164, 174, 1);
+  line-height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy-right {
+  font-size: 24rpx;
+  font-family: FFDINPro-MediumItalic, FFDINPro;
+  font-weight: normal;
+  color: rgba(144, 164, 174, 1);
+  line-height: 36rpx;
+  font-style: italic;
 }

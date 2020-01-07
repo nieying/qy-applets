@@ -6,7 +6,7 @@
 		<view class='padding-box'>
 			<view class="select-language">选择要学习的语言</view>
 			<view class="list" wx:if="{{dialectList.length>0}}" wx:for="{{dialectList}}" wx:for-item="item" wx:key="index" data-id="{{index}}" bindtap='userCheck'>
-				<view class="type">{{item.name}}</view>
+				<view class="type"><view class="line"></view> {{item.name}}</view>
 				<view class="item">
 					<view wx:for="{{item.childList}}" wx:for-item="child" wx:key="index" data-id="{{index}}" data-state="{{child.state}}" class="{{child.checked?'check':''}}">
 						{{child.languageName}}

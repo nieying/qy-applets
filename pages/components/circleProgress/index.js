@@ -11,7 +11,7 @@ Component({
     },
     w: {
       type: Number,
-      value: 3,
+      value: 4,
     },
     steps: {
       type: Number,

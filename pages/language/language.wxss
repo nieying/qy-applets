@@ -9,15 +9,24 @@ scroll-view {
 }
 
 .select-language {
+  font-size: 32rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: rgba(144, 164, 174, 1);
+  line-height: 48rpx;
   text-align: center;
-  color: #90a4ae;
+  padding-top: 8rpx;
 }
 
 .list .type {
   display: flex;
   align-items: center;
-  font-size: 32rpx;
   margin: 40rpx 0;
+  font-size: 38rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: rgba(40, 45, 75, 1);
+  line-height: 56rpx;
 }
 
 .list .type .line {
@@ -25,6 +34,7 @@ scroll-view {
   height: 40rpx;
   background: #ffd100;
   margin-right: 16rpx;
+  border-radius: 20rpx;
 }
 
 .list {
@@ -38,10 +48,11 @@ scroll-view {
   color: #282d4b;
   border-radius: 50rpx;
   padding: 15rpx 24rpx;
-  margin: 12rpx;
+  margin-right: 24rpx;
   font-size: 24rpx;
   font-family: HYYakuHei-HEW, HYYakuHei;
   font-weight: 600;
+  line-height:36rpx;
 }
 
 

@@ -9,7 +9,7 @@
 }
 
 .weui-input {
-  height: 112rpx;
+  height: 100rpx;
   border-radius: 20rpx;
   border: 4rpx solid rgba(234, 237, 242, 1);
   padding: 0 90rpx 0 40rpx;

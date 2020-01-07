@@ -10,25 +10,19 @@ import {
 let timer = ''
 const app = getApp()
 const innerAudioContext = wx.createInnerAudioContext()
-const warpHeight = parseInt(wx.getStorageSync('warpHeight')) + 10
 
 Page({
   //normal:文字题（伪音标题），auto:听力题，picture:选图题，map:看图题
   data: {
-    warpHeight: 84,
-    isLoading: true,
+    warpHeight: 70,
+    showLearnTips: false,
+    isLoading: false,
     isAnswered: false,
     isShowNote: false,
     isPlay: false,
     selectId: '',
     rightId: '',
-    answerObj: {
-      className: 'correct',
-      color: '#00C853',
-      icon: 'success',
-      txt1: '恭喜您!',
-      txt2: '答对了'
-    },
+    answerObj: {},
     subjectObj: {},
     nextSubject: {},
     currentNote: {},
@@ -109,7 +103,6 @@ Page({
         this.setData({
           nextSubject: res.data,
           userInfo: res.data.userInfo,
-
         })
         this.submit()
       })
@@ -118,7 +111,7 @@ Page({
         nextSubject
       } = this.data
       this.setData({
-        warpHeight: 84,
+        warpHeight: 70,
       })
       if (nextSubject.answers) {
         if (nextSubject.userInfo.cost === 0 && !nextSubject.userInfo.costLock) {
@@ -127,12 +120,10 @@ Page({
         }
         this.dealData(nextSubject)
       } else {
-        showToast('该单元已学完！')
-        setTimeout(() => {
-          wx.reLaunch({
-            url: '/pages/main/main',
-          })
-        }, 2000)
+        this.setData({
+          showLearnTips: true,
+          time: `${new Date().getFullYear()} / ${new Date().getMonth()} / ${new Date().getDate()}`
+        })
       }
     }
   },
@@ -241,11 +232,10 @@ Page({
     } = this.data;
     this.setData({
       isAnswered: true,
-      warpHeight: 60,
+      warpHeight: wx.getStorageSync('windowWidth') > 320 ? 55 : 50,
       answerObj: {
         className: selectId === rightId ? 'correct' : 'wrong',
-        color: selectId === rightId ? '#00C853' : '#F44336',
-        icon: selectId === rightId ? 'success' : 'clear',
+        icon: selectId === rightId ? 'success' : 'error',
         txt1: selectId === rightId ? '恭喜您!' : '很遗憾!',
         txt2: selectId === rightId ? '答对了' : '答错了'
       }
