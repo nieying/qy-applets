@@ -46,9 +46,8 @@ page {
 }
 
 .guide-btn {
-  position: absolute;
-  width: 100%;
-  bottom: 312rpx;
+  position: relative;
+  top: 15%;
   text-align: center;
 }
 

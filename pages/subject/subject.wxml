@@ -5,7 +5,7 @@
 			<progress percent="{{userInfo.unitProgress}}" backgroundColor="#B0BEC5" color="#FFD500" stroke-width="8" border-radius="8" />
 		</view>
 		<view class="money" wx:if="{{!isLoading}}">
-			<image src='/pages/images/buy/icon-life.svg'></image> {{userInfo.cost}}
+			<image src='/pages/images/icon-life.svg'></image> {{userInfo.cost}}
 		</view>
 	</view>
 	<!-- 广告页面 -->
@@ -63,7 +63,7 @@
               <text>{{subjectObj.title}}</text>
             </view> -->
 						<image src="{{subjectObj.filePath}}" mode="aspectFit"></image>
-					</view>
+					</view> 
 					<!-- 答题选项 -->
 					<view class="{{subjectObj.type !== 'picture' ? 'answer-list':'tone-list'}}">
 						<block wx:for="{{subjectObj.answers}}" wx:for-item="item" wx:key="index">
@@ -74,7 +74,7 @@
 								<image class="img-check" wx:if="{{isAnswered && !item.right && item.checked}}" src="/pages/images/check-error.svg"></image>
 
 								<text wx:if="{{subjectObj.type !== 'picture'}}">{{item.answer}}</text>
-								<image wx:else src='{{item.answer}}' mode="aspectFit"></image>
+								<image class="item-img" wx:else src='{{item.answer}}' mode="aspectFit"></image>
 							</view>
 						</block>
 					</view>
@@ -87,11 +87,11 @@
 		<view wx:if="{{isAnswered}}" class="answer-tips-box">
 			<view class='answer-tips {{answerObj.className}}'>
 				<view class="left">
-					<image src="/pages/images/{{answerObj.icon}}.svg"></image>
+					<image class="img-check" src="/pages/images/{{answerObj.icon}}.svg"></image>
 					<text>{{answerObj.txt1}} </text> {{answerObj.txt2}}
 				</view>
 				<view class="right" hover-class="hover-grey" bindtap="showModal">
-					<image src="/pages/images/subject/icon-answer-white.svg"></image>
+					<image class="img-check" src="/pages/images/subject/icon-answer-white.svg"></image>
 					<!-- <image src="/pages/images/subject/icon-answer-{{selectId === rightId?'right':'wrong'}}.svg" ></image> -->
 				</view>
 			</view>
@@ -113,12 +113,12 @@
 	</view>
 	<view class="content">
 		<view class="subject-tips-box">
-			<image class="image2" src="/pages/images/done.svg"></image>
+			<image class="image2" src="/pages/images/subject/done.svg"></image>
 			<view class="name">您已通关该课程</view>
 			<view class="name1">You have completed the course</view>
 			<view class="tips">{{time}}</view>
-			<image class="image2" src="/pages/images/subject-tips.svg"></image>
-			<view class="tips2">NO. 17892005430900192018</view>
+			<image class="image2" src="/pages/images/subject/subject-tips.svg"></image>
+			<view class="tips2">NO. {{subjectObj.proveNum}}</view>
 
 		</view>
 	</view>

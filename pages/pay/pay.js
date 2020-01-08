@@ -46,7 +46,7 @@ Page({
       },
     ],
     currentMoney: {
-      value: 0.01,
+      value: 6.3,
       checked: true
     },
     buttonClicked: false
@@ -55,14 +55,14 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight')),
     })
   },
 
-  selectMoney: function(e) {
+  selectMoney: function (e) {
     const {
       moneyList
     } = this.data
@@ -87,7 +87,7 @@ Page({
   },
 
   // 充值
-  payMoney: function() {
+  payMoney: function () {
     // wx.showToast({
     //   icon: 'none',
     //   title: '该功能未完善',
@@ -106,7 +106,7 @@ Page({
           'package': payParams.packageValue,
           'signType': payParams.signType,
           'paySign': payParams.paySign,
-          'success': function(res) {
+          'success': function (res) {
             if (res.errMsg == "requestPayment:ok") { // 调用支付成功
               that.goBack();
               showToast('支付成功')
@@ -114,25 +114,25 @@ Page({
               showToast('取消支付')
             }
           },
-          'fail': function(res) {
+          'fail': function (res) {
             // showToast('支付失败')
             return false;
           },
-          'complete': function(res) {}
+          'complete': function (res) {}
         })
       }
 
     })
   },
 
-  goBack: function() {
+  goBack: function () {
     wx.navigateBack()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 })

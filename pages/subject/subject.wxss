@@ -196,7 +196,8 @@
   align-items: center;
 }
 
-.answer-tips image {
+
+.answer-tips .img-check {
   width: 64rpx;
   height: 64rpx;
 }
@@ -262,15 +263,18 @@
   margin-left: 32rpx;
 }
 
-.tone-list .item image {
+.tone-list .item .item-img {
   width: 90%;
   height: 360rpx;
 }
 
-.tone-list .item icon {
+.tone-list .item .img-check {
   position: absolute;
   top: 24rpx;
   right: 24rpx;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
 }
 
 .bottom {
