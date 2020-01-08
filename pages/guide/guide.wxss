@@ -40,6 +40,11 @@ page {
   line-height: 44rpx;
 }
 
+.name image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
 .guide-btn {
   position: absolute;
   width: 100%;

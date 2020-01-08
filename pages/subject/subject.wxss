@@ -163,6 +163,12 @@
   line-height: 48rpx;
 }
 
+.answer-list .item .img-check {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+}
+
 .answer-tips-box {
   background: white;
   height: 264rpx;
@@ -188,10 +194,6 @@
 .answer-tips .left {
   display: flex;
   align-items: center;
-}
-
-.answer-tips .left image {
-  margin-top: 10rpx;
 }
 
 .answer-tips image {

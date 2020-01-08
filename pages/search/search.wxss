@@ -16,14 +16,12 @@
   margin-top: 32rpx;
   font-size: 32rpx;
 }
-.search-input icon {
+.search-input image {
   position: absolute;
   right: 40rpx;
-  top: 40rpx;
-}
-
-.warp, .list {
-  /* margin-top: 32rpx; */
+  top: 30rpx;
+  width: 46rpx;
+  height: 46rpx;
 }
 
 .list .item {

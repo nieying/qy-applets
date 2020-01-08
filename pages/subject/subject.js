@@ -235,7 +235,7 @@ Page({
       warpHeight: wx.getStorageSync('windowWidth') > 320 ? 55 : 50,
       answerObj: {
         className: selectId === rightId ? 'correct' : 'wrong',
-        icon: selectId === rightId ? 'success' : 'error',
+        icon: selectId === rightId ? 'check-success' : 'check-error',
         txt1: selectId === rightId ? '恭喜您!' : '很遗憾!',
         txt2: selectId === rightId ? '答对了' : '答错了'
       }

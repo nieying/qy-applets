@@ -8,6 +8,19 @@ const app = getApp();
 const ald = require('./utils/ald-stat.js')
 App({
   onLaunch: function () {
+
+    // wx.loadFontFace({
+    //   family: 'FZSuXSLSJW',
+    //   source: 'url("https://at.alicdn.com/t/webfont_dow0253tmlt.ttf")',
+    //   success: res => {
+    //     console.log('font load success', res)
+    //   },
+    //   fail: err => {
+    //     console.log('font load fail', err)
+    //   }
+    // })
+    
+
     storageHeight(app);
     // 判断网络是否正常
     wx.onNetworkStatusChange(function (res) {

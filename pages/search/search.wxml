@@ -9,7 +9,7 @@
 			</view>
 			<view class="search-input">
 				<input class="weui-input" maxlength="35" placeholder="请输入协会ID/协会名字来搜索" bindinput="bindKeyInput" />
-				<icon type="search" size="23" color="#90A4AE" bindtap="{{!buttonClicked?'onSearch':''}}" hover-class="hover-grey" />
+				<image bindtap="{{!buttonClicked?'onSearch':''}}" hover-class="hover-grey" src="/pages/images/search.svg"></image>
 			</view>
 			<scroll-view scroll-y="true" style="height: {{pageHeight - 100}}px">
 				<view class='list'>

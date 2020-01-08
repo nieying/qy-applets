@@ -27,8 +27,8 @@
   white-space: nowrap;
   font-size: 24rpx;
   font-weight: bold;
-  font-family: 'webfont';
-  line-height:36rpx;
+  line-height: 36rpx;
+  font-family: 'FZSuXSLSJW';
 }
 
 .content {
@@ -69,7 +69,7 @@
   border-radius: 40rpx;
   padding: 15rpx 24rpx;
   margin: 12rpx;
-  font-family: San Francisco;
+  font-family: 'FZSuXSLSJW';
   font-weight: 600;
 }
 
@@ -167,7 +167,7 @@
   font-weight: 600;
   color: rgba(40, 45, 75, 1);
   padding: 8rpx 20rpx;
-  font-family: "webfont" !important;
+  /* font-family: "Noto Sans S Chinese" !important; */
 }
 
 .home-warp .box .unit-img {

@@ -8,7 +8,7 @@
 			<progress percent="{{currentDialect.progress}}" active backgroundColor="#B0BEC5" color="#FBC02E" stroke-width="8" border-radius="15" />
 			<view class="txt">
 				{{currentDialect.progress}} /
-				<text>100</text> 
+				<text>100</text>
 			</view>
 		</view>
 		<view class="money" bindtap='toggleBuyModal' hover-class="hover-grey">
@@ -20,12 +20,13 @@
 		<view class="popver-list" wx:if="{{showDialect}}">
 			<view class="left">
 				<view class='item' wx:for="{{userDialect}}" wx:for-item="item" wx:key="index" data-index="{{index}}" data-item="{{item}}" bindtap="selectDialect">
-					<image src='/pages/images/icon-check-blue.svg' wx:if="{{item.checked}}"></image>
+					<image src='/pages/images/main/icon-check-blue.svg' wx:if="{{item.checked}}"></image>
 					<text class="{{item.checked?'select':''}}">{{item.languageName}}</text>
 				</view>
 			</view>
 			<view class="right" hover-class="hover-white" bindtap="{{!buttonClicked ? 'goLanguage' : ''}}">
-			<image src="/pages/images/icon-add-black.svg"></image></view>
+				<image src="/pages/images/icon-add-black.svg"></image>
+			</view>
 		</view>
 		<buy show="{{showBuyModal}}" userInfo="{{userInfo}}" bind:toggleBuyModal='toggleBuyModal' bind:getUserInfo="getUserInfo"></buy>
 		<block wx:if="{{unitList.length >0}}">
@@ -35,8 +36,7 @@
 					<view class="circle_info">
 						<view class="box">
 							<view class="star {{currentUnit.progress === 100 ? 'active':''}}">
-								<image wx:if="{{currentUnit.progress === 100}}" src="/pages/images/main/icon-star-active.svg"></image>
-								<image wx:else src="/pages/images/main/icon-star.svg"></image>
+								<image src="/pages/images/main/diamond-{{currentUnit.progress === 100 ? 'yellow':'grey'}}.svg"></image>
 							</view>
 							<view class="unit-img">
 								<image src="{{currentUnit.avatar}}" bindtap='goSubject'></image>
@@ -50,8 +50,9 @@
 				<block wx:for="{{unitList}}" wx:for-item="item" wx:key="index">
 					<circle r="{{unitR}}" w="2" steps="{{item.progress}}" class="unit-circle">
 						<view class="circle_info">
-							<view class="item {{item.learnState !== 'future'  ? 'active' : '' }}" data-item="{{item}}" hover-class="hover-grey" bindtap='clickUnit'>
-								<view class="index">0{{index + 1}}</view>
+							<view class="item {{item.learnState !== 'future' ? 'active' : '' }}" data-item="{{item}}" hover-class="hover-grey" bindtap='clickUnit'>
+								<view class="index" wx:if="{{index >= 9}}">{{index + 1}}</view>
+								<view class="index" wx:else> 0{{index + 1}}</view>
 								<image src="{{item.learnState !== 'future' ? item.avatar : item.darkAvatar}}"></image>
 							</view>
 						</view>

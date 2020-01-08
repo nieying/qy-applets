@@ -68,10 +68,10 @@
 					<view class="{{subjectObj.type !== 'picture' ? 'answer-list':'tone-list'}}">
 						<block wx:for="{{subjectObj.answers}}" wx:for-item="item" wx:key="index">
 							<view data-id="{{index}}" class="item {{ item.checked ? 'checked' :''}} {{(isAnswered && item.right) && 'correct'}} {{(isAnswered && !item.right && item.checked) && 'wrong' }}" bindtap='getradio'>
-								<icon wx:if="{{(!isAnswered && !item.checked) || (isAnswered && !item.checked && !item.right)}}" type="success" size="30" color="white" />
-								<icon wx:if="{{!isAnswered && item.checked}}" type="success" size="30" color="#282D4B" />
-								<icon wx:if="{{isAnswered && item.right}}" type="success" size="30" color="#00C853" />
-								<icon wx:if="{{isAnswered && !item.right && item.checked}}" type="clear" size="30" color="#F44336" />
+								<image class="img-check" wx:if="{{(!isAnswered && !item.checked) || (isAnswered && !item.checked && !item.right)}}" src="/pages/images/check-white.svg"></image>
+								<image class="img-check" wx:if="{{!isAnswered && item.checked}}" src="/pages/images/check-black.svg"></image>
+								<image class="img-check" wx:if="{{isAnswered && item.right}}" src="/pages/images/check-success.svg"></image>
+								<image class="img-check" wx:if="{{isAnswered && !item.right && item.checked}}" src="/pages/images/check-error.svg"></image>
 
 								<text wx:if="{{subjectObj.type !== 'picture'}}">{{item.answer}}</text>
 								<image wx:else src='{{item.answer}}' mode="aspectFit"></image>
@@ -88,7 +88,6 @@
 			<view class='answer-tips {{answerObj.className}}'>
 				<view class="left">
 					<image src="/pages/images/{{answerObj.icon}}.svg"></image>
-					<!-- <icon type="{{answerObj.icon}}" size="30" color="{{answerObj.color}}" /> -->
 					<text>{{answerObj.txt1}} </text> {{answerObj.txt2}}
 				</view>
 				<view class="right" hover-class="hover-grey" bindtap="showModal">
