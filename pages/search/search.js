@@ -1,6 +1,7 @@
 import {
   copyText,
   showToast,
+  countRpx,
   tapedFun
 } from '../../utils/util.js'
 import {
@@ -24,7 +25,7 @@ Page({
   onLoad: function(options) {
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
-      pageHeight: wx.getStorageSync('pageHeight'),
+      pageHeight: wx.getStorageSync('pageHeight') - countRpx(60, wx.getStorageSync('windowWidth')),
       userInfo: wx.getStorageSync('userInfo')
     });
     this.getData();

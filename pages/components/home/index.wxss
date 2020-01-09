@@ -164,10 +164,10 @@
   background: rgba(234, 237, 242, 1);
   border-radius: 50rpx;
   font-size: 32rpx;
-  font-weight: 600;
+  /* font-weight: 600; */
   color: rgba(40, 45, 75, 1);
   padding: 8rpx 20rpx;
-  /* font-family: "Noto Sans S Chinese" !important; */
+  font-family: 'webfont';
 }
 
 .home-warp .box .unit-img {

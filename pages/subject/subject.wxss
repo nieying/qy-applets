@@ -137,14 +137,18 @@
   border-radius: 20rpx;
   padding: 40rpx;
   border: 4rpx solid rgba(234, 237, 242, 1);
+  display: flex;
+  flex-direction: column;
 }
 
-.answer-list .item {
-  display: flex;
-  align-items: center;
-  height: 60rpx;
-  padding: 10rpx;
+.answer-list .item {}
+
+.answer-list .item-box {
   background: rgba(234, 237, 242, 1);
+  display: inline-block;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 10rpx 40rpx 14rpx 10rpx;
   border-radius: 40rpx;
 }
 
@@ -161,6 +165,9 @@
   overflow: hidden;
   font-weight: 600;
   line-height: 48rpx;
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 8rpx;
 }
 
 .answer-list .item .img-check {
@@ -171,7 +178,7 @@
 
 .answer-tips-box {
   background: white;
-  height: 264rpx;
+  height: 224rpx;
   display: flex;
   align-items: center;
   width: 100%;
@@ -182,7 +189,7 @@
   width: 80%;
   border-radius: 92rpx;
   font-size: 44rpx;
-  margin: 20rpx 40rpx 0 40rpx;
+  margin: 0 40rpx;
   padding: 0 40rpx;
   display: flex;
   align-items: center;

@@ -1,5 +1,5 @@
 <view class="page-activity">
-  	<view class="header" style='padding-top: 6vh'>
+  	<view class="header" style='padding-top: {{height}}px'>
 		<image class="go-back" hover-class="hover-white" src="/pages/images/left-f.svg" bindtap="goBack"></image>
 	</view>
   <!-- bindtap="{{item.tapFunction}}" -->

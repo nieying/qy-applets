@@ -4,6 +4,7 @@ import {
 } from '../api/api.js'
 import {
   tapedFun,
+  countRpx,
   showToast
 } from '../../utils/util.js'
 Page({
@@ -38,7 +39,7 @@ Page({
   onLoad: function(options) {
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      pageHeight: parseInt(wx.getStorageSync('pageHeight')),
+      pageHeight: parseInt(wx.getStorageSync('pageHeight') - countRpx(48, wx.getStorageSync('windowWidth'))),
       organizeId: options.organizeId
     })
     this.getOrganDetail(options.organizeId);

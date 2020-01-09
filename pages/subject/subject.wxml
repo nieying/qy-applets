@@ -26,7 +26,7 @@
 		</view>
 	</view>
 	<block wx:else>
-		<scroll-view scroll-y="true" style="height: {{warpHeight}}vh" class="content">
+		<scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
 			<view class='padding-box'>
 				<view class='subject-type' wx:if="{{!isLoading}}">
 					<!-- 防伪标题 -->
@@ -63,18 +63,19 @@
               <text>{{subjectObj.title}}</text>
             </view> -->
 						<image src="{{subjectObj.filePath}}" mode="aspectFit"></image>
-					</view> 
+					</view>
 					<!-- 答题选项 -->
 					<view class="{{subjectObj.type !== 'picture' ? 'answer-list':'tone-list'}}">
 						<block wx:for="{{subjectObj.answers}}" wx:for-item="item" wx:key="index">
-							<view data-id="{{index}}" class="item {{ item.checked ? 'checked' :''}} {{(isAnswered && item.right) && 'correct'}} {{(isAnswered && !item.right && item.checked) && 'wrong' }}" bindtap='getradio'>
-								<image class="img-check" wx:if="{{(!isAnswered && !item.checked) || (isAnswered && !item.checked && !item.right)}}" src="/pages/images/check-white.svg"></image>
-								<image class="img-check" wx:if="{{!isAnswered && item.checked}}" src="/pages/images/check-black.svg"></image>
-								<image class="img-check" wx:if="{{isAnswered && item.right}}" src="/pages/images/check-success.svg"></image>
-								<image class="img-check" wx:if="{{isAnswered && !item.right && item.checked}}" src="/pages/images/check-error.svg"></image>
-
-								<text wx:if="{{subjectObj.type !== 'picture'}}">{{item.answer}}</text>
-								<image class="item-img" wx:else src='{{item.answer}}' mode="aspectFit"></image>
+							<view data-id="{{index}}" class="item" bindtap='getradio'>
+								<view class="item-box  {{ item.checked ? 'checked' :''}} {{(isAnswered && item.right) && 'correct'}} {{(isAnswered && !item.right && item.checked) && 'wrong' }}">
+									<image class="img-check" wx:if="{{ subjectObj.type !== 'picture' && ((!isAnswered && !item.checked) || (isAnswered && !item.checked && !item.right))}}" src="/pages/images/check-white.svg"></image>
+									<image class="img-check" wx:if="{{!isAnswered && item.checked}}" src="/pages/images/check-black.svg"></image>
+									<image class="img-check" wx:if="{{isAnswered && item.right}}" src="/pages/images/check-success.svg"></image>
+									<image class="img-check" wx:if="{{isAnswered && !item.right && item.checked}}" src="/pages/images/check-error.svg"></image>
+									<text wx:if="{{subjectObj.type !== 'picture'}}">{{item.answer}}</text>
+									<image class="item-img" wx:else src='{{item.answer}}' mode="aspectFit"></image>
+								</view>
 							</view>
 						</block>
 					</view>

@@ -21,7 +21,7 @@ scroll-view {
 .list .type {
   display: flex;
   align-items: center;
-  margin: 40rpx 0;
+  margin: 64rpx 0 40rpx 0;
   font-size: 38rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
@@ -49,10 +49,10 @@ scroll-view {
   border-radius: 50rpx;
   padding: 15rpx 24rpx;
   margin-right: 24rpx;
-  font-size: 24rpx;
-  font-family: HYYakuHei-HEW, HYYakuHei;
+  font-size: 28rpx;
+  font-family: HYYakuHei-HEW, HYYakuHei, sans-serif;
   font-weight: 600;
-  line-height:36rpx;
+  line-height: 36rpx;
 }
 
 

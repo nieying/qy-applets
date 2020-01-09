@@ -14,7 +14,6 @@ const innerAudioContext = wx.createInnerAudioContext()
 Page({
   //normal:文字题（伪音标题），auto:听力题，picture:选图题，map:看图题
   data: {
-    warpHeight: 70,
     showLearnTips: false,
     isLoading: false,
     isAnswered: false,
@@ -37,6 +36,7 @@ Page({
     console.log('options', options)
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
+      warpHeight: wx.getStorageSync('warpHeight') - countRpx(48, wx.getStorageSync('windowWidth')),
       currentDialect: wx.getStorageSync('lastLanguage'),
     });
     this.getData(options)
@@ -111,7 +111,7 @@ Page({
         nextSubject
       } = this.data
       this.setData({
-        warpHeight: 70,
+        warpHeight: wx.getStorageSync('warpHeight') - countRpx(48, wx.getStorageSync('windowWidth')),
       })
       if (nextSubject.answers) {
         if (nextSubject.userInfo.cost === 0 && !nextSubject.userInfo.costLock) {
@@ -232,7 +232,7 @@ Page({
     } = this.data;
     this.setData({
       isAnswered: true,
-      warpHeight: wx.getStorageSync('windowWidth') > 320 ? 55 : 50,
+      warpHeight: wx.getStorageSync('warpHeight') - countRpx(292, wx.getStorageSync('windowWidth')),
       answerObj: {
         className: selectId === rightId ? 'correct' : 'wrong',
         icon: selectId === rightId ? 'check-success' : 'check-error',

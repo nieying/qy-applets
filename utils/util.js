@@ -32,21 +32,12 @@ const storageHeight = () => {
   wx.getSystemInfo({
     success: (res) => {
       console.log('wx.getSystemInfo::', res)
-      let statusBarHeight = res.statusBarHeight
-      let deviceHeight = res.windowHeight
       wx.setStorageSync('windowWidth', res.windowWidth)
-      wx.setStorageSync('statusBarHeight', statusBarHeight)
-      if (deviceHeight <= 568) {
-        let height = deviceHeight - statusBarHeight - 140
-        let height2 = deviceHeight - statusBarHeight - 75
-        wx.setStorageSync('warpHeight', height)
-        wx.setStorageSync('pageHeight', height2)
-      } else {
-        let height = deviceHeight - statusBarHeight - 165
-        let height2 = deviceHeight - statusBarHeight - 85
-        wx.setStorageSync('warpHeight', height)
-        wx.setStorageSync('pageHeight', height2)
-      }
+      wx.setStorageSync('statusBarHeight', res.statusBarHeight)
+      let warpHeight = res.screenHeight - res.statusBarHeight - countRpx(290, res.screenWidth)
+      let pageHeight = res.screenHeight - res.statusBarHeight - countRpx(140, res.screenWidth)
+      wx.setStorageSync('warpHeight', warpHeight)
+      wx.setStorageSync('pageHeight', pageHeight)
     }
   })
 }
