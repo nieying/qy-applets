@@ -17,10 +17,10 @@
 			</view>
 			<view class="user-opts">
 				<view class="vip" hover-class="hover-grey" bindtap="{{!buttonClicked ? 'goVip' : ''}}">
-					<image src='/pages/images/my/icon-vip-active.svg'></image> 会员中心
+					<image src="/pages/images/my/icon-vip{{userInfo.userLevel>0?'-active':''}}.svg"></image> 会员中心
 				</view>
 				<view class="union" hover-class="hover-grey" bindtap="{{!buttonClicked ? 'goPage' : ''}}" data-type="3">
-					<image src='/pages/images/my/icon-union-active.svg'></image>所属协会
+					<image src="/pages/images/my/icon-union{{lastOrganize && lastOrganize.organizeId ?'-active':''}}.svg"></image>所属协会
 				</view>
 			</view>
 			<view class="achieve">

@@ -13,13 +13,18 @@ Component({
       type: Number,
       value: 4,
     },
+    color: {
+      type: String,
+      value: '#EAEDF2'
+    },
     steps: {
       type: Number,
       value: 0,
     }
   },
 
-  data: { /*  私有数据，可用于模版渲染 */
+  data: {
+    /*  私有数据，可用于模版渲染 */
     size: 0,
     /* 圆环盒子大小 size >= 2*x ( x 为canvas的绘制半径)*/
     step: 1,
@@ -29,12 +34,12 @@ Component({
 
 
   // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
-  ready: function() {
+  ready: function () {
     this.updateSteps(this.properties.steps)
   },
 
   observers: {
-    'steps': function(steps) {
+    'steps': function (steps) {
       this.updateSteps(steps)
     }
   },
@@ -45,7 +50,7 @@ Component({
      * x : canvas 绘制圆形的半径 
      * w : canvas 绘制圆环的宽度 
      */
-    drawCircleBg: function(x, w) {
+    drawCircleBg: function (x, w) {
       // 设置圆环外面盒子大小 宽高都等于圆环直径
       this.setData({
         size: 2 * x // 更新属性和数据的方法与更新页面数据的方法类似
@@ -53,7 +58,7 @@ Component({
       // 使用 wx.createContext 获取绘图上下文 ctx  绘制背景圆环
       var ctx = wx.createCanvasContext('bg', this)
       ctx.setLineWidth(w);
-      ctx.setStrokeStyle('#EAEDF2');
+      ctx.setStrokeStyle(this.properties.color);
       ctx.setLineCap('round')
       ctx.beginPath(); //开始一个新的路径
       //设置一个原点(x,y)，半径为r的圆的路径到当前路径 此处x=y=r
@@ -65,7 +70,7 @@ Component({
         }, 10);
       })
     },
-    drawCircle: function(x, w, step) {
+    drawCircle: function (x, w, step) {
       // 使用 wx.createContext 获取绘图上下文 context  绘制彩色进度条圆环
       var context = wx.createCanvasContext('draw', this);
       // 设置渐变
@@ -96,7 +101,7 @@ Component({
       this.triggerEvent("runEvent")
     },
 
-    canvasToTempImage: function(canvasId, img) {
+    canvasToTempImage: function (canvasId, img) {
       wx.canvasToTempFilePath({
         canvasId: canvasId,
         success: (res) => {
@@ -109,7 +114,7 @@ Component({
 
     },
 
-    updateSteps: function(steps) {
+    updateSteps: function (steps) {
       const {
         r,
         w

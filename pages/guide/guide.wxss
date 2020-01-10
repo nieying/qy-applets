@@ -9,6 +9,7 @@ page {
 }
 
 .guide-warp {
+  position: relative;
   height: 100%;
   background: white;
   padding: 248rpx 40rpx 40rpx 40rpx;
@@ -28,7 +29,7 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 64rpx;
+  margin-top: 52rpx;
   margin-left: 30rpx;
   line-height:44rpx;
 }
@@ -41,20 +42,22 @@ page {
 }
 
 .name image {
-  width: 48rpx;
-  height: 48rpx;
+  width: 64rpx;
+  height: 64rpx;
 }
 
 .guide-btn {
-  position: relative;
-  top: 15%;
+  position: absolute;
+  bottom: 300rpx;
   text-align: center;
+  margin-left: -184rpx;
+  left: 50%; 
 }
 
 button {
   /* margin-top: 100rpx; */
   font-weight: 100;
-  line-height: 76rpx;
+  line-height: 80rpx;
   border: none;
   width: 368rpx;
   height: 80rpx;

@@ -58,10 +58,14 @@
   font-size:32rpx;
   margin-top: 40rpx;
   width: 496rpx;
-  height: 52rpx;
+  height: 42rpx;
   border-radius: 20rpx;
   padding: 35rpx 40rpx;
   border: 4rpx solid rgba(234, 237, 242, 1);
+}
+
+.textarea {
+  height: 90rpx;
 }
 
 .tips {

@@ -24,7 +24,8 @@ Component({
     this.getData();
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      warpHeight: parseInt(wx.getStorageSync('warpHeight') - countRpx(48, wx.getStorageSync('windowWidth')))
+      warpHeight: parseInt(wx.getStorageSync('warpHeight') - countRpx(48, wx.getStorageSync('windowWidth'))),
+      lastOrganize: wx.getStorageSync('lastOrganize')
     })
   },
 
@@ -98,7 +99,7 @@ Component({
               type: 2,
               inputValue: userInfo.signature,
               title: '个性签名',
-              placeholder: '请输入您要修改的用户名',
+              placeholder: '请输入您要修改的签名',
               // tips: '格式/字数/重复等错误提示',
               confirmTxt: '确定'
             }
@@ -109,7 +110,9 @@ Component({
     // 所属协会
     goPage: function () {
       tapedFun(this)
-      const lastOrganize = wx.getStorageSync('lastOrganize')
+      const {
+        lastOrganize
+      } = this.data
       if (lastOrganize && lastOrganize.organizeId) {
         wx.navigateTo({
           url: `/pages/union/union?organizeId=${lastOrganize.organizeId}`,

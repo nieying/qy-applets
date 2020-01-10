@@ -134,13 +134,14 @@ Component({
         })
         this.setData({
           currentUnit: res.data.length > 0 ? res.data[0] : {},
-          unitList: res.data.length === 1 ? res.data.concat([{
-            learnState: 'future',
-            isEmpty: true
-          }, {
-            learnState: 'future',
-            isEmpty: true
-          }]) : res.data
+          unitList: res.data
+          // unitList: res.data.length === 1 ? res.data.concat([{
+          //   learnState: 'future',
+          //   isEmpty: true
+          // }, {
+          //   learnState: 'future',
+          //   isEmpty: true
+          // }]) : res.data
         })
         this.setData({
           loading: false
@@ -152,12 +153,12 @@ Component({
     // 点击单元
     clickUnit: function (e) {
       const unit = e.currentTarget.dataset['item'];
-      if (unit.isEmpty) {
-        showToast('该单元建设中！')
-        return;
-      }
+      // if (unit.isEmpty) {
+      //   showToast('该单元建设中！')
+      //   return;
+      // }
       if (!unit.state) {
-        showToast('该单元暂时还没完善噢，请耐性等候一下下吧！')
+        showToast('该单元暂时还没完善噢，请耐心等候一下下吧！')
         return;
       }
       if (unit.learnState === 'future') {

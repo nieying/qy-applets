@@ -119,10 +119,16 @@ Page({
           return;
         }
         this.dealData(nextSubject)
-      } else {
+      }
+      if (this.data.subjectObj.userInfo.progress === 100) {
+        let year = new Date().getFullYear()
+        let month = new Date().getMonth() + 1;
+        month = month < 10 ? `0${month}` : month;
+        let date = new Date().getDate();
+        date = date < 10 ? `0${date}` : date;
         this.setData({
           showLearnTips: true,
-          time: `${new Date().getFullYear()} / ${new Date().getMonth()} / ${new Date().getDate()}`
+          time: `${year} / ${month} / ${date}`
         })
       }
     }

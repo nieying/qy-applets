@@ -5,7 +5,8 @@ import {
 } from '../api/api.js'
 import {
   showToast,
-  tapedFun
+  tapedFun,
+  countRpx
 } from '../../utils/util.js'
 const app = getApp()
 Page({
@@ -25,16 +26,16 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.getData();
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      warpHeight: parseInt(wx.getStorageSync('warpHeight'))
+      warpHeight: parseInt(wx.getStorageSync('warpHeight') - countRpx(48, wx.getStorageSync('windowWidth')))
     })
   },
 
   // 获取数据
-  getData: function() {
+  getData: function () {
     wx.showLoading();
     getDialectList().then(res => {
       getUserDialectList().then(dialect => {
@@ -46,11 +47,11 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
   // 判断用户是否学习过方言
-  dealDialectData: function(dailectList, userDialect) {
+  dealDialectData: function (dailectList, userDialect) {
     if (userDialect && userDialect.length > 0) {
       const list = dailectList.map(({
         childList,
@@ -82,12 +83,12 @@ Page({
   },
 
   // 返回
-  goBack: function() {
+  goBack: function () {
     wx.navigateBack()
   },
 
   //多选
-  userCheck: function(e) {
+  userCheck: function (e) {
     const {
       dialectList
     } = this.data;
@@ -122,7 +123,7 @@ Page({
     }
   },
   // 确定
-  confrim: function() {
+  confrim: function () {
     tapedFun(this)
     const {
       isSelect,
