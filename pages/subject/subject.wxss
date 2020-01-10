@@ -234,6 +234,21 @@
   color: #f44336;
 }
 
+.tone-list .checked {
+  background: #ffd100 !important;
+  border: 4rpx solid #ffd100 !important;
+}
+
+.tone-list .correct {
+  background: #b9f6ca !important;
+  border: 4rpx solid #00c853 !important;
+}
+
+.tone-list .wrong {
+  background: #ffcdd2 !important;
+  border: 4rpx solid #f44336 !important;
+}
+
 .subject-pic image {
   margin-top: 32rpx;
   height: 280rpx;
@@ -271,8 +286,12 @@
 }
 
 .tone-list .item .item-img {
-  width: 90%;
-  height: 360rpx;
+  width: 310rpx;
+  height: 390rpx;
+}
+
+.tone-list .item .item-box {
+  border-radius: 20rpx;
 }
 
 .tone-list .item .img-check {
@@ -283,6 +302,7 @@
   height: 64rpx;
   border-radius: 50%;
 }
+
 
 .bottom {
   font-size: 36rpx;

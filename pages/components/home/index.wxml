@@ -48,12 +48,12 @@
 			</view>
 			<scroll-view class="unit-list" scroll-x="true">
 				<block wx:for="{{unitList}}" wx:for-item="item" wx:key="index">
-					<circle r="{{unitR}}" w="2" color="{{item.learnState !== 'future' ? '#EAEDF2' : 'white'}}" steps="{{item.progress}}" class="unit-circle">
+					<circle r="{{unitR}}" w="2" color="{{item.learnState !== 'future' && item.state ? '#EAEDF2' : 'white'}}" steps="{{item.progress}}" class="unit-circle">
 						<view class="circle_info">
-							<view class="item {{item.learnState !== 'future' ? 'active' : '' }}" data-item="{{item}}" bindtap='clickUnit'>
+							<view class="item {{item.learnState !== 'future' && item.state ? 'active' : '' }}" data-item="{{item}}" bindtap='clickUnit'>
 								<view class="index" wx:if="{{index >= 9}}">{{index + 1}}</view>
 								<view class="index" wx:else> 0{{index + 1}}</view>
-								<image src="{{item.learnState !== 'future' ? item.avatar : item.darkAvatar}}"></image>
+								<image src="{{item.learnState !== 'future' && item.state ? item.avatar : item.darkAvatar}}"></image>
 							</view>
 						</view>
 					</circle>

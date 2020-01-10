@@ -64,22 +64,33 @@
             </view> -->
 						<image src="{{subjectObj.filePath}}" mode="aspectFit"></image>
 					</view>
-					<!-- 答题选项 -->
-					<view class="{{subjectObj.type !== 'picture' ? 'answer-list':'tone-list'}}">
+					<!-- 非图片选择题 - 答题选项 -->
+					<view wx:if="{{subjectObj.type !== 'picture'}}" class="answer-list">
 						<block wx:for="{{subjectObj.answers}}" wx:for-item="item" wx:key="index">
 							<view data-id="{{index}}" class="item" bindtap='getradio'>
-								<view class="item-box  {{ item.checked ? 'checked' :''}} {{(isAnswered && item.right) && 'correct'}} {{(isAnswered && !item.right && item.checked) && 'wrong' }}">
-									<image class="img-check" wx:if="{{ subjectObj.type !== 'picture' && ((!isAnswered && !item.checked) || (isAnswered && !item.checked && !item.right))}}" src="/pages/images/check-white.svg"></image>
+								<view class="item-box {{ item.checked ? 'checked' :''}} {{(isAnswered && item.right) && 'correct'}} {{(isAnswered && !item.right && item.checked) && 'wrong' }}">
+									<image class="img-check" wx:if="{{((!isAnswered && !item.checked) || (isAnswered && !item.checked && !item.right))}}" src="/pages/images/check-white.svg"></image>
 									<image class="img-check" wx:if="{{!isAnswered && item.checked}}" src="/pages/images/check-black.svg"></image>
 									<image class="img-check" wx:if="{{isAnswered && item.right}}" src="/pages/images/check-success.svg"></image>
 									<image class="img-check" wx:if="{{isAnswered && !item.right && item.checked}}" src="/pages/images/check-error.svg"></image>
-									<text wx:if="{{subjectObj.type !== 'picture'}}">{{item.answer}}</text>
-									<image class="item-img" wx:else src='{{item.answer}}' mode="aspectFit"></image>
+									<text>{{item.answer}}</text>
 								</view>
 							</view>
 						</block>
 					</view>
-
+					<!-- 图片选择题 - 答题选项  -->
+					<view wx:else class="tone-list">
+						<block wx:for="{{subjectObj.answers}}" wx:for-item="item" wx:key="index">
+							<view data-id="{{index}}" class="item" bindtap='getradio'>
+								<view class="item-box {{item.checked && 'checked' }} {{(isAnswered && item.right) && 'correct'}} {{(isAnswered && !item.right && item.checked) && 'wrong' }}">
+									<image class="img-check" wx:if="{{!isAnswered && item.checked}}" src="/pages/images/check-black.svg"></image>
+									<image class="img-check" wx:if="{{isAnswered && item.right}}" src="/pages/images/check-success.svg"></image>
+									<image class="img-check" wx:if="{{isAnswered && !item.right && item.checked}}" src="/pages/images/check-error.svg"></image>
+									<image class="item-img" src='{{item.answer}}' mode="aspectFit"></image>
+								</view>
+							</view>
+						</block>
+					</view>
 				</view>
 			</view>
 		</scroll-view>

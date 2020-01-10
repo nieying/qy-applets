@@ -120,7 +120,7 @@ Page({
         }
         this.dealData(nextSubject)
       }
-      if (this.data.subjectObj.userInfo.progress === 100) {
+      if (nextSubject.userInfo.progress === 100 && !nextSubject.unitId) {
         let year = new Date().getFullYear()
         let month = new Date().getMonth() + 1;
         month = month < 10 ? `0${month}` : month;
@@ -130,6 +130,13 @@ Page({
           showLearnTips: true,
           time: `${year} / ${month} / ${date}`
         })
+        return
+      }
+      if (nextSubject.userInfo.unitProgress === 100 && !nextSubject.unitId) {
+        showToast('该单元已学完！')
+        setTimeout(() => {
+          this.goBack()
+        }, 2000)
       }
     }
   },
