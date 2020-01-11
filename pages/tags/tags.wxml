@@ -22,30 +22,30 @@
         <view wx:if="{{currentUser.rank !== '客卿'}}">
           <view class="user-item">
             <view class="desc">学校</view>
-            <view class="name">{{currentUser.school || '--'}}</view>
+            <view class="name">{{currentUser.school || '仟言大学'}}</view>
           </view>
           <view class="user-item">
             <view class="desc">班级</view>
-            <view class="name">{{currentUser.garde || '--'}}</view>
+            <view class="name">{{currentUser.garde || '方言保护一班'}}</view>
           </view>
         </view>
         <view wx:else>
           <view class="user-item">
             <view class="desc">公司</view>
-            <view class="name">{{currentUser.company || '--'}}</view>
+            <view class="name">{{currentUser.company || '仟言公司'}}</view>
           </view>
           <view class="user-item">
             <view class="desc">职位</view>
-            <view class="name">{{currentUser.work || '--'}}</view>
+            <view class="name">{{currentUser.work || '仟言工程师'}}</view>
           </view>
         </view>
         <view class="user-item">
           <view class="desc">手机号</view>
-          <view class="name">{{currentUser.mobile || '--'}}</view>
+          <view class="name">{{currentUser.mobile || '138********'}}</view>
         </view>
         <view class="user-item">
           <view class="desc">个人介绍</view>
-          <view class="name">{{currentUser.remark || '--'}}</view>
+          <view class="name">{{currentUser.remark || '这个人很懒，什么也没留下'}}</view>
         </view>
       </view>
     </view>
