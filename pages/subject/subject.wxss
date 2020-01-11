@@ -1,5 +1,4 @@
-.page-subject,
-.subject-tips {
+.page-subject {
   /* height: 100%; */
   background: #eaedf2;
 }
@@ -369,44 +368,4 @@
   border-radius: 20rpx;
   padding: 35rpx 40rpx;
   border: 4rpx solid rgba(234, 237, 242, 1);
-}
-
-.subject-tips-box {
-  border-radius: 20rpx;
-  margin: 40rpx;
-  background: #eaedf2;
-  padding: 40rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.subject-tips-box .image1 {
-  width: 96rpx;
-  height: 96rpx;
-  margin-bottom: 40rpx;
-}
-
-.subject-tips-box .image2 {
-  margin: 32rpx 0 24rpx 0;
-  width: 360rpx;
-  height: 120rpx;
-}
-
-.subject-tips-box .name {
-  color: #282d4b;
-  font-size: 32rpx;
-}
-
-.subject-tips-box .name1 {
-  color: #282d4b;
-  font-size: 28rpx;
-  margin: 10rpx 0;
-}
-
-.subject-tips-box .tips {
-  color: #90a4ae;
-  font-size: 24rpx;
-  line-height: 48rpx;
 }

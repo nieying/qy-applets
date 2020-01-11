@@ -14,7 +14,6 @@ const innerAudioContext = wx.createInnerAudioContext()
 Page({
   //normal:文字题（伪音标题），auto:听力题，picture:选图题，map:看图题
   data: {
-    showLearnTips: false,
     isLoading: false,
     isAnswered: false,
     isShowNote: false,
@@ -121,14 +120,8 @@ Page({
         this.dealData(nextSubject)
       }
       if (nextSubject.userInfo.progress === 100 && !nextSubject.unitId) {
-        let year = new Date().getFullYear()
-        let month = new Date().getMonth() + 1;
-        month = month < 10 ? `0${month}` : month;
-        let date = new Date().getDate();
-        date = date < 10 ? `0${date}` : date;
-        this.setData({
-          showLearnTips: true,
-          time: `${year} / ${month} / ${date}`
+        wx.navigateTo({
+          url: `/pages/certificate/certificate?proveNum=${nextSubject.proveNum}&prevPage=home`,
         })
         return
       }

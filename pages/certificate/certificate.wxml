@@ -1,0 +1,19 @@
+<view class="subject-tips">
+	<view class="header" style='padding-top: {{height}}px'>
+		<image class="go-back" src="/pages/images/left-f.svg" bindtap="goBack"></image>
+	</view>
+	<view class="content">
+		<view class="subject-tips-box">
+			<image class="image2" src="/pages/images/subject/done.svg"></image>
+			<view class="name">您已通关该课程</view>
+			<view class="name1">You have completed the course</view>
+			<view class="tips">{{time}}</view>
+			<image class="image2" src="/pages/images/subject/subject-tips.svg"></image>
+			<view class="tips2">NO. {{proveNum}}</view>
+
+		</view>
+	</view>
+	<view class="bottom select" bindtap='goBack'>
+		<text>确定</text>
+	</view>
+</view>

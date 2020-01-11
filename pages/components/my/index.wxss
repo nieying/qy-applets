@@ -25,8 +25,8 @@
   /* font-weight: 600; */
   font-size: 32rpx;
   margin: 24rpx 0 8rpx 0;
-  /* font-family: sans-serif;  */
-  font-family: 'webfont';
+  font-family: sans-serif; 
+  /* font-family: 'webfont'; */
 }
 
 .user-sign {

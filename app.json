@@ -19,7 +19,8 @@
     "pages/userInfo/userInfo",
     "pages/search/search",
     "pages/tags/tags",
-    "pages/applyAct/applyAct"
+    "pages/applyAct/applyAct",
+    "pages/certificate/certificate"
   ],
   "window": {
     "backgroundTextStyle": "light",

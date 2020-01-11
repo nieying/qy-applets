@@ -29,9 +29,14 @@ Page({
       })
     })
     getUserActivityList().then(res => {
-      this.setData({
-        list: res.data.list
-      })
+      if (res && res.data.list.length > 0) {
+        res.data.list.forEach(item => {
+          item.startTime = item.startTime.split(' ')[0]
+        })
+        this.setData({
+          list: res.data.list
+        })
+      }
       wx.hideLoading()
     })
   },

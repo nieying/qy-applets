@@ -166,6 +166,12 @@
 					"pathName": "pages/applyAct/applyAct",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/certificate/certificate",
+					"pathName": "pages/certificate/certificate",
+					"scene": null
 				}
 			]
 		}

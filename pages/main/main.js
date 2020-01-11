@@ -59,7 +59,14 @@ Page({
     });
   },
 
-  onLoad: function(options) {},
+  onLoad: function (options) {
+    if (options.page === 'my') {
+      this.toMyPage()
+    }
+    if (options.page === 'home') {
+      this.toHomePage()
+    }
+  },
 
-  onReady: function() {},
+  onReady: function () {},
 });

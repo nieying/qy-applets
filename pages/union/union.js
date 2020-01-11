@@ -51,7 +51,7 @@ Page({
 
   goBack: function() {
     wx.navigateTo({
-      url: '/pages/main/main',
+      url: '/pages/main/main?page=my',
     })
     // wx.navigateBack()
   },

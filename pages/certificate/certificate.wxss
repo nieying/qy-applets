@@ -1,0 +1,44 @@
+.subject-tips {
+  /* height: 100%; */
+  background: #eaedf2;
+}
+
+.subject-tips-box {
+  border-radius: 20rpx;
+  margin: 0 40rpx 40rpx 40rpx;
+  background: #F5F7F9;
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.subject-tips-box .image1 {
+  width: 96rpx;
+  height: 96rpx;
+  margin-bottom: 40rpx;
+}
+
+.subject-tips-box .image2 {
+  margin: 32rpx 0 24rpx 0;
+  width: 360rpx;
+  height: 120rpx;
+}
+
+.subject-tips-box .name {
+  color: #282d4b;
+  font-size: 32rpx;
+}
+
+.subject-tips-box .name1 {
+  color: #282d4b;
+  font-size: 28rpx;
+  margin: 10rpx 0;
+}
+
+.subject-tips-box .tips {
+  color: #90a4ae;
+  font-size: 24rpx;
+  line-height: 48rpx;
+}

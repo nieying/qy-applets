@@ -9,7 +9,7 @@
         <view class="activity-item" bindtap='goToActivityDetail' data-id="{{item.id}}">
           <view class="left">
             <view class="name">{{item.title}}</view>
-            <view class="time">{{item.actDate}} {{item.type === 'official' ? '官方活动':'协会活动'}}</view>
+            <view class="time">{{item.actDate || item.startTime}} {{item.type === 'official' ? '官方活动':'协会活动'}}</view>
           </view>
           <view class="right">
             <image src="{{item.imgUrl}}"></image>

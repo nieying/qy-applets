@@ -135,7 +135,9 @@ Component({
       const lastLanguage = this.data.userInfo.lastLanguage
       if (item.type === 'languageProveList') {
         if (item.value.length > 0) {
-          showToast("你已通关该课程!")
+          wx.navigateTo({
+            url: `/pages/certificate/certificate?proveNum=${item.proveNum}&prevPage=my`,
+          })
         } else {
           showToast(`当前语言进度${lastLanguage.progress}/100`)
         }
