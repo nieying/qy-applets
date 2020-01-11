@@ -9,7 +9,7 @@
 			</view>
 		</view>
 	</view>
-		<view class='guide-bottom'>
+		<view class='guide-bottom bg'>
 			<view class="qianyan">仟 <view></view> 言</view>
 			<view class='copy-right' style='margin-top: 40rpx'>Copyright © 2013 - 2019 Talkiin. </view>
 			<view class='copy-right' style='margin-top: 10rpx; padding-bottom:80rpx'>All Right Reserved.</view>

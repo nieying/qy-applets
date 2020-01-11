@@ -57,7 +57,13 @@
   padding-top: 20rpx;
 }
 
-.guide-bottom .qianyan,
+.guide-bottom .qianyan{
+  color: #282D4B;
+}
 .guide-bottom .copy-right {
-  color: white;
+  color: #90A4AE;
+}
+
+.bg {
+  background: #EAEDF2;
 }
