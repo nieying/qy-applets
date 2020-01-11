@@ -6,6 +6,7 @@ import {
 import {
   showToast,
   tapedFun,
+  countRpx
 } from '../../utils/util.js'
 const app = getApp()
 Page({
@@ -44,7 +45,7 @@ Page({
     console.log('apply act options',options)
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
-      warpHeight: parseInt(wx.getStorageSync('warpHeight')),
+      warpHeight: wx.getStorageSync('warpHeight') - countRpx(48, wx.getStorageSync('windowWidth')),
       organizeId: options.organizeId,
       activityId: options.activityId,
     })

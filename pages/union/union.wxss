@@ -50,15 +50,15 @@
   position: absolute;
   right: 0;
   top: 0;
-  width: 45rpx;
-  height: 45rpx;
+  width: 64rpx;
+  height: 64rpx;
 }
 
 .setting image {
   background: transparent !important;
-  width: 45rpx;
-  height: 45rpx;
-}
+  width: 64rpx;
+  height: 64rpx;
+} 
 
 .card image.avatar {
   width: 160rpx;
@@ -68,11 +68,16 @@
   margin-bottom: 10rpx;
 }
 
+.card .name {
+  margin: 6rpx 0 32rpx 0 !important;
+}
+
 .card .name, .union-info .name, .show-section .name {
   font-size: 38rpx;
   font-weight: 600;
   color: rgba(40, 45, 75, 1);
   /* margin: 24rpx 0 8rpx 0; */
+  margin-bottom: 10rpx;
 }
 
 .card .desc, .union-info .desc, .show-section .desc {
@@ -102,7 +107,7 @@
 }
 
 .tabs {
-  margin-top: 40rpx;
+  margin-top: 56rpx;
 }
 
 .tab-header {
@@ -130,13 +135,13 @@
 .tab-header  .line {
   margin-top: 16rpx;
   width: 56rpx;
-  height: 4rpx;
+  height: 6rpx;
   background: rgba(255, 209, 0, 1);
   border-radius: 3rpx;
 }
 
 .tab-content {
-  margin-top: 20rpx;
+  /* margin-top: 20rpx; */
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

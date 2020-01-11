@@ -1,6 +1,6 @@
 import {
   getSubject,
-  postSubject,
+  postSubject, 
   getAdPage,
 } from '../api/api.js';
 import {

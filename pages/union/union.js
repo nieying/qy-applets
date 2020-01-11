@@ -39,8 +39,9 @@ Page({
   onLoad: function(options) {
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      pageHeight: parseInt(wx.getStorageSync('pageHeight') - countRpx(48, wx.getStorageSync('windowWidth'))),
-      organizeId: options.organizeId
+      pageHeight: parseInt(wx.getStorageSync('pageHeight') - countRpx(40, wx.getStorageSync('windowWidth'))),
+      organizeId: options.organizeId,
+      prevPage: options.prevPage || 'home'
     })
     this.getOrganDetail(options.organizeId);
   },
@@ -51,7 +52,7 @@ Page({
 
   goBack: function() {
     wx.navigateTo({
-      url: '/pages/main/main?page=my',
+      url: `/pages/main/main?page=${this.data.prevPage}`,
     })
     // wx.navigateBack()
   },

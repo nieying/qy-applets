@@ -41,6 +41,7 @@
 				</view>
 			</view>
 			<view class="tip-warp">
+				<image class="money-img" src="/pages/images/money.svg"></image>
 				<text>加入活动需要交纳{{money}}元作为活动费， </text>
 				<text>将用于活动支出等</text>
 			</view>

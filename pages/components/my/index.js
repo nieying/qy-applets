@@ -115,7 +115,7 @@ Component({
       } = this.data
       if (lastOrganize && lastOrganize.organizeId) {
         wx.navigateTo({
-          url: `/pages/union/union?organizeId=${lastOrganize.organizeId}`,
+          url: `/pages/union/union?organizeId=${lastOrganize.organizeId}&prevPage=my`,
         })
       } else {
         wx.navigateTo({

@@ -99,21 +99,19 @@ input {
   height: 36rpx !important;
 }
 
+
 .tip-warp {
-  margin: 60rpx 0;
+  margin-top: 60rpx;
+  margin-bottom: 40rpx;
   display: flex;
   flex-direction: column;
   font-size: 24rpx;
   font-weight: 400;
   color: rgba(144, 164, 174, 1);
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
-
-/* .bottom button {
-  background: transparent;
-  border: none;
-  color: #ffd100;
-} */
 
 .success-tips {
   display: flex;
@@ -121,11 +119,11 @@ input {
   flex-direction: column;
 }
 
-.success-tips image {
-  width: 64rpx;
-  height: 64rpx;
+.money-img {
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 24rpx;
 }
-
 .success-tips .text {
   color: #90a4ae;
   font-size: 28rpx;

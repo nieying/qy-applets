@@ -49,6 +49,7 @@
 
 			</form>
 			<view class="tip-warp">
+				<image class="money-img" src="/pages/images/money.svg"></image>
 				<text>加入协会需要交纳{{money}}元作为会费， </text>
 				<text>将用于协会支出等</text>
 			</view>
@@ -82,7 +83,7 @@
 	<view class="content" wx:if="{{pageType===3}}">
 		<view class="padding-box">
 			<view class='warp'>
-				<image src="/pages/images/money.svg"></image>
+				<image class="money-img" src="/pages/images/money.svg"></image>
 				<text class='result'>待支付</text>
 				<text class="tips">
          您有30元会费(将用于协会支出)待支付

@@ -21,15 +21,13 @@ Component({
   },
 
 
-  data: {
-  },
+  data: {},
 
-  ready: function() {
-  },
+  ready: function () {},
 
   observers: {
     'userInfo': function (userInfo) {
-       this.properties.userInfo = userInfo
+      this.properties.userInfo = userInfo
     }
   },
 
@@ -41,19 +39,37 @@ Component({
     },
 
     // 购买生命值
-    onBuyLife: function() {
+    onBuyLife: function () {
+      const {
+        bill
+      } = this.properties.userInfo
+      if (bill < 21) {
+        wx.navigateTo({
+          url: '/pages/pay/pay',
+        })
+        return
+      }
       buyLife().then(res => {
         res && this.succCallback()
       })
     },
     // 购买生命卡
-    onBuyCard: function() {
+    onBuyCard: function () {
+      const {
+        bill
+      } = this.properties.userInfo
+      if (bill < 21) {
+        wx.navigateTo({
+          url: '/pages/pay/pay',
+        })
+        return
+      }
       buyCard().then(res => {
         res && this.succCallback()
       })
     },
 
-    succCallback: function() {
+    succCallback: function () {
       showToast('购买成功！')
       this.triggerEvent('getUserInfo')
     }
