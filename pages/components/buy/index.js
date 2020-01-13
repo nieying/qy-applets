@@ -40,6 +40,12 @@ Component({
 
     // 购买生命值
     onBuyLife: function () {
+      if (!wx.getStorageSync('loginCode')) {
+        wx.navigateTo({
+          url: '/pages/guide/guide',
+        })
+        return
+      }
       const {
         bill
       } = this.properties.userInfo
@@ -55,6 +61,12 @@ Component({
     },
     // 购买生命卡
     onBuyCard: function () {
+      if (!wx.getStorageSync('loginCode')) {
+        wx.navigateTo({
+          url: '/pages/guide/guide',
+        })
+        return
+      }
       const {
         bill
       } = this.properties.userInfo

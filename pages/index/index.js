@@ -11,7 +11,7 @@ Page({
 
   onLoad: function (options) {
     console.log('startup onLoad', wx.getStorageSync('token'))
-    if (wx.getStorageSync('token')) {
+    // if (wx.getStorageSync('token')) {
       const lastLanguage = wx.getStorageSync('lastLanguage')
       getStartUp().then(res => {
         if (res && res.data) {
@@ -22,17 +22,18 @@ Page({
         this.setData({
           loading: false
         })
-        if (lastLanguage.hasOwnProperty('id')) {
-          this.goToMainPage();
-        } else {
-          this.goToLanguagePage();
-        }
+        // if (lastLanguage.hasOwnProperty('id')) {
+        //   this.goToMainPage();
+        // } else {
+        //   this.goToLanguagePage();
+        // }
+        this.goToMainPage();
       })
-    } else {
-      wx.redirectTo({
-        url: "/pages/guide/guide"
-      });
-    }
+    // } else {
+    //   wx.redirectTo({
+    //     url: "/pages/guide/guide"
+    //   });
+    // }
   },
 
   onReady: function () {

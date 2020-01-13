@@ -1,35 +1,36 @@
-<view class="page-home" wx:if="{{userInfo}}">
+<view class="page-home">
 	<view class="header" style="padding-top: {{height}}px">
 		<view class="popver-select" bindtap='showDialect' hover-class="hover-white">
-			<text>{{currentDialect.languageName}}</text>
+			<text>{{currentDialect.languageName || '--'}}</text>
 			<image src="/pages/images/icon-{{ showDialect ? 'up' : 'down' }}.svg"></image>
 		</view>
 		<view class="progress">
 			<progress percent="{{currentDialect.progress}}" active backgroundColor="#B0BEC5" color="#FBC02E" stroke-width="8" border-radius="15" />
 			<view class="txt">
-				{{currentDialect.progress}} /
+				{{currentDialect.progress || 0}} /
 				<text>100</text>
 			</view>
 		</view>
 		<view class="money" bindtap='toggleBuyModal' hover-class="hover-grey">
 			<image src="/pages/images/icon-money.svg"></image>
-			{{userInfo.bill}}
+			{{userInfo.bill || 0}}
 		</view>
 	</view>
 	<view class="content" style="height: {{warpHeight}}px">
 		<view class="popver-list" wx:if="{{showDialect}}">
 			<view class="left">
-				<view class='item' wx:for="{{userDialect}}" wx:for-item="item" wx:key="index" data-index="{{index}}" data-item="{{item}}" bindtap="selectDialect">
+				<view wx:if="{{userDialect.length > 0}}" class='item' wx:for="{{userDialect}}" wx:for-item="item" wx:key="index" data-index="{{index}}" data-item="{{item}}" bindtap="selectDialect">
 					<image src='/pages/images/main/icon-check-blue.svg' wx:if="{{item.checked}}"></image>
 					<text class="{{item.checked?'select':''}}">{{item.languageName}}</text>
 				</view>
+				<view class="popver-tips" wx:if="{{userDialect.length === 0}}">暂无数据</view>
 			</view>
 			<view class="right" hover-class="hover-white" bindtap="{{!buttonClicked ? 'goLanguage' : ''}}">
 				<image src="/pages/images/icon-add-black.svg"></image>
 			</view>
 		</view>
 		<buy show="{{showBuyModal}}" userInfo="{{userInfo}}" bind:toggleBuyModal='toggleBuyModal' bind:getUserInfo="getUserInfo"></buy>
-		<block wx:if="{{unitList.length >0}}">
+		<block wx:if="{{unitList.length >0 && !isLogin}}">
 			<view class="home-warp">
 				<circle wx:if="{{currentUnit.id}}" r="{{currentUnitR}}" steps="{{currentUnit.progress}}">
 					<!-- 这部分内容将被放置在组件 <slot> 的位置上 -->
@@ -60,6 +61,10 @@
 				</block>
 			</scroll-view>
 		</block>
+		<view wx:if="{{isLogin}}" class="no-login">
+				<view class="tips">请先授权登入</view>
+				<view class="login" bindtap="{{!buttonClicked ? 'goLogin' : ''}}">去登入</view>
+		</view>
 		<view wx:if="{{unitList.length === 0}}" class="no-datas">
 			<text>暂无数据</text> </view>
 	</view>

@@ -45,19 +45,19 @@ App({
     });
 
     // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        console.log('是否授权', res.authSetting['scope.userInfo'])
-        if (res.authSetting['scope.userInfo']) {
-          console.log(1111)
-          uploadWeChatInfo();
-        } else {
-          wx.reLaunch({
-            url: "/pages/guide/guide"
-          });
-        }
-      }
-    })
+    // wx.getSetting({
+    //   success: res => {
+    //     console.log('是否授权', res.authSetting['scope.userInfo'])
+    //     if (res.authSetting['scope.userInfo']) {
+    //       console.log(1111)
+    //       uploadWeChatInfo();
+    //     } else {
+    //       wx.reLaunch({
+    //         url: "/pages/index/index"
+    //       });
+    //     }
+    //   }
+    // })
   },
   globalData: {
     userInfo: null,

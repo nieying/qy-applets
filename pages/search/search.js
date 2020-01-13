@@ -22,7 +22,7 @@ Page({
     }
   },
 
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.setData({
       height: wx.getStorageSync('statusBarHeight') + 10,
       pageHeight: wx.getStorageSync('pageHeight') - countRpx(60, wx.getStorageSync('windowWidth')),
@@ -31,19 +31,19 @@ Page({
     this.getData();
   },
 
-  onReady: function() {},
+  onReady: function () {},
 
-  goBack: function() {
+  goBack: function () {
     wx.navigateBack()
   },
 
-  bindKeyInput: function(e) {
+  bindKeyInput: function (e) {
     this.setData({
       searchKey: e.detail.value
     })
   },
 
-  getData: function() {
+  getData: function () {
     wx.showLoading()
     let params = {}
     if (this.data.searchKey) {
@@ -52,12 +52,12 @@ Page({
     searchOrgan(params).then(res => {
       wx.hideLoading()
       res && this.setData({
-        organList: res.data.list
+        organList: !wx.getStorageSync('loginCode') && !params.name ? [] : res.data.list
       })
     })
   },
 
-  clickItem: function(e) {
+  clickItem: function (e) {
     tapedFun(this)
     const item = e.currentTarget.dataset.item
     if (item.state === 2) {
@@ -85,20 +85,26 @@ Page({
     }
   },
 
-  onSearch: function(e) {
+  onSearch: function (e) {
     tapedFun(this)
     this.getData()
   },
 
-  onJoinOrgan: function(e) {
+  onJoinOrgan: function (e) {
     tapedFun(this)
+    if (!wx.getStorageSync('loginCode')) {
+      wx.navigateTo({
+        url: '/pages/guide/guide',
+      })
+      return
+    }
     const id = e.currentTarget.dataset.item.id
     wx.redirectTo({
       url: `/pages/userInfo/userInfo?organizeId=${id}`,
     })
   },
 
-  onPay: function(e) {
+  onPay: function (e) {
     tapedFun(this)
     const item = e.currentTarget.dataset.item
     wx.setStorageSync('payInfo', JSON.stringify({
@@ -112,7 +118,7 @@ Page({
   },
 
   // 退出协会
-  onQuit: function(e) {
+  onQuit: function (e) {
     const that = this;
     const id = e.currentTarget.dataset.item.id
     wx.showModal({

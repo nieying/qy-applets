@@ -26,11 +26,14 @@ Component({
     unitList: null,
     userInfo: null,
     currentUnit: null,
-    buttonClicked: false
+    buttonClicked: false,
+    isLogin:false
   },
 
   ready: function () {
-    this.getUserInfo();
+    if(wx.getStorageSync('loginCode')) {
+      this.getUserInfo();
+    }
     this.getData();
   },
 
@@ -40,7 +43,7 @@ Component({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight')),
       currentUnitR: countRpx(190, parseInt(wx.getStorageSync('windowWidth'))),
-      unitR: countRpx(100, parseInt(wx.getStorageSync('windowWidth')))
+      unitR: countRpx(100, parseInt(wx.getStorageSync('windowWidth'))),
     })
   },
 
@@ -80,6 +83,7 @@ Component({
         this.setData({
           userDialect: userDialect,
           currentDialect: currentDialect,
+          isLogin: wx.getStorageSync('loginCode') ? false : true
         }, () => {
           const {
             currentDialect
@@ -89,10 +93,15 @@ Component({
       })
     },
     goLanguage: function () {
-      // navigateTo
       tapedFun(this);
       wx.navigateTo({
         url: '/pages/language/language'
+      })
+    },
+    goLogin: function () {
+      tapedFun(this);
+      wx.navigateTo({
+        url: '/pages/guide/guide'
       })
     },
 
@@ -134,7 +143,8 @@ Component({
         })
         this.setData({
           currentUnit: res.data.length > 0 ? res.data[0] : {},
-          unitList: res.data
+          unitList: res.data,
+          loading: false,
           // unitList: res.data.length === 1 ? res.data.concat([{
           //   learnState: 'future',
           //   isEmpty: true
@@ -142,9 +152,6 @@ Component({
           //   learnState: 'future',
           //   isEmpty: true
           // }]) : res.data
-        })
-        this.setData({
-          loading: false
         })
         console.log('getUnitList res', res, this.data.currentUnit)
       })
