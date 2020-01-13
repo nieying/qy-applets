@@ -34,3 +34,11 @@
   font-weight: 600;
   color: rgba(144, 164, 174, 1);
 }
+
+.tips {
+  margin-top: 40rpx;
+  text-align: center;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: rgba(144, 164, 174, 1);
+}

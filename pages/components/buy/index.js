@@ -43,7 +43,7 @@ Component({
       const {
         bill
       } = this.properties.userInfo
-      if (bill < 21) {
+      if (bill < 1) {
         wx.navigateTo({
           url: '/pages/pay/pay',
         })
@@ -58,7 +58,7 @@ Component({
       const {
         bill
       } = this.properties.userInfo
-      if (bill < 21) {
+      if (bill < 3) {
         wx.navigateTo({
           url: '/pages/pay/pay',
         })

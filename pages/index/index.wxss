@@ -6,7 +6,7 @@
 }
 
 .bg-color {
-  background: #ffd100;
+  /* background: #ffd100; */
 }
 
 .bg-img {

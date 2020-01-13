@@ -32,7 +32,7 @@
   width: 56rpx;
   height: 6rpx;
   background: rgba(255, 209, 0, 1);
-  border-radius: 20rpx;
+  border-radius: 6rpx;
 }
 
 .warp {

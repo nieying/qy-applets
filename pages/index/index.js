@@ -14,14 +14,14 @@ Page({
     if (wx.getStorageSync('token')) {
       const lastLanguage = wx.getStorageSync('lastLanguage')
       getStartUp().then(res => {
-        if (res) {
+        if (res && res.data) {
           this.setData({
             startUpObj: res.data,
-            loading: false
           })
-          console.log('this.', this.data.startUpObj)
-        } 
-
+        }
+        this.setData({
+          loading: false
+        })
         if (lastLanguage.hasOwnProperty('id')) {
           this.goToMainPage();
         } else {

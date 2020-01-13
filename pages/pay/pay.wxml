@@ -5,8 +5,9 @@
 	<scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
 		<view class="padding-box">
 			<view class='title'>
-				<view class="line"></view>VIP充值
+				<view class="line"></view>{{prePage !== 'subject' ? 'VIP充值' : '生命值不足'}}
 			</view>
+			<!-- <view class="tips">生命值不足，请充值！</view> -->
 			<view class='list'>
 				<view class="item {{item.checked ?'active':''}}" wx:for="{{moneyList}}" wx:for-item="item" wx:key="index" data-index="{{index}}" bindtap='selectMoney'>
 					<view>{{item.value1}} 钞票</view>

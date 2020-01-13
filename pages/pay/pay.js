@@ -4,7 +4,8 @@ import {
 } from '../api/api.js'
 import {
   showToast,
-  tapedFun
+  tapedFun,
+  countRpx
 } from '../../utils/util.js'
 Page({
 
@@ -58,7 +59,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      warpHeight: parseInt(wx.getStorageSync('warpHeight')),
+      warpHeight: parseInt(wx.getStorageSync('warpHeight')) -  countRpx(40, wx.getStorageSync('windowWidth')),
+      prePage:options.prePage
     })
   },
 

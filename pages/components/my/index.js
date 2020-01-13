@@ -46,10 +46,14 @@ Component({
     },
     // 获取成就
     getAchieve: function (id) {
+      let currentProgress = 0
       getUserGarde({
         languageId: id || 0
       }).then(res => {
         res.data.forEach(item => {
+          if (item.type === 'languageProcess') {
+            currentProgress = item.value
+          }
           if (item.type === 'languageProcess' && item.value === 100) {
             item.isActive = true
           } else if (item.type === 'actTimes' && item.value > 0) {
@@ -67,7 +71,8 @@ Component({
           }
         })
         this.setData({
-          gardeList: res.data
+          gardeList: res.data,
+          currentProgress: currentProgress
         })
         console.log('gardeList====>', res.data)
       })
@@ -132,14 +137,13 @@ Component({
     onClickAchieve: function (e) {
       tapedFun(this)
       const item = e.currentTarget.dataset.item;
-      const lastLanguage = this.data.userInfo.lastLanguage
       if (item.type === 'languageProveList') {
         if (item.value.length > 0) {
           wx.navigateTo({
             url: `/pages/certificate/certificate?proveNum=${item.proveNum}&prevPage=my`,
           })
         } else {
-          showToast(`当前语言进度${lastLanguage.progress}/100`)
+          showToast(`当前语言进度${this.data.currentProgress}/100`)
         }
         return;
       }

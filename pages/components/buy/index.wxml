@@ -4,10 +4,10 @@
 			<view class='item'>
 				<image src='/pages/images/icon-life.svg'></image>
 				<text class='name'>生命值</text>
-				<text class='desc'>生命值介绍生命值介绍生命值介绍生命</text>
+				<text class='desc'>做错题目需要扣除生命值噢</text>
 				<view class='money'>
 					<image class='icon-money' src="/pages/images/icon-money.svg"></image>
-					<text>x 7</text>
+					<text>x 1</text>
 				</view>
 				<view class='btn btn-primary' bindtap='onBuyLife' hover-class="hover-grey">购买</view>
 			</view>
@@ -17,7 +17,7 @@
 				<text class='desc'>购买后实时到账 当日生命值不会消减</text>
 				<view class='money'>
 					<image class='icon-money' src="/pages/images/icon-money.svg"></image>
-					<text>x 21</text>
+					<text>x 3</text>
 				</view>
 				<view class='btn btn-primary' bindtap='onBuyCard' hover-class="hover-grey">购买</view>
 			</view>

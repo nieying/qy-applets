@@ -1,6 +1,6 @@
 import {
   getSubject,
-  postSubject, 
+  postSubject,
   getAdPage,
 } from '../api/api.js';
 import {
@@ -93,6 +93,11 @@ Page({
     }
     this.stopAuto();
     if (type === 'submit') {
+      // if(rightId === selectId) {
+      //   wx.vibrateShort()
+      // } else {
+      //   wx.vibrateLong()
+      // }
       wx.showLoading()
       postSubject({
         right: rightId === selectId,
@@ -114,7 +119,10 @@ Page({
       })
       if (nextSubject.answers) {
         if (nextSubject.userInfo.cost === 0 && !nextSubject.userInfo.costLock) {
-          showToast('生命值不足无法答题');
+          // showToast('生命值不足无法答题');
+          wx.navigateTo({
+            url: '/pages/pay/pay?prePage=subject',
+          })
           return;
         }
         this.dealData(nextSubject)

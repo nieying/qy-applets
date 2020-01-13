@@ -1,7 +1,7 @@
 <view wx:if="{{!loading}}">
 	<view class="page-start-up {{ !startUpObj ? 'bg-color' : ''}}">
-		<image wx:if="{{!startUpObj}}" class='logo' src='/pages/images/qianyan_logo.svg'></image>
-		<image wx:else class='bg-img' src="{{startUpObj.imgUrl}}"></image>
+		<image wx:if="{{!startUpObj}}" class='logo' src='/pages/images/guide_logo.svg'></image>
+		<image wx:else class='bg-img' src="{{startUpObj.imgUrl}}" mode="aspectFit"></image>
 		<view class='union'>
 			<view class='dialect' wx:if="{{startUpObj.title}}">
 				<text></text> {{startUpObj.title}}

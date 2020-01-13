@@ -137,7 +137,7 @@
   width: 56rpx;
   height: 6rpx;
   background: rgba(255, 209, 0, 1);
-  border-radius: 3rpx;
+  border-radius: 6rpx;
 }
 
 .tab-content {
