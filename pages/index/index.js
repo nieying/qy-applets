@@ -2,11 +2,19 @@ import {
   getStartUp,
 } from "../api/api";
 const app = getApp();
+import {
+  storageHeight
+} from '../../utils/util'
 const times = 2000;
 Page({
   data: {
     loading: true,
     startUpObj: null,
+  },
+
+
+  onReady: function() {
+    storageHeight(app);
   },
 
   onLoad: function (options) {
@@ -22,22 +30,9 @@ Page({
         this.setData({
           loading: false
         })
-        // if (lastLanguage.hasOwnProperty('id')) {
-        //   this.goToMainPage();
-        // } else {
-        //   this.goToLanguagePage();
-        // }
         this.goToMainPage();
       })
-    // } else {
-    //   wx.redirectTo({
-    //     url: "/pages/guide/guide"
-    //   });
-    // }
-  },
-
-  onReady: function () {
-    // this.goToMainPage();
+    
   },
 
   // 跳转页面

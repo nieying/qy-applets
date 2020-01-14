@@ -93,9 +93,23 @@ Page({
   payMoney: function () {
     tapedFun(this)
     if(!wx.getStorageSync('loginCode')) {
-      wx.navigateTo({
-        url: '/pages/guide/guide',
-      })
+      wx.showModal({
+        title: '提示',
+        content: '您还没有登录,请先登录',
+        confirmText: '去登入',
+        cancelText: '取消',
+        mask: true,
+        success: function (res) {
+          if (res.confirm) {
+            wx.redirectTo({ 
+              url: '/pages/guide/guide'
+            });
+          } else if (res.cancel) {
+            console.log('用户点击取消');
+          }
+        }
+      });
+      return;
     }
     showToast(`您充值的金额可以兑换${this.data.currentMoney.value1}钞票`, 2000)
     getPay({

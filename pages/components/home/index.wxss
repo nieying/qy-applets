@@ -278,23 +278,3 @@
   justify-content: center;
   flex-direction: column;
 }
-
-.no-login .tips {
-  margin-top: 50%;
-  color: #b0bec5;
-  margin-bottom: 20rpx;
-}
-
-.no-login .login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 240rpx;
-  height: 80rpx;
-  background: rgba(255, 209, 0, 1);
-  border-radius: 8rpx;
-  font-size: 32rpx;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
-  color: rgba(40, 45, 75, 1);
-}

@@ -7,7 +7,8 @@ import {
 import {
   showToast,
   tapedFun,
-  countRpx
+  countRpx,
+  storageHeight
 } from '../../../utils/util.js'
 const app = getApp()
 
@@ -27,13 +28,14 @@ Component({
     userInfo: null,
     currentUnit: null,
     buttonClicked: false,
-    isLogin:false,
     loading: true,
   },
 
   ready: function () {
     if(wx.getStorageSync('loginCode')) {
       this.getUserInfo();
+    } else {
+      storageHeight(app);
     }
     setTimeout(()=> {
       this.getData();
@@ -86,8 +88,7 @@ Component({
         this.setData({
           userDialect: userDialect,
           currentDialect: currentDialect,
-          loading: false,
-          isLogin: wx.getStorageSync('loginCode') ? true : false
+          loading: false
         }, () => {
           const {
             currentDialect
@@ -106,22 +107,15 @@ Component({
         url: '/pages/language/language'
       })
     },
-    goLogin: function () {
-      tapedFun(this);
-      wx.navigateTo({
-        url: '/pages/guide/guide'
-      })
-    },
 
     // 去答题
     goSubject: function () {
       const {
         currentDialect,
         currentUnit,
-        userInfo,
-        isLogin
+        userInfo
       } = this.data
-      if (isLogin && userInfo.cost === 0 && !userInfo.costLock) {
+      if (wx.getStorageSync('loginCode') && userInfo.cost === 0 && !userInfo.costLock) {
         showToast('生命值不足')
         return;
       }

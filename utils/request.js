@@ -18,7 +18,7 @@ function http(params) {
           resolve(res.data);
         } else if (res.data.errno === 501) {
           wx.clearStorage()
-          wx.reLaunch({
+          wx.redirectTo({
             url: "/pages/guide/guide"
           });
           wx.hideLoading();

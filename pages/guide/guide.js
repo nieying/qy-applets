@@ -27,7 +27,9 @@ Page({
     let errMsg = e.detail.errMsg;
     if (errMsg == 'getUserInfo:fail auth deny' || errMsg == 'getUserInfo:fail auth cancel') {
       wx.hideLoading();
-      wx.navigateBack()
+      wx.navigateTo({
+        url: '/pages/index/index',
+      })
       // wx.showToast({
       //   title: '授权失败',
       //   icon: 'none',

@@ -61,10 +61,6 @@
 				</block>
 			</scroll-view>
 		</block>
-		<!-- <view wx:if="{{isLogin}}" class="no-login">
-			<view class="tips">请先授权登入</view>
-			<view class="login" bindtap="{{!buttonClicked ? 'goLogin' : ''}}">微信登录</view>
-		</view> -->
 		<view wx:if="{{unitList.length === 0}}" class="no-datas">
 			<text>暂无数据</text> </view>
 	</view>

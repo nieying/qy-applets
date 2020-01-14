@@ -34,8 +34,7 @@ Page({
     console.log('options', options)
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      warpHeight: wx.getStorageSync('warpHeight') - countRpx(48, wx.getStorageSync('windowWidth')),
-      isLogin: wx.getStorageSync('loginCode') ? true : false
+      warpHeight: wx.getStorageSync('warpHeight') - countRpx(48, wx.getStorageSync('windowWidth'))
     });
     this.getData(options)
   },
@@ -82,6 +81,25 @@ Page({
   },
   // 获取下一题
   getNextSubject: function (e) {
+    if (!wx.getStorageSync('loginCode')) {
+      wx.showModal({
+        title: '提示',
+        content: '您还没有登录,不能参与答题',
+        confirmText: '去登入',
+        cancelText: '取消',
+        mask: true,
+        success: function (res) {
+          if (res.confirm) {
+            wx.redirectTo({ 
+              url: '/pages/guide/guide'
+            });
+          } else if (res.cancel) {
+            console.log('用户点击取消');
+          }
+        }
+      });
+      return
+    }
     const type = e.currentTarget.dataset.type;
     const {
       rightId,
@@ -97,14 +115,6 @@ Page({
       // } else {
       //   wx.vibrateLong()
       // }
-      if (!this.data.isLogin) {
-        showToast('您还没有登录！', 1500)
-        setTimeout(() => {
-          wx.navigateTo({
-            url: '/pages/guide/guide',
-          })
-        }, 1500)
-      }
       wx.showLoading()
       postSubject({
         right: rightId === selectId,

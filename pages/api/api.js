@@ -38,11 +38,6 @@ export const uploadWeChatInfo = () => {
       }
     })
   } 
-  // else {
-  //   wx.redirectTo({
-  //     url: "/pages/guide/guide"
-  //   });
-  // }
 };
 
 // 绑定手机号
