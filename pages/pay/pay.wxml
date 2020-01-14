@@ -5,13 +5,13 @@
 	<scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
 		<view class="padding-box">
 			<view class='title'>
-				<view class="line"></view>{{prePage !== 'subject' ? 'VIP充值' : '生命值不足'}}
+				<view class="line"></view>{{prePage !== 'subject' ? '会员充值' : '生命值不足'}}
 			</view>
 			<!-- <view class="tips">生命值不足，请充值！</view> -->
 			<view class='list'>
 				<view class="item {{item.checked ?'active':''}}" wx:for="{{moneyList}}" wx:for-item="item" wx:key="index" data-index="{{index}}" bindtap='selectMoney'>
-					<view>{{item.value1}} 钞票</view>
-					<view class="desc">{{item.value}} 元</view>
+					<view>{{item.value}} 元</view>
+					<!-- <view  class="desc">{{item.value1}} 生命值</view> -->
 				</view>
 			</view>
 		</view>

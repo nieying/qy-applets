@@ -48,6 +48,7 @@ Page({
     ],
     currentMoney: {
       value: 6.3,
+      value1: 5,
       checked: true
     },
     buttonClicked: false
@@ -90,11 +91,13 @@ Page({
 
   // 充值
   payMoney: function () {
-    // wx.showToast({
-    //   icon: 'none',
-    //   title: '该功能未完善',
-    // })
     tapedFun(this)
+    if(!wx.getStorageSync('loginCode')) {
+      wx.navigateTo({
+        url: '/pages/guide/guide',
+      })
+    }
+    showToast(`您充值的金额可以兑换${this.data.currentMoney.value1}钞票`, 2000)
     getPay({
       amount: this.data.currentMoney.value
     }).then(res => {

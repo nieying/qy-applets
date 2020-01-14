@@ -1,4 +1,4 @@
-<view class="page-home">
+<view class="page-home" wx:if="{{!loading}}">
 	<view class="header" style="padding-top: {{height}}px">
 		<view class="popver-select" bindtap='showDialect' hover-class="hover-white">
 			<text>{{currentDialect.languageName || '--'}}</text>
@@ -30,7 +30,7 @@
 			</view>
 		</view>
 		<buy show="{{showBuyModal}}" userInfo="{{userInfo}}" bind:toggleBuyModal='toggleBuyModal' bind:getUserInfo="getUserInfo"></buy>
-		<block wx:if="{{unitList.length >0 && !isLogin}}">
+		<block wx:if="{{unitList.length >0}}">
 			<view class="home-warp">
 				<circle wx:if="{{currentUnit.id}}" r="{{currentUnitR}}" steps="{{currentUnit.progress}}">
 					<!-- 这部分内容将被放置在组件 <slot> 的位置上 -->
@@ -61,10 +61,10 @@
 				</block>
 			</scroll-view>
 		</block>
-		<view wx:if="{{isLogin}}" class="no-login">
-				<view class="tips">请先授权登入</view>
-				<view class="login" bindtap="{{!buttonClicked ? 'goLogin' : ''}}">去登入</view>
-		</view>
+		<!-- <view wx:if="{{isLogin}}" class="no-login">
+			<view class="tips">请先授权登入</view>
+			<view class="login" bindtap="{{!buttonClicked ? 'goLogin' : ''}}">微信登录</view>
+		</view> -->
 		<view wx:if="{{unitList.length === 0}}" class="no-datas">
 			<text>暂无数据</text> </view>
 	</view>

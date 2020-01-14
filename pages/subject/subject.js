@@ -24,7 +24,6 @@ Page({
     subjectObj: {},
     nextSubject: {},
     currentNote: {},
-    currentDialect: {},
     userInfo: {},
     adObj: null,
     show: false
@@ -36,7 +35,7 @@ Page({
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: wx.getStorageSync('warpHeight') - countRpx(48, wx.getStorageSync('windowWidth')),
-      currentDialect: wx.getStorageSync('lastLanguage'),
+      isLogin: wx.getStorageSync('loginCode') ? true : false
     });
     this.getData(options)
   },
@@ -98,6 +97,14 @@ Page({
       // } else {
       //   wx.vibrateLong()
       // }
+      if (!this.data.isLogin) {
+        showToast('您还没有登录！', 1500)
+        setTimeout(() => {
+          wx.navigateTo({
+            url: '/pages/guide/guide',
+          })
+        }, 1500)
+      }
       wx.showLoading()
       postSubject({
         right: rightId === selectId,

@@ -15,13 +15,13 @@ Component({
     warpHeight: 0,
     show: false,
     modalData: {},
-    userInfo: null,
-    gardeList: null,
+    userInfo: {},
+    gardeList: [],
     buttonClicked: false
   },
 
   attached: function () {
-    this.getData();
+    wx.getStorageSync('loginCode') ? this.getData() : '';
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
       warpHeight: parseInt(wx.getStorageSync('warpHeight') - countRpx(48, wx.getStorageSync('windowWidth'))),

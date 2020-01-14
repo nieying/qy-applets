@@ -16,6 +16,10 @@ Page({
     })
   },
 
+  goBack: function() {
+    wx.navigateBack()
+  },
+
   getAuthorize: function (e) {
     app.aldstat.sendEvent("微信登入", "用户点击了微信登入")
     storageHeight();
@@ -23,11 +27,12 @@ Page({
     let errMsg = e.detail.errMsg;
     if (errMsg == 'getUserInfo:fail auth deny' || errMsg == 'getUserInfo:fail auth cancel') {
       wx.hideLoading();
-      wx.showToast({
-        title: '授权失败',
-        icon: 'none',
-        duration: 2000
-      });
+      wx.navigateBack()
+      // wx.showToast({
+      //   title: '授权失败',
+      //   icon: 'none',
+      //   duration: 2000
+      // });
     } else {
       wx.showLoading({
         title: '正在授权',

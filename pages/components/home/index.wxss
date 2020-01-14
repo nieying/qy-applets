@@ -286,14 +286,15 @@
 }
 
 .no-login .login {
-  width: 168rpx;
-  height: 58rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 240rpx;
+  height: 80rpx;
   background: rgba(255, 209, 0, 1);
   border-radius: 8rpx;
-  text-align: center;
   font-size: 32rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
   color: rgba(40, 45, 75, 1);
-  line-height: 58rpx;
 }

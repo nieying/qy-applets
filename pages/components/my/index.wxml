@@ -1,4 +1,4 @@
-<view class="page-warp" wx:if="{{userInfo && gardeList}}">
+<view class="page-warp">
 	<view class="header" style='padding-top: {{height}}px'>
 		<view class="title">
 			<view class="line"></view> 个人主页
@@ -9,10 +9,10 @@
 			<view class="user-info">
 				<view class="money" hover-class="hover-grey" bindtap="{{!buttonClicked?'goPay':''}}">
 					<image src="/pages/images/icon-money.svg"></image>
-					<view>{{userInfo.bill}}</view>
+					<view>{{userInfo.bill || 0}}</view>
 				</view>
-				<image class="user-pic" src="{{userInfo.avatar}}"></image>
-				<view class="user-name" bindtap='showModal' data-type="1">{{userInfo.nickName}}</view>
+				<image class="user-pic" src="{{userInfo.avatar || ''}}"></image>
+				<view class="user-name" bindtap='showModal' data-type="1">{{userInfo.nickName || '--'}}</view>
 				<view class="user-sign" bindtap='showModal' data-type="2">{{userInfo.signature || '这人很懒，什么都没说'}} </view>
 			</view>
 			<view class="user-opts">
@@ -27,7 +27,7 @@
 				<view class="title">
 					<view class="line"></view> 我的成就
 				</view>
-				<view class="achieve-item {{item.isActive ?'achieve-active':''}}" wx:for="{{gardeList}}" wx:for-item="item" wx:key="index" data-item="{{item}}" bindtap="{{!buttonClicked?'onClickAchieve':''}}">
+				<view wx:if="{{gardeList.length > 0}}" class="achieve-item {{item.isActive ?'achieve-active':''}}" wx:for="{{gardeList}}" wx:for-item="item" wx:key="index" data-item="{{item}}" bindtap="{{!buttonClicked?'onClickAchieve':''}}">
 					<view class="left">
 						<view class="one">{{item.title}}</view>
 						<view class="two">{{item.remark}} <text wx:if="{{item.type === 'actTimes' && item.value > 0}}"> {{item.value}}</text></view>
@@ -38,6 +38,9 @@
 						<image wx:else src="{{item.darkImage}}"></image>
 						<progress wx:if="{{item.type==='languageProcess'}}" percent="{{item.value}}" active backgroundColor="#EAEDF2" color="{{item.value === 100 ? '#00C853':'#FFD100 '}}" stroke-width="4" border-radius="10" />
 					</view>
+				</view>
+				<view wx:if="{{gardeList.length === 0}}" class="achieve-item" class="no-datas">
+					暂无数据
 				</view>
 			</view>
 		</view>

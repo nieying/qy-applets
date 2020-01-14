@@ -27,21 +27,24 @@ Component({
     userInfo: null,
     currentUnit: null,
     buttonClicked: false,
-    isLogin:false
+    isLogin:false,
+    loading: true,
   },
 
   ready: function () {
     if(wx.getStorageSync('loginCode')) {
       this.getUserInfo();
     }
-    this.getData();
+    setTimeout(()=> {
+      this.getData();
+    })
   },
 
 
   attached: function () {
     this.setData({
       height: parseInt(wx.getStorageSync('statusBarHeight')) + 10,
-      warpHeight: parseInt(wx.getStorageSync('warpHeight')),
+      warpHeight: parseInt(wx.getStorageSync('warpHeight')) + 2,
       currentUnitR: countRpx(190, parseInt(wx.getStorageSync('windowWidth'))),
       unitR: countRpx(100, parseInt(wx.getStorageSync('windowWidth'))),
     })
@@ -83,12 +86,17 @@ Component({
         this.setData({
           userDialect: userDialect,
           currentDialect: currentDialect,
-          isLogin: wx.getStorageSync('loginCode') ? false : true
+          loading: false,
+          isLogin: wx.getStorageSync('loginCode') ? true : false
         }, () => {
           const {
             currentDialect
           } = this.data;
           currentDialect && this.getUnitList(currentDialect.languageId)
+        })
+      }).catch(e=> {
+        this.setData({
+          loading:false
         })
       })
     },
@@ -110,9 +118,10 @@ Component({
       const {
         currentDialect,
         currentUnit,
-        userInfo
+        userInfo,
+        isLogin
       } = this.data
-      if (userInfo.cost === 0 && !userInfo.costLock) {
+      if (isLogin && userInfo.cost === 0 && !userInfo.costLock) {
         showToast('生命值不足')
         return;
       }

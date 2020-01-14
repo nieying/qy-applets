@@ -1,8 +1,8 @@
-const showToast = (title) => {
+const showToast = (title, duration = 1500) => {
   wx.showToast({
     icon: 'none',
     title: title,
-    duration: 1500,
+    duration: duration,
   })
 }
 
