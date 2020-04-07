@@ -32,7 +32,6 @@ Page({
         })
         this.goToMainPage();
       })
-    
   },
 
   // 跳转页面

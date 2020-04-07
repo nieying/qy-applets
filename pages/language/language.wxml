@@ -4,7 +4,8 @@
 	</view>
 	<scroll-view scroll-y="true" style="height: {{warpHeight}}px" class="content">
 		<view class='padding-box'>
-			<view class="select-language">选择要学习的语言</view>
+			<view class="select-language">选择要学习的语言
+			</view>
 			<view class="list" wx:if="{{dialectList.length>0}}" wx:for="{{dialectList}}" wx:for-item="item" wx:key="index" data-id="{{index}}" bindtap='userCheck'>
 				<view class="type"><view class="line"></view> {{item.name}}</view>
 				<view class="item">

@@ -1,7 +1,7 @@
 import request from "../../utils/request";
 
-const AppId = "wx84aa4b7c0fc9c4ca"; // 微信appid
-const SessionKey = "5579ce3a448b0ea85bfd5c6ff0e73919"; // 微信秘钥（微信后台秘钥保存好、刷新会重新生成)
+const AppId = "wxff70b91c99e1a8b3"; // 微信appid
+const SessionKey = "f6fa1655c4ace4697f65b5e8637c2546"; // 微信秘钥（微信后台秘钥保存好、刷新会重新生成)
 const app = getApp();
 
 // 授权
