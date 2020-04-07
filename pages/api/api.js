@@ -341,6 +341,15 @@ export const getPay = (params) => {
   })
 };
 
+// 获取是否打开支付开关
+export const getPaySwitch = (params) => {
+  return request.http({
+    url: "/config/switch_pay",
+    method: 'GET',
+    data: params
+  })
+};
+
 // 获取加入协会金额
 export const getJoinOrganizePay = (params) => {
   return request.http({

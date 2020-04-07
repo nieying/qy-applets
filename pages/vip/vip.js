@@ -1,5 +1,6 @@
 import {
-  countRpx
+  countRpx,
+  showToast
 } from '../../utils/util.js'
 const app = getApp()
 Page({
@@ -35,8 +36,11 @@ Page({
   },
 
   goPay: function () {
-    console.log(111)
-    wx.navigateTo({
+    if (!wx.getStorageSync('isPay')) {
+      showToast('该功能正在开发中')
+      return
+    }
+     wx.navigateTo({
       url: '/pages/pay/pay',
     })
   }

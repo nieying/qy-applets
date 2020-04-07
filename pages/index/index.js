@@ -1,5 +1,6 @@
 import {
   getStartUp,
+  getPaySwitch,
 } from "../api/api";
 const app = getApp();
 import {
@@ -15,6 +16,9 @@ Page({
 
   onReady: function() {
     storageHeight(app);
+    getPaySwitch().then(res=> {
+      wx.setStorageSync('isPay', parseInt(res.data))
+    })
   },
 
   onLoad: function (options) {

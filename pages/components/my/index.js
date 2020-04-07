@@ -158,6 +158,10 @@ Component({
 
     goPay: function () {
       tapedFun(this)
+      if (!wx.getStorageSync('isPay')) {
+        showToast('该功能正在开发中')
+        return
+      }
       wx.navigateTo({
         url: '/pages/pay/pay',
       })

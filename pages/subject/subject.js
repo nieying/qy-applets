@@ -136,10 +136,10 @@ Page({
       })
       if (nextSubject.answers) {
         if (nextSubject.userInfo.cost === 0 && !nextSubject.userInfo.costLock) {
-          // showToast('生命值不足无法答题');
-          wx.navigateTo({
-            url: '/pages/pay/pay?prePage=subject',
-          })
+          showToast('生命值不足无法答题');
+          // wx.navigateTo({
+          //   url: '/pages/pay/pay?prePage=subject',
+          // })
           return;
         }
         this.dealData(nextSubject)

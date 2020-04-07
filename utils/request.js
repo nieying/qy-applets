@@ -1,5 +1,6 @@
 const ENV = 0;
 const domainName = ["https://api.talkiin.cn/app/wx"][ENV];
+// const domainName = ["http://api-test.talkiin.cn/app/wx"][ENV];
 const app = getApp();
 
 function http(params) {

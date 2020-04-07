@@ -49,6 +49,10 @@ Component({
       const {
         bill
       } = this.properties.userInfo
+      if (!wx.getStorageSync('isPay')) {
+        showToast('该功能正在开发中')
+        return
+      }
       if (bill < 1) {
         wx.navigateTo({
           url: '/pages/pay/pay',
@@ -70,6 +74,10 @@ Component({
       const {
         bill
       } = this.properties.userInfo
+      if (!wx.getStorageSync('isPay')) {
+        showToast('该功能正在开发中')
+        return
+      }
       if (bill < 3) {
         wx.navigateTo({
           url: '/pages/pay/pay',
